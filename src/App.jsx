@@ -32,7 +32,7 @@ export default function App() {
 
   // Route to /plumbing-services demo
   const normalizedPath = currentPath.toLowerCase().replace(/\/$/, '');
-  if (normalizedPath === '/plumbing-services') {
+  if (normalizedPath === '/plumbing-services' || normalizedPath === '/plumbing-services/index.html' || normalizedPath.endsWith('/plumbing-services')) {
     return <PlumbingServices />;
   }
 
