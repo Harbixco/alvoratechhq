@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/header/Header';
 import Hero from './components/Hero';
 import SolutionsGrid from './components/SolutionsGrid';
@@ -13,11 +13,28 @@ import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
 import LoginModal from './components/LoginModal';
 import StickyMobileBar from './components/StickyMobileBar';
+import PlumbingServices from './demos/plumbing-services/PlumbingServices';
 
 export default function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState(false);
+
+  // Sync with browser navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Route to /plumbing-services demo
+  const normalizedPath = currentPath.toLowerCase().replace(/\/$/, '');
+  if (normalizedPath === '/plumbing-services') {
+    return <PlumbingServices />;
+  }
 
   return (
     <div className="min-h-screen bg-white text-[#1E242B] flex flex-col font-sans selection:bg-[#FF9718]/20 selection:text-[#0C2233]">

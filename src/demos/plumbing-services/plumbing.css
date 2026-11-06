@@ -1,0 +1,1297 @@
+/* ══════════════════════════════════════════════════════════════
+   PROFLOW PLUMBING SERVICES - SCOPED DEMO STYLES
+   Converted from /plumb/style.css to React scoped styles
+   ══════════════════════════════════════════════════════════════ */
+
+.plumbing-demo {
+  --navy: #0A1628;
+  --navy-mid: #112240;
+  --navy-light: #1a3a5c;
+  --amber: #F59E0B;
+  --amber-dark: #D97706;
+  --white: #FFFFFF;
+  --off-white: #F8FAFC;
+  --gray: #64748B;
+  --light-gray: #E2E8F0;
+  --text: #1E293B;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.plumbing-demo * {
+  box-sizing: border-box;
+}
+
+/* ── HEADER ── */
+.plumbing-demo .pf-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--navy);
+  padding-top: var(--safe-top);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.plumbing-demo .pf-header-top {
+  background: var(--amber);
+  text-align: center;
+  padding: 6px 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.03em;
+}
+
+.plumbing-demo .pf-header-top span {
+  margin: 0 12px;
+}
+
+.plumbing-demo .pf-nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+}
+
+.plumbing-demo .pf-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.plumbing-demo .pf-logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--amber);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.plumbing-demo .pf-logo-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--navy);
+}
+
+.plumbing-demo .pf-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  transition: letter-spacing 0.25s ease;
+  position: relative;
+}
+
+.plumbing-demo .pf-logo-text span {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--amber);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.plumbing-demo .pf-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.plumbing-demo .pf-nav a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.plumbing-demo .pf-nav a:hover {
+  color: var(--amber);
+}
+
+.plumbing-demo .pf-nav a:not(.pf-nav-cta):hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--amber);
+}
+
+.plumbing-demo .pf-nav-cta {
+  background: var(--amber);
+  color: var(--navy) !important;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  transition: background 0.2s, transform 0.1s !important;
+  white-space: nowrap;
+}
+
+.plumbing-demo .pf-nav-cta:hover {
+  background: var(--amber-dark) !important;
+  transform: translateY(-1px);
+}
+
+.plumbing-demo .pf-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.plumbing-demo .pf-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.plumbing-demo .pf-hamburger.is-open span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.plumbing-demo .pf-hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.plumbing-demo .pf-hamburger.is-open span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.plumbing-demo .pf-mobile-nav {
+  display: none;
+  background: var(--navy-mid);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.plumbing-demo .pf-mobile-nav.is-open {
+  display: block;
+  max-height: 400px;
+  padding: 16px 0 24px;
+}
+
+.plumbing-demo .pf-mobile-nav a {
+  display: block;
+  padding: 12px 24px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.plumbing-demo .pf-mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+.plumbing-demo .pf-mobile-nav .pf-mobile-cta {
+  margin: 12px 24px 0;
+  background: var(--amber);
+  color: var(--navy);
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ── DEMO RIBBON ── */
+.plumbing-demo .pf-demo-ribbon {
+  position: fixed;
+  top: 112px;
+  right: -32px;
+  z-index: 2000;
+  background: #DC2626;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 44px;
+  transform: rotate(45deg);
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── HERO ── */
+.plumbing-demo .pf-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(68px + var(--safe-top) + 44px);
+}
+
+.plumbing-demo .pf-hero-slides,
+.plumbing-demo .pf-hero-slides::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.plumbing-demo .pf-hero-slides {
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.plumbing-demo .pf-hero-slides::after {
+  content: '';
+  background: linear-gradient(90deg, rgba(10, 22, 40, 0.94) 0%, rgba(10, 22, 40, 0.8) 44%, rgba(10, 22, 40, 0.58) 100%);
+}
+
+.plumbing-demo .pf-hero-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  transform: translate3d(100%, 0, 0) scale(1.04);
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.plumbing-demo .pf-hero-slide.is-before {
+  transform: translateX(-100%) scale(1.04);
+}
+
+.plumbing-demo .pf-hero-slide.is-active {
+  transform: translateX(0) scale(1);
+}
+
+.plumbing-demo .pf-hero-grid {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: center;
+}
+
+.plumbing-demo .pf-hero-content {
+  min-width: 0;
+}
+
+.plumbing-demo .pf-hero-carousel {
+  position: relative;
+  max-width: 670px;
+  min-height: 410px;
+  display: grid;
+  align-items: center;
+  touch-action: pan-y;
+}
+
+.plumbing-demo .pf-hero-copy {
+  grid-area: 1 / 1;
+  align-self: center;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.plumbing-demo .pf-hero-copy.is-before {
+  transform: translateX(-100%);
+}
+
+.plumbing-demo .pf-hero-copy.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.plumbing-demo .pf-hero-title,
+.plumbing-demo .pf-hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+
+.plumbing-demo .pf-hero-title em,
+.plumbing-demo .pf-hero h1 em {
+  color: var(--amber);
+  font-style: normal;
+  display: block;
+}
+
+.plumbing-demo .pf-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: var(--amber);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.plumbing-demo .pf-hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--amber);
+  border-radius: 50%;
+  animation: pf-pulse 1.5s infinite;
+}
+
+@keyframes pf-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.plumbing-demo .pf-hero p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.plumbing-demo .pf-hero-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.plumbing-demo .pf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--amber);
+  color: var(--navy);
+  padding: 15px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.plumbing-demo .pf-btn-primary:hover {
+  background: var(--amber-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.24);
+}
+
+.plumbing-demo .pf-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: var(--white);
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.plumbing-demo .pf-btn-outline:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.plumbing-demo .pf-hero-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.plumbing-demo .pf-hero-card h3 {
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.plumbing-demo .pf-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.plumbing-demo .pf-contact-item:last-child {
+  border-bottom: none;
+}
+
+.plumbing-demo .pf-contact-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(245, 158, 11, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.plumbing-demo .pf-contact-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--amber);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plumbing-demo .pf-contact-label {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.plumbing-demo .pf-contact-val {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ── TRUST BAR ── */
+.plumbing-demo .pf-trust-bar {
+  background: var(--navy);
+  padding: 20px 24px;
+}
+
+.plumbing-demo .pf-trust-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.plumbing-demo .pf-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plumbing-demo .pf-trust-item:last-child {
+  border-right: none;
+}
+
+.plumbing-demo .pf-trust-item svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--amber);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.plumbing-demo .pf-trust-item span {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── SECTIONS ── */
+.plumbing-demo .pf-section {
+  padding: 80px 24px;
+}
+
+.plumbing-demo .pf-section-alt {
+  background: var(--off-white);
+}
+
+.plumbing-demo .pf-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plumbing-demo .pf-section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber-dark);
+  margin-bottom: 10px;
+}
+
+.plumbing-demo .pf-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.plumbing-demo .pf-section-sub {
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+.plumbing-demo .pf-section-head {
+  margin-bottom: 52px;
+}
+
+.plumbing-demo .pf-section-head.center {
+  text-align: center;
+}
+
+.plumbing-demo .pf-section-head.center .pf-section-sub {
+  margin: 0 auto;
+}
+
+/* ── SERVICES GRID ── */
+.plumbing-demo .pf-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.plumbing-demo .pf-service-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--light-gray);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.plumbing-demo .pf-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(10, 22, 40, 0.1);
+  border-color: var(--amber);
+}
+
+.plumbing-demo .pf-svc-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.plumbing-demo .pf-svc-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--amber-dark);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plumbing-demo .pf-service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.plumbing-demo .pf-service-card p {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.65;
+}
+
+/* ── STATS ROW ── */
+.plumbing-demo .pf-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--light-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 52px;
+}
+
+.plumbing-demo .pf-stat-box {
+  background: var(--white);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.plumbing-demo .pf-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.plumbing-demo .pf-stat-num span {
+  color: var(--amber);
+}
+
+.plumbing-demo .pf-stat-label {
+  font-size: 0.8rem;
+  color: var(--gray);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ── TWO-COL SECTIONS ── */
+.plumbing-demo .pf-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.plumbing-demo .pf-two-col.reverse .pf-col-img {
+  order: -1;
+}
+
+.plumbing-demo .pf-col-img {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.plumbing-demo .pf-col-img img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.plumbing-demo .pf-col-img:hover img {
+  transform: scale(1.045);
+}
+
+.plumbing-demo .pf-img-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: var(--amber);
+  color: var(--navy);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.plumbing-demo .pf-col-text .pf-section-sub {
+  margin-bottom: 28px;
+}
+
+.plumbing-demo .pf-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.plumbing-demo .pf-feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.plumbing-demo .pf-feat-check {
+  width: 22px;
+  height: 22px;
+  background: rgba(245, 158, 11, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.plumbing-demo .pf-feat-check svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--amber-dark);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plumbing-demo .pf-feat-item p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.plumbing-demo .pf-feat-item strong {
+  color: var(--navy);
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+  font-size: 0.92rem;
+}
+
+/* ── EMERGENCY BANNER ── */
+.plumbing-demo .pf-emergency {
+  background: var(--amber);
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.plumbing-demo .pf-emergency h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--navy);
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.plumbing-demo .pf-emergency p {
+  color: var(--navy-mid);
+  font-size: 1rem;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.plumbing-demo .pf-emergency .pf-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.plumbing-demo .pf-emergency .pf-btn-dark:hover {
+  background: var(--navy-light);
+}
+
+.plumbing-demo .pf-emergency .pf-phone-big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--navy);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+
+/* ── WHY CHOOSE US ── */
+.plumbing-demo .pf-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.plumbing-demo .pf-why-card {
+  background: var(--navy-mid);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.plumbing-demo .pf-why-card svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--amber);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 16px;
+}
+
+.plumbing-demo .pf-why-card h3 {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.plumbing-demo .pf-why-card p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+/* ── TESTIMONIALS ── */
+.plumbing-demo .pf-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.plumbing-demo .pf-testi-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--light-gray);
+}
+
+.plumbing-demo .pf-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+
+.plumbing-demo .pf-stars svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--amber);
+  stroke: none;
+}
+
+.plumbing-demo .pf-testi-card blockquote {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.plumbing-demo .pf-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.plumbing-demo .pf-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.plumbing-demo .pf-reviewer-info strong {
+  display: block;
+  color: var(--navy);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.plumbing-demo .pf-reviewer-info span {
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+
+/* ── CONTACT ── */
+.plumbing-demo .pf-contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.plumbing-demo .pf-contact-info h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--navy);
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.plumbing-demo .pf-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.plumbing-demo .pf-info-row:last-of-type {
+  border-bottom: none;
+}
+
+.plumbing-demo .pf-info-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.plumbing-demo .pf-info-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--amber-dark);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plumbing-demo .pf-info-row strong {
+  display: block;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+
+.plumbing-demo .pf-info-row span {
+  color: var(--gray);
+  font-size: 0.88rem;
+}
+
+.plumbing-demo .pf-contact-form {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 36px;
+}
+
+.plumbing-demo .pf-contact-form h3 {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.plumbing-demo .pf-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.plumbing-demo .pf-field {
+  margin-bottom: 16px;
+}
+
+.plumbing-demo .pf-field label {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plumbing-demo .pf-field input,
+.plumbing-demo .pf-field select,
+.plumbing-demo .pf-field textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.plumbing-demo .pf-field input::placeholder,
+.plumbing-demo .pf-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.plumbing-demo .pf-field input:focus,
+.plumbing-demo .pf-field select:focus,
+.plumbing-demo .pf-field textarea:focus {
+  border-color: var(--amber);
+}
+
+.plumbing-demo .pf-field select option {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.plumbing-demo .pf-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.plumbing-demo .pf-submit-btn {
+  width: 100%;
+  background: var(--amber);
+  color: var(--navy);
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.plumbing-demo .pf-submit-btn:hover {
+  background: var(--amber-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+}
+
+.plumbing-demo .pf-form-status {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+/* ── FOOTER ── */
+.plumbing-demo .pf-footer {
+  background: var(--navy);
+  padding: 52px 24px 24px;
+}
+
+.plumbing-demo .pf-footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.plumbing-demo .pf-footer-brand .pf-logo {
+  margin-bottom: 14px;
+  display: inline-flex;
+}
+
+.plumbing-demo .pf-footer-brand p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  max-width: 260px;
+}
+
+.plumbing-demo .pf-footer-col h4 {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.plumbing-demo .pf-footer-col a {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.plumbing-demo .pf-footer-col a:hover {
+  color: var(--amber);
+}
+
+.plumbing-demo .pf-footer-bottom {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.78rem;
+}
+
+.plumbing-demo .pf-footer-bottom a {
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+}
+
+/* ── STICKY MOBILE CTA ── */
+.plumbing-demo .pf-sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--amber);
+  padding: 14px 20px;
+  padding-bottom: calc(14px + var(--safe-bottom));
+  text-align: center;
+}
+
+.plumbing-demo .pf-sticky-cta a {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.plumbing-demo .pf-sticky-cta a:hover {
+  transform: scale(1.025);
+}
+
+.plumbing-demo .pf-sticky-cta svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--navy);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── RESPONSIVE MEDIA QUERIES ── */
+@media (max-width: 900px) {
+  .plumbing-demo .pf-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .plumbing-demo .pf-hero-card {
+    display: none;
+  }
+  .plumbing-demo .pf-hero-carousel {
+    max-width: 760px;
+    min-height: 390px;
+  }
+  .plumbing-demo .pf-two-col {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .plumbing-demo .pf-two-col.reverse .pf-col-img {
+    order: 0;
+  }
+  .plumbing-demo .pf-stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .plumbing-demo .pf-contact-wrap {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .plumbing-demo .pf-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .plumbing-demo .pf-nav {
+    display: none;
+  }
+  .plumbing-demo .pf-hamburger {
+    display: flex;
+  }
+  .plumbing-demo .pf-hero {
+    padding-top: calc(68px + var(--safe-top) + 44px + 10px);
+  }
+  .plumbing-demo .pf-section {
+    padding: 56px 20px;
+  }
+  .plumbing-demo .pf-sticky-cta {
+    display: block;
+  }
+  .plumbing-demo .pf-form-row {
+    grid-template-columns: 1fr;
+  }
+  .plumbing-demo .pf-trust-item {
+    padding: 10px 16px;
+  }
+  .plumbing-demo .pf-trust-item span {
+    font-size: 0.78rem;
+  }
+  .plumbing-demo .pf-demo-ribbon {
+    top: 108px;
+  }
+}
+
+@media (max-width: 520px) {
+  .plumbing-demo .pf-stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .plumbing-demo .pf-footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .plumbing-demo .pf-footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  .plumbing-demo .pf-hero-btns {
+    flex-direction: column;
+  }
+  .plumbing-demo .pf-btn-primary,
+  .plumbing-demo .pf-btn-outline {
+    justify-content: center;
+    text-align: center;
+  }
+  .plumbing-demo .pf-hero-carousel {
+    min-height: 440px;
+  }
+  .plumbing-demo .pf-hero-slide {
+    transition-duration: 0.65s;
+  }
+  .plumbing-demo .pf-hero-title,
+  .plumbing-demo .pf-hero h1 {
+    font-size: clamp(2.9rem, 13vw, 4.2rem);
+  }
+}

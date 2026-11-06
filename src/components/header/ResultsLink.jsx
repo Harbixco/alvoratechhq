@@ -22,7 +22,7 @@ export default function ResultsLink() {
   const industries = [
     { name: 'HVAC & Heating', href: '#industries', icon: FiTool },
     { name: 'Roofing & Exteriors', href: '#industries', icon: FiHome },
-    { name: 'Plumbing & Mechanical', href: '#industries', icon: FiTool },
+    { name: 'Plumbing & Mechanical', href: '/plumbing-services', icon: FiTool },
     { name: 'Home Remodeling', href: '#industries', icon: FiHome },
     { name: 'General Contracting', href: '#industries', icon: FiBriefcase },
     { name: 'Landscaping & Tree Care', href: '#industries', icon: FiHome },

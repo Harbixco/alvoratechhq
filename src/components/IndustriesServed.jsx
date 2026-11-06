@@ -78,13 +78,23 @@ export default function IndustriesServed({ onOpenDemoModal }) {
                   </div>
 
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <button
-                      onClick={onOpenDemoModal}
-                      className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
-                    >
-                      <span>Learn more</span>
-                      <FiArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                    {ind.id === 'home-services' ? (
+                      <a
+                        href="/plumbing-services"
+                        className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
+                      >
+                        <span>View Live Demo</span>
+                        <FiArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      <button
+                        onClick={onOpenDemoModal}
+                        className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
+                      >
+                        <span>Learn more</span>
+                        <FiArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
