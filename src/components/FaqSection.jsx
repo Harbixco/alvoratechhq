@@ -16,8 +16,8 @@ export default function FaqSection({ isOpen, onClose, onOpenDemoModal }) {
   const faqData = [
     {
       category: 'Getting Started',
-      question: 'What is Alvora Tech and how does it compare to Townsquare Interactive?',
-      answer: 'Alvora Tech delivers an all-in-one digital marketing and business operations platform for small businesses. Like Townsquare Interactive, we combine custom web design, Search Everywhere Optimization (Local SEO), 50+ directory sync, and an all-in-one business management platform (CRM) with zero hassle and dedicated human support.',
+      question: 'What is Alvora Tech and what does the platform include?',
+      answer: 'Alvora Tech delivers an integrated digital marketing and operations platform for small businesses. We combine custom website design, local search engine optimization (Local SEO), 50+ directory sync, and all-in-one business management tools with dedicated specialist support.',
     },
     {
       category: 'Getting Started',
@@ -174,7 +174,7 @@ export default function FaqSection({ isOpen, onClose, onOpenDemoModal }) {
               onClose();
               if (onOpenDemoModal) onOpenDemoModal();
             }}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-glow-orange active:scale-98"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-md transition-colors"
           >
             <span>Ask A Specialist</span>
             <FiArrowRight className="w-3.5 h-3.5" />

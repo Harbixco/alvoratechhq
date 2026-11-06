@@ -106,12 +106,10 @@ export default function RoiCalculator({ onOpenDemoModal }) {
 
               <button
                 onClick={onOpenDemoModal}
-                className="group w-full py-3.5 px-4 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-glow-orange hover:scale-102 active:scale-98"
+                className="w-full py-3.5 px-4 rounded-xl bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-md"
               >
-                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform">
-                  <FiArrowUpRight className="w-3.5 h-3.5 text-white" />
-                </div>
-                <span>Unlock This Growth</span>
+                <span>Discuss Your Growth Plan</span>
+                <FiArrowUpRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
           </div>

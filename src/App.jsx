@@ -12,7 +12,6 @@ import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
 import LoginModal from './components/LoginModal';
-import LiveSocialProofToast from './components/LiveSocialProofToast';
 import StickyMobileBar from './components/StickyMobileBar';
 
 export default function App() {
@@ -22,7 +21,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-[#1E242B] flex flex-col font-sans selection:bg-[#FF9718]/20 selection:text-[#0C2233]">
-      {/* 1. Header matching Image 1 with exact colors & modular link components */}
+      {/* 1. Header with modular link components */}
       <Header
         onOpenDemoModal={() => setIsDemoModalOpen(true)}
         onOpenLoginModal={() => setIsLoginModalOpen(true)}
@@ -31,28 +30,28 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {/* 2. Hero Carousel matching Image 3 template with exact colors & contact hub */}
+        {/* 2. Hero Section */}
         <Hero onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 3. Integrated Solutions matching Image 4 (Expanded to 6 Cards on Clean White Background) */}
+        {/* 3. Core Solutions */}
         <SolutionsGrid onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 4. Industries We Serve (Multi-Vertical Coverage on Off-White Background) */}
+        {/* 4. Industries Served */}
         <IndustriesServed onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 5. Instant Digital Health Check & Audit Scanner (Deep Royal Navy High-Impact Anchor) */}
+        {/* 5. Free Digital Audit */}
         <DigitalAuditTool onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 6. Our Work & Client Results Showcase (Pure White Background) */}
+        {/* 6. Client Results Showcase */}
         <PortfolioShowcase onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 7. Local Market ROI & Inbound Growth Simulator (Clean Off-White Background) */}
+        {/* 7. Market Potential Estimator */}
         <RoiCalculator onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 8. Transparent Investment Plans (Pure White Background) */}
+        {/* 8. Investment Plans */}
         <Pricing onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 9. Verified Client Success Stories (Soft Off-White Background) */}
+        {/* 9. Client Reviews */}
         <Testimonials />
       </main>
 
@@ -63,7 +62,7 @@ export default function App() {
         onOpenFaq={() => setIsFaqOpen(true)}
       />
 
-      {/* Dedicated FAQ Component (Moved from index page into self-contained FAQ component) */}
+      {/* Dedicated FAQ Component */}
       <FaqSection
         isOpen={isFaqOpen}
         onClose={() => setIsFaqOpen(false)}
@@ -82,10 +81,7 @@ export default function App() {
         onClose={() => setIsLoginModalOpen(false)}
       />
 
-      {/* Live Social Proof Milestones */}
-      <LiveSocialProofToast />
-
-      {/* Sticky Mobile Conversion Bar */}
+      {/* Sticky Mobile Call & Demo Bar */}
       <StickyMobileBar onOpenDemoModal={() => setIsDemoModalOpen(true)} />
     </div>
   );

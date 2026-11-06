@@ -41,7 +41,7 @@ export default function LoginModal({ isOpen, onClose }) {
 
         {logged ? (
           <div className="text-center py-8 text-emerald-400 text-xs font-mono">
-            ● Authenticating with Alvora Tech Cloud...
+            Signing in...
           </div>
         ) : (
           <form onSubmit={handleLogin} className="space-y-4">

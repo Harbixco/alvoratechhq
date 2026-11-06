@@ -11,15 +11,8 @@ export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
           <div className="md:col-span-2 space-y-3">
             <Logo size="default" />
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              All-in-one digital marketing and business management platform designed for small and medium businesses. Custom websites, local search dominance, CRM, and automated customer reviews.
+              Integrated digital marketing and operations platform designed for growing small and medium businesses. Custom web development, local search dominance, CRM, and automated customer reputation.
             </p>
-
-            <div className="flex items-center gap-2 pt-1">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="font-mono text-[11px] text-slate-300">
-                Alvora Tech Cloud: 99.9% Uptime (All Systems Operational)
-              </span>
-            </div>
           </div>
 
           {/* Column 2: Solutions */}

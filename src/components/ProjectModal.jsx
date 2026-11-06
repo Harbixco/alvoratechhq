@@ -195,7 +195,7 @@ export default function ProjectModal({ isOpen, onClose }) {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-glow-orange active:scale-98"
+                  className="w-full py-3.5 px-4 rounded-xl bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-md"
                 >
                   <span>Request Free Demo & Audit</span>
                   <FiArrowRight className="w-4 h-4" />
@@ -220,7 +220,7 @@ export default function ProjectModal({ isOpen, onClose }) {
               <FiCheckCircle className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-extrabold text-white tracking-tight">
-              Demo Request Received!
+              Demo Request Received
             </h3>
             <p className="text-xs text-slate-300 mt-2 max-w-sm mx-auto leading-relaxed">
               We are preparing a local search visibility audit and live platform demo for <strong className="text-white">{formData.businessName}</strong> in <strong className="text-white">{formData.city}</strong>.
@@ -229,7 +229,7 @@ export default function ProjectModal({ isOpen, onClose }) {
             <div className="my-6 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-left text-xs font-mono space-y-1.5 text-slate-300">
               <div><span className="text-slate-400">Industry:</span> {formData.industry}</div>
               <div><span className="text-slate-400">Contact:</span> {formData.contact}</div>
-              <div><span className="text-slate-400">Scheduled SLA:</span> Response within 2 business hours</div>
+              <div><span className="text-slate-400">Expected Response:</span> Within 2 business hours</div>
             </div>
 
             <button

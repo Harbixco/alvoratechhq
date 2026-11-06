@@ -21,12 +21,10 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
           </div>
           <button
             onClick={onOpenDemoModal}
-            className="group self-start md:self-auto inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-xs font-bold text-white transition-all shadow-glow-orange hover:scale-105 active:scale-95"
+            className="self-start md:self-auto inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-xs font-bold text-white transition-colors shadow-md"
           >
-            <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform">
-              <FiArrowUpRight className="w-3.5 h-3.5 text-white" />
-            </div>
             <span>Request A Free Site Review</span>
+            <FiArrowRight className="w-3.5 h-3.5 text-white" />
           </button>
         </div>
 
@@ -35,20 +33,19 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
           {PORTFOLIO_WORKS.map((work) => (
             <div
               key={work.id}
-              className="group rounded-3xl bg-[#F8FAFC] border border-slate-200 hover:border-[#00828B] hover:bg-white hover:shadow-xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm"
+              className="rounded-2xl bg-[#F8FAFC] border border-slate-200 hover:border-slate-300 hover:bg-white hover:shadow-lg overflow-hidden transition-all duration-200 flex flex-col justify-between shadow-xs"
             >
               {/* Image Preview */}
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                 <img
                   src={work.image}
                   alt={work.client}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0C2233]/40 via-transparent to-transparent" />
                 
                 {/* Result Pill */}
                 <div className="absolute top-4 right-4">
-                  <span className="text-xs font-mono font-bold text-emerald-800 bg-white/95 backdrop-blur-md border border-emerald-300 shadow-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-mono font-bold text-[#0C2233] bg-white/95 backdrop-blur-md border border-slate-200 shadow-xs px-3 py-1 rounded-full">
                     {work.result}
                   </span>
                 </div>
@@ -62,7 +59,7 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-[#0C2233] tracking-tight mb-4">
+                <h3 className="text-lg font-bold text-[#0C2233] tracking-tight mb-4">
                   {work.client}
                 </h3>
 
@@ -71,7 +68,7 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
                   {work.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 shadow-xs"
+                      className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 shadow-xs"
                     >
                       {tag}
                     </span>
@@ -83,7 +80,7 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
                   <span className="text-xs text-slate-500 font-mono">Managed by Alvora Tech</span>
                   <button
                     onClick={onOpenDemoModal}
-                    className="text-xs font-bold text-[#00828B] hover:text-[#FF9718] inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform"
+                    className="text-xs font-bold text-[#00828B] hover:text-[#0C2233] inline-flex items-center gap-1.5 transition-colors"
                   >
                     <span>View Case Study</span>
                     <FiArrowRight className="w-3.5 h-3.5" />

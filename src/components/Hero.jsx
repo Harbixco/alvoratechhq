@@ -113,9 +113,9 @@ export default function Hero({ onOpenDemoModal }) {
             <div className="pt-2">
               <button
                 onClick={onOpenDemoModal}
-                className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-sm tracking-wide transition-all duration-200 shadow-glow-orange hover:scale-105 active:scale-95"
+                className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-sm tracking-wide transition-colors shadow-md"
               >
-                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-200">
+                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                   <FiArrowUpRight className="w-4 h-4 text-white" />
                 </div>
                 <span>{active.ctaText}</span>
@@ -129,30 +129,30 @@ export default function Hero({ onOpenDemoModal }) {
             {active.type === 'contacts' && (
               <div className="relative w-full max-w-md animate-fade-in">
                 {/* Back Pill Card Top */}
-                <div className="mx-auto w-[85%] bg-white/90 backdrop-blur-md rounded-2xl p-2.5 shadow-lg border border-white/40 flex items-center justify-between text-slate-800 -mb-4 relative z-0 transform -translate-y-2 opacity-70">
+                <div className="mx-auto w-[85%] bg-white/90 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-white/40 flex items-center justify-between text-slate-800 -mb-4 relative z-0 transform -translate-y-2 opacity-70">
                   <div className="flex items-center gap-2.5">
                     <div className="w-7 h-7 rounded-full bg-[#0C2233] text-white font-bold text-xs flex items-center justify-center">
                       AR
                     </div>
                     <div>
                       <div className="text-xs font-bold text-[#0C2233]">Adelle Ricci</div>
-                      <div className="text-[10px] text-slate-400">@aricci72@somewhere.com</div>
+                      <div className="text-[10px] text-slate-500">adelle@riccidental.com</div>
                     </div>
                   </div>
-                  <span className="text-[9px] font-mono text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">
+                  <span className="text-[9px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">
                     Active
                   </span>
                 </div>
 
                 {/* Back Pill Card Secondary */}
-                <div className="mx-auto w-[92%] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-xl border border-white/50 flex items-center justify-between text-slate-800 -mb-3 relative z-10 opacity-90">
+                <div className="mx-auto w-[92%] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-white/50 flex items-center justify-between text-slate-800 -mb-3 relative z-10 opacity-90">
                   <div className="flex items-center gap-2.5">
                     <div className="w-7 h-7 rounded-full bg-[#39AFB9] text-white font-bold text-xs flex items-center justify-center">
                       AC
                     </div>
                     <div>
                       <div className="text-xs font-bold text-[#0C2233]">Alarrieda Calfein</div>
-                      <div className="text-[10px] text-slate-400">Website Lead Inbound</div>
+                      <div className="text-[10px] text-slate-500">Website Lead Inbound</div>
                     </div>
                   </div>
                   <span className="text-[9px] font-mono text-[#00828B] bg-[#EFF5F6] px-2 py-0.5 rounded-full font-bold">
@@ -161,23 +161,23 @@ export default function Hero({ onOpenDemoModal }) {
                 </div>
 
                 {/* Main Hero Card: Adriano Hearn matching Image 3 */}
-                <div className="relative z-20 bg-white rounded-3xl p-5 sm:p-6 shadow-2xl border border-white text-slate-800">
+                <div className="relative z-20 bg-white rounded-3xl p-5 sm:p-6 shadow-xl border border-white text-slate-800">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#0C2E61] to-[#39AFB9] text-white font-bold text-sm flex items-center justify-center shadow-md">
+                      <div className="w-11 h-11 rounded-full bg-[#0C2E61] text-white font-bold text-sm flex items-center justify-center shadow-xs">
                         AH
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
                           <h4 className="text-sm font-bold text-[#0C2233]">Adriano Hearn</h4>
-                          <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">
+                          <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full">
                             VIP
                           </span>
                         </div>
-                        <div className="text-xs text-slate-500 font-mono">@hearn16@somewhere.com</div>
+                        <div className="text-xs text-slate-500 font-mono">adriano@hearnlaw.com</div>
                       </div>
                     </div>
-                    <span className="text-[10px] text-slate-400 font-mono">Imported on Dec 27, 2026</span>
+                    <span className="text-[10px] text-slate-500 font-mono">Client since Oct 2024</span>
                   </div>
 
                   {/* Actions Bar matching Image 3 */}
@@ -206,34 +206,34 @@ export default function Hero({ onOpenDemoModal }) {
                 </div>
 
                 {/* Sub Pill Card Bottom 1 */}
-                <div className="mx-auto w-[92%] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-xl border border-white/50 flex items-center justify-between text-slate-800 -mt-3 relative z-10 opacity-90">
+                <div className="mx-auto w-[92%] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-white/50 flex items-center justify-between text-slate-800 -mt-3 relative z-10 opacity-90">
                   <div className="flex items-center gap-2.5">
                     <div className="w-7 h-7 rounded-full bg-[#0C2233] text-white font-bold text-xs flex items-center justify-center">
                       AG
                     </div>
                     <div>
                       <div className="text-xs font-bold text-[#0C2233]">A&G Services</div>
-                      <div className="text-[10px] text-slate-400">@aandg@somewhere.com</div>
+                      <div className="text-[10px] text-slate-500">service@aandgmechanical.com</div>
                     </div>
                   </div>
-                  <span className="text-[9px] font-mono text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">
+                  <span className="text-[9px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">
                     Paid $450
                   </span>
                 </div>
 
                 {/* Sub Pill Card Bottom 2 */}
-                <div className="mx-auto w-[85%] bg-white/90 backdrop-blur-md rounded-2xl p-2.5 shadow-lg border border-white/40 flex items-center justify-between text-slate-800 -mt-2 relative z-0 opacity-70">
+                <div className="mx-auto w-[85%] bg-white/90 backdrop-blur-md rounded-2xl p-2.5 shadow-md border border-white/40 flex items-center justify-between text-slate-800 -mt-2 relative z-0 opacity-70">
                   <div className="flex items-center gap-2.5">
                     <div className="w-7 h-7 rounded-full bg-[#39AFB9] text-white font-bold text-xs flex items-center justify-center">
                       AX
                     </div>
                     <div>
                       <div className="text-xs font-bold text-[#0C2233]">Alex Guillen</div>
-                      <div className="text-[10px] text-slate-400">@alex.guillen@somewhere.com</div>
+                      <div className="text-[10px] text-slate-500">alex@guillenplumbing.com</div>
                     </div>
                   </div>
-                  <span className="text-[9px] font-mono text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full font-bold">
-                    5★ Left
+                  <span className="text-[9px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full font-bold">
+                    5.0 ★ Rating
                   </span>
                 </div>
               </div>
@@ -315,14 +315,14 @@ export default function Hero({ onOpenDemoModal }) {
           </div>
         </div>
 
-        {/* Exact Credibility Stats Row matching Image 3 */}
+        {/* Credibility Stats Row matching Image 3 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 border-t border-white/10 text-center">
           <div>
             <div className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
               23,000+
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
-              Businesses Growing With TSI
+              Small Businesses Supported
             </div>
           </div>
 
@@ -331,16 +331,16 @@ export default function Hero({ onOpenDemoModal }) {
               5,000+
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
-              Positive Reviews
+              Verified 5-Star Reviews
             </div>
           </div>
 
           <div>
             <div className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
-              31.2M+
+              50+
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
-              Local Search Appearances
+              Connected Local Networks
             </div>
           </div>
 
@@ -349,7 +349,7 @@ export default function Hero({ onOpenDemoModal }) {
               15+
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
-              Years In Local Digital Marketing
+              Years Experience in Local Search
             </div>
           </div>
         </div>
