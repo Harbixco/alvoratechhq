@@ -53,3 +53,4 @@ export default function CountUpNumber({ end, duration = 2000, suffix = '', class
     </span>
   );
 }
+
