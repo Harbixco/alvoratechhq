@@ -1,0 +1,205 @@
+import React, { useState } from 'react';
+import { FiChevronDown, FiPhoneCall, FiUser, FiArrowRight } from 'react-icons/fi';
+
+/**
+ * MobileNavDrawer Component
+ * Fully high-contrast, perfectly visible text on white mobile drawer matching Image 1.
+ */
+export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOpenLoginModal, onOpenFaq }) {
+  const [activeSection, setActiveSection] = useState(null);
+
+  if (!isOpen) return null;
+
+  const toggleSection = (section) => {
+    setActiveSection(activeSection === section ? null : section);
+  };
+
+  return (
+    <div className="lg:hidden mt-2 pt-3 pb-5 border-t border-slate-200 bg-white flex flex-col gap-2.5 animate-fade-in text-[#1E242B]">
+      {/* Home */}
+      <a
+        href="#"
+        onClick={onClose}
+        className="px-3 py-2.5 rounded-xl text-sm font-bold text-[#1E242B] hover:text-[#00828B] hover:bg-slate-100 transition-colors"
+      >
+        Home
+      </a>
+
+      {/* AI Visibility Accordion */}
+      <div>
+        <button
+          onClick={() => toggleSection('ai')}
+          className="w-full px-3 py-2.5 rounded-xl text-sm font-bold text-[#1E242B] hover:text-[#00828B] flex items-center justify-between hover:bg-slate-50 transition-colors"
+        >
+          <span>AI Visibility</span>
+          <FiChevronDown
+            className={`w-4 h-4 transition-transform duration-200 ${
+              activeSection === 'ai' ? 'rotate-180 text-[#00828B]' : 'text-[#1E242B]'
+            }`}
+          />
+        </button>
+        {activeSection === 'ai' && (
+          <div className="pl-5 pr-3 py-2 space-y-2 text-xs font-semibold text-[#2D3748] bg-[#F8FAFC] rounded-xl border-l-4 border-[#00828B] ml-2 mt-1">
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Website Design & Hosting
+            </a>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Independent Endorsement
+            </a>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Google Business Profile (3-Pack)
+            </a>
+            <a href="#platform" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • A Well Run Business (CRM)
+            </a>
+            <a href="#platform" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • How It Works
+            </a>
+          </div>
+        )}
+      </div>
+
+      {/* Solutions Accordion */}
+      <div>
+        <button
+          onClick={() => toggleSection('solutions')}
+          className="w-full px-3 py-2.5 rounded-xl text-sm font-bold text-[#1E242B] hover:text-[#00828B] flex items-center justify-between hover:bg-slate-50 transition-colors"
+        >
+          <span>Solutions</span>
+          <FiChevronDown
+            className={`w-4 h-4 transition-transform duration-200 ${
+              activeSection === 'solutions' ? 'rotate-180 text-[#00828B]' : 'text-[#1E242B]'
+            }`}
+          />
+        </button>
+        {activeSection === 'solutions' && (
+          <div className="pl-5 pr-3 py-2 space-y-2 text-xs font-semibold text-[#2D3748] bg-[#F8FAFC] rounded-xl border-l-4 border-[#00828B] ml-2 mt-1">
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Search Everywhere Optimization
+            </a>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Advertising & Social (Google & Meta)
+            </a>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Ecommerce & Payments
+            </a>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Merchant Services
+            </a>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Business Domains & Security
+            </a>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Professional Business Email
+            </a>
+          </div>
+        )}
+      </div>
+
+      {/* Results Accordion */}
+      <div>
+        <button
+          onClick={() => toggleSection('results')}
+          className="w-full px-3 py-2.5 rounded-xl text-sm font-bold text-[#1E242B] hover:text-[#00828B] flex items-center justify-between hover:bg-slate-50 transition-colors"
+        >
+          <span>Results & Industries</span>
+          <FiChevronDown
+            className={`w-4 h-4 transition-transform duration-200 ${
+              activeSection === 'results' ? 'rotate-180 text-[#00828B]' : 'text-[#1E242B]'
+            }`}
+          />
+        </button>
+        {activeSection === 'results' && (
+          <div className="pl-5 pr-3 py-2 space-y-2 text-xs font-semibold text-[#2D3748] bg-[#F8FAFC] rounded-xl border-l-4 border-[#00828B] ml-2 mt-1">
+            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Home & Field Services (HVAC, Plumbing, Roofing)
+            </a>
+            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Health & Medical Wellness
+            </a>
+            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Legal & Professional Services
+            </a>
+            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Food & Beverage Hospitality
+            </a>
+            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Specialty Retail Commerce
+            </a>
+          </div>
+        )}
+      </div>
+
+      {/* About Accordion */}
+      <div>
+        <button
+          onClick={() => toggleSection('about')}
+          className="w-full px-3 py-2.5 rounded-xl text-sm font-bold text-[#1E242B] hover:text-[#00828B] flex items-center justify-between hover:bg-slate-50 transition-colors"
+        >
+          <span>About</span>
+          <FiChevronDown
+            className={`w-4 h-4 transition-transform duration-200 ${
+              activeSection === 'about' ? 'rotate-180 text-[#00828B]' : 'text-[#1E242B]'
+            }`}
+          />
+        </button>
+        {activeSection === 'about' && (
+          <div className="pl-5 pr-3 py-2 space-y-2 text-xs font-semibold text-[#2D3748] bg-[#F8FAFC] rounded-xl border-l-4 border-[#00828B] ml-2 mt-1">
+            <a href="#portfolio" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • About Us & Mission
+            </a>
+            <button
+              onClick={() => {
+                onClose();
+                if (onOpenFaq) onOpenFaq();
+              }}
+              className="block w-full text-left py-1.5 hover:text-[#00828B]"
+            >
+              • Common Questions (FAQ)
+            </button>
+            <a href="#solutions" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Personal Dedicated Support
+            </a>
+            <a href="#pricing" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+              • Pricing & Plans
+            </a>
+          </div>
+        )}
+      </div>
+
+      {/* Direct Phone Call Button */}
+      <a
+        href="tel:+18554635490"
+        className="my-1 py-3 px-4 rounded-xl bg-[#EFF5F6] border-2 border-[#00828B] text-xs font-mono font-bold text-[#00828B] hover:bg-[#00828B] hover:text-white transition-colors flex items-center justify-center gap-2"
+      >
+        <FiPhoneCall className="w-4 h-4 text-[#00828B]" />
+        <span>Call (855) 463-5490</span>
+      </a>
+
+      {/* Bottom Action Buttons */}
+      <div className="pt-2 border-t border-slate-200 flex flex-col gap-2.5">
+        <button
+          onClick={() => {
+            onClose();
+            onOpenLoginModal();
+          }}
+          className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-[#1E242B] flex items-center justify-center gap-1.5 transition-colors"
+        >
+          <FiUser className="w-4 h-4 text-[#00828B]" />
+          <span>Client Login</span>
+        </button>
+
+        <button
+          onClick={() => {
+            onClose();
+            onOpenDemoModal();
+          }}
+          className="w-full py-3.5 px-4 rounded-xl bg-[#00828B] hover:bg-[#006B72] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-98"
+        >
+          <span>Start Free Demo</span>
+          <FiArrowRight className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
