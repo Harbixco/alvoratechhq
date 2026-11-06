@@ -10,9 +10,6 @@ export default function Pricing({ onOpenDemoModal }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="text-xs uppercase font-mono tracking-widest text-[#00828B] font-bold mb-3">
-            Transparent Pricing
-          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0C2233] tracking-tight">
             Plans built for growing small businesses.
           </h2>

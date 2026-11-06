@@ -93,13 +93,7 @@ export default function Hero({ onOpenDemoModal }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[400px]">
           {/* Left Column: Carousel Slide Content */}
           <div className="lg:col-span-7 space-y-5 animate-fade-in key={currentSlide}">
-            {/* Pill matching Image 3 */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[11px] font-mono font-bold tracking-wider uppercase text-white shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#FF9718]" />
-              <span>{active.pill}</span>
-            </div>
-
-            {/* Headline matching Image 3 */}
+            {/* Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
               {active.headline}
             </h1>

@@ -15,9 +15,6 @@ export default function RoiCalculator({ onOpenDemoModal }) {
     <section id="calculator" className="py-12 sm:py-16 bg-[#F8FAFC] border-t border-slate-200 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <div className="text-xs uppercase font-mono tracking-widest text-[#00828B] font-bold mb-3">
-            Growth Simulator
-          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0C2233] tracking-tight">
             Calculate your local market potential.
           </h2>

@@ -7,9 +7,6 @@ export default function Testimonials() {
     <section className="py-12 sm:py-16 bg-[#F8FAFC] border-t border-slate-200 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="text-xs uppercase font-mono tracking-widest text-[#00828B] font-bold mb-3">
-            Client Success
-          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0C2233] tracking-tight">
             Trusted by local business owners nationwide.
           </h2>

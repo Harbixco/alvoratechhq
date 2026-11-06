@@ -25,9 +25,6 @@ export default function DigitalAuditTool({ onOpenDemoModal }) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <div className="text-xs uppercase font-mono tracking-widest text-[#39AFB9] font-bold mb-3">
-            Local Market Analysis
-          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             See how your business ranks locally.
           </h2>

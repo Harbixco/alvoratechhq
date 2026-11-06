@@ -84,9 +84,6 @@ export default function FaqSection({ isOpen, onClose, onOpenDemoModal }) {
 
         {/* Modal Header */}
         <div className="mb-6 pr-10">
-          <div className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#39AFB9] mb-1">
-            FAQ & Knowledge Center
-          </div>
           <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Frequently Asked Questions
           </h3>

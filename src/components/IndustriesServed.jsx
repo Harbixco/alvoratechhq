@@ -26,9 +26,6 @@ export default function IndustriesServed({ onOpenDemoModal }) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs uppercase font-mono tracking-widest text-[#00828B] font-bold mb-3">
-              Industries Served
-            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0C2233] tracking-tight">
               Tailored solutions for your specific trade.
             </h2>
