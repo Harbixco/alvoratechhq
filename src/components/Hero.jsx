@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CountUpNumber from './CountUpNumber';
 import { 
   FiArrowUpRight, 
   FiChevronLeft, 
@@ -309,11 +310,11 @@ export default function Hero({ onOpenDemoModal }) {
           </div>
         </div>
 
-        {/* Credibility Stats Row matching Image 3 */}
+        {/* Credibility Stats Row matching Image 3 with Animated Count-Up */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 border-t border-white/10 text-center">
           <div>
             <div className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
-              23,000+
+              <CountUpNumber end={23000} duration={2200} suffix="+" />
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
               Small Businesses Supported
@@ -322,7 +323,7 @@ export default function Hero({ onOpenDemoModal }) {
 
           <div>
             <div className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
-              5,000+
+              <CountUpNumber end={5000} duration={2000} suffix="+" />
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
               Verified 5-Star Reviews
@@ -331,7 +332,7 @@ export default function Hero({ onOpenDemoModal }) {
 
           <div>
             <div className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
-              50+
+              <CountUpNumber end={50} duration={1600} suffix="+" />
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
               Connected Local Networks
@@ -340,7 +341,7 @@ export default function Hero({ onOpenDemoModal }) {
 
           <div>
             <div className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
-              15+
+              <CountUpNumber end={15} duration={1400} suffix="+" />
             </div>
             <div className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
               Years Experience in Local Search

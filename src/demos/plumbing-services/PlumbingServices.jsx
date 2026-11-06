@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CountUpNumber from '../../components/CountUpNumber';
 import './plumbing.css';
 
 /**
@@ -399,11 +400,15 @@ export default function PlumbingServices() {
           {/* Stats Row */}
           <div className="pf-stats-row">
             <div className="pf-stat-box">
-              <div className="pf-stat-num">15<span>+</span></div>
+              <div className="pf-stat-num">
+                <CountUpNumber end={15} duration={1400} suffix="+" />
+              </div>
               <div className="pf-stat-label">Years in Business</div>
             </div>
             <div className="pf-stat-box">
-              <div className="pf-stat-num">4<span>,</span>800<span>+</span></div>
+              <div className="pf-stat-num">
+                <CountUpNumber end={4800} duration={1800} suffix="+" />
+              </div>
               <div className="pf-stat-label">Jobs Completed</div>
             </div>
             <div className="pf-stat-box">
@@ -411,7 +416,9 @@ export default function PlumbingServices() {
               <div className="pf-stat-label">Average Rating</div>
             </div>
             <div className="pf-stat-box">
-              <div className="pf-stat-num">60<span>min</span></div>
+              <div className="pf-stat-num">
+                <CountUpNumber end={60} duration={1500} suffix="min" />
+              </div>
               <div className="pf-stat-label">Avg Response Time</div>
             </div>
           </div>
@@ -1139,3 +1146,4 @@ export default function PlumbingServices() {
     </div>
   );
 }
+
