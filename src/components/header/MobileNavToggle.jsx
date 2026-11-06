@@ -3,17 +3,23 @@ import { FiMenu, FiX } from 'react-icons/fi';
 
 /**
  * MobileNavToggle Component
- * Dedicated mobile navigation hamburger and close toggle button.
+ * High-visibility hamburger toggle button for mobile header.
+ * Solid dark navy background with crisp white icon for maximum contrast.
  */
 export default function MobileNavToggle({ isOpen, onToggle, className = "" }) {
   return (
     <button
+      type="button"
       onClick={onToggle}
-      className={`p-2 rounded-xl text-[#0C2233] dark:text-slate-200 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.1] hover:text-[#39AFB9] dark:hover:text-[#39AFB9] transition-colors focus:outline-none ${className}`}
-      aria-label="Toggle navigation menu"
+      className={`p-2.5 rounded-xl bg-[#0C2233] hover:bg-[#00828B] text-white transition-all duration-200 shadow-md focus:outline-none flex items-center justify-center active:scale-95 border border-[#0C2233] ${className}`}
+      aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+      title={isOpen ? "Close menu" : "Open menu"}
     >
-      {isOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+      {isOpen ? (
+        <FiX className="w-6 h-6 stroke-[2.5]" />
+      ) : (
+        <FiMenu className="w-6 h-6 stroke-[2.5]" />
+      )}
     </button>
   );
 }
-

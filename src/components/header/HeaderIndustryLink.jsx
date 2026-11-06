@@ -20,3 +20,4 @@ export default function HeaderIndustryLink({ icon: Icon, name, href = "#industri
     </a>
   );
 }
+

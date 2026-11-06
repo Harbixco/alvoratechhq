@@ -110,7 +110,7 @@ export default function Hero({ onOpenDemoModal }) {
             </p>
 
             {/* CTA Button matching Image 3 */}
-            <div className="pt-2 flex items-center gap-4">
+            <div className="pt-2">
               <button
                 onClick={onOpenDemoModal}
                 className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-white font-bold text-sm tracking-wide transition-all duration-200 shadow-glow-orange hover:scale-105 active:scale-95"
@@ -120,31 +120,6 @@ export default function Hero({ onOpenDemoModal }) {
                 </div>
                 <span>{active.ctaText}</span>
               </button>
-
-              {/* Slide Counter Indicator matching Image 1 */}
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-300 ml-2">
-                <span>0{currentSlide + 1}</span>
-                <span className="text-slate-500">/</span>
-                <span>0{slides.length}</span>
-                <div className="hidden lg:flex items-center gap-1 ml-1">
-                  <button
-                    onClick={prevSlide}
-                    className="p-1 rounded-full hover:bg-white/15 text-slate-300 hover:text-white transition-colors"
-                    title="Previous Slide"
-                    aria-label="Previous Slide"
-                  >
-                    <FiChevronLeft className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    onClick={nextSlide}
-                    className="p-1 rounded-full hover:bg-white/15 text-slate-300 hover:text-white transition-colors"
-                    title="Next Slide"
-                    aria-label="Next Slide"
-                  >
-                    <FiChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -340,43 +315,8 @@ export default function Hero({ onOpenDemoModal }) {
           </div>
         </div>
 
-        {/* Carousel Navigation Arrows & Dots (Removed from desktop view per user instruction) */}
-        <div className="lg:hidden flex items-center justify-between pt-4 pb-2 sm:pt-6 sm:pb-3 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`transition-all duration-300 rounded-full ${
-                  currentSlide === idx
-                    ? 'w-8 h-2 bg-[#FF9718]'
-                    : 'w-2 h-2 bg-white/30 hover:bg-white/60'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={prevSlide}
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors"
-              aria-label="Previous Slide"
-            >
-              <FiChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors"
-              aria-label="Next Slide"
-            >
-              <FiChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-
         {/* Exact Credibility Stats Row matching Image 3 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-6 sm:pt-8 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 sm:pt-10 border-t border-white/10 text-center">
           <div>
             <div className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
               23,000+
