@@ -10,7 +10,6 @@ import Testimonials from './components/Testimonials';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
-import LoginModal from './components/LoginModal';
 import StickyMobileBar from './components/StickyMobileBar';
 import PlumbingServices from './demos/plumbing-services/PlumbingServices';
 import AutoRepair from './demos/auto-repair/AutoRepair';
@@ -21,7 +20,6 @@ import PersonalInjury from './demos/personal-injury/PersonalInjury';
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState(false);
 
   // Sync with browser navigation
@@ -61,7 +59,6 @@ export default function App() {
       {/* 1. Header with modular link components */}
       <Header
         onOpenDemoModal={() => setIsDemoModalOpen(true)}
-        onOpenLoginModal={() => setIsLoginModalOpen(true)}
         onOpenFaq={() => setIsFaqOpen(true)}
       />
 
@@ -92,7 +89,6 @@ export default function App() {
       {/* Global Footer */}
       <Footer
         onOpenDemoModal={() => setIsDemoModalOpen(true)}
-        onOpenLoginModal={() => setIsLoginModalOpen(true)}
         onOpenFaq={() => setIsFaqOpen(true)}
       />
 
@@ -107,12 +103,6 @@ export default function App() {
       <ProjectModal
         isOpen={isDemoModalOpen}
         onClose={() => setIsDemoModalOpen(false)}
-      />
-
-      {/* Client Portal Login Modal */}
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        onClose={() => setIsLoginModalOpen(false)}
       />
 
       {/* Sticky Mobile Call & Demo Bar */}

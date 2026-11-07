@@ -3,7 +3,7 @@ import Logo from './Logo';
 import { FiArrowUpRight, FiMail, FiMapPin } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 
-export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq }) {
+export default function Footer({ onOpenDemoModal, onOpenFaq }) {
   return (
     <footer className="border-t border-[#112A4A] bg-[#040E1B] pt-10 pb-8 text-slate-300 text-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,14 +50,6 @@ export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
               Connect & Support
             </div>
             <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={onOpenLoginModal}
-                  className="hidden sm:inline-block hover:text-white transition-colors text-[#39AFB9] font-medium"
-                >
-                  Client Portal Login
-                </button>
-              </li>
               <li>
                 <button
                   onClick={onOpenFaq}

@@ -25,7 +25,7 @@ import MobileNavDrawer from './MobileNavDrawer';
  *   7. MobileCallLink (mobile call button)
  * - Mobile navigation toggle & drawer
  */
-export default function Header({ onOpenDemoModal, onOpenLoginModal, onOpenFaq }) {
+export default function Header({ onOpenDemoModal, onOpenFaq }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -66,7 +66,6 @@ export default function Header({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
           isOpen={mobileMenuOpen}
           onClose={() => setMobileMenuOpen(false)}
           onOpenDemoModal={onOpenDemoModal}
-          onOpenLoginModal={onOpenLoginModal}
           onOpenFaq={onOpenFaq}
         />
       </div>

@@ -148,7 +148,7 @@ export const PORTFOLIO_WORKS = [
     industry: 'Legal & Professional',
     result: '#1 Local Google 3-Pack',
     image: '/demos/personal-injury/images/attorney-hero.jpg',
-    tags: ['Custom Law Website', 'Local SEO', 'Case Intake Portal'],
+    tags: ['Custom Law Website', 'Local SEO', 'Direct Case Intake'],
     demoUrl: '/demos/personal-injury',
   },
   {

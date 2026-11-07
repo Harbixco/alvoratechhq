@@ -6,7 +6,7 @@ import { FaWhatsapp } from 'react-icons/fa';
  * MobileNavDrawer Component
  * Fully high-contrast, perfectly visible text on white mobile drawer matching Image 1.
  */
-export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOpenLoginModal, onOpenFaq }) {
+export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOpenFaq }) {
   const [activeSection, setActiveSection] = useState(null);
 
   if (!isOpen) return null;
