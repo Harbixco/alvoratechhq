@@ -11,11 +11,17 @@ const indexHtmlPath = path.join(distDir, 'index.html');
 if (fs.existsSync(indexHtmlPath)) {
   const routes = [
     'plumbing-services',
+    'demos/plumbing-services',
     'auto-repair',
+    'demos/auto-repair',
     'contractor',
+    'demos/contractor',
     'general-contractor',
+    'demos/general-contractor',
     'dental-care',
+    'demos/dental-care',
     'personal-injury',
+    'demos/personal-injury',
   ];
 
   // 1. Ensure static index.html exists for every demo route so Vercel CDN immediately serves them with 200 OK

@@ -45,3 +45,4 @@ export default function DemoTopBar({ demoName = 'Client Template Demo' }) {
     </aside>
   );
 }
+

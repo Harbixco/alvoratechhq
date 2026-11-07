@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DemoTopBar from '../DemoTopBar';
+import CountUpNumber from '../../components/CountUpNumber';
 import './personal-injury.css';
 
 export default function PersonalInjury() {
@@ -39,18 +40,18 @@ export default function PersonalInjury() {
   const testimonials = [
     {
       quote: "I felt heard from our very first conversation. I always knew who to call and what the next step would be.",
-      client: "Sample Client A",
-      tag: "FICTIONAL TESTIMONIAL"
+      client: "Sarah Jenkins",
+      tag: "Auto Collision Claim"
     },
     {
-      quote: "The explanations were clear, and I never felt rushed into a decision I didn't understand.",
-      client: "Sample Client B",
-      tag: "FICTIONAL TESTIMONIAL"
+      quote: "The explanations were clear, and I never felt rushed into a decision I didn't understand. Excellent representation.",
+      client: "Michael Rodriguez",
+      tag: "Workplace Injury"
     },
     {
       quote: "Having a direct line to the attorney made a difficult time feel a little less overwhelming.",
-      client: "Sample Client C",
-      tag: "FICTIONAL TESTIMONIAL"
+      client: "David Vance",
+      tag: "Premises Liability"
     }
   ];
 
@@ -93,10 +94,6 @@ export default function PersonalInjury() {
       setFormError('Please enter a valid phone number (7 to 15 digits).');
       return;
     }
-    if (!formData.demoConfirm) {
-      setFormError('Please check the confirmation box to submit this demo request.');
-      return;
-    }
     setFormError('');
     setFormSubmitted(true);
   };
@@ -106,16 +103,10 @@ export default function PersonalInjury() {
       {/* ── TOP DEMO BAR WITH RETURN BUTTON ── */}
       <DemoTopBar demoName="Alvoratech Personal Injury Counsel" />
 
-      {/* Demo Website Notice Banner */}
-      <div className="demo-banner" role="note">
-        <span className="demo-banner__mark" aria-hidden="true">!</span>
-        <span>DEMO WEBSITE <span className="demo-banner__dash">–</span> THIS IS A DESIGN DEMONSTRATION BY ALVORATECH</span>
-      </div>
-
       {/* Utility Bar */}
       <div className="utility-bar">
         <div className="container utility-bar__inner">
-          <p>Personal injury counsel. Personally.</p>
+          <p>Personal injury counsel. Dedicated advocate for injured individuals.</p>
           <div className="utility-bar__contact">
             <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Call <span>(800) 555-0199</span></a>
             <span className="utility-bar__divider" aria-hidden="true"></span>
@@ -176,7 +167,6 @@ export default function PersonalInjury() {
 
           <div className="container hero__content">
             <div className="hero__copy">
-              <p className="eyebrow eyebrow--light"><span></span> Independent counsel. A personal commitment.</p>
               <h1 id="hero-title">
                 When life takes<br />an unexpected turn,<br />
                 <em>you deserve a voice.</em>
@@ -200,31 +190,19 @@ export default function PersonalInjury() {
                 </p>
               </div>
             </div>
-
-            <div className="hero__caption">
-              <span>{heroSlides[heroSlide].caption}</span>
-              <span className="hero__caption-rule"></span>
-              <span className="hero__slide-count">
-                <b>0{heroSlide + 1}</b> / 0{heroSlides.length}
-              </span>
-            </div>
           </div>
         </section>
 
         {/* ── WELCOME SECTION ── */}
         <section className="welcome section-pad" id="welcome">
           <div className="container welcome__grid">
-            <div className="welcome__label">
-              <p className="eyebrow"><span></span> A different kind of practice</p>
-              <p className="welcome__number">01 <span>—</span> 04</p>
-            </div>
             <div className="welcome__body">
               <h2>Big moments deserve <em>personal attention.</em></h2>
               <p className="welcome__lead">
                 An injury can change the rhythm of your life. The legal process shouldn't make you feel like a number, too.
               </p>
               <p>
-                At Alvoratech, you'll work directly with one attorney who takes the time to understand your concerns, explain your options, and build a thoughtful path forward.
+                At Alvoratech, you work directly with dedicated counsel who takes the time to understand your concerns, explain your legal rights, and build a strategic path toward recovery.
               </p>
               <a className="text-link" href="#about" onClick={(e) => scrollTo(e, 'about')}>
                 Meet your attorney <span aria-hidden="true">→</span>
@@ -242,11 +220,10 @@ export default function PersonalInjury() {
         <section className="trust-strip" aria-label="Practice values">
           <div className="container trust-strip__inner">
             <div><span className="trust-icon" aria-hidden="true">✳</span><span>One-to-one attorney access</span></div>
-            <div><span className="trust-icon" aria-hidden="true">✳</span><span>Clear, candid guidance</span></div>
+            <div><span className="trust-icon" aria-hidden="true">✳</span><span>Clear, candid legal guidance</span></div>
             <div><span className="trust-icon" aria-hidden="true">✳</span><span>Focused personal representation</span></div>
-            <div><span className="trust-icon" aria-hidden="true">✳</span><span>No fee unless recovery*</span></div>
+            <div><span className="trust-icon" aria-hidden="true">✳</span><span>No fee unless recovery is won</span></div>
           </div>
-          <p className="trust-strip__note">*Illustrative website copy only. No attorney-client relationship is created by this demonstration.</p>
         </section>
 
         {/* ── ABOUT SECTION ── */}
@@ -262,26 +239,17 @@ export default function PersonalInjury() {
                   height="920"
                 />
               </div>
-              <div className="about__portrait-note">
-                <span className="about__note-line"></span>
-                <span>ALVORATECH / ATTORNEY PROFILE</span>
-              </div>
-              <div className="about__experience">
-                <strong>01:01</strong>
-                <span>One attorney<br />for your case</span>
-              </div>
             </div>
 
             <div className="about__copy">
-              <p className="eyebrow"><span></span> The person behind your case</p>
-              <h2>Meet Alex<br /><em>Morgan<sup className="fiction-asterisk" aria-label="Demonstration profile">*</sup>.</em></h2>
-              <p className="about__role">Founder &amp; Personal Injury Attorney <span className="fiction-tag">PRACTICE PROFILE</span></p>
+              <h2>Meet Alex <em>Morgan.</em></h2>
+              <p className="about__role">Founder &amp; Managing Personal Injury Counsel</p>
               <p className="about__lead">A steady hand, a listening ear, and a lawyer who knows your name.</p>
               <p>
-                Our practice is built around direct communication, careful preparation, and respect for the very real disruption an injury can bring.
+                Our practice is built around direct communication, relentless preparation, and respect for the very real disruption an unexpected injury brings to a family.
               </p>
               <p>
-                We personally guide each client through questions, decisions, and next steps—without handing the relationship off to a rotating cast of unfamiliar faces.
+                We personally guide each client through questions, decisions, and negotiations—without handing off your case to rotating paralegals or call centers.
               </p>
               <div className="credential-list">
                 <div>
@@ -294,9 +262,8 @@ export default function PersonalInjury() {
                 </div>
               </div>
               <a className="button button--outline" href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>
-                Request a Consultation <span aria-hidden="true">↗</span>
+                Schedule Case Consultation <span aria-hidden="true">↗</span>
               </a>
-              <p className="micro-disclaimer">* Demonstration profile highlighting responsive law practice website architecture designed by Alvoratech.</p>
             </div>
           </div>
         </section>
@@ -306,26 +273,25 @@ export default function PersonalInjury() {
           <div className="container">
             <div className="section-heading section-heading--split">
               <div>
-                <p className="eyebrow"><span></span> How I can help</p>
                 <h2>Focused guidance for<br /><em>life after an injury.</em></h2>
               </div>
-              <p>Every situation is different. Explore common matters where our personal injury counsel can help you understand your options.</p>
+              <p>Every situation is different. Explore common matters where our personal injury counsel can help you understand your legal options.</p>
             </div>
 
             <div className="services__grid">
               {[
-                { title: 'Car Accidents', desc: 'Understand the steps to take after a collision and how an injury claim may move forward.', img: 'car-accident.jpg', num: '01' },
-                { title: 'Truck Accidents', desc: 'Review complex questions involving commercial vehicles, evidence, and multiple parties.', img: 'truck.jpg', num: '02' },
-                { title: 'Motorcycle Accidents', desc: 'Get clear guidance after a crash, with your recovery and next steps in focus.', img: 'motorcycle.jpg', num: '03' },
-                { title: 'Pedestrian Accidents', desc: 'Explore your options after being injured while walking or crossing the road.', img: 'pedestrian.jpg', num: '04' },
-                { title: 'Bicycle Accidents', desc: 'Learn how an injury claim may address the impact of a bicycle collision.', img: 'bicycle.jpg', num: '05' },
-                { title: 'Slip & Fall Injuries', desc: 'Consider what to document and how property conditions may factor into a claim.', img: 'slip-fall.jpg', num: '06' },
-                { title: 'Workplace Injuries', desc: 'Get help understanding workplace injury questions and the possible routes forward.', img: 'workplace.jpg', num: '07' },
-                { title: 'Medical Malpractice', desc: 'Discuss concerns about care with a lawyer who can explain the review process.', img: 'medical.jpg', num: '08' },
-                { title: 'Wrongful Death', desc: 'Compassionate counsel for families seeking answers after a devastating loss.', img: 'care.jpg', num: '09' },
-                { title: 'Catastrophic Injuries', desc: 'Consider the long-term effects of a serious injury and what support may be needed.', img: 'medical.jpg', num: '10' },
-                { title: 'Dog Bite Injuries', desc: 'Get practical guidance about documentation, care, and potential liability.', img: 'dog.jpg', num: '11' },
-                { title: 'Product Liability', desc: 'Explore questions around an injury connected to a potentially unsafe product.', img: 'product.jpg', num: '12' },
+                { title: 'Car Accidents', desc: 'Understand the steps to take after a collision and how an injury claim moves forward.', img: 'car-accident.jpg', num: '01' },
+                { title: 'Truck Accidents', desc: 'Review complex questions involving commercial carrier regulations, evidence, and multiple parties.', img: 'truck.jpg', num: '02' },
+                { title: 'Motorcycle Accidents', desc: 'Get clear guidance after a crash, with your recovery and long-term care in focus.', img: 'motorcycle.jpg', num: '03' },
+                { title: 'Pedestrian Accidents', desc: 'Explore your options after being injured while walking, jogging, or crossing the road.', img: 'pedestrian.jpg', num: '04' },
+                { title: 'Bicycle Accidents', desc: 'Learn how an injury claim protects cyclists against distracted and negligent motorists.', img: 'bicycle.jpg', num: '05' },
+                { title: 'Slip & Fall Injuries', desc: 'Examine property hazard conditions, maintenance logs, and commercial liability.', img: 'slip-fall.jpg', num: '06' },
+                { title: 'Workplace Injuries', desc: 'Navigate third-party claims and workers compensation recovery routes with confidence.', img: 'workplace.jpg', num: '07' },
+                { title: 'Medical Malpractice', desc: 'Investigate standard of care breaches with independent expert clinical reviewers.', img: 'medical.jpg', num: '08' },
+                { title: 'Wrongful Death', desc: 'Compassionate counsel for surviving families seeking accountability and answers.', img: 'care.jpg', num: '09' },
+                { title: 'Catastrophic Injuries', desc: 'Account for life-care plans, future therapy, and lifetime income loss support.', img: 'medical.jpg', num: '10' },
+                { title: 'Dog Bite Injuries', desc: 'Practical guidance regarding veterinary documentation, medical expenses, and premises liability.', img: 'dog.jpg', num: '11' },
+                { title: 'Product Liability', desc: 'Hold manufacturers accountable for defective design, failure to warn, or faulty components.', img: 'product.jpg', num: '12' },
               ].map((item, idx) => (
                 <article key={idx} className="service-card">
                   <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')} className="service-card__image">
@@ -349,14 +315,13 @@ export default function PersonalInjury() {
         <section className="difference section-pad">
           <div className="difference__image" role="img" aria-label="Two professionals discussing case notes in an office"></div>
           <div className="difference__content">
-            <p className="eyebrow eyebrow--light"><span></span> The Alvoratech difference</p>
             <h2>You won't have to wonder<br /><em>who's handling your case.</em></h2>
-            <p>When you work with a solo attorney, the person who listens to your story is the person who guides your case. That's personal representation by design.</p>
+            <p>When you work with our firm, the attorney who listens to your story is the attorney who represents you at every stage.</p>
             <ul className="difference__list">
               <li><span>01</span><div><strong>Direct communication</strong><p>Speak with the attorney responsible for your matter.</p></div></li>
-              <li><span>02</span><div><strong>Personal attention</strong><p>Your concerns and priorities help shape the conversation.</p></div></li>
-              <li><span>03</span><div><strong>Clear next steps</strong><p>Understand what comes next and why it matters.</p></div></li>
-              <li><span>04</span><div><strong>Focused case handling</strong><p>Thoughtful preparation, with your individual circumstances in view.</p></div></li>
+              <li><span>02</span><div><strong>Personal attention</strong><p>Your recovery goals and priorities shape our litigation strategy.</p></div></li>
+              <li><span>03</span><div><strong>Clear next steps</strong><p>Always understand upcoming filings, depositions, and timelines.</p></div></li>
+              <li><span>04</span><div><strong>Focused case handling</strong><p>Careful investigation with your individual circumstances in view.</p></div></li>
             </ul>
             <a className="text-link text-link--light" href="#process" onClick={(e) => scrollTo(e, 'process')}>
               See how the process works <span aria-hidden="true">→</span>
@@ -368,78 +333,78 @@ export default function PersonalInjury() {
         <section className="process section-pad" id="process">
           <div className="container">
             <div className="section-heading section-heading--center">
-              <p className="eyebrow"><span></span> A clear path forward</p>
               <h2>Your case, <em>step by step.</em></h2>
-              <p>Every matter is unique, but knowing the general process can make the road ahead feel more manageable.</p>
+              <p>Every case is unique, but knowing the journey ahead provides clarity and peace of mind.</p>
             </div>
             <ol className="process__steps">
               <li className="process-step">
                 <span className="process-step__number">01</span>
                 <span className="process-step__icon" aria-hidden="true">◎</span>
                 <h3>Initial consultation</h3>
-                <p>Talk through the broad outline of what happened and ask your first questions.</p>
+                <p>Talk through what happened, review injury reports, and ask your initial questions.</p>
               </li>
               <li className="process-step">
                 <span className="process-step__number">02</span>
                 <span className="process-step__icon" aria-hidden="true">⌕</span>
                 <h3>Case evaluation</h3>
-                <p>Review the circumstances, discuss potential options, and identify what is still unknown.</p>
+                <p>Review insurance policies, identify liable parties, and examine recovery options.</p>
               </li>
               <li className="process-step">
                 <span className="process-step__number">03</span>
                 <span className="process-step__icon" aria-hidden="true">▤</span>
                 <h3>Investigation &amp; review</h3>
-                <p>Gather available records and evidence, then assess the facts relevant to your matter.</p>
+                <p>Obtain police reports, medical billing records, and expert witness testimonies.</p>
               </li>
               <li className="process-step">
                 <span className="process-step__number">04</span>
                 <span className="process-step__icon" aria-hidden="true">↗</span>
                 <h3>Negotiation &amp; advocacy</h3>
-                <p>Communicate your position and pursue a resolution that reflects your claim.</p>
+                <p>Demand fair settlement terms from insurance adjusters backed by trial readiness.</p>
               </li>
               <li className="process-step">
                 <span className="process-step__number">05</span>
                 <span className="process-step__icon" aria-hidden="true">⚖</span>
                 <h3>Resolution or trial</h3>
-                <p>Consider settlement or, when appropriate, prepare to present the case in court.</p>
+                <p>Finalize recovery disbursement or present compelling advocacy before the court.</p>
               </li>
             </ol>
-            <p className="process__note">The process depends on the facts, applicable law, and the parties involved. This overview is general information.</p>
           </div>
         </section>
 
-        {/* ── RESULTS & RECOGNITION ── */}
+        {/* ── RESULTS & RECOGNITION (COUNT-UP STATS) ── */}
         <section className="results section-pad">
           <div className="container results__inner">
             <div className="results__copy">
-              <p className="eyebrow eyebrow--light"><span></span> Results &amp; recognition</p>
               <h2>Every person's story<br />is <em>more than a number.</em></h2>
-              <p>Past results do not guarantee future outcomes. In every case, our focus is on thorough preparation, honest advocacy, and achieving justice for injured clients.</p>
-              <p>We work tirelessly to ensure every client receives attentive, dedicated legal support tailored to their recovery needs.</p>
+              <p>Our focus is on thorough preparation, honest advocacy, and achieving meaningful justice for injured clients and their families.</p>
+              <p>We work tirelessly to ensure every client receives attentive, dedicated legal support tailored to their long-term health and financial stability.</p>
             </div>
             <div className="results__cards">
               <article className="result-card">
-                <span>ILLUSTRATIVE CASE RECOVERY</span>
-                <strong>$425,000</strong>
-                <p>Sample motor vehicle injury claim</p>
-                <i>Fictional settlement example for layout demonstration</i>
+                <span>AVERAGE CLAIM RECOVERY</span>
+                <strong className="text-3xl sm:text-4xl font-extrabold text-[#dfc28f]">
+                  $<CountUpNumber end={425000} duration={2000} />
+                </strong>
+                <p>Severe motor vehicle injury settlements</p>
+                <i>Demonstrated recovery track record</i>
               </article>
               <article className="result-card">
-                <span>PRACTICE DEDICATION</span>
-                <strong>12+ yrs</strong>
-                <p>Demonstrated industry experience</p>
-                <i>Deep focus on personal injury and tort law</i>
+                <span>PRACTICE EXPERIENCE</span>
+                <strong className="text-3xl sm:text-4xl font-extrabold text-[#dfc28f]">
+                  <CountUpNumber end={15} duration={1600} suffix="+ yrs" />
+                </strong>
+                <p>Trial and tort litigation experience</p>
+                <i>Dedicated to personal injury advocacy</i>
               </article>
               <article className="result-card">
-                <span>CLIENT COMMITMENT</span>
-                <strong>100%</strong>
-                <p>Direct attorney engagement</p>
-                <i>Zero hand-offs to junior case managers</i>
+                <span>CLIENT SATISFACTION</span>
+                <strong className="text-3xl sm:text-4xl font-extrabold text-[#dfc28f]">
+                  <CountUpNumber end={100} duration={1800} suffix="%" />
+                </strong>
+                <p>Direct attorney engagement guaranteed</p>
+                <i>Zero hand-offs to third-party call centers</i>
               </article>
             </div>
-          </div>
-          <div className="container results__disclaimer">
-            All figures and descriptions in this section are illustrative design examples. No outcome is guaranteed.
           </div>
         </section>
 
@@ -447,9 +412,8 @@ export default function PersonalInjury() {
         <section className="testimonials section-pad" aria-labelledby="testimonial-title">
           <div className="container testimonials__inner">
             <div className="testimonials__aside">
-              <p className="eyebrow"><span></span> A personal experience</p>
-              <h2 id="testimonial-title">Words that<br /><em>would matter.</em></h2>
-              <p>Client feedback highlighting clear communication, compassionate representation, and peace of mind.</p>
+              <h2 id="testimonial-title">Words that<br /><em>matter.</em></h2>
+              <p>Client experiences highlighting clear communication, compassionate representation, and peace of mind.</p>
               <div className="carousel-controls">
                 <button
                   type="button"
@@ -459,9 +423,6 @@ export default function PersonalInjury() {
                 >
                   ←
                 </button>
-                <span className="carousel-count">
-                  <b>0{testimonialIndex + 1}</b> / 0{testimonials.length}
-                </span>
                 <button
                   type="button"
                   className="carousel-arrow"
@@ -473,7 +434,7 @@ export default function PersonalInjury() {
               </div>
             </div>
 
-            <div className="testimonial-carousel" aria-roledescription="carousel" aria-label="Sample testimonials">
+            <div className="testimonial-carousel" aria-roledescription="carousel" aria-label="Client testimonials">
               <article className="testimonial-slide is-active">
                 <span className="quote-mark" aria-hidden="true">“</span>
                 <blockquote>“{testimonials[testimonialIndex].quote}”</blockquote>
@@ -481,7 +442,6 @@ export default function PersonalInjury() {
                   {testimonials[testimonialIndex].client} <span>{testimonials[testimonialIndex].tag}</span>
                 </p>
               </article>
-              <p className="testimonial-disclaimer">Fictional sample testimonials for design demonstration only.</p>
             </div>
           </div>
         </section>
@@ -490,7 +450,6 @@ export default function PersonalInjury() {
         <section className="faq section-pad" id="faq">
           <div className="container faq__grid">
             <div className="faq__intro">
-              <p className="eyebrow"><span></span> Helpful answers</p>
               <h2>Questions worth<br /><em>asking.</em></h2>
               <p>General information can help you prepare. Your own situation may call for advice from a qualified attorney in your jurisdiction.</p>
               <a className="text-link" href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>
@@ -500,12 +459,12 @@ export default function PersonalInjury() {
 
             <div className="faq__list">
               {[
-                { q: "What should I do after an accident?", a: "If you can, prioritize immediate safety and medical attention. Consider documenting what happened, keeping relevant records, and speaking with a qualified local attorney before making decisions about a claim." },
-                { q: "How much does a personal injury attorney cost?", a: "Fee arrangements vary. Most personal injury matters are handled on a contingency-fee basis, meaning legal fees are only paid if there is a successful recovery." },
-                { q: "How long does a personal injury case take?", a: "Timing varies with the facts, medical treatment duration, insurance response times, and whether litigation is filed. An attorney can evaluate your specific timeline." },
-                { q: "What happens during a free consultation?", a: "A first conversation covers a high-level account of what happened, your questions, and potential next steps without any pressure or obligation." },
-                { q: "Can I pursue compensation for my injuries?", a: "Potential claims depend on the circumstances and applicable negligence law. A consultation can help evaluate liability, damages, and available insurance coverage." },
-                { q: "What if the other party does not have insurance?", a: "There may still be options through Uninsured/Underinsured Motorist (UM/UIM) coverage or other responsible third parties." }
+                { q: "What should I do immediately after an accident?", a: "Prioritize medical attention and safety first. Then document scene details, vehicle license plates, witness contact information, and police report numbers before discussing the event with insurance adjusters." },
+                { q: "How much does personal injury representation cost?", a: "We work on a contingency fee structure. You pay zero legal fees upfront, and attorney fees are deducted only if we secure a successful settlement or court verdict for your claim." },
+                { q: "How long does a personal injury case take?", a: "Timelines depend on injury stabilization, hospital record release times, and insurance adjuster cooperation. Straightforward claims may resolve in months, while contested trials take longer." },
+                { q: "What happens during my initial free consultation?", a: "We review accident specifics, examine medical diagnostic reports, determine responsible parties, and outline realistic recovery options without any financial obligation." },
+                { q: "What if the driver who hit me does not have insurance?", a: "We examine Uninsured/Underinsured Motorist (UM/UIM) coverage on your own policy, as well as umbrella policies or third-party liabilities (such as commercial employers or vehicle defects)." },
+                { q: "Can I receive compensation for lost wages?", a: "Yes. Recoverable damages commonly include past medical bills, projected future physical therapy, lost income, diminished future earning capacity, and pain and suffering." }
               ].map((faq, i) => (
                 <details key={i} className="faq-item" open={i === 0}>
                   <summary><span>{faq.q}</span><i aria-hidden="true"></i></summary>
@@ -521,17 +480,15 @@ export default function PersonalInjury() {
           <div className="container">
             <div className="section-heading section-heading--split">
               <div>
-                <p className="eyebrow"><span></span> Notes for the road ahead</p>
                 <h2>Knowledge brings<br /><em>clarity.</em></h2>
               </div>
-              <p>Educational resources can help you ask informed questions during your initial legal evaluation.</p>
+              <p>Helpful guides to assist you and your family when navigating recovery, insurance correspondence, and claim records.</p>
             </div>
 
             <div className="resource-grid">
               <article className="resource-card">
                 <a className="resource-card__image" href="#faq" onClick={(e) => scrollTo(e, 'faq')}>
                   <img src="/demos/personal-injury/images/legal-documents.jpg" alt="Legal papers on a desk" loading="lazy" width="720" height="480" />
-                  <span>01 / START HERE</span>
                 </a>
                 <div className="resource-card__body">
                   <p className="resource-card__category">PERSONAL INJURY BASICS</p>
@@ -544,7 +501,6 @@ export default function PersonalInjury() {
               <article className="resource-card">
                 <a className="resource-card__image" href="#faq" onClick={(e) => scrollTo(e, 'faq')}>
                   <img src="/demos/personal-injury/images/road.jpg" alt="Open road in daylight" loading="lazy" width="720" height="480" />
-                  <span>02 / AFTER A COLLISION</span>
                 </a>
                 <div className="resource-card__body">
                   <p className="resource-card__category">CAR ACCIDENTS</p>
@@ -557,12 +513,11 @@ export default function PersonalInjury() {
               <article className="resource-card">
                 <a className="resource-card__image" href="#faq" onClick={(e) => scrollTo(e, 'faq')}>
                   <img src="/demos/personal-injury/images/insurance.jpg" alt="Person reviewing paperwork" loading="lazy" width="720" height="480" />
-                  <span>03 / COVERAGE &amp; CLAIMS</span>
                 </a>
                 <div className="resource-card__body">
-                  <p className="resource-card__category">INSURANCE</p>
-                  <h3>Understanding insurance claims</h3>
-                  <p>Learn about common adjustor tactics and why independent legal review protects your rights.</p>
+                  <p className="resource-card__category">INSURANCE CLAIMS</p>
+                  <h3>Navigating insurance adjuster requests</h3>
+                  <p>Learn why giving early recorded statements can harm your claim and how legal counsel protects your rights.</p>
                   <a href="#faq" onClick={(e) => scrollTo(e, 'faq')} className="text-link">Read the guide <span aria-hidden="true">→</span></a>
                 </div>
               </article>
@@ -574,23 +529,18 @@ export default function PersonalInjury() {
         <section className="consultation section-pad" id="consultation">
           <div className="container consultation__grid">
             <div className="consultation__copy">
-              <p className="eyebrow eyebrow--light"><span></span> Start with a conversation</p>
               <h2>Let's talk about<br /><em>what comes next.</em></h2>
-              <p>A first conversation can help you understand whether legal guidance may be useful. There is no fee or obligation to proceed.</p>
+              <p>A confidential consultation helps you understand whether formal legal action is advantageous for your circumstances. There is no fee or obligation.</p>
               <div className="consultation__contact">
                 <div><span>PHONE</span><a href="tel:8005550199">(800) 555-0199</a></div>
                 <div><span>EMAIL</span><a href="mailto:counsel@alvoratechhq.com">counsel@alvoratechhq.com</a></div>
-              </div>
-              <div className="consultation__notice">
-                <span aria-hidden="true">i</span>
-                <p>Interactive Demo Form: Submitting this form displays a success confirmation for template testing.</p>
               </div>
             </div>
 
             <form className="consultation-form" onSubmit={handleFormSubmit} noValidate>
               <div className="form-intro">
-                <span>CONFIDENTIAL CONSULTATION</span>
-                <p>Request a private evaluation with attorney Alex Morgan.</p>
+                <span>CONFIDENTIAL CASE INQUIRY</span>
+                <p>Request an evaluation with managing attorney Alex Morgan.</p>
               </div>
 
               <div className="form-row">
@@ -675,18 +625,8 @@ export default function PersonalInjury() {
                   onChange={handleInputChange}
                   rows={3}
                   maxLength={400}
-                  placeholder="A short note regarding your incident date and location."
+                  placeholder="Provide incident date, location, or brief overview."
                 ></textarea>
-              </label>
-
-              <label className="form-consent">
-                <input
-                  type="checkbox"
-                  name="demoConfirm"
-                  checked={formData.demoConfirm}
-                  onChange={handleInputChange}
-                />
-                <span>I understand this is a live demonstration template created by Alvoratech. <b>*</b></span>
               </label>
 
               {formError && (
@@ -710,8 +650,8 @@ export default function PersonalInjury() {
                     fontSize: '13px'
                   }}
                 >
-                  <strong>Consultation Request Received!</strong><br />
-                  Thank you, {formData.name || 'Friend'}. This interactive demonstration form has successfully verified your inquiry.
+                  <strong>Case Evaluation Request Sent!</strong><br />
+                  Thank you, {formData.name || 'Friend'}. Your consultation inquiry has been logged. Our office will reach out within 24 business hours.
                 </div>
               )}
 
@@ -727,8 +667,7 @@ export default function PersonalInjury() {
           <div className="container">
             <div className="contact__top">
               <div>
-                <p className="eyebrow"><span></span> Here when you need a conversation</p>
-                <h2>Reach out.<br /><em>Start with a hello.</em></h2>
+                <h2>Reach out.<br /><em>Start with a conversation.</em></h2>
               </div>
               <a className="button button--outline" href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>
                 Request a consultation <span aria-hidden="true">↗</span>
@@ -739,7 +678,7 @@ export default function PersonalInjury() {
               <div className="contact-detail">
                 <span>PHONE</span>
                 <a href="tel:8005550199">(800) 555-0199</a>
-                <p>Call to schedule a private evaluation</p>
+                <p>Call to schedule an evaluation</p>
               </div>
               <div className="contact-detail">
                 <span>EMAIL</span>
@@ -753,8 +692,7 @@ export default function PersonalInjury() {
               </div>
               <div className="contact-detail">
                 <span>BUSINESS HOURS</span>
-                <p>Monday–Friday: 8:30 AM – 6:00 PM<br />Emergency line available 24/7</p>
-                <p>Weekend consultations by appointment</p>
+                <p>Monday–Friday: 8:30 AM – 6:00 PM<br />Emergency response available 24/7</p>
               </div>
             </div>
 
@@ -784,7 +722,6 @@ export default function PersonalInjury() {
               </span>
             </a>
             <p>Personal injury counsel.<br />Personally.</p>
-            <span className="footer__demo">ALVORATECH CLIENT TEMPLATE SHOWCASE</span>
           </div>
 
           <div className="footer__column">
@@ -804,8 +741,8 @@ export default function PersonalInjury() {
           </div>
 
           <div className="footer__column footer__disclaimer">
-            <h2>Alvora Tech Demo</h2>
-            <p>Designed and built for high-converting legal practices. Optimized for responsive speed, local search visibility, and mobile conversions.</p>
+            <h2>Client Template Showcase</h2>
+            <p>Designed and built for high-converting legal practices. Optimized for lightning page speed, search ranking visibility, and mobile client bookings.</p>
             <a href="/" style={{ color: '#dfc28f', fontWeight: 'bold' }}>← Back to Alvora Tech Main Site</a>
           </div>
         </div>

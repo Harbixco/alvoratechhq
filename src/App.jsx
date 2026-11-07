@@ -34,26 +34,26 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Route to live client demo templates
+  // Route to live client demo templates (supports both /<template> and /demos/<template>)
   const normalizedPath = (currentPath || window.location.pathname || '').toLowerCase().replace(/\/$/, '');
   
-  if (normalizedPath === '/plumbing-services' || normalizedPath === '/plumbing-services/index.html' || normalizedPath.endsWith('/plumbing-services')) {
+  if (normalizedPath.includes('plumbing-services')) {
     return <PlumbingServices />;
   }
 
-  if (normalizedPath === '/auto-repair' || normalizedPath === '/auto-repair/index.html' || normalizedPath.endsWith('/auto-repair')) {
+  if (normalizedPath.includes('auto-repair')) {
     return <AutoRepair />;
   }
 
-  if (normalizedPath === '/contractor' || normalizedPath === '/general-contractor' || normalizedPath.endsWith('/contractor')) {
+  if (normalizedPath.includes('contractor')) {
     return <Contractor />;
   }
 
-  if (normalizedPath === '/dental-care' || normalizedPath === '/dental-care/index.html' || normalizedPath.endsWith('/dental-care')) {
+  if (normalizedPath.includes('dental-care')) {
     return <DentalCare />;
   }
 
-  if (normalizedPath === '/personal-injury' || normalizedPath === '/personal-injury/index.html' || normalizedPath.endsWith('/personal-injury')) {
+  if (normalizedPath.includes('personal-injury')) {
     return <PersonalInjury />;
   }
 
