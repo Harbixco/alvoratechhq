@@ -87,8 +87,20 @@ export default function LoginModal({ isOpen, onClose }) {
               <FiArrowRight className="w-3.5 h-3.5" />
             </button>
 
-            <div className="text-center text-[11px] text-slate-400 pt-2">
-              Need assistance? Contact your dedicated marketing specialist.
+            <div className="text-center text-[11px] text-slate-400 pt-2 leading-relaxed">
+              Need assistance? Email{' '}
+              <a href="mailto:info@alvoratechhq.com" className="text-[#00828B] hover:underline font-medium">
+                info@alvoratechhq.com
+              </a>{' '}
+              or chat on{' '}
+              <a
+                href="https://wa.me/14127693968"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#25D366] hover:underline font-semibold"
+              >
+                WhatsApp (+1 412 769-3968)
+              </a>
             </div>
           </form>
         )}

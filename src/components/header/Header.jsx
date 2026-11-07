@@ -47,12 +47,12 @@ export default function Header({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
 
         {/* 3. Right Action - Outlined Pill Call Link Component matching Image 1 */}
         <div className="hidden sm:flex items-center gap-3">
-          <PhoneLink phoneNumber="(855) 463-5490" />
+          <PhoneLink phoneNumber="+1 (412) 769-3968" />
         </div>
 
         {/* 4. Mobile Call Link & Menu Toggle */}
         <div className="flex items-center gap-2 lg:hidden">
-          <MobileCallLink phoneNumber="(855) 463-5490" />
+          <MobileCallLink phoneNumber="+1 (412) 769-3968" />
           <MobileNavToggle
             isOpen={mobileMenuOpen}
             onToggle={() => setMobileMenuOpen(!mobileMenuOpen)}

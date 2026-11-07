@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
-import { FiArrowUpRight, FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FiArrowUpRight, FiMail, FiMapPin } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq }) {
   return (
@@ -67,7 +68,21 @@ export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
               </li>
               <li className="flex items-center gap-2 text-slate-300 pt-1">
                 <FiMail className="w-3.5 h-3.5 text-[#39AFB9] shrink-0" />
-                <span>contact@alvoratechhq.com</span>
+                <a href="mailto:info@alvoratechhq.com" className="hover:text-white hover:underline transition-colors">
+                  info@alvoratechhq.com
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-slate-300">
+                <FaWhatsapp className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
+                <a
+                  href="https://wa.me/14127693968"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white hover:underline transition-colors"
+                  title="Direct WhatsApp Message"
+                >
+                  +1 (412) 769-3968 <span className="text-[10px] text-emerald-400 font-mono">(WhatsApp)</span>
+                </a>
               </li>
               <li className="flex items-center gap-2 text-slate-300">
                 <FiMapPin className="w-3.5 h-3.5 text-[#39AFB9] shrink-0" />

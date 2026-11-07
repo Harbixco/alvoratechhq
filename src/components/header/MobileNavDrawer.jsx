@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FiChevronDown, FiPhoneCall, FiUser, FiArrowRight } from 'react-icons/fi';
+import { FiChevronDown, FiMail, FiUser, FiArrowRight } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 /**
  * MobileNavDrawer Component
@@ -173,13 +174,24 @@ export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOp
         )}
       </div>
 
-      {/* Direct Phone Call Button */}
+      {/* Direct WhatsApp Contact Button */}
       <a
-        href="tel:+18554635490"
-        className="my-1 py-3 px-4 rounded-xl bg-[#EFF5F6] border-2 border-[#00828B] text-xs font-mono font-bold text-[#00828B] hover:bg-[#00828B] hover:text-white transition-colors flex items-center justify-center gap-2"
+        href="https://wa.me/14127693968"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="my-1 py-3 px-4 rounded-xl bg-emerald-50 border-2 border-[#25D366] text-xs font-bold text-[#0C2233] hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center gap-2 shadow-xs"
       >
-        <FiPhoneCall className="w-4 h-4 text-[#00828B]" />
-        <span>Call (855) 463-5490</span>
+        <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
+        <span>WhatsApp: +1 (412) 769-3968</span>
+      </a>
+
+      {/* Direct Email Contact Link */}
+      <a
+        href="mailto:info@alvoratechhq.com"
+        className="my-1 py-2.5 px-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:text-[#00828B] hover:border-[#00828B] transition-colors flex items-center justify-center gap-2"
+      >
+        <FiMail className="w-3.5 h-3.5 text-[#00828B]" />
+        <span>info@alvoratechhq.com</span>
       </a>
 
       {/* Bottom Action Buttons */}
