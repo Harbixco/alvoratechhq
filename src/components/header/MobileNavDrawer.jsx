@@ -111,21 +111,27 @@ export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOp
         </button>
         {activeSection === 'results' && (
           <div className="pl-5 pr-3 py-2 space-y-2 text-xs font-semibold text-[#2D3748] bg-[#F8FAFC] rounded-xl border-l-4 border-[#00828B] ml-2 mt-1">
-            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
-              • Home & Field Services (HVAC, Plumbing, Roofing)
+            <span className="block text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold mb-1">Live Demo Templates:</span>
+            <a href="/plumbing-services" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
+              • Plumbing Services Demo →
             </a>
-            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
-              • Health & Medical Wellness
+            <a href="/contractor" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
+              • General Contractor Demo →
             </a>
-            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
-              • Legal & Professional Services
+            <a href="/dental-care" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
+              • Dental Clinic Demo →
             </a>
-            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
-              • Food & Beverage Hospitality
+            <a href="/auto-repair" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
+              • Auto Repair Care Demo →
             </a>
-            <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
-              • Specialty Retail Commerce
+            <a href="/personal-injury" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
+              • Legal Practice &amp; Injury Demo →
             </a>
+            <div className="pt-1 mt-1 border-t border-slate-200">
+              <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+                • View All Industries Overview
+              </a>
+            </div>
           </div>
         )}
       </div>

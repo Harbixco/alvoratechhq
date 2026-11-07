@@ -9,13 +9,24 @@ const distDir = path.resolve(__dirname, '../dist');
 const indexHtmlPath = path.join(distDir, 'index.html');
 
 if (fs.existsSync(indexHtmlPath)) {
-  // 1. Ensure dist/plumbing-services/index.html exists so Vercel CDN serves it directly as static file
-  const plumbingDir = path.join(distDir, 'plumbing-services');
-  fs.mkdirSync(plumbingDir, { recursive: true });
-  fs.copyFileSync(indexHtmlPath, path.join(plumbingDir, 'index.html'));
-  console.log('✓ Successfully created dist/plumbing-services/index.html');
+  const routes = [
+    'plumbing-services',
+    'auto-repair',
+    'contractor',
+    'general-contractor',
+    'dental-care',
+    'personal-injury',
+  ];
 
-  // 2. Generate 404.html and 200.html for any SPA CDN fallback
+  // 1. Ensure static index.html exists for every demo route so Vercel CDN immediately serves them with 200 OK
+  for (const route of routes) {
+    const routeDir = path.join(distDir, route);
+    fs.mkdirSync(routeDir, { recursive: true });
+    fs.copyFileSync(indexHtmlPath, path.join(routeDir, 'index.html'));
+    console.log(`✓ Successfully created dist/${route}/index.html`);
+  }
+
+  // 2. Generate 404.html and 200.html for edge host fallbacks
   fs.copyFileSync(indexHtmlPath, path.join(distDir, '404.html'));
   fs.copyFileSync(indexHtmlPath, path.join(distDir, '200.html'));
   console.log('✓ Successfully created dist/404.html and dist/200.html');

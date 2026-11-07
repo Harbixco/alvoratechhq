@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CountUpNumber from '../../components/CountUpNumber';
+import DemoTopBar from '../DemoTopBar';
 import './plumbing.css';
 
 /**
@@ -87,15 +88,8 @@ export default function PlumbingServices() {
 
   return (
     <div className="plumbing-demo" id="top">
-      {/* ── RETURN TO ALVORA TECH PILL ── */}
-      <a
-        href="/"
-        className="fixed top-24 left-4 z-[2001] bg-[#0C2233] hover:bg-[#00828B] text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-lg border border-white/20 flex items-center gap-1.5 transition-colors"
-        title="Return to Alvora Tech Agency Homepage"
-      >
-        <span>←</span>
-        <span>Alvora Tech Home</span>
-      </a>
+      {/* ── TOP DEMO BAR WITH RETURN BUTTON ── */}
+      <DemoTopBar demoName="ProFlow Plumbing Services" />
 
       {/* ── DEMO RIBBON ── */}
       <div className="pf-demo-ribbon">Demo</div>

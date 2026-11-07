@@ -76,11 +76,45 @@ export default function IndustriesServed({ onOpenDemoModal }) {
 
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                     {ind.id === 'home-services' ? (
+                      <div className="flex items-center gap-3">
+                        <a
+                          href="/plumbing-services"
+                          className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
+                        >
+                          <span>Plumbing Demo</span>
+                          <FiArrowRight className="w-3.5 h-3.5" />
+                        </a>
+                        <span className="text-slate-300">|</span>
+                        <a
+                          href="/contractor"
+                          className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
+                        >
+                          <span>Contractor</span>
+                          <FiArrowRight className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    ) : ind.id === 'medical-wellness' ? (
                       <a
-                        href="/plumbing-services"
+                        href="/dental-care"
                         className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
                       >
-                        <span>View Live Demo</span>
+                        <span>View Dental Demo</span>
+                        <FiArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    ) : ind.id === 'retail-specialty' ? (
+                      <a
+                        href="/auto-repair"
+                        className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
+                      >
+                        <span>View Auto Care Demo</span>
+                        <FiArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    ) : ind.id === 'legal-financial' ? (
+                      <a
+                        href="/personal-injury"
+                        className="text-xs text-[#00828B] hover:text-[#0C2233] font-bold inline-flex items-center gap-1 transition-colors"
+                      >
+                        <span>View Legal Demo</span>
                         <FiArrowRight className="w-3.5 h-3.5" />
                       </a>
                     ) : (

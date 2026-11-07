@@ -14,6 +14,10 @@ import ProjectModal from './components/ProjectModal';
 import LoginModal from './components/LoginModal';
 import StickyMobileBar from './components/StickyMobileBar';
 import PlumbingServices from './demos/plumbing-services/PlumbingServices';
+import AutoRepair from './demos/auto-repair/AutoRepair';
+import Contractor from './demos/contractor/Contractor';
+import DentalCare from './demos/dental-care/DentalCare';
+import PersonalInjury from './demos/personal-injury/PersonalInjury';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -30,10 +34,27 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Route to /plumbing-services demo
-  const normalizedPath = currentPath.toLowerCase().replace(/\/$/, '');
+  // Route to live client demo templates
+  const normalizedPath = (currentPath || window.location.pathname || '').toLowerCase().replace(/\/$/, '');
+  
   if (normalizedPath === '/plumbing-services' || normalizedPath === '/plumbing-services/index.html' || normalizedPath.endsWith('/plumbing-services')) {
     return <PlumbingServices />;
+  }
+
+  if (normalizedPath === '/auto-repair' || normalizedPath === '/auto-repair/index.html' || normalizedPath.endsWith('/auto-repair')) {
+    return <AutoRepair />;
+  }
+
+  if (normalizedPath === '/contractor' || normalizedPath === '/general-contractor' || normalizedPath.endsWith('/contractor')) {
+    return <Contractor />;
+  }
+
+  if (normalizedPath === '/dental-care' || normalizedPath === '/dental-care/index.html' || normalizedPath.endsWith('/dental-care')) {
+    return <DentalCare />;
+  }
+
+  if (normalizedPath === '/personal-injury' || normalizedPath === '/personal-injury/index.html' || normalizedPath.endsWith('/personal-injury')) {
+    return <PersonalInjury />;
   }
 
   return (
