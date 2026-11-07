@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiChevronDown, FiMail, FiUser, FiArrowRight } from 'react-icons/fi';
+import { FiChevronDown, FiMail, FiArrowRight } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 
 /**
@@ -129,8 +129,8 @@ export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOp
               • Legal Practice &amp; Injury Demo →
             </a>
             <div className="pt-1 mt-1 border-t border-slate-200">
-              <a href="#industries" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
-                • View All Industries Overview
+              <a href="#portfolio" onClick={onClose} className="block py-1.5 hover:text-[#00828B]">
+                • Browse All Client Demos
               </a>
             </div>
           </div>
@@ -194,19 +194,8 @@ export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOp
         <span>info@alvoratechhq.com</span>
       </a>
 
-      {/* Bottom Action Buttons */}
-      <div className="pt-2 border-t border-slate-200 flex flex-col gap-2.5">
-        <button
-          onClick={() => {
-            onClose();
-            onOpenLoginModal();
-          }}
-          className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-[#1E242B] flex items-center justify-center gap-1.5 transition-colors"
-        >
-          <FiUser className="w-4 h-4 text-[#00828B]" />
-          <span>Client Login</span>
-        </button>
-
+      {/* Bottom Action Button */}
+      <div className="pt-2 border-t border-slate-200">
         <button
           onClick={() => {
             onClose();

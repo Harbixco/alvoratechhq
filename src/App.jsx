@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/header/Header';
 import Hero from './components/Hero';
 import SolutionsGrid from './components/SolutionsGrid';
-import IndustriesServed from './components/IndustriesServed';
 import DigitalAuditTool from './components/DigitalAuditTool';
 import PortfolioShowcase from './components/PortfolioShowcase';
 import RoiCalculator from './components/RoiCalculator';
@@ -74,10 +73,7 @@ export default function App() {
         {/* 3. Core Solutions */}
         <SolutionsGrid onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
-        {/* 4. Industries Served */}
-        <IndustriesServed onOpenDemoModal={() => setIsDemoModalOpen(true)} />
-
-        {/* 5. Free Digital Audit */}
+        {/* 4. Free Digital Audit */}
         <DigitalAuditTool onOpenDemoModal={() => setIsDemoModalOpen(true)} />
 
         {/* 6. Client Results Showcase */}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PORTFOLIO_WORKS } from '../data/content';
-import { FiArrowUpRight, FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 
 export default function PortfolioShowcase({ onOpenDemoModal }) {
   return (
@@ -18,7 +18,7 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
           </div>
           <button
             onClick={onOpenDemoModal}
-            className="self-start md:self-auto inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-xs font-bold text-white transition-colors shadow-md"
+            className="self-start md:self-auto inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FF9718] hover:bg-[#E8860F] text-xs font-bold text-white transition-colors shadow-md active:scale-95"
           >
             <span>Request A Free Site Review</span>
             <FiArrowRight className="w-3.5 h-3.5 text-white" />
@@ -26,18 +26,22 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
         </div>
 
         {/* Portfolio Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PORTFOLIO_WORKS.map((work) => (
             <div
               key={work.id}
               className="rounded-2xl bg-[#F8FAFC] border border-slate-200 hover:border-slate-300 hover:bg-white hover:shadow-lg overflow-hidden transition-all duration-200 flex flex-col justify-between shadow-xs"
             >
-              {/* Image Preview */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              {/* Image Preview with direct Link to demo */}
+              <a
+                href={work.demoUrl}
+                className="relative aspect-[16/10] overflow-hidden bg-slate-100 block group"
+                title={`Open ${work.client} Demo`}
+              >
                 <img
                   src={work.image}
                   alt={work.client}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 
                 {/* Result Pill */}
@@ -46,42 +50,46 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
                     {work.result}
                   </span>
                 </div>
-              </div>
+              </a>
 
               {/* Card Meta */}
-              <div className="p-5 sm:p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[#00828B] font-bold">
-                    {work.industry}
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold text-[#0C2233] tracking-tight mb-4">
-                  {work.client}
-                </h3>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {work.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 shadow-xs"
-                    >
-                      {tag}
+              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#00828B] font-bold">
+                      {work.industry}
                     </span>
-                  ))}
+                  </div>
+
+                  <h3 className="text-lg font-bold text-[#0C2233] tracking-tight mb-4">
+                    <a href={work.demoUrl} className="hover:text-[#00828B] transition-colors">
+                      {work.client}
+                    </a>
+                  </h3>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {work.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 shadow-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Bottom Action */}
+                {/* Bottom Action: View (Project Name) Demo */}
                 <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                   <span className="text-xs text-slate-500 font-mono">Managed by Alvora Tech</span>
-                  <button
-                    onClick={onOpenDemoModal}
-                    className="text-xs font-bold text-[#00828B] hover:text-[#0C2233] inline-flex items-center gap-1.5 transition-colors"
+                  <a
+                    href={work.demoUrl}
+                    className="text-xs font-bold text-[#00828B] hover:text-[#0C2233] inline-flex items-center gap-1.5 transition-colors group"
                   >
-                    <span>View Case Study</span>
-                    <FiArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                    <span>View {work.projectName} Demo</span>
+                    <FiArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -91,4 +99,3 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
     </section>
   );
 }
-

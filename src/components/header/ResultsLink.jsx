@@ -20,18 +20,18 @@ export default function ResultsLink() {
   const [isOpen, setIsOpen] = useState(false);
 
   const industries = [
-    { name: 'HVAC & Heating', href: '#industries', icon: FiTool },
-    { name: 'Roofing & Exteriors', href: '#industries', icon: FiHome },
+    { name: 'HVAC & Heating', href: '#portfolio', icon: FiTool },
+    { name: 'Roofing & Exteriors', href: '/contractor', icon: FiHome },
     { name: 'Plumbing & Mechanical', href: '/plumbing-services', icon: FiTool },
-    { name: 'Home Remodeling', href: '#industries', icon: FiHome },
+    { name: 'Home Remodeling', href: '/contractor', icon: FiHome },
     { name: 'General Contracting', href: '/contractor', icon: FiBriefcase },
-    { name: 'Landscaping & Tree Care', href: '#industries', icon: FiHome },
+    { name: 'Landscaping & Tree Care', href: '#portfolio', icon: FiHome },
     { name: 'Towing & Auto Care', href: '/auto-repair', icon: FiTruck },
-    { name: 'Legal Practice & Counsel', href: '/personal-injury', icon: FiBriefcase },
-    { name: 'Food & Beverage', href: '#industries', icon: FiCoffee },
+    { name: 'Legal Practice & Counsel', href: '/demos/personal-injury', icon: FiBriefcase },
+    { name: 'Food & Beverage', href: '#portfolio', icon: FiCoffee },
     { name: 'Medical & Dental Clinic', href: '/dental-care', icon: FiHeart },
-    { name: 'Salons & Personal Care', href: '#industries', icon: FiScissors },
-    { name: 'Specialty Retail', href: '#industries', icon: FiBriefcase },
+    { name: 'Salons & Personal Care', href: '#portfolio', icon: FiScissors },
+    { name: 'Specialty Retail', href: '/auto-repair', icon: FiBriefcase },
   ];
 
   return (
@@ -62,7 +62,7 @@ export default function ResultsLink() {
                 Industries We Serve
               </span>
               <a
-                href="#industries"
+                href="#portfolio"
                 onClick={() => setIsOpen(false)}
                 className="text-xs font-bold text-[#00828B] hover:text-[#FF9718] flex items-center gap-1"
               >

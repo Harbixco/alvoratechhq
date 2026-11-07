@@ -36,11 +36,11 @@ export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
               Industries Served
             </div>
             <ul className="space-y-2">
-              <li><a href="#industries" className="hover:text-white transition-colors">Home & Field Services</a></li>
-              <li><a href="#industries" className="hover:text-white transition-colors">Health & Medical Wellness</a></li>
-              <li><a href="#industries" className="hover:text-white transition-colors">Legal & Financial Firms</a></li>
-              <li><a href="#industries" className="hover:text-white transition-colors">Retail & Specialty Stores</a></li>
-              <li><a href="#industries" className="hover:text-white transition-colors">Dining & Hospitality</a></li>
+              <li><a href="/plumbing-services" className="hover:text-white transition-colors">Plumbing & Field Services</a></li>
+              <li><a href="/dental-care" className="hover:text-white transition-colors">Dental & Health Clinics</a></li>
+              <li><a href="/demos/personal-injury" className="hover:text-white transition-colors">Legal & Practice Counsel</a></li>
+              <li><a href="/auto-repair" className="hover:text-white transition-colors">Auto Repair & Specialty</a></li>
+              <li><a href="/contractor" className="hover:text-white transition-colors">General Contracting</a></li>
             </ul>
           </div>
 
@@ -53,7 +53,7 @@ export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
               <li>
                 <button
                   onClick={onOpenLoginModal}
-                  className="hover:text-white transition-colors text-[#39AFB9] font-medium"
+                  className="hidden sm:inline-block hover:text-white transition-colors text-[#39AFB9] font-medium"
                 >
                   Client Portal Login
                 </button>
@@ -63,7 +63,7 @@ export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
                   onClick={onOpenFaq}
                   className="hover:text-white transition-colors text-slate-400 hover:text-[#39AFB9]"
                 >
-                  Frequently Asked Questions (FAQ)
+                  FAQ
                 </button>
               </li>
               <li className="flex items-center gap-2 text-slate-300 pt-1">
@@ -86,7 +86,7 @@ export default function Footer({ onOpenDemoModal, onOpenLoginModal, onOpenFaq })
               </li>
               <li className="flex items-center gap-2 text-slate-300">
                 <FiMapPin className="w-3.5 h-3.5 text-[#39AFB9] shrink-0" />
-                <span>Global Headquarters</span>
+                <span>New York City, Albany</span>
               </li>
               <li className="pt-1">
                 <button
