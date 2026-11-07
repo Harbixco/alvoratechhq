@@ -148,7 +148,6 @@ export const PORTFOLIO_WORKS = [
     industry: 'Legal & Professional',
     result: '#1 Local Google 3-Pack',
     image: '/demos/personal-injury/images/attorney-hero.jpg',
-    tags: ['Custom Law Website', 'Local SEO', 'Direct Case Intake'],
     demoUrl: '/demos/personal-injury',
   },
   {
@@ -157,8 +156,7 @@ export const PORTFOLIO_WORKS = [
     projectName: 'Apex Dental',
     industry: 'Health & Wellness',
     result: '2.4x Inbound Bookings',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
-    tags: ['Mobile Site', 'Online Scheduling', 'Review Engine'],
+    image: '/demos/dental-care/images/dental-preview.jpg',
     demoUrl: '/dental-care',
   },
   {
@@ -167,8 +165,7 @@ export const PORTFOLIO_WORKS = [
     projectName: 'Apex Plumbing',
     industry: 'Home Services',
     result: 'Consistent Weekly Lead Volume',
-    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80',
-    tags: ['50+ Directory Sync', 'Instant Lead Alerts', 'Google Maps'],
+    image: '/demos/plumbing-services/images/plumbing-preview.jpg',
     demoUrl: '/plumbing-services',
   },
   {
@@ -178,7 +175,6 @@ export const PORTFOLIO_WORKS = [
     industry: 'Automotive & Specialty',
     result: 'Strong Local In-Store Growth',
     image: '/demos/auto-repair/images/sports-car.jpg',
-    tags: ['Online Appointments', 'Service Diagnostics', 'Local Listings'],
     demoUrl: '/auto-repair',
   },
   {
@@ -187,8 +183,7 @@ export const PORTFOLIO_WORKS = [
     projectName: 'General Contractor',
     industry: 'Contracting & Construction',
     result: '3.4x Estimate Requests',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=800&q=80',
-    tags: ['Project Portfolio', 'Estimate Calculator', 'Local Authority'],
+    image: '/demos/contractor/images/contractor-preview.jpg',
     demoUrl: '/contractor',
   },
 ];

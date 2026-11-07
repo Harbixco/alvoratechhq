@@ -55,34 +55,21 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
               {/* Card Meta */}
               <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between mb-1.5">
                     <span className="text-xs font-mono uppercase tracking-wider text-[#00828B] font-bold">
                       {work.industry}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#0C2233] tracking-tight mb-4">
+                  <h3 className="text-lg font-bold text-[#0C2233] tracking-tight">
                     <a href={work.demoUrl} className="hover:text-[#00828B] transition-colors">
                       {work.client}
                     </a>
                   </h3>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {work.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 shadow-xs"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Bottom Action: View (Project Name) Demo */}
-                <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
-                  <span className="text-xs text-slate-500 font-mono">Managed by Alvora Tech</span>
+                <div className="pt-4 mt-5 border-t border-slate-200 flex items-center justify-end">
                   <a
                     href={work.demoUrl}
                     className="text-xs font-bold text-[#00828B] hover:text-[#0C2233] inline-flex items-center gap-1.5 transition-colors group"
