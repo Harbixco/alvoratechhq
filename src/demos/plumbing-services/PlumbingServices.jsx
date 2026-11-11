@@ -922,7 +922,7 @@ export default function PlumbingServices() {
 
           <div className="pf-contact-wrap">
             <div className="pf-contact-info">
-              <h3>We're Here When You Need Us</h3>
+              <h3>We are Here When You Need Us</h3>
 
               <div className="pf-info-row">
                 <div className="pf-info-icon">
