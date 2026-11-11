@@ -242,7 +242,7 @@ export default function PlumbingServices() {
                 <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--amber)', stroke: 'none' }} />
               </div>
               <div>
-                <div className="pf-contact-label">Emergency WhatsApp Only</div>
+                <div className="pf-contact-label">WhatsApp Only</div>
                 <div className="pf-contact-val">+1 (412) 769-3968</div>
               </div>
             </a>
