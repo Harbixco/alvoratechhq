@@ -9,10 +9,11 @@ export default function StickyMobileBar({ onOpenDemoModal }) {
         href="https://wa.me/14127693968"
         target="_blank"
         rel="noopener noreferrer"
+        title="WhatsApp Only: +1 (412) 769-3968"
         className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-50 border border-[#25D366] text-[#0C2233] font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
       >
         <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
-        <span>WhatsApp</span>
+        <span>WhatsApp Only</span>
       </a>
 
       <button

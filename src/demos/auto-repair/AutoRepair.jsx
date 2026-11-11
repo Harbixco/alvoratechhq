@@ -130,7 +130,7 @@ export default function AutoRepair() {
               rel="noopener noreferrer"
               title="WhatsApp Only: +1 (412) 769-3968"
             >
-              <span className="phone-icon" aria-hidden="true">↗</span> +1 (412) 769-3968 (WhatsApp)
+              <span className="phone-icon" aria-hidden="true">↗</span> +1 (412) 769-3968 (WhatsApp Only)
             </a>
           </div>
 

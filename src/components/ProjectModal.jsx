@@ -158,7 +158,7 @@ export default function ProjectModal({ isOpen, onClose }) {
                 <input
                   type="text"
                   required
-                  placeholder="contact@yourbusiness.com or (555) 000-0000"
+                  placeholder="contact@yourbusiness.com or your WhatsApp number"
                   value={formData.contact}
                   onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl bg-[#07172C] border border-[#183E6C] text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#39AFB9]"

@@ -71,9 +71,9 @@ export default function Footer({ onOpenDemoModal, onOpenFaq }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white hover:underline transition-colors"
-                  title="Direct WhatsApp Message"
+                  title="WhatsApp Only: +1 (412) 769-3968"
                 >
-                  +1 (412) 769-3968 <span className="text-[10px] text-emerald-400 font-mono">(WhatsApp)</span>
+                  +1 (412) 769-3968 <span className="text-[10px] text-emerald-400 font-mono">(WhatsApp Only)</span>
                 </a>
               </li>
               <li className="flex items-center gap-2 text-slate-300">

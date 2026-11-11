@@ -702,8 +702,8 @@ export default function Contractor() {
               </div>
               <div className="form-row">
                 <label>
-                  Phone number
-                  <input name="phone" type="tel" placeholder="Your phone number" />
+                  WhatsApp / Phone number
+                  <input name="phone" type="tel" placeholder="Your WhatsApp or phone number" />
                 </label>
                 <label>
                   Project type *

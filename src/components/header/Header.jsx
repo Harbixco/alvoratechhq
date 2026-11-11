@@ -21,8 +21,8 @@ import MobileNavDrawer from './MobileNavDrawer';
  *   3. SolutionsLink (with HeaderSubLink components)
  *   4. AboutLink (with HeaderSubLink components & FAQ action)
  *   5. ResultsLink (with HeaderIndustryLink components)
- *   6. PhoneLink (pill outlined button: (855) 463-5490)
- *   7. MobileCallLink (mobile call button)
+ *   6. PhoneLink (pill outlined WhatsApp-only button: +1 (412) 769-3968)
+ *   7. MobileCallLink (mobile WhatsApp-only button)
  * - Mobile navigation toggle & drawer
  */
 export default function Header({ onOpenDemoModal, onOpenFaq }) {
@@ -45,12 +45,12 @@ export default function Header({ onOpenDemoModal, onOpenFaq }) {
           <ResultsLink />
         </nav>
 
-        {/* 3. Right Action - Outlined Pill Call Link Component matching Image 1 */}
+        {/* 3. Right Action - Outlined Pill WhatsApp Link Component */}
         <div className="hidden sm:flex items-center gap-3">
           <PhoneLink phoneNumber="+1 (412) 769-3968" />
         </div>
 
-        {/* 4. Mobile Call Link & Menu Toggle */}
+        {/* 4. Mobile WhatsApp Link & Menu Toggle */}
         <div className="flex items-center gap-2 lg:hidden">
           <MobileCallLink phoneNumber="+1 (412) 769-3968" />
           <MobileNavToggle
