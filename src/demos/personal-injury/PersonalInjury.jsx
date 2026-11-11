@@ -108,7 +108,9 @@ export default function PersonalInjury() {
         <div className="container utility-bar__inner">
           <p>Personal injury counsel. Dedicated advocate for injured individuals.</p>
           <div className="utility-bar__contact">
-            <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Call <span>(800) 555-0199</span></a>
+            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+              WhatsApp Only <span>+1 (412) 769-3968</span>
+            </a>
             <span className="utility-bar__divider" aria-hidden="true"></span>
             <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Email <span>counsel@alvoratechhq.com</span></a>
           </div>
@@ -532,7 +534,12 @@ export default function PersonalInjury() {
               <h2>Let's talk about<br /><em>what comes next.</em></h2>
               <p>A confidential consultation helps you understand whether formal legal action is advantageous for your circumstances. There is no fee or obligation.</p>
               <div className="consultation__contact">
-                <div><span>PHONE</span><a href="tel:8005550199">(800) 555-0199</a></div>
+                <div>
+                  <span>WHATSAPP ONLY</span>
+                  <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+                    +1 (412) 769-3968
+                  </a>
+                </div>
                 <div><span>EMAIL</span><a href="mailto:counsel@alvoratechhq.com">counsel@alvoratechhq.com</a></div>
               </div>
             </div>
@@ -571,7 +578,7 @@ export default function PersonalInjury() {
 
               <div className="form-row">
                 <label>
-                  Phone number <span>*</span>
+                  WhatsApp / Phone number <span>*</span>
                   <input
                     type="tel"
                     name="phone"
@@ -579,7 +586,7 @@ export default function PersonalInjury() {
                     onChange={handleInputChange}
                     required
                     maxLength={30}
-                    placeholder="(555) 000-0000"
+                    placeholder="Your WhatsApp or phone number"
                   />
                 </label>
                 <label>
@@ -611,7 +618,7 @@ export default function PersonalInjury() {
                   Best way to reach you
                   <select name="contactMethod" value={formData.contactMethod} onChange={handleInputChange}>
                     <option>Email</option>
-                    <option>Phone</option>
+                    <option>WhatsApp</option>
                     <option>No preference</option>
                   </select>
                 </label>
@@ -676,9 +683,11 @@ export default function PersonalInjury() {
 
             <div className="contact__grid">
               <div className="contact-detail">
-                <span>PHONE</span>
-                <a href="tel:8005550199">(800) 555-0199</a>
-                <p>Call to schedule an evaluation</p>
+                <span>WHATSAPP ONLY</span>
+                <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 769-3968
+                </a>
+                <p>Message on WhatsApp to schedule an evaluation</p>
               </div>
               <div className="contact-detail">
                 <span>EMAIL</span>
@@ -734,7 +743,9 @@ export default function PersonalInjury() {
 
           <div className="footer__column">
             <h2>Contact</h2>
-            <a href="tel:8005550199">(800) 555-0199</a>
+            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+              +1 (412) 769-3968 (WhatsApp Only)
+            </a>
             <a href="mailto:counsel@alvoratechhq.com">counsel@alvoratechhq.com</a>
             <p>Suite 400, Metro Legal Plaza</p>
             <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Request a consultation ↗</a>

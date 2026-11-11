@@ -655,8 +655,17 @@ export default function Contractor() {
                 <div>
                   <span className="contact-symbol">↗</span>
                   <p>
-                    <small>CALL OUR TEAM</small>
-                    <span>(800) 555-BUILD</span>
+                    <small>WHATSAPP ONLY</small>
+                    <span>
+                      <a
+                        href="https://wa.me/14127693968"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'inherit', textDecoration: 'none' }}
+                      >
+                        +1 (412) 769-3968
+                      </a>
+                    </span>
                   </p>
                 </div>
                 <div>
@@ -771,7 +780,9 @@ export default function Contractor() {
           </div>
           <div className="footer-column footer-contact">
             <h3>Get in touch</h3>
-            <span>PHONE: (800) 555-BUILD</span>
+            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+              WHATSAPP ONLY: +1 (412) 769-3968
+            </a>
             <span>EMAIL: projects@alvoratechhq.com</span>
             <a className="footer-quote" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
               Tell us about your project <span>↗</span>

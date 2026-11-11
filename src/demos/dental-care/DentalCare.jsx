@@ -365,7 +365,15 @@ export default function DentalCare() {
               <h2>Let’s make room for a brighter smile.</h2>
               <p>Tell us a little about what you need. Our friendly team will be in touch to find a time that works for you.</p>
               <p className="contact-phone">
-                <i className="fa-solid fa-phone" aria-hidden="true"></i> (800) 555-DENT
+                <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>{' '}
+                <a
+                  href="https://wa.me/14127693968"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  +1 (412) 769-3968 (WhatsApp Only)
+                </a>
               </p>
               <div className="office-details">
                 <p>
@@ -382,7 +390,7 @@ export default function DentalCare() {
                 </p>
               </div>
               <p className="emergency-note">
-                <i className="fa-solid fa-heart-pulse" aria-hidden="true"></i> Dental emergency? Call us for same-day care.
+                <i className="fa-solid fa-heart-pulse" aria-hidden="true"></i> Dental emergency? Message us on WhatsApp for same-day care.
               </p>
             </div>
 
@@ -398,8 +406,8 @@ export default function DentalCare() {
                 <input type="text" id="fullName" name="name" required placeholder="Your name" />
               </div>
               <div className="form-group">
-                <label htmlFor="phone">Phone Number <span>*</span></label>
-                <input type="tel" id="phone" name="phone" required placeholder="(800) 555-0199" />
+                <label htmlFor="phone">WhatsApp / Phone Number <span>*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="Your WhatsApp or phone number" />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email Address <span>*</span></label>
@@ -467,15 +475,25 @@ export default function DentalCare() {
             <h2>Visit us</h2>
             <p>240 Medical Plaza, Suite 300<br />Metro Health District</p>
             <p>Mon–Fri, 8:00 am–5:00 pm</p>
-            <span>(800) 555-DENT</span>
+            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+              +1 (412) 769-3968 (WhatsApp Only)
+            </a>
           </div>
           <div className="footer-emergency">
             <span className="footer-emergency-icon">
-              <i className="fa-solid fa-phone-volume" aria-hidden="true"></i>
+              <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
             </span>
             <h2>Here when you need us.</h2>
-            <p>For urgent dental concerns, call our office for same-day emergency care.</p>
-            <span className="footer-demo-number">(800) 555-DENT</span>
+            <p>For urgent dental concerns, message our office on WhatsApp for same-day emergency care.</p>
+            <a
+              href="https://wa.me/14127693968"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-demo-number"
+              style={{ textDecoration: 'none' }}
+            >
+              +1 (412) 769-3968 (WhatsApp Only)
+            </a>
           </div>
         </div>
         <div className="footer-bottom section-wrap">

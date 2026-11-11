@@ -123,8 +123,14 @@ export default function AutoRepair() {
               <span className="status-dot"></span> Your neighborhood auto care
             </span>
             <span className="header-divider"></span>
-            <a className="header-phone" href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
-              <span className="phone-icon" aria-hidden="true">↗</span> (800) 555-AUTO
+            <a
+              className="header-phone"
+              href="https://wa.me/14127693968"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="WhatsApp Only: +1 (412) 769-3968"
+            >
+              <span className="phone-icon" aria-hidden="true">↗</span> +1 (412) 769-3968 (WhatsApp)
             </a>
           </div>
 
@@ -693,9 +699,9 @@ export default function AutoRepair() {
                 </span>
               </div>
               <div className="appointment-contact">
-                <span>Have a question? Give us a call.</span>
-                <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
-                  (800) 555-AUTO <span aria-hidden="true">↗</span>
+                <span>Have a question? Message us on WhatsApp only.</span>
+                <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 769-3968 (WhatsApp Only) <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
@@ -853,8 +859,10 @@ export default function AutoRepair() {
 
             <div className="contact-details">
               <div className="contact-detail">
-                <span>GIVE US A CALL</span>
-                <a href="tel:+18005552886">(800) 555-AUTO</a>
+                <span>WHATSAPP ONLY</span>
+                <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 769-3968
+                </a>
               </div>
               <div className="contact-detail">
                 <span>SEND US A NOTE</span>
@@ -946,7 +954,12 @@ export default function AutoRepair() {
             <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
           </div>
           <div className="footer-contact">
-            <span>CALL <a href="tel:+18005552886">(800) 555-AUTO</a></span>
+            <span>
+              WHATSAPP ONLY{' '}
+              <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+                +1 (412) 769-3968
+              </a>
+            </span>
             <span>EMAIL <a href="mailto:service@alvoratechhq.com">service@alvoratechhq.com</a></span>
           </div>
         </div>

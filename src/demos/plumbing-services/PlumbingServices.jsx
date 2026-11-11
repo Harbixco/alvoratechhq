@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaWhatsapp } from 'react-icons/fa';
 import CountUpNumber from '../../components/CountUpNumber';
 import DemoTopBar from '../DemoTopBar';
 import './plumbing.css';
@@ -27,10 +28,10 @@ export default function PlumbingServices() {
       badge: 'Emergency service, day or night',
       title: 'Plumbing trouble?',
       titleEm: "We're on our way.",
-      desc: 'Fast, dependable help for leaks, burst pipes, and urgent repairs. Get a real person on the phone and help moving quickly.',
-      ctaPrimary: 'Call for Emergency Help',
-      ctaPrimaryHref: 'tel:+18554635490',
-      ctaSecondary: 'Request a Callback',
+      desc: 'Fast, dependable help for leaks, burst pipes, and urgent repairs. Reach a real technician directly on WhatsApp and get help moving quickly.',
+      ctaPrimary: 'WhatsApp for Emergency Help',
+      ctaPrimaryHref: 'https://wa.me/14127693968',
+      ctaSecondary: 'Request a Quote',
       ctaSecondaryHref: '#contact',
       image: 'https://cdn.pixabay.com/photo/2013/12/13/21/13/plumber-228010_1280.jpg',
     },
@@ -52,8 +53,8 @@ export default function PlumbingServices() {
       desc: 'Get help with faucets, fixtures, and everyday plumbing repairs—with friendly service and clear, upfront estimates.',
       ctaPrimary: 'Schedule a Home Visit',
       ctaPrimaryHref: '#contact',
-      ctaSecondary: 'Talk to a Plumber',
-      ctaSecondaryHref: 'tel:+18554635490',
+      ctaSecondary: 'WhatsApp a Plumber',
+      ctaSecondaryHref: 'https://wa.me/14127693968',
       image: 'https://cdn.pixabay.com/photo/2015/05/31/11/24/tap-791172_1280.jpg',
     },
   ];
@@ -99,7 +100,7 @@ export default function PlumbingServices() {
          ════════════════════════════════════════ */}
       <header className="pf-header">
         <div className="pf-header-top">
-          <span>📞 Available 24/7 for Emergencies</span>
+          <span>💬 WhatsApp Only 24/7 for Emergencies</span>
           <span>•</span>
           <span>Licensed &amp; Insured</span>
           <span>•</span>
@@ -195,13 +196,28 @@ export default function PlumbingServices() {
                     </h1>
                     <p>{slide.desc}</p>
                     <div className="pf-hero-btns">
-                      <a href={slide.ctaPrimaryHref} className="pf-btn-primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                        </svg>
+                      <a
+                        href={slide.ctaPrimaryHref}
+                        {...(slide.ctaPrimaryHref.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        onClick={(e) => slide.ctaPrimaryHref.startsWith('#') && scrollToSection(e, slide.ctaPrimaryHref)}
+                        className="pf-btn-primary"
+                      >
+                        {slide.ctaPrimaryHref.includes('wa.me') ? (
+                          <FaWhatsapp size={18} />
+                        ) : (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                          </svg>
+                        )}
                         <span>{slide.ctaPrimary}</span>
                       </a>
-                      <a href={slide.ctaSecondaryHref} onClick={(e) => slide.ctaSecondaryHref.startsWith('#') && scrollToSection(e, slide.ctaSecondaryHref)} className="pf-btn-outline">
+                      <a
+                        href={slide.ctaSecondaryHref}
+                        {...(slide.ctaSecondaryHref.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        onClick={(e) => slide.ctaSecondaryHref.startsWith('#') && scrollToSection(e, slide.ctaSecondaryHref)}
+                        className="pf-btn-outline"
+                      >
                         <span>{slide.ctaSecondary}</span>
                       </a>
                     </div>
@@ -215,17 +231,21 @@ export default function PlumbingServices() {
           <div className="pf-hero-card">
             <h3>Contact Us Anytime</h3>
 
-            <div className="pf-contact-item">
+            <a
+              href="https://wa.me/14127693968"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pf-contact-item"
+              style={{ textDecoration: 'none' }}
+            >
               <div className="pf-contact-icon">
-                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                </svg>
+                <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--amber)', stroke: 'none' }} />
               </div>
               <div>
-                <div className="pf-contact-label">Emergency Line</div>
-                <div className="pf-contact-val">(855) 463-5490</div>
+                <div className="pf-contact-label">Emergency WhatsApp Only</div>
+                <div className="pf-contact-val">+1 (412) 769-3968</div>
               </div>
-            </div>
+            </a>
 
             <div className="pf-contact-item">
               <div className="pf-contact-icon">
@@ -722,11 +742,15 @@ export default function PlumbingServices() {
                 </div>
               </div>
 
-              <a href="tel:+18554635490" className="pf-btn-primary" style={{ width: 'fit-content', background: '#DC2626' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                </svg>
-                <span>Call Emergency Line Now</span>
+              <a
+                href="https://wa.me/14127693968"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pf-btn-primary"
+                style={{ width: 'fit-content', background: '#DC2626' }}
+              >
+                <FaWhatsapp size={18} />
+                <span>WhatsApp Emergency Line Now</span>
               </a>
             </div>
 
@@ -748,13 +772,13 @@ export default function PlumbingServices() {
       <div className="pf-emergency">
         <div className="pf-container">
           <h2>Plumbing Emergency? Don't Wait.</h2>
-          <p>Every minute counts. Our emergency crew is standing by right now.</p>
-          <a href="tel:+18554635490" className="pf-phone-big">(855) 463-5490</a>
-          <a href="tel:+18554635490" className="pf-btn-dark">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            <span>Tap to Call Now — We Answer 24/7</span>
+          <p>Every minute counts. Our emergency crew is standing by on WhatsApp right now.</p>
+          <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer" className="pf-phone-big">
+            +1 (412) 769-3968
+          </a>
+          <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer" className="pf-btn-dark">
+            <FaWhatsapp size={20} />
+            <span>Tap to WhatsApp Now — WhatsApp Only (24/7)</span>
           </a>
         </div>
       </div>
@@ -892,7 +916,7 @@ export default function PlumbingServices() {
             <div className="pf-section-label">Get In Touch</div>
             <h2 className="pf-section-title">Request a Free Quote</h2>
             <p className="pf-section-sub">
-              Fill out the form and we'll get back to you within 30 minutes during business hours — or call us directly for immediate assistance.
+              Fill out the form and we'll get back to you within 30 minutes during business hours — or message us directly on WhatsApp for immediate assistance.
             </p>
           </div>
 
@@ -902,13 +926,21 @@ export default function PlumbingServices() {
 
               <div className="pf-info-row">
                 <div className="pf-info-icon">
-                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                  </svg>
+                  <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--amber-dark)', stroke: 'none' }} />
                 </div>
                 <div>
-                  <strong>Phone</strong>
-                  <span>(855) 463-5490 — 24/7 Emergency Line</span>
+                  <strong>WhatsApp Only</strong>
+                  <span>
+                    <a
+                      href="https://wa.me/14127693968"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: 'inherit', textDecoration: 'underline' }}
+                    >
+                      +1 (412) 769-3968
+                    </a>{' '}
+                    — 24/7 Emergency Support
+                  </span>
                 </div>
               </div>
 
@@ -1002,12 +1034,12 @@ export default function PlumbingServices() {
 
                   <div className="pf-form-row">
                     <div className="pf-field">
-                      <label htmlFor="phone">Phone Number</label>
+                      <label htmlFor="phone">WhatsApp / Phone Number</label>
                       <input
                         id="phone"
                         name="phone"
                         type="tel"
-                        placeholder="(555) 000-0000"
+                        placeholder="Your WhatsApp or phone number"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -1113,7 +1145,9 @@ export default function PlumbingServices() {
 
           <div className="pf-footer-col">
             <h4>Contact</h4>
-            <a href="tel:+18554635490">(855) 463-5490</a>
+            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+              +1 (412) 769-3968 (WhatsApp Only)
+            </a>
             <a href="mailto:contact@proflowplumbing.com">contact@proflowplumbing.com</a>
             <a href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>Get Free Quote</a>
             <a href="#about" onClick={(e) => scrollToSection(e, '#about')}>About Us</a>
@@ -1128,13 +1162,11 @@ export default function PlumbingServices() {
         </div>
       </footer>
 
-      {/* ── STICKY MOBILE CALL CTA ── */}
+      {/* ── STICKY MOBILE WHATSAPP CTA ── */}
       <div className="pf-sticky-cta">
-        <a href="tel:+18554635490">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-          </svg>
-          <span>Tap to Call — (855) 463-5490</span>
+        <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+          <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--navy)', stroke: 'none' }} />
+          <span>WhatsApp Us — +1 (412) 769-3968</span>
         </a>
       </div>
     </div>
