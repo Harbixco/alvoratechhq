@@ -67,13 +67,13 @@ export default function Footer({ onOpenDemoModal, onOpenFaq }) {
               <li className="flex items-center gap-2 text-slate-300">
                 <FaWhatsapp className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                 <a
-                  href="https://wa.me/14127693968"
+                  href="https://wa.me/14127963968"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white hover:underline transition-colors"
-                  title="WhatsApp Only: +1 (412) 769-3968"
+                  title="WhatsApp Only: +1 (412) 796-3968"
                 >
-                  +1 (412) 769-3968 <span className="text-[10px] text-emerald-400 font-mono">(WhatsApp Only)</span>
+                  +1 (412) 796-3968 <span className="text-[10px] text-emerald-400 font-mono">(WhatsApp Only)</span>
                 </a>
               </li>
               <li className="flex items-center gap-2 text-slate-300">

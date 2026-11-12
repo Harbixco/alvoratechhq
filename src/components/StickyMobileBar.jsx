@@ -6,10 +6,10 @@ export default function StickyMobileBar({ onOpenDemoModal }) {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 sm:hidden p-2.5 bg-white/95 backdrop-blur-xl border-t border-slate-200 shadow-lg flex items-center gap-2">
       <a
-        href="https://wa.me/14127693968"
+        href="https://wa.me/14127963968"
         target="_blank"
         rel="noopener noreferrer"
-        title="WhatsApp Only: +1 (412) 769-3968"
+        title="WhatsApp Only: +1 (412) 796-3968"
         className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-50 border border-[#25D366] text-[#0C2233] font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
       >
         <FaWhatsapp className="w-4 h-4 text-[#25D366]" />

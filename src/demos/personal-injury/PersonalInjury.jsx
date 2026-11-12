@@ -108,8 +108,8 @@ export default function PersonalInjury() {
         <div className="container utility-bar__inner">
           <p>Personal injury counsel. Dedicated advocate for injured individuals.</p>
           <div className="utility-bar__contact">
-            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-              WhatsApp Only <span>+1 (412) 769-3968</span>
+            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+              WhatsApp Only <span>+1 (412) 796-3968</span>
             </a>
             <span className="utility-bar__divider" aria-hidden="true"></span>
             <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Email <span>counsel@alvoratechhq.com</span></a>
@@ -536,8 +536,8 @@ export default function PersonalInjury() {
               <div className="consultation__contact">
                 <div>
                   <span>WHATSAPP ONLY</span>
-                  <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-                    +1 (412) 769-3968
+                  <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                    +1 (412) 796-3968
                   </a>
                 </div>
                 <div><span>EMAIL</span><a href="mailto:counsel@alvoratechhq.com">counsel@alvoratechhq.com</a></div>
@@ -684,8 +684,8 @@ export default function PersonalInjury() {
             <div className="contact__grid">
               <div className="contact-detail">
                 <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 769-3968
+                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 796-3968
                 </a>
                 <p>Message on WhatsApp to schedule an evaluation</p>
               </div>
@@ -743,8 +743,8 @@ export default function PersonalInjury() {
 
           <div className="footer__column">
             <h2>Contact</h2>
-            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-              +1 (412) 769-3968 (WhatsApp Only)
+            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+              +1 (412) 796-3968 (WhatsApp Only)
             </a>
             <a href="mailto:counsel@alvoratechhq.com">counsel@alvoratechhq.com</a>
             <p>Suite 400, Metro Legal Plaza</p>

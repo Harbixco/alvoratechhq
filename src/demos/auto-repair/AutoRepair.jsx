@@ -125,12 +125,12 @@ export default function AutoRepair() {
             <span className="header-divider"></span>
             <a
               className="header-phone"
-              href="https://wa.me/14127693968"
+              href="https://wa.me/14127963968"
               target="_blank"
               rel="noopener noreferrer"
-              title="WhatsApp Only: +1 (412) 769-3968"
+              title="WhatsApp Only: +1 (412) 796-3968"
             >
-              <span className="phone-icon" aria-hidden="true">↗</span> +1 (412) 769-3968 (WhatsApp Only)
+              <span className="phone-icon" aria-hidden="true">↗</span> +1 (412) 796-3968 (WhatsApp Only)
             </a>
           </div>
 
@@ -700,8 +700,8 @@ export default function AutoRepair() {
               </div>
               <div className="appointment-contact">
                 <span>Have a question? Message us on WhatsApp only.</span>
-                <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 769-3968 (WhatsApp Only) <span aria-hidden="true">↗</span>
+                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 796-3968 (WhatsApp Only) <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
@@ -860,8 +860,8 @@ export default function AutoRepair() {
             <div className="contact-details">
               <div className="contact-detail">
                 <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 769-3968
+                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 796-3968
                 </a>
               </div>
               <div className="contact-detail">
@@ -956,8 +956,8 @@ export default function AutoRepair() {
           <div className="footer-contact">
             <span>
               WHATSAPP ONLY{' '}
-              <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-                +1 (412) 769-3968
+              <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                +1 (412) 796-3968
               </a>
             </span>
             <span>EMAIL <a href="mailto:service@alvoratechhq.com">service@alvoratechhq.com</a></span>

@@ -176,13 +176,13 @@ export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOp
 
       {/* Direct WhatsApp Contact Button */}
       <a
-        href="https://wa.me/14127693968"
+        href="https://wa.me/14127963968"
         target="_blank"
         rel="noopener noreferrer"
         className="my-1 py-3 px-4 rounded-xl bg-emerald-50 border-2 border-[#25D366] text-xs font-bold text-[#0C2233] hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center gap-2 shadow-xs"
       >
         <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
-        <span>WhatsApp Only: +1 (412) 769-3968</span>
+        <span>WhatsApp Only: +1 (412) 796-3968</span>
       </a>
 
       {/* Direct Email Contact Link */}

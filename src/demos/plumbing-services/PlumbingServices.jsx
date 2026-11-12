@@ -30,7 +30,7 @@ export default function PlumbingServices() {
       titleEm: "We're on our way.",
       desc: 'Fast, dependable help for leaks, burst pipes, and urgent repairs. Reach a real technician directly on WhatsApp and get help moving quickly.',
       ctaPrimary: 'WhatsApp for Emergency Help',
-      ctaPrimaryHref: 'https://wa.me/14127693968',
+      ctaPrimaryHref: 'https://wa.me/14127963968',
       ctaSecondary: 'Request a Quote',
       ctaSecondaryHref: '#contact',
       image: 'https://cdn.pixabay.com/photo/2013/12/13/21/13/plumber-228010_1280.jpg',
@@ -54,7 +54,7 @@ export default function PlumbingServices() {
       ctaPrimary: 'Schedule a Home Visit',
       ctaPrimaryHref: '#contact',
       ctaSecondary: 'WhatsApp a Plumber',
-      ctaSecondaryHref: 'https://wa.me/14127693968',
+      ctaSecondaryHref: 'https://wa.me/14127963968',
       image: 'https://cdn.pixabay.com/photo/2015/05/31/11/24/tap-791172_1280.jpg',
     },
   ];
@@ -232,7 +232,7 @@ export default function PlumbingServices() {
             <h3>Contact Us Anytime</h3>
 
             <a
-              href="https://wa.me/14127693968"
+              href="https://wa.me/14127963968"
               target="_blank"
               rel="noopener noreferrer"
               className="pf-contact-item"
@@ -243,7 +243,7 @@ export default function PlumbingServices() {
               </div>
               <div>
                 <div className="pf-contact-label">WhatsApp Only</div>
-                <div className="pf-contact-val">+1 (412) 769-3968</div>
+                <div className="pf-contact-val">+1 (412) 796-3968</div>
               </div>
             </a>
 
@@ -743,7 +743,7 @@ export default function PlumbingServices() {
               </div>
 
               <a
-                href="https://wa.me/14127693968"
+                href="https://wa.me/14127963968"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="pf-btn-primary"
@@ -773,10 +773,10 @@ export default function PlumbingServices() {
         <div className="pf-container">
           <h2>Plumbing Emergency? Don't Wait.</h2>
           <p>Every minute counts. Our emergency crew is standing by on WhatsApp right now.</p>
-          <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer" className="pf-phone-big">
-            +1 (412) 769-3968
+          <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer" className="pf-phone-big">
+            +1 (412) 796-3968
           </a>
-          <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer" className="pf-btn-dark">
+          <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer" className="pf-btn-dark">
             <FaWhatsapp size={20} />
             <span>Tap to WhatsApp Now — WhatsApp Only (24/7)</span>
           </a>
@@ -932,12 +932,12 @@ export default function PlumbingServices() {
                   <strong>WhatsApp Only</strong>
                   <span>
                     <a
-                      href="https://wa.me/14127693968"
+                      href="https://wa.me/14127963968"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ color: 'inherit', textDecoration: 'underline' }}
                     >
-                      +1 (412) 769-3968
+                      +1 (412) 796-3968
                     </a>{' '}
                     — 24/7 Emergency Support
                   </span>
@@ -1145,8 +1145,8 @@ export default function PlumbingServices() {
 
           <div className="pf-footer-col">
             <h4>Contact</h4>
-            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-              +1 (412) 769-3968 (WhatsApp Only)
+            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+              +1 (412) 796-3968 (WhatsApp Only)
             </a>
             <a href="mailto:contact@proflowplumbing.com">contact@proflowplumbing.com</a>
             <a href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>Get Free Quote</a>
@@ -1164,9 +1164,9 @@ export default function PlumbingServices() {
 
       {/* ── STICKY MOBILE WHATSAPP CTA ── */}
       <div className="pf-sticky-cta">
-        <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
           <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--navy)', stroke: 'none' }} />
-          <span>WhatsApp Us — +1 (412) 769-3968</span>
+          <span>WhatsApp Us — +1 (412) 796-3968</span>
         </a>
       </div>
     </div>

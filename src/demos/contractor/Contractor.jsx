@@ -658,12 +658,12 @@ export default function Contractor() {
                     <small>WHATSAPP ONLY</small>
                     <span>
                       <a
-                        href="https://wa.me/14127693968"
+                        href="https://wa.me/14127963968"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{ color: 'inherit', textDecoration: 'none' }}
                       >
-                        +1 (412) 769-3968
+                        +1 (412) 796-3968
                       </a>
                     </span>
                   </p>
@@ -780,8 +780,8 @@ export default function Contractor() {
           </div>
           <div className="footer-column footer-contact">
             <h3>Get in touch</h3>
-            <a href="https://wa.me/14127693968" target="_blank" rel="noopener noreferrer">
-              WHATSAPP ONLY: +1 (412) 769-3968
+            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+              WHATSAPP ONLY: +1 (412) 796-3968
             </a>
             <span>EMAIL: projects@alvoratechhq.com</span>
             <a className="footer-quote" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
