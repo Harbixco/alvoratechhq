@@ -54,6 +54,16 @@ export default function App() {
     return <PersonalInjury />;
   }
 
+  if (normalizedPath.includes('towing-company')) {
+    window.location.replace('/towing-company/index.html');
+    return null;
+  }
+
+  if (normalizedPath.includes('tree-removal')) {
+    window.location.replace('/tree-removal/index.html');
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-white text-[#1E242B] flex flex-col font-sans selection:bg-[#FF9718]/20 selection:text-[#0C2233]">
       {/* 1. Header with modular link components */}

@@ -1,7 +1,40 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/towing-company",
+      "destination": "/towing-company/index.html"
+    },
+    {
+      "source": "/towing-company/",
+      "destination": "/towing-company/index.html"
+    },
+    {
+      "source": "/tree-removal",
+      "destination": "/tree-removal/index.html"
+    },
+    {
+      "source": "/tree-removal/",
+      "destination": "/tree-removal/index.html"
+    },
+    {
+      "source": "/demos/towing-company",
+      "destination": "/demos/towing-company/index.html"
+    },
+    {
+      "source": "/demos/towing-company/",
+      "destination": "/demos/towing-company/index.html"
+    },
+    {
+      "source": "/demos/tree-removal",
+      "destination": "/demos/tree-removal/index.html"
+    },
+    {
+      "source": "/demos/tree-removal/",
+      "destination": "/demos/tree-removal/index.html"
+    },
+    {
+      "source": "/((?!towing-company|tree-removal|demos).*)",
       "destination": "/index.html"
     }
   ]

@@ -41,6 +41,8 @@ export default function Footer({ onOpenDemoModal, onOpenFaq }) {
               <li><a href="/demos/personal-injury" className="hover:text-white transition-colors">Legal & Practice Counsel</a></li>
               <li><a href="/auto-repair" className="hover:text-white transition-colors">Auto Repair & Specialty</a></li>
               <li><a href="/contractor" className="hover:text-white transition-colors">General Contracting</a></li>
+              <li><a href="/towing-company" className="hover:text-white transition-colors">Towing & Roadside</a></li>
+              <li><a href="/tree-removal/" className="hover:text-white transition-colors">Tree Removal & Care</a></li>
             </ul>
           </div>
 
