@@ -327,6 +327,9 @@ export default function TowingCompany() {
                 <img
                   src="/towing-company/images/hero-tow-truck.webp"
                   alt="Professional tow truck on the highway"
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -347,7 +350,7 @@ export default function TowingCompany() {
                 const Icon = svc.icon;
                 return (
                   <article className="service-card reveal is-visible" key={idx}>
-                    <img src={svc.image} alt={svc.alt} loading="lazy" />
+                    <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
                     <div className="service-card__content">
                       <div className="service-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Icon className="w-5 h-5 text-[#ff6b22]" />
@@ -397,6 +400,7 @@ export default function TowingCompany() {
                   src="/towing-company/images/heavy-duty-towing.webp"
                   alt="Ford F-350 tow truck"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="experience-badge">
@@ -493,7 +497,7 @@ export default function TowingCompany() {
                   }}
                   aria-label={img.alt}
                 >
-                  <img src={img.src} alt={img.alt} loading="lazy" />
+                  <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
                   <span className="gallery-overlay">View</span>
                 </button>
               ))}

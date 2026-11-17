@@ -41,6 +41,8 @@ export default function PortfolioShowcase({ onOpenDemoModal }) {
                 <img
                   src={work.image}
                   alt={work.client}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 

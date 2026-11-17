@@ -201,7 +201,7 @@ export const PORTFOLIO_WORKS = [
     projectName: 'Tree Removal & Care',
     industry: 'Landscaping & Tree Services',
     result: '3.8x Local Inbound Quotes',
-    image: '/tree-removal/images/tree-trimming.jpg',
+    image: '/tree-removal/images/tree-trimming.webp',
     demoUrl: '/tree-removal/',
   },
 ];

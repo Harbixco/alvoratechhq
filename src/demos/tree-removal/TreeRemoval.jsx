@@ -41,37 +41,37 @@ export default function TreeRemoval() {
     {
       title: 'Tree Removal',
       desc: 'Professional tree removal solutions for unwanted, damaged, dead, or hazardous trees.',
-      image: '/tree-removal/images/tree-removal-crew.jpg',
+      image: '/tree-removal/images/tree-removal-crew.webp',
       alt: 'Tree removal crew cutting down a tree in a residential area',
     },
     {
       title: 'Tree Trimming & Pruning',
       desc: 'Tree maintenance solutions that help improve appearance, manage growth, and maintain healthy outdoor spaces.',
-      image: '/tree-removal/images/tree-trimming.jpg',
+      image: '/tree-removal/images/tree-trimming.webp',
       alt: 'Arborist trimming a tree branch with a saw',
     },
     {
       title: 'Stump Grinding & Removal',
       desc: 'Solutions for removing unwanted tree stumps and reclaiming usable outdoor yard and turf space.',
-      image: '/tree-removal/images/stump-grinding.jpg',
+      image: '/tree-removal/images/stump-grinding.webp',
       alt: 'Stump grinder working on a tree stump',
     },
     {
       title: 'Emergency Tree Services',
       desc: 'Immediate assistance with storm damage, fallen limbs, and dangerous structural property threats.',
-      image: '/tree-removal/images/residential-tree-removal.jpg',
+      image: '/tree-removal/images/residential-tree-removal.webp',
       alt: 'Tree removal crew working on a large residential tree',
     },
     {
       title: 'Land & Lot Clearing',
       desc: 'Tree and dense vegetation clearing solutions for residential developments and commercial expansions.',
-      image: '/tree-removal/images/tree-removal-crew.jpg',
+      image: '/tree-removal/images/tree-removal-crew.webp',
       alt: 'Tree crew cutting down a tree as part of property clearing',
     },
     {
       title: 'Tree Maintenance',
       desc: 'Routine crown thinning, deadwooding, and health assessments to keep your grounds safe and vibrant.',
-      image: '/tree-removal/images/tree-trimming.jpg',
+      image: '/tree-removal/images/tree-trimming.webp',
       alt: 'Arborist performing routine tree trimming',
     },
   ];
@@ -81,42 +81,42 @@ export default function TreeRemoval() {
       title: 'Controlled Tree Removal',
       category: 'removal',
       label: 'Tree Removal',
-      image: '/tree-removal/images/tree-removal-crew.jpg',
+      image: '/tree-removal/images/tree-removal-crew.webp',
       alt: 'Tree crew cutting down a tree in a residential neighborhood',
     },
     {
       title: 'Canopy Pruning & Shaping',
       category: 'trimming',
       label: 'Tree Trimming',
-      image: '/tree-removal/images/tree-trimming.jpg',
+      image: '/tree-removal/images/tree-trimming.webp',
       alt: 'Arborist sawing a branch during tree trimming',
     },
     {
       title: 'Deep Stump Extraction',
       category: 'stump',
       label: 'Stump Grinding',
-      image: '/tree-removal/images/stump-grinding.jpg',
+      image: '/tree-removal/images/stump-grinding.webp',
       alt: 'Stump grinder operating beside a tree stump',
     },
     {
       title: 'Estate Perimeter Clearing',
       category: 'clearing',
       label: 'Land Clearing',
-      image: '/tree-removal/images/residential-tree-removal.jpg',
+      image: '/tree-removal/images/residential-tree-removal.webp',
       alt: 'Workers removing a large tree from a residential property',
     },
     {
       title: 'Sectional Crane Take-Down',
       category: 'removal',
       label: 'Tree Removal',
-      image: '/tree-removal/images/arborist-tree-cutting.jpg',
+      image: '/tree-removal/images/arborist-tree-cutting.webp',
       alt: 'Arborist felling a large tree in sections with a chainsaw',
     },
     {
       title: 'Lateral Branch Clearance',
       category: 'trimming',
       label: 'Tree Trimming',
-      image: '/tree-removal/images/tree-removal-crew.jpg',
+      image: '/tree-removal/images/tree-removal-crew.webp',
       alt: 'Tree care crew working on a mature tree',
     },
   ];
@@ -315,8 +315,10 @@ export default function TreeRemoval() {
           <div className="container about-grid">
             <div className="about-image reveal is-visible">
               <img
-                src="/tree-removal/images/arborist-tree-cutting.jpg"
+                src="/tree-removal/images/arborist-tree-cutting.webp"
                 alt="Arborist using a chainsaw to remove a tree in sections"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="about-content reveal is-visible">
@@ -364,7 +366,7 @@ export default function TreeRemoval() {
             <div className="service-grid">
               {services.map((svc, idx) => (
                 <article className="service-card reveal is-visible" key={idx}>
-                  <img src={svc.image} alt={svc.alt} loading="lazy" />
+                  <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
                   <div className="card-content">
                     <h3>{svc.title}</h3>
                     <p>{svc.desc}</p>
@@ -475,7 +477,7 @@ export default function TreeRemoval() {
                     setLightboxOpen(true);
                   }}
                 >
-                  <img src={p.image} alt={p.alt} loading="lazy" />
+                  <img src={p.image} alt={p.alt} loading="lazy" decoding="async" />
                   <figcaption>{p.title}</figcaption>
                 </figure>
               ))}
