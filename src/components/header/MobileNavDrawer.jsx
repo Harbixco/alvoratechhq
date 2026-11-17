@@ -128,10 +128,10 @@ export default function MobileNavDrawer({ isOpen, onClose, onOpenDemoModal, onOp
             <a href="/personal-injury" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
               • Legal Practice &amp; Injury Demo →
             </a>
-            <a href="/demos/towing-company/" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
+            <a href="/towing-company" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
               • Towing &amp; Roadside Demo →
             </a>
-            <a href="/demos/tree-removal/" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
+            <a href="/tree-removal/" onClick={onClose} className="block py-1 hover:text-[#00828B] font-bold text-[#00828B]">
               • Tree Removal &amp; Arborist Demo →
             </a>
             <div className="pt-1 mt-1 border-t border-slate-200">

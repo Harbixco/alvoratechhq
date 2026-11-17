@@ -36,16 +36,6 @@ if (fs.existsSync(indexHtmlPath)) {
   fs.copyFileSync(indexHtmlPath, path.join(distDir, '404.html'));
   fs.copyFileSync(indexHtmlPath, path.join(distDir, '200.html'));
   console.log('✓ Successfully created dist/404.html and dist/200.html');
-
-  // 3. Create clean redirect aliases for /towing-company and /tree-removal to /demos/
-  const redirectDemos = ['towing-company', 'tree-removal'];
-  for (const demo of redirectDemos) {
-    const targetDir = path.join(distDir, demo);
-    fs.mkdirSync(targetDir, { recursive: true });
-    const redirectHtml = `<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/demos/${demo}/"></head><body><script>window.location.replace('/demos/${demo}/');</script></body></html>`;
-    fs.writeFileSync(path.join(targetDir, 'index.html'), redirectHtml, 'utf8');
-    console.log(`✓ Successfully created dist/${demo}/index.html redirect`);
-  }
 } else {
   console.error('Error: dist/index.html does not exist to copy.');
   process.exit(1);

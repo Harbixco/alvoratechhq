@@ -192,8 +192,8 @@ export const PORTFOLIO_WORKS = [
     projectName: 'Towing & Roadside',
     industry: 'Automotive & Emergency Services',
     result: 'Fast 24/7 Dispatch Booking',
-    image: '/demos/towing-company/images/hero-tow-truck.webp',
-    demoUrl: '/demos/towing-company/',
+    image: '/towing-company/images/hero-tow-truck.webp',
+    demoUrl: '/towing-company',
   },
   {
     id: 'tree-removal',
@@ -201,8 +201,8 @@ export const PORTFOLIO_WORKS = [
     projectName: 'Tree Removal & Care',
     industry: 'Landscaping & Tree Services',
     result: '3.8x Local Inbound Quotes',
-    image: '/demos/tree-removal/images/tree-trimming.jpg',
-    demoUrl: '/demos/tree-removal/',
+    image: '/tree-removal/images/tree-trimming.jpg',
+    demoUrl: '/tree-removal/',
   },
 ];
 
