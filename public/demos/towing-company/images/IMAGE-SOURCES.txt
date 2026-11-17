@@ -1,0 +1,27 @@
+Image source and license notes
+
+These photographs are locally stored in WebP format. Their original files and
+license information are available from Wikimedia Commons:
+
+- hero-tow-truck.webp, towing-gallery/gallery-1.webp
+  "JAF tow truck on Ebisu-minami Bridge" — CC0
+  https://commons.wikimedia.org/wiki/File:JAF_tow_truck_on_Ebisu-minami_Bridge.jpg
+- flatbed-towing.webp, towing-gallery/gallery-2.webp
+  "Flat Bed Tow Truck" — public domain
+  https://commons.wikimedia.org/wiki/File:Flat_Bed_Tow_Truck.jpg
+- heavy-duty-towing.webp, towing-gallery/gallery-3.webp
+  "Ford F-350 Tow Truck" — public domain
+  https://commons.wikimedia.org/wiki/File:Ford_F-350_Tow_Truck.jpg
+- motorcycle-towing.webp
+  "JAF tow truck in Ebisu" — CC0
+  https://commons.wikimedia.org/wiki/File:JAF_tow_truck_in_Ebisu.jpg
+- roadside-assistance.webp, towing-gallery/gallery-4.webp
+  "Moscow, Pyatnitskaya Street, municipal tow truck in action, Oct 2026 06" — CC0
+  https://commons.wikimedia.org/wiki/File:Moscow,_Pyatnitskaya_Street,_municipal_tow_truck_in_action,_Oct_2026_06.jpg
+- towing-gallery/gallery-5.webp
+  "Truck to address highway incidents, free road service on the Florida Turnpike" — CC0
+  https://commons.wikimedia.org/wiki/File:Truck_to_address_highway_incidents,_free_road_service_on_the_Florida_Turnpike.jpg
+- vehicle-recovery.webp, towing-gallery/gallery-6.webp
+  "Pass Christian, Mississippi, January 17, 2006 — tow-truck recovery after
+  Hurricane Katrina" — public domain
+  https://commons.wikimedia.org/wiki/File:(Hurricane_Katrina)_Pass_Christian,_Miss.,_January_17,_2006_--_Wrecker_driver_Johnny_Hogan_looks_on_as_a_used_wrecker_donated_by_the_California_Tow_Truck_Driver's_Association_is_del_-_DPLA_-_c2fbea03f23acde3e6695cca63f05332.jpg

@@ -186,6 +186,24 @@ export const PORTFOLIO_WORKS = [
     image: '/demos/contractor/images/contractor-preview.jpg',
     demoUrl: '/contractor',
   },
+  {
+    id: 'towing-company',
+    client: 'Alvoratech Towing & Recovery',
+    projectName: 'Towing & Roadside',
+    industry: 'Automotive & Emergency Services',
+    result: 'Fast 24/7 Dispatch Booking',
+    image: '/demos/towing-company/images/hero-tow-truck.webp',
+    demoUrl: '/demos/towing-company/',
+  },
+  {
+    id: 'tree-removal',
+    client: 'Alvoratech Professional Tree Removal',
+    projectName: 'Tree Removal & Care',
+    industry: 'Landscaping & Tree Services',
+    result: '3.8x Local Inbound Quotes',
+    image: '/demos/tree-removal/images/tree-trimming.jpg',
+    demoUrl: '/demos/tree-removal/',
+  },
 ];
 
 export const PRICING_TIERS = [
