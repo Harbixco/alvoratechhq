@@ -1,5 +1,1 @@
-/towing-company    /towing-company/index.html   200
-/towing-company/*  /towing-company/:splat       200
-/tree-removal      /tree-removal/index.html     200
-/tree-removal/*    /tree-removal/:splat         200
-/*                 /index.html                  200
+/*  /index.html  200

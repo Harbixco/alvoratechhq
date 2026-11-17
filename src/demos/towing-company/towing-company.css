@@ -1,0 +1,1524 @@
+.towing-company-demo {
+  --bg: #111820;
+  --bg-alt: #172635;
+  --primary: #ff6b22;
+  --primary-soft: rgba(255, 107, 34, 0.14);
+  --text: #111820;
+  --text-soft: #596674;
+  --white: #ffffff;
+  --light: #f4f5f7;
+  --line: rgba(17, 24, 32, 0.08);
+  --shadow: 0 25px 60px rgba(17, 24, 32, 0.14);
+  --shadow-soft: 0 15px 35px rgba(17, 24, 32, 0.12);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --container: 1200px;
+}
+
+.towing-company-demo * {
+  box-sizing: border-box;
+}
+
+.towing-company-demo {
+  scroll-behavior: smooth;
+}
+
+.towing-company-demo {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-bottom: 120px;
+}
+
+.towing-company-demo img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.towing-company-demo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.towing-company-demo button,
+.towing-company-demo input,
+.towing-company-demo select,
+.towing-company-demo textarea {
+  font: inherit;
+}
+
+.towing-company-demo button {
+  cursor: pointer;
+}
+
+.towing-company-demo .container {
+  width: min(var(--container), calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.towing-company-demo .section {
+  padding: 110px 0;
+}
+
+.towing-company-demo .eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.towing-company-demo .eyebrow--dark {
+  color: var(--primary);
+}
+
+.towing-company-demo .section-heading {
+  max-width: 760px;
+  margin: 0 auto 52px;
+  text-align: center;
+}
+
+.towing-company-demo .section-heading--light {
+  color: var(--white);
+}
+
+.towing-company-demo .section-heading--left {
+  margin: 0 0 42px;
+  text-align: left;
+}
+
+.towing-company-demo .section-heading h2,
+.towing-company-demo .about-content h2,
+.towing-company-demo .hero-content h1,
+.towing-company-demo .promo-banner__content h2 {
+  margin: 0 0 18px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.towing-company-demo .section-heading h2,
+.towing-company-demo .about-content h2 {
+  font-size: clamp(2.1rem, 3vw, 3.2rem);
+}
+
+.towing-company-demo .section-heading p,
+.towing-company-demo .about-content p,
+.towing-company-demo .promo-banner__content p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 1.04rem;
+}
+
+.towing-company-demo .section-heading--light p,
+.towing-company-demo .section-heading--light .eyebrow {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.towing-company-demo .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.towing-company-demo .button:hover,
+.towing-company-demo .button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(255, 107, 34, 0.2);
+}
+
+.towing-company-demo .button-primary {
+  background: linear-gradient(135deg, var(--primary), #ff865d);
+  color: var(--white);
+}
+
+.towing-company-demo .button-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.towing-company-demo .button-block {
+  width: 100%;
+}
+
+.towing-company-demo .demo-banner {
+  position: relative;
+  z-index: 20;
+  background: linear-gradient(90deg, #111820 0%, #1f2a33 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.towing-company-demo .demo-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  min-height: 56px;
+}
+
+.towing-company-demo .demo-banner__inner p {
+  margin: 0;
+  color: var(--white);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.towing-company-demo .demo-banner__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.towing-company-demo .demo-banner__button:hover,
+.towing-company-demo .demo-banner__button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 26px rgba(255, 107, 34, 0.25);
+}
+
+.towing-company-demo .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.towing-company-demo .site-header.scrolled {
+  background: rgba(17, 24, 32, 0.92);
+  box-shadow: 0 15px 30px rgba(17, 24, 32, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.towing-company-demo .nav-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 84px;
+  gap: 1rem;
+}
+
+.towing-company-demo .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.88rem;
+}
+
+.towing-company-demo .brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.towing-company-demo .site-header:not(.scrolled) .brand-mark {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.towing-company-demo .brand-mark svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--primary);
+}
+
+.towing-company-demo .brand-text {
+  display: flex;
+  align-items: end;
+  gap: 0.28rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+
+.towing-company-demo .brand-text strong,
+.towing-company-demo .brand-text span {
+  font-size: 1rem;
+}
+
+.towing-company-demo .site-header:not(.scrolled) .brand-text {
+  color: var(--white);
+}
+
+.towing-company-demo .site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.towing-company-demo .nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.towing-company-demo .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.towing-company-demo .nav-link:hover::after,
+.towing-company-demo .nav-link.active::after,
+.towing-company-demo .nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.towing-company-demo .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), #ff8a5a);
+  color: var(--white);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 18px 28px rgba(255, 107, 34, 0.22);
+}
+
+.towing-company-demo .hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 760px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(130deg, rgba(17, 24, 32, 0.92), rgba(17, 24, 32, 0.78)),
+    url("/towing-company/images/hero-tow-truck.webp") center/cover no-repeat;
+}
+
+.towing-company-demo .hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(17, 24, 32, 0.6) 0%, rgba(17, 24, 32, 0.28) 46%, rgba(17, 24, 32, 0.64) 100%);
+  z-index: -1;
+}
+
+.towing-company-demo .hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 4vw, 5rem);
+  align-items: center;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.towing-company-demo .hero-content {
+  max-width: 640px;
+  color: var(--white);
+}
+
+.towing-company-demo .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 107, 34, 0.18);
+  border: 1px solid rgba(255, 107, 34, 0.5);
+  color: #ffdac1;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.towing-company-demo .hero-content h1 {
+  margin-top: 20px;
+  margin-bottom: 18px;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+.towing-company-demo .hero-content p {
+  max-width: 560px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.08rem;
+}
+
+.towing-company-demo .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.towing-company-demo .hero .button-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.towing-company-demo .trust-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.6rem;
+  padding: 0;
+  margin: 2rem 0 0;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.towing-company-demo .trust-points li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.towing-company-demo .trust-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.towing-company-demo .hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.towing-company-demo .hero-card {
+  width: min(100%, 520px);
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: var(--shadow);
+  transform: translateY(20px) rotate(2deg);
+  animation: floatCard 7s ease-in-out infinite;
+}
+
+.towing-company-demo .hero-card img {
+  height: 620px;
+  object-fit: cover;
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(12px) rotate(1.5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(-1deg);
+  }
+}
+
+.towing-company-demo .service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.towing-company-demo .service-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.towing-company-demo .service-card:hover,
+.towing-company-demo .service-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 45px rgba(17, 24, 32, 0.15);
+}
+
+.towing-company-demo .service-card img {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.towing-company-demo .service-card:hover img {
+  transform: scale(1.05);
+}
+
+.towing-company-demo .service-card__content {
+  padding: 1.45rem 1.35rem 1.35rem;
+}
+
+.towing-company-demo .service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--primary-soft);
+  font-size: 1.5rem;
+}
+
+.towing-company-demo .service-card h3 {
+  margin: 1rem 0 0.6rem;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.towing-company-demo .service-card p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.towing-company-demo .service-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.1rem;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.towing-company-demo .service-link::after {
+  content: "→";
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.towing-company-demo .service-link:hover::after,
+.towing-company-demo .service-link:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.towing-company-demo .promo-banner {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  min-height: 430px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.towing-company-demo .promo-banner--mid {
+  background-image: linear-gradient(120deg, rgba(17, 24, 32, 0.72), rgba(17, 24, 32, 0.6)),
+    url("/towing-company/images/flatbed-towing.webp");
+}
+
+.towing-company-demo .promo-banner--bottom {
+  background-image: linear-gradient(120deg, rgba(17, 24, 32, 0.76), rgba(17, 24, 32, 0.64)),
+    url("/towing-company/images/heavy-duty-towing.webp");
+}
+
+.towing-company-demo .promo-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 107, 34, 0.16), transparent 42%);
+}
+
+.towing-company-demo .promo-banner__content {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.towing-company-demo .demo-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 107, 34, 0.18);
+  border: 1px solid rgba(255, 107, 34, 0.5);
+  color: #ffd9bf;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.towing-company-demo .promo-banner__content h2 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: clamp(2.2rem, 3vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.towing-company-demo .promo-banner__content p {
+  max-width: 620px;
+  margin: 0 auto 1.8rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.04rem;
+}
+
+.towing-company-demo .about {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 245, 247, 0.96));
+}
+
+.towing-company-demo .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.towing-company-demo .about-media {
+  position: relative;
+}
+
+.towing-company-demo .about-image-wrap {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.towing-company-demo .about-image-wrap img {
+  height: 620px;
+  object-fit: cover;
+}
+
+.towing-company-demo .experience-badge {
+  position: absolute;
+  right: -20px;
+  bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 170px;
+  padding: 1rem 1.2rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--primary), #ff8c5b);
+  color: var(--white);
+  box-shadow: 0 18px 38px rgba(255, 107, 34, 0.28);
+}
+
+.towing-company-demo .experience-badge span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.towing-company-demo .experience-badge strong {
+  font-size: 1.3rem;
+  letter-spacing: -0.04em;
+}
+
+.towing-company-demo .about-content {
+  max-width: 560px;
+}
+
+.towing-company-demo .about-content p {
+  margin-bottom: 1.4rem;
+}
+
+.towing-company-demo .check-list {
+  display: grid;
+  gap: 0.9rem;
+  padding: 0;
+  margin: 0 0 2rem;
+  list-style: none;
+}
+
+.towing-company-demo .check-list li {
+  position: relative;
+  padding-left: 2rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.towing-company-demo .check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: -0.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.towing-company-demo .why-us {
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+}
+
+.towing-company-demo .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.towing-company-demo .benefit-card {
+  padding: 1.8rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: transform 0.28s ease, border-color 0.28s ease;
+}
+
+.towing-company-demo .benefit-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 107, 34, 0.5);
+}
+
+.towing-company-demo .benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 107, 34, 0.15);
+  color: var(--primary);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.towing-company-demo .benefit-card h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--white);
+  font-size: 1.28rem;
+}
+
+.towing-company-demo .benefit-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.towing-company-demo .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.towing-company-demo .gallery-item {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: var(--light);
+  box-shadow: var(--shadow-soft);
+}
+
+.towing-company-demo .gallery-item:nth-child(2n) {
+  min-height: 360px;
+}
+
+.towing-company-demo .gallery-item img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.towing-company-demo .gallery-item:hover img,
+.towing-company-demo .gallery-item:focus-visible img {
+  transform: scale(1.08);
+}
+
+.towing-company-demo .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(17, 24, 32, 0.08), rgba(17, 24, 32, 0.62));
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.towing-company-demo .gallery-item:hover .gallery-overlay,
+.towing-company-demo .gallery-item:focus-visible .gallery-overlay {
+  opacity: 1;
+}
+
+.towing-company-demo .process {
+  background: linear-gradient(180deg, rgba(244, 245, 247, 0.98), rgba(255, 255, 255, 0.98));
+}
+
+.towing-company-demo .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.towing-company-demo .step-card {
+  position: relative;
+  padding: 1.6rem 1.3rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.towing-company-demo .step-number {
+  color: rgba(255, 107, 34, 0.45);
+  font-size: 2.5rem;
+  letter-spacing: -0.08em;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.towing-company-demo .step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin: 1rem 0 0.8rem;
+  border-radius: 18px;
+  background: rgba(255, 107, 34, 0.12);
+  font-size: 1.7rem;
+}
+
+.towing-company-demo .step-card h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.36rem;
+}
+
+.towing-company-demo .step-card p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.towing-company-demo .testimonials {
+  background: linear-gradient(155deg, rgba(23, 38, 53, 0.96), rgba(17, 24, 32, 0.96));
+}
+
+.towing-company-demo .testimonial-slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) 50px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.towing-company-demo .testimonial-track {
+  position: relative;
+  min-height: 260px;
+}
+
+.towing-company-demo .testimonial-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 2rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--white);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.towing-company-demo .testimonial-card.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.towing-company-demo .stars {
+  color: #ffca59;
+  letter-spacing: 0.1em;
+}
+
+.towing-company-demo .testimonial-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.06rem;
+}
+
+.towing-company-demo .testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.towing-company-demo .testimonial-author strong {
+  font-size: 1rem;
+}
+
+.towing-company-demo .testimonial-author span {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.towing-company-demo .slider-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white);
+  font-size: 1.8rem;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.towing-company-demo .slider-btn:hover,
+.towing-company-demo .slider-btn:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255, 107, 34, 0.12);
+}
+
+.towing-company-demo .faq {
+  background: #fff;
+}
+
+.towing-company-demo .faq-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.towing-company-demo .faq-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.towing-company-demo .faq-item {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(244, 245, 247, 0.7);
+  overflow: hidden;
+}
+
+.towing-company-demo .faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.2rem;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.towing-company-demo .faq-question::after {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: rgba(255, 107, 34, 0.12);
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 800;
+  transition: transform 0.25s ease;
+}
+
+.towing-company-demo .faq-item.active .faq-question::after {
+  content: "–";
+}
+
+.towing-company-demo .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.32s ease;
+}
+
+.towing-company-demo .faq-item.active .faq-answer {
+  max-height: 220px;
+}
+
+.towing-company-demo .faq-answer p {
+  padding: 0 1.2rem 1.1rem;
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.towing-company-demo .contact {
+  background: linear-gradient(180deg, #f4f5f7, #ffffff);
+}
+
+.towing-company-demo .contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 3vw, 3.5rem);
+  align-items: start;
+}
+
+.towing-company-demo .contact-details h2 {
+  margin: 0 0 1.4rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.towing-company-demo .contact-list {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.towing-company-demo .contact-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: baseline;
+  color: var(--text-soft);
+  font-size: 1.06rem;
+}
+
+.towing-company-demo .contact-list span:first-child {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.towing-company-demo .contact-list a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.towing-company-demo .contact-form-wrap {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem;
+}
+
+.towing-company-demo .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.towing-company-demo .form-row--single {
+  grid-template-columns: 1fr;
+}
+
+.towing-company-demo label {
+  display: block;
+}
+
+.towing-company-demo label span {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.towing-company-demo input,
+.towing-company-demo select,
+.towing-company-demo textarea {
+  width: 100%;
+  min-height: 54px;
+  padding: 0.92rem 1rem;
+  border: 1px solid rgba(17, 24, 32, 0.12);
+  border-radius: 14px;
+  background: rgba(244, 245, 247, 0.8);
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.towing-company-demo textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.towing-company-demo input:focus,
+.towing-company-demo select:focus,
+.towing-company-demo textarea:focus {
+  outline: none;
+  border-color: rgba(255, 107, 34, 0.5);
+  box-shadow: 0 0 0 4px rgba(255, 107, 34, 0.08);
+}
+
+.towing-company-demo .form-status {
+  min-height: 1.3rem;
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.towing-company-demo .form-status.is-error {
+  color: #b42318;
+}
+
+.towing-company-demo .form-status.is-success {
+  color: #0f8a3d;
+}
+
+.towing-company-demo .site-footer {
+  background: #0d141b;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.towing-company-demo .footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.8fr 1fr;
+  gap: 2rem;
+  padding: 4.2rem 0 2.5rem;
+}
+
+.towing-company-demo .brand--footer .brand-text {
+  color: var(--white);
+}
+
+.towing-company-demo .footer-copy {
+  max-width: 360px;
+  margin-top: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.towing-company-demo .site-footer h3 {
+  margin: 0 0 1rem;
+  color: var(--white);
+  font-size: 1.02rem;
+}
+
+.towing-company-demo .footer-links {
+  display: grid;
+  gap: 0.7rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.towing-company-demo .footer-links a,
+.towing-company-demo .footer-links span {
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s ease;
+}
+
+.towing-company-demo .footer-links a:hover,
+.towing-company-demo .footer-links a:focus-visible {
+  color: var(--white);
+}
+
+.towing-company-demo .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.towing-company-demo .footer-bottom__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 74px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.towing-company-demo .demo-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.towing-company-demo .floating-whatsapp {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 60;
+  background: rgba(17, 24, 32, 0.96);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -10px 25px rgba(17, 24, 32, 0.2);
+  animation: bannerSlideIn 0.75s ease;
+}
+
+@keyframes bannerSlideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.towing-company-demo .floating-whatsapp__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  min-height: 76px;
+}
+
+.towing-company-demo .floating-whatsapp__text {
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.towing-company-demo .floating-whatsapp__phone {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.96rem;
+  font-weight: 700;
+}
+
+.towing-company-demo .floating-whatsapp__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #25d366, #1ebc5f);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.towing-company-demo .floating-whatsapp__button:hover,
+.towing-company-demo .floating-whatsapp__button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(37, 211, 102, 0.28);
+}
+
+.towing-company-demo .whatsapp-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 0.78rem;
+}
+
+.towing-company-demo .lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 24, 32, 0.82);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.towing-company-demo .lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.towing-company-demo .lightbox img {
+  max-width: min(92vw, 1000px);
+  max-height: 90vh;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(17, 24, 32, 0.4);
+}
+
+.towing-company-demo .lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  font-size: 2.1rem;
+}
+
+.towing-company-demo .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.towing-company-demo .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.towing-company-demo .nav-toggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.7rem 0.75rem;
+}
+
+.towing-company-demo .nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--white);
+  margin: 0.28rem 0;
+  border-radius: 999px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.towing-company-demo .site-header.menu-open .nav-toggle span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.towing-company-demo .site-header.menu-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.towing-company-demo .site-header.menu-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 1024px) {
+  .towing-company-demo .hero-inner,
+  .towing-company-demo .about-grid,
+  .towing-company-demo .faq-shell,
+  .towing-company-demo .contact-grid,
+  .towing-company-demo .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .towing-company-demo .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .towing-company-demo .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .towing-company-demo .steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .towing-company-demo .hero-card img {
+    height: 520px;
+  }
+}
+
+@media (max-width: 820px) {
+  .towing-company-demo .nav-toggle {
+    display: block;
+  }
+
+  .towing-company-demo .site-nav {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(17, 24, 32, 0.96);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .towing-company-demo .site-header.menu-open .site-nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .towing-company-demo .nav-link,
+  .towing-company-demo .nav-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .towing-company-demo .brand-text {
+    font-size: 0.9rem;
+  }
+
+  .towing-company-demo .demo-banner__inner {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.7rem 0;
+    text-align: center;
+  }
+
+  .towing-company-demo .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .towing-company-demo .section {
+    padding: 78px 0;
+  }
+
+  .towing-company-demo .service-grid,
+  .towing-company-demo .benefits-grid,
+  .towing-company-demo .steps-grid,
+  .towing-company-demo .gallery-grid,
+  .towing-company-demo .form-row,
+  .towing-company-demo .testimonial-slider {
+    grid-template-columns: 1fr;
+  }
+
+  .towing-company-demo .testimonial-slider {
+    display: block;
+  }
+
+  .towing-company-demo .slider-btn {
+    display: none;
+  }
+
+  .towing-company-demo .hero {
+    min-height: 680px;
+  }
+
+  .towing-company-demo .hero-inner {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .towing-company-demo .hero-content h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .towing-company-demo .hero-actions {
+    flex-direction: column;
+  }
+
+  .towing-company-demo .button,
+  .towing-company-demo .demo-banner__button,
+  .towing-company-demo .nav-cta,
+  .towing-company-demo .floating-whatsapp__button {
+    width: 100%;
+  }
+
+  .towing-company-demo .experience-badge {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .towing-company-demo .floating-whatsapp__inner {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0.7rem 0.8rem;
+    min-height: 92px;
+  }
+
+  .towing-company-demo .floating-whatsapp__text {
+    width: 100%;
+    text-align: center;
+    font-size: 0.72rem;
+  }
+
+  .towing-company-demo .floating-whatsapp__phone {
+    width: auto;
+    font-size: 0.88rem;
+  }
+
+  .towing-company-demo .floating-whatsapp__button {
+    width: auto;
+    min-width: 180px;
+  }
+
+  .towing-company-demo {
+    padding-bottom: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .towing-company-demo {
+    scroll-behavior: auto;
+  }
+
+  .towing-company-demo *,
+  .towing-company-demo *::before,
+  .towing-company-demo *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .towing-company-demo .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

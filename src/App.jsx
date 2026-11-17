@@ -16,6 +16,8 @@ import AutoRepair from './demos/auto-repair/AutoRepair';
 import Contractor from './demos/contractor/Contractor';
 import DentalCare from './demos/dental-care/DentalCare';
 import PersonalInjury from './demos/personal-injury/PersonalInjury';
+import TowingCompany from './demos/towing-company/TowingCompany';
+import TreeRemoval from './demos/tree-removal/TreeRemoval';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -55,13 +57,11 @@ export default function App() {
   }
 
   if (normalizedPath.includes('towing-company')) {
-    window.location.replace('/towing-company/index.html');
-    return null;
+    return <TowingCompany />;
   }
 
   if (normalizedPath.includes('tree-removal')) {
-    window.location.replace('/tree-removal/index.html');
-    return null;
+    return <TreeRemoval />;
   }
 
   return (
