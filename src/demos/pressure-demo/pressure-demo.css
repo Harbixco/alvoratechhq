@@ -1,0 +1,2275 @@
+/* ==========================================================================
+   ALVORATECH – PREMIUM PRESSURE WASHING WEBSITE
+   Stylesheet: css/style.css
+   Modern, Powerful, Responsive & Accessible CSS3
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo {
+  /* Brand Color Palette */
+  --color-navy: #0B1F3A;
+  --color-navy-deep: #071426;
+  --color-navy-surface: #102A4D;
+  --color-blue-electric: #1677E8;
+  --color-blue-hover: #1264c7;
+  --color-blue-light: #EBF4FE;
+  --color-aqua: #21C7D9;
+  --color-aqua-hover: #1ab4c4;
+  --color-aqua-light: #E6FBFD;
+  --color-white: #FFFFFF;
+  --color-bg-light: #F4F8FC;
+  --color-bg-alt: #EBF2F9;
+  --color-text: #243447;
+  --color-text-muted: #66758A;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #1EBE5B;
+  --color-border: rgba(11, 31, 58, 0.1);
+  --color-border-hover: rgba(22, 119, 232, 0.35);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 3px rgba(7, 20, 38, 0.05);
+  --shadow-sm: 0 3px 8px rgba(7, 20, 38, 0.06);
+  --shadow-md: 0 10px 25px rgba(7, 20, 38, 0.08);
+  --shadow-lg: 0 18px 45px rgba(7, 20, 38, 0.12);
+  --shadow-xl: 0 25px 65px rgba(7, 20, 38, 0.16);
+  --shadow-glow: 0 0 30px rgba(22, 119, 232, 0.25);
+  --shadow-aqua: 0 0 25px rgba(33, 199, 217, 0.3);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-wide: 1320px;
+  --header-height: 80px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo *, .pressure-demo-demo *::before, .pressure-demo-demo *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.pressure-demo-demo {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+.pressure-demo-demo {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pressure-demo-demo img, .pressure-demo-demo svg, .pressure-demo-demo video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pressure-demo-demo a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.pressure-demo-demo button, .pressure-demo-demo input, .pressure-demo-demo select, .pressure-demo-demo textarea {
+  font: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+}
+
+.pressure-demo-demo button {
+  cursor: pointer;
+  background: none;
+}
+
+.pressure-demo-demo ul, .pressure-demo-demo ol {
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY & UTILITIES
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo h1, .pressure-demo-demo h2, .pressure-demo-demo h3, .pressure-demo-demo h4, .pressure-demo-demo h5, .pressure-demo-demo h6 {
+  font-family: var(--font-heading);
+  color: var(--color-navy);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.pressure-demo-demo h1 {
+  font-size: clamp(2.3rem, 5vw, 3.85rem);
+}
+
+.pressure-demo-demo h2 {
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+}
+
+.pressure-demo-demo h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+}
+
+.pressure-demo-demo h4 {
+  font-size: 1.15rem;
+}
+
+.pressure-demo-demo p {
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.2vw, 1.075rem);
+  line-height: 1.7;
+}
+
+.pressure-demo-demo .text-navy { color: var(--color-navy) !important; }
+.pressure-demo-demo .text-blue { color: var(--color-blue-electric) !important; }
+.pressure-demo-demo .text-aqua { color: var(--color-aqua) !important; }
+.pressure-demo-demo .text-white { color: var(--color-white) !important; }
+.pressure-demo-demo .text-muted { color: var(--color-text-muted) !important; }
+
+.pressure-demo-demo .section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-blue-electric);
+  background-color: var(--color-blue-light);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+}
+
+.pressure-demo-demo .section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.pressure-demo-demo .section-header.text-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.pressure-demo-demo .section-header h2 {
+  margin-bottom: 1rem;
+}
+
+.pressure-demo-demo .container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.pressure-demo-demo .container-wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.pressure-demo-demo .section-padding {
+  padding-top: clamp(4.5rem, 8vw, 7rem);
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+}
+
+.pressure-demo-demo .bg-light {
+  background-color: var(--color-bg-light);
+}
+
+.pressure-demo-demo .bg-white {
+  background-color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pressure-demo-demo .btn-primary {
+  background-color: var(--color-blue-electric);
+  color: var(--color-white);
+  box-shadow: 0 4px 16px rgba(22, 119, 232, 0.35);
+}
+
+.pressure-demo-demo .btn-primary:hover {
+  background-color: var(--color-blue-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(22, 119, 232, 0.45);
+}
+
+.pressure-demo-demo .btn-aqua {
+  background-color: var(--color-aqua);
+  color: var(--color-navy-deep);
+  box-shadow: var(--shadow-aqua);
+}
+
+.pressure-demo-demo .btn-aqua:hover {
+  background-color: var(--color-aqua-hover);
+  color: var(--color-navy-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(33, 199, 217, 0.45);
+}
+
+.pressure-demo-demo .btn-outline {
+  background-color: transparent;
+  color: var(--color-navy);
+  border: 1.5px solid var(--color-border);
+}
+
+.pressure-demo-demo .btn-outline:hover {
+  border-color: var(--color-blue-electric);
+  color: var(--color-blue-electric);
+  background-color: var(--color-blue-light);
+  transform: translateY(-2px);
+}
+
+.pressure-demo-demo .btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+.pressure-demo-demo .btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5);
+}
+
+.pressure-demo-demo .btn-sm {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.pressure-demo-demo .btn-lg {
+  padding: 1rem 2.25rem;
+  font-size: 1.05rem;
+}
+
+.pressure-demo-demo .btn-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------------------------------
+   5. DEMO BANNERS (TOP, MIDDLE, BOTTOM)
+   -------------------------------------------------------------------------- */
+/* TOP DEMO BANNER */
+.pressure-demo-demo .top-demo-banner {
+  background: linear-gradient(90deg, #071426 0%, #0B1F3A 50%, #1677E8 100%);
+  color: var(--color-white);
+  font-size: 0.85rem;
+  padding: 0.65rem 1.5rem;
+  position: relative;
+  z-index: 1001;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pressure-demo-demo .top-demo-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  text-align: center;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.pressure-demo-demo .demo-pill {
+  background-color: rgba(33, 199, 217, 0.2);
+  color: var(--color-aqua);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(33, 199, 217, 0.35);
+}
+
+/* MIDDLE DEMO BANNER */
+.pressure-demo-demo .middle-demo-banner {
+  background: linear-gradient(135deg, #071426 0%, #0B1F3A 60%, #1677E8 100%);
+  color: var(--color-white);
+  padding: 4rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pressure-demo-demo .middle-demo-banner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(33, 199, 217, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pressure-demo-demo .middle-demo-card {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 2.5rem 3rem;
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(12px);
+}
+
+.pressure-demo-demo .middle-demo-text {
+  flex: 1;
+}
+
+.pressure-demo-demo .middle-demo-text h3 {
+  color: var(--color-white);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  margin-bottom: 0.65rem;
+  line-height: 1.3;
+}
+
+.pressure-demo-demo .middle-demo-text p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* BOTTOM DEMO BANNER */
+.pressure-demo-demo .bottom-demo-banner {
+  background-color: var(--color-bg-light);
+  padding: 4.5rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pressure-demo-demo .bottom-demo-card {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F6FD 100%);
+  border: 1.5px solid rgba(22, 119, 232, 0.18);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.pressure-demo-demo .bottom-demo-card h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+.pressure-demo-demo .bottom-demo-card p {
+  max-width: 620px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. HEADER & STICKY NAVIGATION
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .site-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-md);
+  border-bottom-color: transparent;
+}
+
+.pressure-demo-demo .nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+/* Logo */
+.pressure-demo-demo .site-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-navy);
+}
+
+.pressure-demo-demo .logo-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-blue-electric) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-aqua);
+  box-shadow: 0 4px 12px rgba(22, 119, 232, 0.3);
+}
+
+.pressure-demo-demo .logo-text {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-blue-electric) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nav Links */
+.pressure-demo-demo .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.pressure-demo-demo .nav-link {
+  font-family: var(--font-heading);
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--color-text);
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+
+.pressure-demo-demo .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-blue-electric);
+  transition: width var(--transition-normal);
+}
+
+.pressure-demo-demo .nav-link:hover, .pressure-demo-demo .nav-link.active {
+  color: var(--color-blue-electric);
+}
+
+.pressure-demo-demo .nav-link:hover::after, .pressure-demo-demo .nav-link.active::after {
+  width: 100%;
+}
+
+.pressure-demo-demo .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile Toggle */
+.pressure-demo-demo .mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.pressure-demo-demo .mobile-toggle span {
+  display: block;
+  height: 2.5px;
+  width: 100%;
+  background-color: var(--color-navy);
+  border-radius: 3px;
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .mobile-toggle.active span:nth-child(1) {
+  transform: translateY(9.5px) rotate(45deg);
+}
+
+.pressure-demo-demo .mobile-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.pressure-demo-demo .mobile-toggle.active span:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
+}
+
+/* Mobile Drawer Overlay */
+.pressure-demo-demo .mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(7, 20, 38, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.pressure-demo-demo .mobile-nav-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+.pressure-demo-demo .mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100%;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-xl);
+  z-index: 999;
+  padding: 6rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: right var(--transition-normal);
+}
+
+.pressure-demo-demo .mobile-drawer.active {
+  right: 0;
+}
+
+.pressure-demo-demo .mobile-drawer .nav-link {
+  font-size: 1.15rem;
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO SECTION & WATER DROPLET EFFECTS
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .hero-section {
+  position: relative;
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+  background: radial-gradient(circle at 10% 20%, rgba(235, 244, 254, 0.7) 0%, transparent 60%),
+              radial-gradient(circle at 90% 80%, rgba(230, 251, 253, 0.6) 0%, transparent 50%),
+              var(--color-white);
+  overflow: hidden;
+}
+
+/* Floating Droplets */
+.pressure-demo-demo .droplet-particle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background: rgba(33, 199, 217, 0.35);
+  pointer-events: none;
+  filter: blur(1px);
+  animation: floatDroplet 7s ease-in-out infinite;
+}
+
+.pressure-demo-demo .droplet-1 { top: 15%; left: 8%; animation-delay: 0s; width: 18px; height: 18px; }
+.pressure-demo-demo .droplet-2 { top: 65%; left: 4%; animation-delay: 2.5s; width: 12px; height: 12px; }
+.pressure-demo-demo .droplet-3 { top: 25%; right: 7%; animation-delay: 1.2s; width: 16px; height: 16px; }
+.pressure-demo-demo .droplet-4 { bottom: 15%; right: 12%; animation-delay: 3.5s; width: 10px; height: 10px; }
+
+@keyframes floatDroplet {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+  50% { transform: translateY(-25px) scale(1.15); opacity: 0.8; }
+}
+
+.pressure-demo-demo .hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.pressure-demo-demo .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-aqua-light);
+  color: #0b7a85;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(33, 199, 217, 0.35);
+}
+
+.pressure-demo-demo .hero-title {
+  margin-bottom: 1.25rem;
+}
+
+.pressure-demo-demo .hero-title .text-gradient {
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-blue-electric) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pressure-demo-demo .hero-description {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  margin-bottom: 2.25rem;
+  max-width: 540px;
+}
+
+.pressure-demo-demo .hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.pressure-demo-demo .hero-trust-indicators {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.pressure-demo-demo .hero-trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.pressure-demo-demo .hero-trust-badge svg {
+  color: var(--color-blue-electric);
+  width: 18px;
+  height: 18px;
+}
+
+/* Hero Media & Floating Badges */
+.pressure-demo-demo .hero-media-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.pressure-demo-demo .hero-image-container {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 4px solid var(--color-white);
+}
+
+.pressure-demo-demo .hero-image {
+  width: 100%;
+  height: 490px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.pressure-demo-demo .hero-image-container:hover .hero-image {
+  transform: scale(1.03);
+}
+
+.pressure-demo-demo .floating-pressure-card {
+  position: absolute;
+  bottom: 8%;
+  left: -6%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  padding: 0.95rem 1.35rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.pressure-demo-demo .floating-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--color-blue-light);
+  color: var(--color-blue-electric);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pressure-demo-demo .floating-text strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--color-navy);
+}
+
+.pressure-demo-demo .floating-text span {
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --------------------------------------------------------------------------
+   8. TRUST INDICATORS SECTION
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .trust-section {
+  padding: 2.25rem 0;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pressure-demo-demo .trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.pressure-demo-demo .trust-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .trust-item:hover {
+  background-color: var(--color-bg-light);
+}
+
+.pressure-demo-demo .trust-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-electric);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pressure-demo-demo .trust-item-title {
+  font-family: var(--font-heading);
+  font-size: 0.975rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* --------------------------------------------------------------------------
+   9. ABOUT ALVORATECH SECTION
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .about-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.pressure-demo-demo .about-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid var(--color-white);
+}
+
+.pressure-demo-demo .about-image {
+  width: 100%;
+  height: 490px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.pressure-demo-demo .about-image-wrapper:hover .about-image {
+  transform: scale(1.03);
+}
+
+.pressure-demo-demo .about-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0 2.5rem 0;
+}
+
+.pressure-demo-demo .about-feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .about-feature-card:hover {
+  transform: translateX(6px);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.pressure-demo-demo .feature-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: var(--color-aqua-light);
+  color: #0b7a85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pressure-demo-demo .feature-info h4 {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.pressure-demo-demo .feature-info p {
+  font-size: 0.925rem;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. PRESSURE WASHING SERVICES (8 SERVICES)
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .services-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+.pressure-demo-demo .service-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-border-hover);
+}
+
+.pressure-demo-demo .service-image-box {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pressure-demo-demo .service-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.pressure-demo-demo .service-card:hover .service-image {
+  transform: scale(1.06);
+}
+
+.pressure-demo-demo .service-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(7, 20, 38, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.pressure-demo-demo .service-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pressure-demo-demo .service-content h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.65rem;
+}
+
+.pressure-demo-demo .service-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.pressure-demo-demo .service-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-blue-electric);
+  transition: all var(--transition-fast);
+}
+
+.pressure-demo-demo .service-cta-link svg {
+  transition: transform var(--transition-fast);
+}
+
+.pressure-demo-demo .service-cta-link:hover {
+  color: #0b7a85;
+}
+
+.pressure-demo-demo .service-cta-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   11. BEFORE-AND-AFTER TRANSFORMATION GALLERY
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .ba-section {
+  position: relative;
+}
+
+.pressure-demo-demo .ba-disclaimer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-electric);
+  font-family: var(--font-heading);
+  font-size: 0.825rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 2.5rem;
+  border: 1px dashed rgba(22, 119, 232, 0.35);
+}
+
+.pressure-demo-demo .ba-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.pressure-demo-demo .ba-tab-btn {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.6rem 1.35rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-muted);
+  border: 1.5px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.pressure-demo-demo .ba-tab-btn:hover, .pressure-demo-demo .ba-tab-btn.active {
+  background-color: var(--color-blue-electric);
+  color: var(--color-white);
+  border-color: var(--color-blue-electric);
+  box-shadow: 0 4px 14px rgba(22, 119, 232, 0.3);
+}
+
+/* Interactive Before-After Slider Container */
+.pressure-demo-demo .ba-slider-container {
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 4px solid var(--color-white);
+  height: 480px;
+  user-select: none;
+}
+
+.pressure-demo-demo .ba-image-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pressure-demo-demo .ba-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pressure-demo-demo .ba-image-before {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  overflow: hidden;
+  z-index: 2;
+  border-right: 3px solid var(--color-white);
+}
+
+.pressure-demo-demo .ba-image-before .ba-img {
+  width: 880px;
+  max-width: none;
+  height: 100%;
+}
+
+/* Labels */
+.pressure-demo-demo .ba-label {
+  position: absolute;
+  top: 1.25rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 4;
+}
+
+.pressure-demo-demo .ba-label-before {
+  left: 1.25rem;
+  background-color: rgba(7, 20, 38, 0.85);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pressure-demo-demo .ba-label-after {
+  right: 1.25rem;
+  background-color: var(--color-blue-electric);
+  color: var(--color-white);
+  box-shadow: 0 2px 8px rgba(22, 119, 232, 0.4);
+}
+
+/* Draggable Handle */
+.pressure-demo-demo .ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  margin-left: -20px;
+  cursor: ew-resize;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pressure-demo-demo .ba-handle-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  border: 3px solid var(--color-blue-electric);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-blue-electric);
+  transition: transform var(--transition-fast);
+}
+
+.pressure-demo-demo .ba-slider-container:hover .ba-handle-circle {
+  transform: scale(1.1);
+}
+
+.pressure-demo-demo .ba-caption {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* --------------------------------------------------------------------------
+   12. WHY CHOOSE ALVORATECH SECTION
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .why-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.pressure-demo-demo .why-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 4px solid var(--color-white);
+}
+
+.pressure-demo-demo .why-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.pressure-demo-demo .why-image-wrapper:hover .why-image {
+  transform: scale(1.03);
+}
+
+.pressure-demo-demo .why-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pressure-demo-demo .why-benefit-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .why-benefit-card:hover {
+  background-color: var(--color-white);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.pressure-demo-demo .why-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-electric);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.pressure-demo-demo .why-benefit-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.pressure-demo-demo .why-benefit-card p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   13. HOW IT WORKS SECTION
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .steps-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.pressure-demo-demo .steps-timeline::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: dashed 2px var(--color-border);
+  z-index: 1;
+}
+
+.pressure-demo-demo .step-item {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pressure-demo-demo .step-number-box {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  border: 2px solid var(--color-blue-electric);
+  color: var(--color-blue-electric);
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(22, 119, 232, 0.15);
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .step-item:hover .step-number-box {
+  background: var(--color-blue-electric);
+  color: var(--color-white);
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(22, 119, 232, 0.35);
+}
+
+.pressure-demo-demo .step-item h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.pressure-demo-demo .step-item p {
+  font-size: 0.9rem;
+  max-width: 240px;
+}
+
+/* --------------------------------------------------------------------------
+   14. OUR WORK GALLERY & LIGHTBOX
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .gallery-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.pressure-demo-demo .filter-btn {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.pressure-demo-demo .filter-btn:hover, .pressure-demo-demo .filter-btn.active {
+  background-color: var(--color-blue-electric);
+  color: var(--color-white);
+  border-color: var(--color-blue-electric);
+  box-shadow: 0 4px 14px rgba(22, 119, 232, 0.25);
+}
+
+.pressure-demo-demo .gallery-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.pressure-demo-demo .gallery-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 270px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  border: 2px solid var(--color-white);
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.pressure-demo-demo .gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.pressure-demo-demo .gallery-card:hover .gallery-image {
+  transform: scale(1.08);
+}
+
+.pressure-demo-demo .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 20, 38, 0.85) 0%, rgba(7, 20, 38, 0.2) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.pressure-demo-demo .gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.pressure-demo-demo .gallery-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-aqua);
+  margin-bottom: 0.25rem;
+}
+
+.pressure-demo-demo .gallery-title {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+/* Lightbox Modal */
+.pressure-demo-demo .lightbox-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(7, 20, 38, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.pressure-demo-demo .lightbox-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.pressure-demo-demo .lightbox-container {
+  max-width: 900px;
+  max-height: 85vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pressure-demo-demo .lightbox-img {
+  max-width: 100%;
+  max-height: 75vh;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+
+.pressure-demo-demo .lightbox-caption {
+  color: var(--color-white);
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.pressure-demo-demo .lightbox-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: none;
+  color: var(--color-white);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.pressure-demo-demo .lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+/* --------------------------------------------------------------------------
+   15. CUSTOMER TESTIMONIALS SECTION & CAROUSEL
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .testimonials-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.pressure-demo-demo .testimonials-carousel-wrapper {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.pressure-demo-demo .testimonials-slider {
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.pressure-demo-demo .testimonials-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pressure-demo-demo .testimonial-slide {
+  min-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.pressure-demo-demo .testimonial-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  position: relative;
+  text-align: center;
+}
+
+.pressure-demo-demo .stars-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 1.25rem;
+  color: #FFB800;
+  font-size: 1.15rem;
+}
+
+.pressure-demo-demo .testimonial-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--color-navy);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.pressure-demo-demo .testimonial-author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pressure-demo-demo .author-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.pressure-demo-demo .author-role {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Slider Controls */
+.pressure-demo-demo .slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pressure-demo-demo .slider-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.pressure-demo-demo .slider-btn:hover {
+  background-color: var(--color-blue-electric);
+  color: var(--color-white);
+  border-color: var(--color-blue-electric);
+  transform: scale(1.08);
+}
+
+.pressure-demo-demo .slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pressure-demo-demo .slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-border);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.pressure-demo-demo .slider-dot.active {
+  width: 26px;
+  background-color: var(--color-blue-electric);
+}
+
+/* --------------------------------------------------------------------------
+   16. CALL-TO-ACTION SECTION
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .special-cta-section {
+  position: relative;
+  padding: clamp(5rem, 8vw, 7.5rem) 1.5rem;
+  background-image: linear-gradient(135deg, rgba(7, 20, 38, 0.92) 0%, rgba(11, 31, 58, 0.88) 100%),
+                    url('/pressure-demo/assets/images/pw-cta-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.pressure-demo-demo .special-cta-content {
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pressure-demo-demo .special-cta-content h2 {
+  color: var(--color-white);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  margin-bottom: 1.25rem;
+}
+
+.pressure-demo-demo .special-cta-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  margin-bottom: 2.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   17. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .faq-container {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pressure-demo-demo .faq-item {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.pressure-demo-demo .faq-item:hover {
+  border-color: var(--color-border-hover);
+}
+
+.pressure-demo-demo .faq-item.active {
+  border-color: var(--color-blue-electric);
+  box-shadow: var(--shadow-md);
+}
+
+.pressure-demo-demo .faq-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.35rem 1.75rem;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  background: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.pressure-demo-demo .faq-button:hover {
+  color: var(--color-blue-electric);
+}
+
+.pressure-demo-demo .faq-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-light);
+  color: var(--color-navy);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.pressure-demo-demo .faq-item.active .faq-icon {
+  background-color: var(--color-blue-electric);
+  color: var(--color-white);
+  transform: rotate(180deg);
+}
+
+.pressure-demo-demo .faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease-out, padding 0.35s ease;
+  padding: 0 1.75rem;
+}
+
+.pressure-demo-demo .faq-item.active .faq-content {
+  padding-bottom: 1.5rem;
+}
+
+.pressure-demo-demo .faq-content p {
+  font-size: 0.975rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   18. CONTACT SECTION & FORM
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: flex-start;
+}
+
+.pressure-demo-demo .contact-info-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.pressure-demo-demo .contact-info-card h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.45rem;
+}
+
+.pressure-demo-demo .contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.pressure-demo-demo .contact-channel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.pressure-demo-demo .channel-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-electric);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pressure-demo-demo .channel-icon-box.whatsapp-bg {
+  background-color: rgba(37, 211, 102, 0.15);
+  color: var(--color-whatsapp);
+}
+
+.pressure-demo-demo .channel-info h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.pressure-demo-demo .channel-link {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  transition: color var(--transition-fast);
+}
+
+.pressure-demo-demo .channel-link:hover {
+  color: var(--color-blue-electric);
+}
+
+.pressure-demo-demo .contact-location-box {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.pressure-demo-demo .contact-location-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.pressure-demo-demo .contact-location-value {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* Contact Form */
+.pressure-demo-demo .contact-form-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: 2.75rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.pressure-demo-demo .contact-form-card h3 {
+  font-size: 1.45rem;
+  margin-bottom: 0.5rem;
+}
+
+.pressure-demo-demo .contact-form-card > p {
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.pressure-demo-demo .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.pressure-demo-demo .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.pressure-demo-demo .form-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 0.45rem;
+}
+
+.pressure-demo-demo .form-input, .pressure-demo-demo .form-select, .pressure-demo-demo .form-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  background-color: var(--color-bg-light);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.pressure-demo-demo .form-input:focus, .pressure-demo-demo .form-select:focus, .pressure-demo-demo .form-textarea:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-blue-electric);
+  box-shadow: 0 0 0 3px rgba(22, 119, 232, 0.15);
+}
+
+.pressure-demo-demo .form-input.is-invalid, .pressure-demo-demo .form-select.is-invalid, .pressure-demo-demo .form-textarea.is-invalid {
+  border-color: #E53E3E;
+  background-color: #FFF5F5;
+}
+
+.pressure-demo-demo .form-error {
+  display: none;
+  font-size: 0.8rem;
+  color: #E53E3E;
+  margin-top: 0.35rem;
+}
+
+.pressure-demo-demo .form-error.visible {
+  display: block;
+}
+
+.pressure-demo-demo .form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.pressure-demo-demo .form-notice {
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+  margin-top: 0.85rem;
+  text-align: center;
+}
+
+.pressure-demo-demo .form-status {
+  display: none;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+  font-size: 0.925rem;
+}
+
+.pressure-demo-demo .form-status.success {
+  display: block;
+  background-color: rgba(37, 211, 102, 0.15);
+  color: #15803D;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   19. FOOTER
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .site-footer {
+  background-color: var(--color-navy-deep);
+  color: rgba(255, 255, 255, 0.75);
+  padding-top: clamp(4rem, 6vw, 5.5rem);
+  padding-bottom: clamp(5.5rem, 8vw, 7rem); /* Extra bottom padding so floating WhatsApp never covers footer */
+  position: relative;
+}
+
+.pressure-demo-demo .footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 3.5rem;
+}
+
+.pressure-demo-demo .footer-col-brand .site-logo {
+  color: var(--color-white);
+  margin-bottom: 1.25rem;
+}
+
+.pressure-demo-demo .footer-col-brand .logo-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #90CAF9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pressure-demo-demo .footer-col-brand p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.pressure-demo-demo .footer-heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 1.25rem;
+}
+
+.pressure-demo-demo .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pressure-demo-demo .footer-link {
+  font-size: 0.925rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transition-fast);
+}
+
+.pressure-demo-demo .footer-link:hover {
+  color: var(--color-white);
+  padding-left: 4px;
+}
+
+.pressure-demo-demo .footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.925rem;
+  margin-bottom: 0.85rem;
+}
+
+.pressure-demo-demo .footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* --------------------------------------------------------------------------
+   20. FIXED WHATSAPP FLOATING BOTTOM BANNER
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .fixed-whatsapp-banner {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  animation: entrancePulse 1s ease-out;
+  cursor: pointer;
+}
+
+.pressure-demo-demo .fixed-whatsapp-banner:hover {
+  background-color: var(--color-whatsapp-hover);
+  color: var(--color-white);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 36px rgba(37, 211, 102, 0.6);
+}
+
+.pressure-demo-demo .fixed-whatsapp-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.pressure-demo-demo .fixed-whatsapp-text {
+  letter-spacing: 0.02em;
+}
+
+@keyframes entrancePulse {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   21. SCROLL REVEAL ANIMATIONS
+   -------------------------------------------------------------------------- */
+.pressure-demo-demo .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pressure-demo-demo .reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pressure-demo-demo .stagger-1 { transition-delay: 0.1s; }
+.pressure-demo-demo .stagger-2 { transition-delay: 0.2s; }
+.pressure-demo-demo .stagger-3 { transition-delay: 0.3s; }
+.pressure-demo-demo .stagger-4 { transition-delay: 0.4s; }
+
+/* --------------------------------------------------------------------------
+   22. RESPONSIVE DESIGN (MEDIA QUERIES)
+   -------------------------------------------------------------------------- */
+/* Large Desktop / Laptops (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .pressure-demo-demo .services-grid-8 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pressure-demo-demo .gallery-grid-8 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Medium Tablets (max-width: 992px) */
+@media (max-width: 992px) {
+  .pressure-demo-demo {
+    --header-height: 70px;
+  }
+
+  .pressure-demo-demo .nav-links, .pressure-demo-demo .nav-actions .btn {
+    display: none;
+  }
+
+  .pressure-demo-demo .mobile-toggle {
+    display: flex;
+  }
+
+  .pressure-demo-demo .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .pressure-demo-demo .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pressure-demo-demo .hero-actions {
+    justify-content: center;
+  }
+
+  .pressure-demo-demo .hero-trust-indicators {
+    justify-content: center;
+  }
+
+  .pressure-demo-demo .hero-media-wrapper {
+    max-width: 580px;
+    margin: 1.5rem auto 0 auto;
+  }
+
+  .pressure-demo-demo .floating-pressure-card {
+    left: 2%;
+    bottom: 4%;
+  }
+
+  .pressure-demo-demo .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .pressure-demo-demo .about-grid, .pressure-demo-demo .why-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .pressure-demo-demo .about-media, .pressure-demo-demo .why-image-wrapper {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .pressure-demo-demo .services-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pressure-demo-demo .steps-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 1.5rem;
+  }
+
+  .pressure-demo-demo .steps-timeline::before {
+    display: none;
+  }
+
+  .pressure-demo-demo .gallery-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pressure-demo-demo .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .pressure-demo-demo .middle-demo-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.25rem;
+  }
+
+  .pressure-demo-demo .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .pressure-demo-demo .ba-slider-container {
+    height: 380px;
+  }
+}
+
+/* Small Screens / Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .pressure-demo-demo .section-padding {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .pressure-demo-demo .services-grid-8 {
+    grid-template-columns: 1fr;
+  }
+
+  .pressure-demo-demo .gallery-grid-8 {
+    grid-template-columns: 1fr;
+  }
+
+  .pressure-demo-demo .why-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pressure-demo-demo .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pressure-demo-demo .contact-form-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .pressure-demo-demo .contact-info-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .pressure-demo-demo .bottom-demo-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .pressure-demo-demo .ba-slider-container {
+    height: 300px;
+  }
+
+  .pressure-demo-demo .floating-pressure-card {
+    display: none;
+  }
+
+  /* Fixed WhatsApp Bottom Banner */
+  .pressure-demo-demo .fixed-whatsapp-banner {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .pressure-demo-demo .fixed-whatsapp-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Extra Small Screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .pressure-demo-demo .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pressure-demo-demo .steps-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .pressure-demo-demo .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .pressure-demo-demo .hero-actions .btn {
+    width: 100%;
+  }
+
+  .pressure-demo-demo .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pressure-demo-demo .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pressure-demo-demo .ba-slider-container {
+    height: 250px;
+  }
+
+  .pressure-demo-demo .fixed-whatsapp-banner {
+    bottom: 12px;
+    right: 12px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   23. ACCESSIBILITY: PREFERS REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .pressure-demo-demo *, .pressure-demo-demo *::before, .pressure-demo-demo *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Guarantee visibility for revealed elements in React SPA */
+.pressure-demo-demo .reveal,
+.pressure-demo-demo [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}

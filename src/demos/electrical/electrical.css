@@ -1,0 +1,2015 @@
+/* ==========================================================================
+   ALVORATECH – PREMIER ELECTRICAL CONTRACTORS
+   Licensed Residential & Commercial Electrical Engineering
+   Pure Custom CSS3 Architecture
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & ROOT VARIABLES
+   -------------------------------------------------------------------------- */
+.electrical-demo {
+  /* Color Palette */
+  --color-primary: #0B132B;          /* Deep Graphite / Electrical Navy */
+  --color-primary-dark: #050814;     /* Ultra Dark Sub-station */
+  --color-surface-dark: #1C2541;     /* Circuit Slate */
+  --color-surface-card: #FFFFFF;     /* White Card */
+  --color-accent: #2563EB;           /* Precision Cobalt */
+  --color-accent-hover: #1D4ED8;
+  --color-accent-light: #EFF6FF;
+  --color-amber: #F59E0B;            /* High-Voltage Safety Amber */
+  --color-amber-hover: #D97706;
+  --color-amber-light: #FEF3C7;
+  --color-electric: #38BDF8;         /* Cyan Spark Accent */
+  --color-danger: #EF4444;           /* Warning Red */
+  --color-danger-light: #FEE2E2;
+  --color-bg-light: #F8FAFC;         /* Crisp Off-White */
+  --color-bg-alt: #F1F5F9;           /* Neutral Grey */
+  --color-border: #E2E8F0;           /* Clean Border */
+  --color-border-dark: #334155;
+
+  /* Text Colors */
+  --color-text: #1E293B;             /* Charcoal */
+  --color-text-muted: #64748B;       /* Muted Slate */
+  --color-text-light: #94A3B8;
+  --color-text-inverse: #FFFFFF;
+  --color-white: #FFFFFF;            /* Pure White */
+
+  /* Functional */
+  --color-whatsapp: #25D366;         /* WhatsApp Green */
+  --color-whatsapp-hover: #20BA56;
+  --color-star: #FBBF24;
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Elevations & Glows */
+  --shadow-sm: 0 1px 3px rgba(11, 19, 43, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(11, 19, 43, 0.08), 0 2px 4px -2px rgba(11, 19, 43, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(11, 19, 43, 0.1), 0 4px 6px -4px rgba(11, 19, 43, 0.06);
+  --shadow-xl: 0 20px 25px -5px rgba(11, 19, 43, 0.12), 0 8px 10px -6px rgba(11, 19, 43, 0.06);
+  --shadow-amber-glow: 0 0 25px rgba(245, 158, 11, 0.35);
+  --shadow-electric-glow: 0 0 25px rgba(37, 99, 235, 0.3);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --max-width: 1240px;
+  --max-width-wide: 1360px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE ELEMENTS
+   -------------------------------------------------------------------------- */
+.electrical-demo *, .electrical-demo *::before, .electrical-demo *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.electrical-demo {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+.electrical-demo {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.electrical-demo img, .electrical-demo picture, .electrical-demo svg, .electrical-demo video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.electrical-demo a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.electrical-demo button, .electrical-demo input, .electrical-demo select, .electrical-demo textarea {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.electrical-demo button {
+  cursor: pointer;
+}
+
+.electrical-demo ul, .electrical-demo ol {
+  list-style: none;
+}
+
+.electrical-demo h1, .electrical-demo h2, .electrical-demo h3, .electrical-demo h4, .electrical-demo h5, .electrical-demo h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.electrical-demo p {
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT UTILITIES & CONTAINERS
+   -------------------------------------------------------------------------- */
+.electrical-demo .container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.electrical-demo .container-wide {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.electrical-demo .section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.electrical-demo .section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.electrical-demo .section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  background-color: var(--color-amber-light);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+}
+
+.electrical-demo .section-eyebrow.blue {
+  color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+.electrical-demo .section-eyebrow.danger {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.electrical-demo .section-header h2 {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  margin-bottom: 1rem;
+}
+
+.electrical-demo .section-header p {
+  font-size: 1.125rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS & UI COMPONENTS
+   -------------------------------------------------------------------------- */
+.electrical-demo .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.electrical-demo .btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.electrical-demo .btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+}
+
+.electrical-demo .btn-amber {
+  background-color: var(--color-amber);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+}
+
+.electrical-demo .btn-amber:hover {
+  background-color: var(--color-amber-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+}
+
+.electrical-demo .btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.electrical-demo .btn-secondary:hover {
+  background-color: var(--color-bg-light);
+  border-color: var(--color-text-muted);
+  transform: translateY(-2px);
+}
+
+.electrical-demo .btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.electrical-demo .btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.electrical-demo .btn-sm {
+  padding: 0.6rem 1.15rem;
+  font-size: 0.875rem;
+}
+
+.electrical-demo .btn-lg {
+  padding: 1rem 2.25rem;
+  font-size: 1.0625rem;
+}
+
+.electrical-demo .btn-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. DEMO BANNERS (TOP, MIDDLE, BOTTOM)
+   -------------------------------------------------------------------------- */
+/* Top Demo Banner */
+.electrical-demo .top-demo-banner {
+  background: linear-gradient(90deg, #050814 0%, #0B132B 50%, #1C2541 100%);
+  color: #FFFFFF;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.875rem;
+  position: relative;
+  z-index: 1001;
+}
+
+.electrical-demo .top-demo-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.electrical-demo .top-demo-content span,
+.electrical-demo .top-demo-text {
+  color: #FFFFFF !important;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+}
+
+.electrical-demo .top-demo-content strong,
+.electrical-demo .top-demo-text strong {
+  color: #FFFFFF !important;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.electrical-demo .demo-pill {
+  background: linear-gradient(135deg, var(--color-amber), #D97706);
+  color: var(--color-primary-dark);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+/* Middle Demo Banner */
+.electrical-demo .middle-demo-banner {
+  background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+  color: var(--color-white);
+  padding: 4.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.electrical-demo .middle-demo-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.electrical-demo .middle-demo-card {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.electrical-demo .middle-demo-card .demo-pill {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.electrical-demo .middle-demo-card h3 {
+  color: var(--color-white);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  margin-bottom: 1rem;
+}
+
+.electrical-demo .middle-demo-card p {
+  color: #CBD5E1;
+  font-size: 1.125rem;
+  max-width: 680px;
+  margin: 0 auto 2rem auto;
+}
+
+/* Bottom Demo Banner */
+.electrical-demo .bottom-demo-banner {
+  background: linear-gradient(135deg, #1C2541 0%, #0B132B 100%);
+  color: var(--color-white);
+  padding: 4.5rem 1.5rem;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.electrical-demo .bottom-demo-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.electrical-demo .bottom-demo-text {
+  max-width: 650px;
+}
+
+.electrical-demo .bottom-demo-text h3 {
+  color: var(--color-white);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  margin-bottom: 0.75rem;
+}
+
+.electrical-demo .bottom-demo-text p {
+  color: #94A3B8;
+  font-size: 1.0625rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. STICKY HEADER & STREAMLINED NAVIGATION
+   -------------------------------------------------------------------------- */
+.electrical-demo .site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  transition: all var(--transition-normal);
+}
+
+.electrical-demo .site-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-md);
+}
+
+.electrical-demo .nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.75rem;
+  gap: 1.5rem;
+}
+
+.electrical-demo .site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.electrical-demo .logo-icon-box {
+  width: 2.65rem;
+  height: 2.65rem;
+  background: linear-gradient(135deg, var(--color-amber), #D97706);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+}
+
+.electrical-demo .logo-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+}
+
+.electrical-demo .logo-tagline {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 700;
+  display: block;
+  margin-top: -3px;
+}
+
+/* Streamlined 5-Link Navigation */
+.electrical-demo .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.electrical-demo .nav-link {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  position: relative;
+  padding: 0.4rem 0;
+}
+
+.electrical-demo .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-amber);
+  transition: width var(--transition-normal);
+}
+
+.electrical-demo .nav-link:hover {
+  color: var(--color-amber);
+}
+
+.electrical-demo .nav-link:hover::after {
+  width: 100%;
+}
+
+.electrical-demo .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.electrical-demo .mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.75rem;
+  height: 1.25rem;
+  background: transparent;
+  padding: 0;
+}
+
+.electrical-demo .mobile-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  transition: all var(--transition-normal);
+}
+
+/* Mobile Drawer */
+.electrical-demo .mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 19, 43, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.electrical-demo .mobile-nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.electrical-demo .mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100%;
+  background-color: var(--color-white);
+  z-index: 1060;
+  padding: 2.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-xl);
+  transition: right var(--transition-smooth);
+}
+
+.electrical-demo .mobile-drawer.active {
+  right: 0;
+}
+
+.electrical-demo .mobile-drawer .nav-link {
+  font-size: 1.125rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO SECTION
+   -------------------------------------------------------------------------- */
+.electrical-demo .hero-section {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  padding: 4.5rem 0 5.5rem 0;
+  overflow: hidden;
+}
+
+.electrical-demo .hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.electrical-demo .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.electrical-demo .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+.electrical-demo .hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-amber);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+.electrical-demo .hero-badge-text {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.electrical-demo .hero-title {
+  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.12;
+  margin-bottom: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.electrical-demo .hero-title .highlight-amber {
+  color: var(--color-amber);
+  position: relative;
+  display: inline-block;
+}
+
+.electrical-demo .hero-subtitle {
+  font-size: 1.1875rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin-bottom: 2.25rem;
+  max-width: 580px;
+}
+
+.electrical-demo .hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.electrical-demo .hero-trust-row {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.electrical-demo .trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.electrical-demo .trust-item svg {
+  color: var(--color-amber);
+  flex-shrink: 0;
+}
+
+.electrical-demo .trust-item span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Hero Media Image Presentation */
+.electrical-demo .hero-media {
+  position: relative;
+  z-index: 2;
+}
+
+.electrical-demo .hero-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(11, 19, 43, 0.28);
+  border: 4px solid var(--color-white);
+}
+
+.electrical-demo .hero-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.electrical-demo .hero-image-wrapper:hover .hero-image {
+  transform: scale(1.02);
+}
+
+/* Floating Overlay Badge */
+.electrical-demo .hero-floating-card {
+  position: absolute;
+  bottom: 1.75rem;
+  left: -1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.1rem 1.4rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 3;
+}
+
+.electrical-demo .floating-card-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  background: var(--color-amber-light);
+  color: var(--color-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.electrical-demo .floating-card-text strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.electrical-demo .floating-card-text span {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. TRUST METRICS STRIP
+   -------------------------------------------------------------------------- */
+.electrical-demo .metrics-strip {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 3rem 0;
+}
+
+.electrical-demo .metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.electrical-demo .metric-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  padding: 0.5rem;
+}
+
+.electrical-demo .metric-icon-wrap {
+  width: 3.25rem;
+  height: 3.25rem;
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.electrical-demo .metric-info h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 0.2rem;
+}
+
+.electrical-demo .metric-info p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   9. CORE ELECTRICAL SERVICES (8 CARDS)
+   -------------------------------------------------------------------------- */
+.electrical-demo .services-section {
+  background-color: var(--color-bg-light);
+}
+
+.electrical-demo .services-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+.electrical-demo .service-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.electrical-demo .service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.electrical-demo .service-image-box {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+}
+
+.electrical-demo .service-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.electrical-demo .service-card:hover .service-image {
+  transform: scale(1.08);
+}
+
+.electrical-demo .service-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(6px);
+  color: var(--color-amber);
+  font-family: var(--font-heading);
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.electrical-demo .service-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.electrical-demo .service-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.65rem;
+}
+
+.electrical-demo .service-content p {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.electrical-demo .service-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.electrical-demo .service-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.electrical-demo .service-feature-item svg {
+  color: var(--color-amber);
+  width: 14px;
+  height: 14px;
+}
+
+.electrical-demo .service-action {
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   10. INTERACTIVE ELECTRICAL LOAD CALCULATOR
+   -------------------------------------------------------------------------- */
+.electrical-demo .calculator-section {
+  background-color: var(--color-white);
+  position: relative;
+}
+
+.electrical-demo .calc-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.electrical-demo .load-toggles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.electrical-demo .load-toggle-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.electrical-demo .load-toggle-card.active {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.electrical-demo .load-toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.electrical-demo .load-toggle-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-light);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.electrical-demo .load-toggle-card.active .load-toggle-icon {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.electrical-demo .load-toggle-title strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  color: var(--color-primary);
+}
+
+.electrical-demo .load-toggle-title span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.electrical-demo .load-amp-pill {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.electrical-demo .load-toggle-card.active .load-amp-pill {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* Load Gauge Output Card */
+.electrical-demo .calc-output-card {
+  background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+  color: var(--color-white);
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.electrical-demo .gauge-header {
+  margin-bottom: 2rem;
+}
+
+.electrical-demo .gauge-header span {
+  display: block;
+  font-size: 0.875rem;
+  color: #94A3B8;
+  margin-bottom: 0.25rem;
+}
+
+.electrical-demo .gauge-amps-display {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+}
+
+.electrical-demo .gauge-bar-track {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.electrical-demo .gauge-bar-fill {
+  height: 100%;
+  width: 35%; /* Updated via JS */
+  background: linear-gradient(90deg, #38BDF8 0%, #F59E0B 75%, #EF4444 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+.electrical-demo .gauge-recommendation-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+}
+
+.electrical-demo .gauge-recommendation-box h4 {
+  color: var(--color-amber);
+  font-size: 1.0625rem;
+  margin-bottom: 0.35rem;
+}
+
+.electrical-demo .gauge-recommendation-box p {
+  color: #CBD5E1;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   11. 5-SCENARIO BEFORE & AFTER COMPARISON SLIDER
+   -------------------------------------------------------------------------- */
+.electrical-demo .ba-section {
+  background-color: var(--color-bg-light);
+}
+
+.electrical-demo .ba-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.electrical-demo .ba-tab-btn {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.electrical-demo .ba-tab-btn:hover {
+  color: var(--color-primary);
+  border-color: var(--color-text-muted);
+}
+
+.electrical-demo .ba-tab-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.electrical-demo .ba-slider-container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 4px solid var(--color-white);
+  background-color: #000;
+  aspect-ratio: 16 / 9;
+  user-select: none;
+}
+
+.electrical-demo .ba-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.electrical-demo .ba-image-before {
+  z-index: 1;
+}
+
+.electrical-demo .ba-image-after-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.electrical-demo .ba-image-after-wrap .ba-image-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 960px;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+
+.electrical-demo .ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: var(--color-white);
+  z-index: 10;
+  cursor: ew-resize;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.electrical-demo .ba-handle-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  color: var(--color-primary);
+}
+
+.electrical-demo .ba-badge {
+  position: absolute;
+  top: 1.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.electrical-demo .ba-badge-before {
+  right: 1.5rem;
+  background: rgba(11, 19, 43, 0.85);
+  color: #E2E8F0;
+  backdrop-filter: blur(8px);
+}
+
+.electrical-demo .ba-badge-after {
+  left: 1.5rem;
+  background: rgba(37, 99, 235, 0.9);
+  color: var(--color-white);
+  backdrop-filter: blur(8px);
+}
+
+.electrical-demo .ba-range-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 20;
+}
+
+/* --------------------------------------------------------------------------
+   12. HAZARDOUS ELECTRICAL PANELS WARNING MATRIX
+   -------------------------------------------------------------------------- */
+.electrical-demo .panels-matrix-section {
+  background-color: var(--color-white);
+}
+
+.electrical-demo .panel-warning-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.electrical-demo .panel-warning-card {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.electrical-demo .panel-warning-card:hover {
+  transform: translateY(-5px);
+  background: var(--color-white);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-danger);
+}
+
+.electrical-demo .danger-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-danger);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.electrical-demo .panel-warning-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.electrical-demo .panel-warning-card p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.electrical-demo .warning-bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+}
+
+.electrical-demo .warning-bullet-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.electrical-demo .warning-bullet-list li svg {
+  color: var(--color-danger);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   13. BRAND PARTNERSHIPS STRIP
+   -------------------------------------------------------------------------- */
+.electrical-demo .brands-strip {
+  background-color: var(--color-bg-light);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.electrical-demo .brands-strip-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.electrical-demo .brands-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.electrical-demo .brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.electrical-demo .brand-badge strong {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   14. FILTERABLE PROJECT GALLERY (LIGHTBOX ENABLED)
+   -------------------------------------------------------------------------- */
+.electrical-demo .gallery-section {
+  background-color: var(--color-white);
+}
+
+.electrical-demo .gallery-filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.electrical-demo .filter-btn {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.electrical-demo .filter-btn:hover {
+  color: var(--color-primary);
+}
+
+.electrical-demo .filter-btn.active {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.electrical-demo .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.electrical-demo .gallery-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 280px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.electrical-demo .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.electrical-demo .gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.electrical-demo .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(11, 19, 43, 0.88) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.electrical-demo .gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.electrical-demo .gallery-overlay h4 {
+  color: var(--color-white);
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.electrical-demo .gallery-overlay span {
+  color: var(--color-amber);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Lightbox Modal */
+.electrical-demo .lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 20, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.electrical-demo .lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.electrical-demo .lightbox-content-box {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.electrical-demo .lightbox-img {
+  max-height: 75vh;
+  width: auto;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.electrical-demo .lightbox-caption {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.electrical-demo .lightbox-close {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  color: var(--color-white);
+  font-size: 2rem;
+  background: none;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   15. WHY CHOOSE ALVORATECH (4 PILLARS)
+   -------------------------------------------------------------------------- */
+.electrical-demo .why-section {
+  background-color: var(--color-bg-light);
+}
+
+.electrical-demo .why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.electrical-demo .why-image-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.electrical-demo .why-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.electrical-demo .why-pillars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.electrical-demo .pillar-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.electrical-demo .pillar-icon-box {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-amber-light);
+  color: var(--color-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.electrical-demo .pillar-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.electrical-demo .pillar-item p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   16. TESTIMONIALS CAROUSEL
+   -------------------------------------------------------------------------- */
+.electrical-demo .testimonials-section {
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.electrical-demo .testimonials-slider-box {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.electrical-demo .testimonial-track-container {
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.electrical-demo .testimonial-track {
+  display: flex;
+  transition: transform 0.45s ease-in-out;
+}
+
+.electrical-demo .testimonial-card {
+  min-width: 100%;
+  background: var(--color-bg-light);
+  padding: 3.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.electrical-demo .test-stars {
+  color: var(--color-star);
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.electrical-demo .test-quote {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.electrical-demo .test-author h4 {
+  font-size: 1.0625rem;
+  margin-bottom: 0.2rem;
+}
+
+.electrical-demo .test-author span {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.electrical-demo .testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.electrical-demo .test-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.electrical-demo .test-dot.active {
+  background-color: var(--color-amber);
+  width: 24px;
+  border-radius: var(--radius-full);
+}
+
+/* --------------------------------------------------------------------------
+   17. FAQ ACCORDION (6 ITEMS)
+   -------------------------------------------------------------------------- */
+.electrical-demo .faq-section {
+  background-color: var(--color-bg-light);
+}
+
+.electrical-demo .faq-container {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.electrical-demo .faq-item {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.electrical-demo .faq-item.active {
+  border-color: var(--color-amber);
+  box-shadow: var(--shadow-md);
+}
+
+.electrical-demo .faq-button {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.electrical-demo .faq-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+}
+
+.electrical-demo .faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  background-color: var(--color-amber);
+  color: var(--color-primary-dark);
+  border-color: var(--color-amber);
+}
+
+.electrical-demo .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  padding: 0 1.5rem;
+}
+
+.electrical-demo .faq-item.active .faq-answer {
+  padding-bottom: 1.5rem;
+}
+
+.electrical-demo .faq-answer p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   18. FAST EMERGENCY & ESTIMATE DISPATCH FORM
+   -------------------------------------------------------------------------- */
+.electrical-demo .estimate-form-section {
+  background: linear-gradient(180deg, var(--color-bg-light) 0%, #FFFFFF 100%);
+  position: relative;
+}
+
+.electrical-demo .estimate-form-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--color-white);
+  padding: 3.5rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xl);
+}
+
+.electrical-demo .form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.electrical-demo .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.electrical-demo .form-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.electrical-demo .form-input,
+.electrical-demo .form-select,
+.electrical-demo .form-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.electrical-demo .form-input:focus,
+.electrical-demo .form-select:focus,
+.electrical-demo .form-textarea:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.electrical-demo .form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* --------------------------------------------------------------------------
+   19. FOOTER
+   -------------------------------------------------------------------------- */
+.electrical-demo .site-footer {
+  background-color: var(--color-primary-dark);
+  color: #94A3B8;
+  padding: 5rem 0 2.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.electrical-demo .footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.25fr;
+  gap: 3.5rem;
+  margin-bottom: 4rem;
+}
+
+.electrical-demo .footer-col h4 {
+  color: var(--color-white);
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+.electrical-demo .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.electrical-demo .footer-link {
+  font-size: 0.9375rem;
+  color: #94A3B8;
+  transition: color var(--transition-fast);
+}
+
+.electrical-demo .footer-link:hover {
+  color: var(--color-white);
+}
+
+.electrical-demo .footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.electrical-demo .footer-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.electrical-demo .footer-contact-row svg {
+  color: var(--color-amber);
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.electrical-demo .footer-bottom {
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   20. STATIC FLOATING WHATSAPP BOTTOM BANNER
+   -------------------------------------------------------------------------- */
+.electrical-demo #fixed-whatsapp-banner {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  padding: 0.75rem 1.35rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  animation: float-pulse 3s infinite;
+}
+
+.electrical-demo #fixed-whatsapp-banner:hover {
+  background-color: var(--color-whatsapp-hover);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.55);
+}
+
+.electrical-demo #fixed-whatsapp-banner svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   21. ANIMATION KEYFRAMES & REVEAL STATES
+   -------------------------------------------------------------------------- */
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+@keyframes float-pulse {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+.electrical-demo .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.electrical-demo .reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.electrical-demo .stagger-1 { transition-delay: 0.1s; }
+.electrical-demo .stagger-2 { transition-delay: 0.2s; }
+.electrical-demo .stagger-3 { transition-delay: 0.3s; }
+.electrical-demo .stagger-4 { transition-delay: 0.4s; }
+
+/* --------------------------------------------------------------------------
+   22. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .electrical-demo .services-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .electrical-demo .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .electrical-demo .panel-warning-grid {
+    grid-template-columns: 1fr;
+  }
+  .electrical-demo .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .electrical-demo .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .electrical-demo .hero-image {
+    height: 380px;
+  }
+  .electrical-demo .hero-floating-card {
+    left: 1rem;
+    bottom: 1rem;
+  }
+  .electrical-demo .calc-container {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+  .electrical-demo .why-grid {
+    grid-template-columns: 1fr;
+  }
+  .electrical-demo .why-image {
+    height: 360px;
+  }
+  .electrical-demo .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .electrical-demo .nav-links {
+    display: none;
+  }
+  .electrical-demo .mobile-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .electrical-demo .services-grid-8 {
+    grid-template-columns: 1fr;
+  }
+  .electrical-demo .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .electrical-demo .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .electrical-demo .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .electrical-demo .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .electrical-demo .bottom-demo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .electrical-demo .estimate-form-wrapper {
+    padding: 2rem 1.25rem;
+  }
+
+  /* Fixed WhatsApp banner mobile adjustment */
+  .electrical-demo #fixed-whatsapp-banner {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .electrical-demo {
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* Guarantee visibility for revealed elements in React SPA */
+.electrical-demo .reveal,
+.electrical-demo [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}

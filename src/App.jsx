@@ -18,6 +18,14 @@ import DentalCare from './demos/dental-care/DentalCare';
 import PersonalInjury from './demos/personal-injury/PersonalInjury';
 import TowingCompany from './demos/towing-company/TowingCompany';
 import TreeRemoval from './demos/tree-removal/TreeRemoval';
+import Cleaning from './demos/cleaning/Cleaning';
+import Electrical from './demos/electrical/Electrical';
+import Flooring from './demos/Flooring/Flooring';
+import Landscaping from './demos/Landscaping/Landscaping';
+import Locksmith from './demos/Locksmith/Locksmith';
+import Painting from './demos/Painting/Painting';
+import PestControl from './demos/pest-control/PestControl';
+import PressureDemo from './demos/pressure-demo/PressureDemo';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -62,6 +70,38 @@ export default function App() {
 
   if (normalizedPath.includes('tree-removal')) {
     return <TreeRemoval />;
+  }
+
+  if (normalizedPath.includes('cleaning')) {
+    return <Cleaning />;
+  }
+
+  if (normalizedPath.includes('electrical')) {
+    return <Electrical />;
+  }
+
+  if (normalizedPath.includes('flooring')) {
+    return <Flooring />;
+  }
+
+  if (normalizedPath.includes('landscaping')) {
+    return <Landscaping />;
+  }
+
+  if (normalizedPath.includes('locksmith')) {
+    return <Locksmith />;
+  }
+
+  if (normalizedPath.includes('painting')) {
+    return <Painting />;
+  }
+
+  if (normalizedPath.includes('pest-control')) {
+    return <PestControl />;
+  }
+
+  if (normalizedPath.includes('pressure-demo')) {
+    return <PressureDemo />;
   }
 
   return (
