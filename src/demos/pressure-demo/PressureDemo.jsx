@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import DemoTopBar from '../DemoTopBar';
 import './pressure-demo.css';
 
 export default function PressureDemo() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   useEffect(() => {
     try {
       /**
@@ -664,7 +665,7 @@ const runInit = () => {
         </a>
 
         {/* Mobile Hamburger Toggle */}
-        <button className="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-expanded={mobileMenuOpen} id="mobileToggle" aria-label="Toggle navigation menu">
           <span></span>
           <span></span>
           <span></span>
@@ -675,15 +676,15 @@ const runInit = () => {
   </header>
 
   {/* Mobile Navigation Overlay & Drawer */}
-  <div className="mobile-nav-overlay" id="mobileNavOverlay"></div>
-  <aside className="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} id="mobileNavOverlay"></div>
+  <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} id="mobileDrawer" aria-label="Mobile Navigation">
     <nav>
-      <a href="#home" className="nav-link">Home</a>
-      <a href="#about" className="nav-link">About</a>
-      <a href="#services" className="nav-link">Services</a>
-      <a href="#our-work" className="nav-link">Our Work</a>
-      <a href="#why-choose" className="nav-link">Why Choose Us</a>
-      <a href="#contact" className="nav-link">Contact</a>
+      <a onClick={() => setMobileMenuOpen(false)} href="#home" className="nav-link">Home</a>
+      <a onClick={() => setMobileMenuOpen(false)} href="#about" className="nav-link">About</a>
+      <a onClick={() => setMobileMenuOpen(false)} href="#services" className="nav-link">Services</a>
+      <a onClick={() => setMobileMenuOpen(false)} href="#our-work" className="nav-link">Our Work</a>
+      <a onClick={() => setMobileMenuOpen(false)} href="#why-choose" className="nav-link">Why Choose Us</a>
+      <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="nav-link">Contact</a>
     </nav>
     <div style={{"marginTop":"1.5rem"}}>
       <a href="#contact" className="btn btn-primary" style={{"width":"100%"}}>Get a Free Quote</a>
