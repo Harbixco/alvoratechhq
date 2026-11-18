@@ -2117,8 +2117,14 @@
   .painting-demo .nav-links {
     display: none;
   }
+  .painting-demo .nav-actions .btn,
+  .painting-demo .nav-actions a.btn,
+  .painting-demo .site-header .nav-actions .btn,
+  .painting-demo .site-header .nav-actions a {
+    display: none !important;
+  }
   .painting-demo .mobile-toggle {
-    display: flex;
+    display: flex !important;
   }
 }
 

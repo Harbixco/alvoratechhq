@@ -691,7 +691,7 @@ const runInit = () => {
           {/* Right Column Image Presentation */}
           <div className="hero-media reveal stagger-2">
             <div className="hero-image-wrapper">
-              <img src="/painting/assets/images/paint-hero.jpg" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
+              <img src="/painting/assets/images/paint-hero.jpg?v=2" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
               
               {/* Floating Overlay Badge */}
               <div className="hero-floating-card">
@@ -833,7 +833,7 @@ const runInit = () => {
           {/* Service 3 */}
           <article className="service-card reveal stagger-3">
             <div className="service-image-box">
-              <img src="/painting/assets/images/service-cabinets.jpg" alt="Kitchen cabinet factory spraying and refinishing" className="service-image" loading="lazy" />
+              <img src="/painting/assets/images/service-cabinets.jpg?v=2" alt="Kitchen cabinet factory spraying and refinishing" className="service-image" loading="lazy" />
               <span className="service-badge">Kitchen Cabinets</span>
             </div>
             <div className="service-content">
@@ -1269,7 +1269,7 @@ const runInit = () => {
       <div className="container">
         <div className="why-grid">
           <div className="why-image-card reveal">
-            <img src="/painting/assets/images/paint-about.jpg" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+            <img src="/painting/assets/images/paint-about.jpg?v=2" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
           </div>
           <div className="reveal stagger-1">
             <span className="section-eyebrow">ABOUT ALVORATECH</span>

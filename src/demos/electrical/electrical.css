@@ -1961,8 +1961,14 @@
   .electrical-demo .nav-links {
     display: none;
   }
+  .electrical-demo .nav-actions .btn,
+  .electrical-demo .nav-actions a.btn,
+  .electrical-demo .site-header .nav-actions .btn,
+  .electrical-demo .site-header .nav-actions a {
+    display: none !important;
+  }
   .electrical-demo .mobile-toggle {
-    display: flex;
+    display: flex !important;
   }
 }
 
