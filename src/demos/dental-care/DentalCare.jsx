@@ -4,6 +4,41 @@ import './dental-care.css';
 
 export default function DentalCare() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","technology","reviews","contact"].includes(hash)) return hash;
+      if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","technology","reviews","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
+        setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState('');
 
@@ -36,7 +71,7 @@ export default function DentalCare() {
       {/* Header */}
       <header className="site-header">
         <div className="nav-container">
-          <a className="brand" href="#home" onClick={(e) => scrollTo(e, 'home')}>
+          <a className="brand" href="#home" onClick={(e) => navigateTo('home', e)}>
             <span className="brand-mark" aria-hidden="true">
               <i className="fa-solid fa-tooth"></i>
             </span>
@@ -50,20 +85,19 @@ export default function DentalCare() {
             type="button"
             aria-label="Open navigation menu"
             aria-expanded={mobileMenuOpen}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span></span>
             <span></span>
           </button>
 
           <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-            <a href="#home" onClick={(e) => scrollTo(e, 'home')}>Home</a>
-            <a href="#about" onClick={(e) => scrollTo(e, 'about')}>About Us</a>
-            <a href="#services" onClick={(e) => scrollTo(e, 'services')}>Services</a>
-            <a href="#technology" onClick={(e) => scrollTo(e, 'technology')}>Technology</a>
-            <a href="#reviews" onClick={(e) => scrollTo(e, 'reviews')}>Patient Reviews</a>
-            <a href="#contact" onClick={(e) => scrollTo(e, 'contact')}>Contact</a>
-            <a className="button button-small nav-cta glowing-btn" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+            <a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a>
+            <a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a>
+            <a href="#technology" onClick={(e) => navigateTo('technology', e)}>Technology</a>
+            <a href="#reviews" onClick={(e) => navigateTo('reviews', e)}>Patient Reviews</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
+            <a className="button button-small nav-cta glowing-btn desktop-only-btn desktop-only-btn" href="#contact" onClick={(e) => navigateTo('contact', e)}>
               Book an Appointment <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
             </a>
           </nav>
@@ -71,7 +105,41 @@ export default function DentalCare() {
       </header>
 
       <main id="main">
-        {/* ── HERO ── */}
+
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#home" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              Preventive family dentistry, 3D digital imaging, painless restorative care, and dental implants.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* HOMEPAGE VIEW: High-converting, clean customer essentials */}
+      {currentView === 'home' && (
+        <>
         <section className="hero section-wrap" id="home">
           <div className="hero-content">
             <div className="eyebrow">
@@ -148,34 +216,6 @@ export default function DentalCare() {
         </section>
 
         {/* ── ABOUT ── */}
-        <section className="about-section section-wrap" id="about">
-          <div className="about-image">
-            <img
-              src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1000&q=85"
-              alt="Dental care team welcoming a patient into a bright treatment room"
-              loading="lazy"
-            />
-            <div className="about-image-caption">
-              <i className="fa-solid fa-sparkles" aria-hidden="true"></i> A little more human. A lot more you.
-            </div>
-          </div>
-          <div className="about-copy">
-            <span className="section-kicker">A practice built around you</span>
-            <h2>Because going to the dentist should feel <em>good.</em></h2>
-            <p>
-              We believe great dentistry starts with listening. Our dedicated team pairs thoughtful, personal care with the latest technology—so every visit feels clear, calm, and entirely on your terms.
-            </p>
-            <a href="#technology" className="text-link" onClick={(e) => scrollTo(e, 'technology')}>
-              Get to know our approach <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </a>
-            <div className="about-stat">
-              <strong>01</strong>
-              <span>One friendly team, here for every chapter of your smile.</span>
-            </div>
-          </div>
-        </section>
-
-        {/* ── SERVICES ── */}
         <section className="services section-wrap section-tint" id="services">
           <div className="section-heading">
             <div>
@@ -250,57 +290,6 @@ export default function DentalCare() {
         </section>
 
         {/* ── TECHNOLOGY ── */}
-        <section className="technology-section section-wrap" id="technology">
-          <div className="tech-image">
-            <img
-              src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1100&q=85"
-              alt="Advanced digital dental technology in a calm, modern treatment room"
-              loading="lazy"
-            />
-            <div className="tech-image-label">
-              <span className="pulse-dot"></span> Thoughtfully advanced
-            </div>
-          </div>
-          <div className="tech-content">
-            <span className="section-kicker">A calmer kind of care</span>
-            <h2>Modern technology.<br /><em>More peace of mind.</em></h2>
-            <p>
-              Innovative tools help us make your care more precise, more comfortable, and easier to understand at every step.
-            </p>
-            <div className="tech-features">
-              <div className="tech-feature-item">
-                <span className="feature-icon"><i className="fa-solid fa-cube" aria-hidden="true"></i></span>
-                <div>
-                  <h3>Digital 3D Scans</h3>
-                  <p>Quick, comfortable digital impressions—no messy molds.</p>
-                </div>
-              </div>
-              <div className="tech-feature-item">
-                <span className="feature-icon"><i className="fa-solid fa-feather-pointed" aria-hidden="true"></i></span>
-                <div>
-                  <h3>Comfort-First Options</h3>
-                  <p>Gentle techniques and personalized comfort options.</p>
-                </div>
-              </div>
-              <div className="tech-feature-item">
-                <span className="feature-icon"><i className="fa-solid fa-mug-hot" aria-hidden="true"></i></span>
-                <div>
-                  <h3>Little Luxuries</h3>
-                  <p>Warm blankets, headphones, and a moment to settle in.</p>
-                </div>
-              </div>
-              <div className="tech-feature-item">
-                <span className="feature-icon"><i className="fa-regular fa-credit-card" aria-hidden="true"></i></span>
-                <div>
-                  <h3>Flexible Financing</h3>
-                  <p>Clear estimates and flexible ways to plan your care.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── REVIEWS ── */}
         <section className="reviews-section section-tint" id="reviews">
           <div className="section-wrap">
             <div className="section-heading reviews-heading">
@@ -448,13 +437,602 @@ export default function DentalCare() {
             </form>
           </div>
         </section>
+        </>
+      )}
+
+      {/* SERVICES VIEW */}
+      {currentView === 'services' && (
+        <>
+        <section className="services section-wrap section-tint" id="services">
+          <div className="section-heading">
+            <div>
+              <span className="section-kicker">Care for every smile</span>
+              <h2>Expert care, made personal.</h2>
+            </div>
+            <p>Whether it’s your twice-a-year visit or the smile you’ve been dreaming of, we make the next step feel simple.</p>
+          </div>
+
+          <div className="services-grid">
+            {[
+              {
+                id: '01',
+                title: 'Preventive Care & Cleanings',
+                desc: 'Thoughtful checkups, gentle cleanings, and digital X-rays to keep your smile feeling its best.',
+                icon: 'fa-tooth',
+                image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '02',
+                title: 'Cosmetic Dentistry',
+                desc: 'Professional whitening, custom veneers, and smile makeovers designed around you.',
+                icon: 'fa-wand-magic-sparkles',
+                image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '03',
+                title: 'Implants & Restorations',
+                desc: 'Beautifully natural-looking solutions that restore your confidence and comfort.',
+                icon: 'fa-shield-heart',
+                image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '04',
+                title: 'Orthodontics & Aligners',
+                desc: 'Subtle, comfortable clear aligners that fit your life while straightening your smile.',
+                icon: 'fa-face-smile',
+                image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '05',
+                title: 'Emergency Dental Care',
+                desc: 'When the unexpected happens, our team is here with prompt, compassionate care.',
+                icon: 'fa-kit-medical',
+                image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=720&q=80',
+              },
+            ].map((srv) => (
+              <article key={srv.id} className="service-card">
+                <div className="service-photo">
+                  <img src={srv.image} alt={srv.title} loading="lazy" />
+                  <span className="service-number">{srv.id}</span>
+                </div>
+                <div className="service-body">
+                  <div className="service-icon">
+                    <i className={`fa-solid ${srv.icon}`} aria-hidden="true"></i>
+                  </div>
+                  <h3>{srv.title}</h3>
+                  <p>{srv.desc}</p>
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      setSelectedService(srv.title);
+                      scrollTo(e, 'contact');
+                    }}
+                  >
+                    Learn more <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* ── TECHNOLOGY ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Schedule Service Consultation &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* ABOUT / STORY VIEW */}
+      {currentView === 'about' && (
+        <>
+        <section className="about-section section-wrap" id="about">
+          <div className="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1000&q=85"
+              alt="Dental care team welcoming a patient into a bright treatment room"
+              loading="lazy"
+            />
+            <div className="about-image-caption">
+              <i className="fa-solid fa-sparkles" aria-hidden="true"></i> A little more human. A lot more you.
+            </div>
+          </div>
+          <div className="about-copy">
+            <span className="section-kicker">A practice built around you</span>
+            <h2>Because going to the dentist should feel <em>good.</em></h2>
+            <p>
+              We believe great dentistry starts with listening. Our dedicated team pairs thoughtful, personal care with the latest technology—so every visit feels clear, calm, and entirely on your terms.
+            </p>
+            <a href="#technology" className="text-link" onClick={(e) => scrollTo(e, 'technology')}>
+              Get to know our approach <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <div className="about-stat">
+              <strong>01</strong>
+              <span>One friendly team, here for every chapter of your smile.</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SERVICES ── */}
+        <section className="technology-section section-wrap" id="technology">
+          <div className="tech-image">
+            <img
+              src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1100&q=85"
+              alt="Advanced digital dental technology in a calm, modern treatment room"
+              loading="lazy"
+            />
+            <div className="tech-image-label">
+              <span className="pulse-dot"></span> Thoughtfully advanced
+            </div>
+          </div>
+          <div className="tech-content">
+            <span className="section-kicker">A calmer kind of care</span>
+            <h2>Modern technology.<br /><em>More peace of mind.</em></h2>
+            <p>
+              Innovative tools help us make your care more precise, more comfortable, and easier to understand at every step.
+            </p>
+            <div className="tech-features">
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-solid fa-cube" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Digital 3D Scans</h3>
+                  <p>Quick, comfortable digital impressions—no messy molds.</p>
+                </div>
+              </div>
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-solid fa-feather-pointed" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Comfort-First Options</h3>
+                  <p>Gentle techniques and personalized comfort options.</p>
+                </div>
+              </div>
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-solid fa-mug-hot" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Little Luxuries</h3>
+                  <p>Warm blankets, headphones, and a moment to settle in.</p>
+                </div>
+              </div>
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-regular fa-credit-card" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Flexible Financing</h3>
+                  <p>Clear estimates and flexible ways to plan your care.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── REVIEWS ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Connect With Our Specialists &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* WHY US VIEW */}
+      {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && (
+        <>
+        <section className="technology-section section-wrap" id="technology">
+          <div className="tech-image">
+            <img
+              src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1100&q=85"
+              alt="Advanced digital dental technology in a calm, modern treatment room"
+              loading="lazy"
+            />
+            <div className="tech-image-label">
+              <span className="pulse-dot"></span> Thoughtfully advanced
+            </div>
+          </div>
+          <div className="tech-content">
+            <span className="section-kicker">A calmer kind of care</span>
+            <h2>Modern technology.<br /><em>More peace of mind.</em></h2>
+            <p>
+              Innovative tools help us make your care more precise, more comfortable, and easier to understand at every step.
+            </p>
+            <div className="tech-features">
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-solid fa-cube" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Digital 3D Scans</h3>
+                  <p>Quick, comfortable digital impressions—no messy molds.</p>
+                </div>
+              </div>
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-solid fa-feather-pointed" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Comfort-First Options</h3>
+                  <p>Gentle techniques and personalized comfort options.</p>
+                </div>
+              </div>
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-solid fa-mug-hot" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Little Luxuries</h3>
+                  <p>Warm blankets, headphones, and a moment to settle in.</p>
+                </div>
+              </div>
+              <div className="tech-feature-item">
+                <span className="feature-icon"><i className="fa-regular fa-credit-card" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Flexible Financing</h3>
+                  <p>Clear estimates and flexible ways to plan your care.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── REVIEWS ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Work With Our Team &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* PROJECTS / PORTFOLIO VIEW */}
+      {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && (
+        <>
+        <section className="services section-wrap section-tint" id="services">
+          <div className="section-heading">
+            <div>
+              <span className="section-kicker">Care for every smile</span>
+              <h2>Expert care, made personal.</h2>
+            </div>
+            <p>Whether it’s your twice-a-year visit or the smile you’ve been dreaming of, we make the next step feel simple.</p>
+          </div>
+
+          <div className="services-grid">
+            {[
+              {
+                id: '01',
+                title: 'Preventive Care & Cleanings',
+                desc: 'Thoughtful checkups, gentle cleanings, and digital X-rays to keep your smile feeling its best.',
+                icon: 'fa-tooth',
+                image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '02',
+                title: 'Cosmetic Dentistry',
+                desc: 'Professional whitening, custom veneers, and smile makeovers designed around you.',
+                icon: 'fa-wand-magic-sparkles',
+                image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '03',
+                title: 'Implants & Restorations',
+                desc: 'Beautifully natural-looking solutions that restore your confidence and comfort.',
+                icon: 'fa-shield-heart',
+                image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '04',
+                title: 'Orthodontics & Aligners',
+                desc: 'Subtle, comfortable clear aligners that fit your life while straightening your smile.',
+                icon: 'fa-face-smile',
+                image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=720&q=80',
+              },
+              {
+                id: '05',
+                title: 'Emergency Dental Care',
+                desc: 'When the unexpected happens, our team is here with prompt, compassionate care.',
+                icon: 'fa-kit-medical',
+                image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=720&q=80',
+              },
+            ].map((srv) => (
+              <article key={srv.id} className="service-card">
+                <div className="service-photo">
+                  <img src={srv.image} alt={srv.title} loading="lazy" />
+                  <span className="service-number">{srv.id}</span>
+                </div>
+                <div className="service-body">
+                  <div className="service-icon">
+                    <i className={`fa-solid ${srv.icon}`} aria-hidden="true"></i>
+                  </div>
+                  <h3>{srv.title}</h3>
+                  <p>{srv.desc}</p>
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      setSelectedService(srv.title);
+                      scrollTo(e, 'contact');
+                    }}
+                  >
+                    Learn more <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* ── TECHNOLOGY ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Request Project Estimate &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* REVIEWS / TESTIMONIALS VIEW */}
+      {(currentView === 'reviews' || currentView === 'testimonials') && (
+        <>
+        <section className="reviews-section section-tint" id="reviews">
+          <div className="section-wrap">
+            <div className="section-heading reviews-heading">
+              <div>
+                <span className="section-kicker">A little love from our patients</span>
+                <h2>Smiles say it best.</h2>
+              </div>
+              <div className="reviews-rating">
+                <span className="rating-stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <strong>5.0</strong>
+                <small>Patient-rated care</small>
+              </div>
+            </div>
+            <div className="reviews-grid">
+              <article className="review-card">
+                <div className="review-top">
+                  <span className="rating-stars">★★★★★</span>
+                  <i className="fa-brands fa-google" aria-hidden="true"></i>
+                </div>
+                <blockquote>“I’ve always had dental anxiety, but everyone at Apex made me feel so comfortable. I actually look forward to my cleanings now.”</blockquote>
+                <div className="reviewer">
+                  <span className="reviewer-avatar">SM</span>
+                  <div><strong>Sarah M.</strong><small>Patient since 2022</small></div>
+                  <i className="fa-solid fa-circle-check"></i>
+                </div>
+              </article>
+
+              <article className="review-card">
+                <div className="review-top">
+                  <span className="rating-stars">★★★★★</span>
+                  <i className="fa-brands fa-google" aria-hidden="true"></i>
+                </div>
+                <blockquote>“My new smile looks so natural. The whole process was thoughtfully explained, and the team was wonderful from day one.”</blockquote>
+                <div className="reviewer">
+                  <span className="reviewer-avatar avatar-sage">DK</span>
+                  <div><strong>David K.</strong><small>Patient since 2023</small></div>
+                  <i className="fa-solid fa-circle-check"></i>
+                </div>
+              </article>
+
+              <article className="review-card">
+                <div className="review-top">
+                  <span className="rating-stars">★★★★★</span>
+                  <i className="fa-brands fa-google" aria-hidden="true"></i>
+                </div>
+                <blockquote>“They fit me in the same day when I had an emergency. Kind, professional, and genuinely caring—exactly what you hope for.”</blockquote>
+                <div className="reviewer">
+                  <span className="reviewer-avatar avatar-blue">JR</span>
+                  <div><strong>Jessica R.</strong><small>Patient since 2021</small></div>
+                  <i className="fa-solid fa-circle-check"></i>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CONTACT / BOOKING ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Experience Our Certified Quality &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <>
+        <section className="contact-section section-wrap" id="contact">
+          <div className="contact-panel">
+            <div className="contact-info">
+              <span className="section-kicker">Your next chapter starts here</span>
+              <h2>Let’s make room for a brighter smile.</h2>
+              <p>Tell us a little about what you need. Our friendly team will be in touch to find a time that works for you.</p>
+              <p className="contact-phone">
+                <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>{' '}
+                <a
+                  href="https://wa.me/14127963968"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  +1 (412) 796-3968 (WhatsApp Only)
+                </a>
+              </p>
+              <div className="office-details">
+                <p>
+                  <i className="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  <span>240 Medical Plaza, Suite 300, Metro Health District</span>
+                </p>
+                <p>
+                  <i className="fa-regular fa-clock" aria-hidden="true"></i>
+                  <span>Monday–Friday, 8:00 am–5:00 pm<br />Saturday by appointment</span>
+                </p>
+                <p>
+                  <i className="fa-regular fa-envelope" aria-hidden="true"></i>
+                  <span>care@apexdentalcare.com</span>
+                </p>
+              </div>
+              <p className="emergency-note">
+                <i className="fa-solid fa-heart-pulse" aria-hidden="true"></i> Dental emergency? Message us on WhatsApp for same-day care.
+              </p>
+            </div>
+
+            <form id="bookingForm" className="booking-form" onSubmit={handleBookingSubmit}>
+              <div className="form-heading">
+                <span className="section-kicker">We’ll take it from here</span>
+                <h3>Request an appointment</h3>
+                <p>Share a few details and we’ll be in touch soon.</p>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="fullName">Full Name <span>*</span></label>
+                <input type="text" id="fullName" name="name" required placeholder="Your name" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="phone">WhatsApp / Phone Number <span>*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="Your WhatsApp or phone number" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email Address <span>*</span></label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="service">Service Needed <span>*</span></label>
+                <select
+                  id="service"
+                  name="service"
+                  required
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                >
+                  <option value="">Select a service</option>
+                  <option>Preventive Care & Cleanings</option>
+                  <option>Cosmetic Dentistry</option>
+                  <option>Implants & Restorations</option>
+                  <option>Orthodontics & Aligners</option>
+                  <option>Emergency Dental Care</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+
+              <button type="submit" className="button form-submit">
+                Request my appointment <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </button>
+              <p className="form-disclaimer">
+                Demonstration appointment form. In live deployment, synced with your practice management software.
+              </p>
+
+              {formSubmitted && (
+                <div className="success-message" role="status">
+                  <i className="fa-solid fa-circle-check" aria-hidden="true"></i>
+                  <span><strong>Thank you!</strong> Your appointment request has been logged in this demonstration preview.</span>
+                </div>
+              )}
+            </form>
+          </div>
+        </section>
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
+              Direct Line: +1 (412) 796-3968
+            </a>
+          </div>
+        </>
+      )}
+
+      {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
+      {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && (
+        <>
+        <section className="contact-section section-wrap" id="contact">
+          <div className="contact-panel">
+            <div className="contact-info">
+              <span className="section-kicker">Your next chapter starts here</span>
+              <h2>Let’s make room for a brighter smile.</h2>
+              <p>Tell us a little about what you need. Our friendly team will be in touch to find a time that works for you.</p>
+              <p className="contact-phone">
+                <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>{' '}
+                <a
+                  href="https://wa.me/14127963968"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  +1 (412) 796-3968 (WhatsApp Only)
+                </a>
+              </p>
+              <div className="office-details">
+                <p>
+                  <i className="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  <span>240 Medical Plaza, Suite 300, Metro Health District</span>
+                </p>
+                <p>
+                  <i className="fa-regular fa-clock" aria-hidden="true"></i>
+                  <span>Monday–Friday, 8:00 am–5:00 pm<br />Saturday by appointment</span>
+                </p>
+                <p>
+                  <i className="fa-regular fa-envelope" aria-hidden="true"></i>
+                  <span>care@apexdentalcare.com</span>
+                </p>
+              </div>
+              <p className="emergency-note">
+                <i className="fa-solid fa-heart-pulse" aria-hidden="true"></i> Dental emergency? Message us on WhatsApp for same-day care.
+              </p>
+            </div>
+
+            <form id="bookingForm" className="booking-form" onSubmit={handleBookingSubmit}>
+              <div className="form-heading">
+                <span className="section-kicker">We’ll take it from here</span>
+                <h3>Request an appointment</h3>
+                <p>Share a few details and we’ll be in touch soon.</p>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="fullName">Full Name <span>*</span></label>
+                <input type="text" id="fullName" name="name" required placeholder="Your name" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="phone">WhatsApp / Phone Number <span>*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="Your WhatsApp or phone number" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email Address <span>*</span></label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="service">Service Needed <span>*</span></label>
+                <select
+                  id="service"
+                  name="service"
+                  required
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                >
+                  <option value="">Select a service</option>
+                  <option>Preventive Care & Cleanings</option>
+                  <option>Cosmetic Dentistry</option>
+                  <option>Implants & Restorations</option>
+                  <option>Orthodontics & Aligners</option>
+                  <option>Emergency Dental Care</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+
+              <button type="submit" className="button form-submit">
+                Request my appointment <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </button>
+              <p className="form-disclaimer">
+                Demonstration appointment form. In live deployment, synced with your practice management software.
+              </p>
+
+              {formSubmitted && (
+                <div className="success-message" role="status">
+                  <i className="fa-solid fa-circle-check" aria-hidden="true"></i>
+                  <span><strong>Thank you!</strong> Your appointment request has been logged in this demonstration preview.</span>
+                </div>
+              )}
+            </form>
+          </div>
+        </section>
+        </>
+      )}
+
       </main>
 
-      {/* ── FOOTER ── */}
-      <footer className="site-footer">
+            <footer className="site-footer">
         <div className="footer-content section-wrap">
           <div className="footer-brand">
-            <a className="brand brand-light" href="#home" onClick={(e) => scrollTo(e, 'home')}>
+            <a className="brand brand-light" href="#home" onClick={(e) => navigateTo('home', e)}>
               <span className="brand-mark" aria-hidden="true">
                 <i className="fa-solid fa-tooth"></i>
               </span>
@@ -466,10 +1044,10 @@ export default function DentalCare() {
           </div>
           <div className="footer-col">
             <h2>Explore</h2>
-            <a href="#about" onClick={(e) => scrollTo(e, 'about')}>About us</a>
-            <a href="#services" onClick={(e) => scrollTo(e, 'services')}>Our services</a>
-            <a href="#technology" onClick={(e) => scrollTo(e, 'technology')}>Our approach</a>
-            <a href="#reviews" onClick={(e) => scrollTo(e, 'reviews')}>Patient reviews</a>
+            <a href="#about" onClick={(e) => navigateTo('about', e)}>About us</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>Our services</a>
+            <a href="#technology" onClick={(e) => navigateTo('technology', e)}>Our approach</a>
+            <a href="#reviews" onClick={(e) => navigateTo('reviews', e)}>Patient reviews</a>
           </div>
           <div className="footer-col">
             <h2>Visit us</h2>
@@ -498,7 +1076,7 @@ export default function DentalCare() {
         </div>
         <div className="footer-bottom section-wrap">
           <p>© 2026 Apex Dental Care <span>•</span> Alvora Tech Demo Template</p>
-          <a href="#home" onClick={(e) => scrollTo(e, 'home')}>
+          <a href="#home" onClick={(e) => navigateTo('home', e)}>
             Back to top <i className="fa-solid fa-arrow-up" aria-hidden="true"></i>
           </a>
         </div>

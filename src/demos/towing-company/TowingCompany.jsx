@@ -18,6 +18,42 @@ import { FaWhatsapp } from 'react-icons/fa';
 import './towing-company.css';
 
 export default function TowingCompany() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","why-us","gallery","faq","contact"].includes(hash)) return hash;
+      if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","why-us","gallery","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
+        setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeFaq, setActiveFaq] = useState(0);
@@ -247,7 +283,7 @@ export default function TowingCompany() {
       {/* Main Header */}
       <header className={`site-header ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
         <div className="container nav-shell">
-          <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="brand" aria-label="Alvoratech home">
+          <a href="#home" onClick={(e) => navigateTo('home', e)} className="brand" aria-label="Alvoratech home">
             <span className="brand-mark" aria-hidden="true">
               <svg viewBox="0 0 64 64" role="img" aria-label="Towing service icon">
                 <path d="M12 43h4.7l3.4-11.6h16.9L39 43h13v4.8H12V43Zm8.7-2.4h6.6v-5.3h-6.6v5.3Zm19.8-12.3h5.8l3.8 7.6h-9.6v-7.6Zm-23.6 0h9.4v7.6H17.9v-7.6Zm9.4-9.8c0-3.4 2.8-6.2 6.2-6.2s6.2 2.8 6.2 6.2v5.1H27.3v-5.1Z" />
@@ -264,7 +300,6 @@ export default function TowingCompany() {
             className="nav-toggle"
             aria-expanded={menuOpen}
             aria-controls="primary-navigation"
-            onClick={() => setMenuOpen(!menuOpen)}
           >
             <span></span>
             <span></span>
@@ -272,15 +307,15 @@ export default function TowingCompany() {
           </button>
 
           <nav className="site-nav" id="primary-navigation" aria-label="Main navigation">
-            <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="nav-link active">Home</a>
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="nav-link">About Us</a>
-            <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="nav-link">Services</a>
-            <a href="#why-us" onClick={(e) => scrollToSection(e, 'why-us')} className="nav-link">Why Us</a>
-            <a href="#gallery" onClick={(e) => scrollToSection(e, 'gallery')} className="nav-link">Gallery</a>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="nav-link">Contact</a>
+            <a href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link active">Home</a>
+            <a href="#about" onClick={(e) => navigateTo('about', e)} className="nav-link">About Us</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
+            <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Us</a>
+            <a href="#gallery" onClick={(e) => navigateTo('gallery', e)} className="nav-link">Gallery</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
             <a
               href="https://wa.me/message/RVTZQMFL7I6OH1"
-              className="nav-cta"
+              className="nav-cta desktop-only-btn"
               target="_blank"
               rel="noreferrer"
             >
@@ -292,7 +327,41 @@ export default function TowingCompany() {
 
       {/* Main Content */}
       <main id="home">
-        {/* Hero Section */}
+
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#home" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              24/7 rapid roadside dispatch, heavy-duty recovery, flatbed towing, and commercial fleet assistance.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* HOMEPAGE VIEW: High-converting, clean customer essentials */}
+      {currentView === 'home' && (
+        <>
         <section className="hero">
           <div className="hero-backdrop" aria-hidden="true"></div>
           <div className="container hero-inner">
@@ -337,6 +406,7 @@ export default function TowingCompany() {
         </section>
 
         {/* Services Section */}
+
         <section className="services section" id="services">
           <div className="container">
             <div className="section-heading reveal is-visible">
@@ -374,175 +444,6 @@ export default function TowingCompany() {
         </section>
 
         {/* Mid-Page Promo Banner */}
-        <section className="promo-banner promo-banner--mid">
-          <div className="promo-banner__overlay"></div>
-          <div className="container promo-banner__content reveal is-visible">
-            <span className="demo-tag">DEMO</span>
-            <h2>YOUR VEHICLE DESERVES PROFESSIONAL CARE</h2>
-            <p>Looking for dependable towing and roadside assistance? Get in touch with Alvoratech today.</p>
-            <a
-              href="https://wa.me/message/RVTZQMFL7I6OH1"
-              className="button button-primary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              CHAT WITH US ON WHATSAPP
-            </a>
-          </div>
-        </section>
-
-        {/* About Section */}
-        <section className="about section" id="about">
-          <div className="container about-grid">
-            <div className="about-media reveal is-visible">
-              <div className="about-image-wrap">
-                <img
-                  src="/towing-company/images/heavy-duty-towing.webp"
-                  alt="Ford F-350 tow truck"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="experience-badge">
-                <span>DEPENDABLE</span>
-                <strong>SUPPORT</strong>
-              </div>
-            </div>
-
-            <div className="about-content reveal is-visible">
-              <span className="eyebrow eyebrow--dark">ABOUT ALVORATECH</span>
-              <h2>DEPENDABLE TOWING SOLUTIONS WHEN YOU NEED THEM</h2>
-              <p>
-                Alvoratech is dedicated to providing professional towing, vehicle transportation, and
-                roadside assistance solutions. Our goal is to make vehicle recovery and transportation
-                easier through dependable service and clear communication.
-              </p>
-              <ul className="check-list">
-                <li>Professional Service Approach</li>
-                <li>Customer-Focused Assistance</li>
-                <li>Reliable Vehicle Transportation</li>
-              </ul>
-              <a
-                href="https://wa.me/message/RVTZQMFL7I6OH1"
-                className="button button-primary"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CONTACT ON WHATSAPP
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="why-us section" id="why-us">
-          <div className="container">
-            <div className="section-heading reveal is-visible section-heading--light">
-              <span className="eyebrow">WHY CHOOSE US</span>
-              <h2>WHY CHOOSE ALVORATECH?</h2>
-            </div>
-
-            <div className="benefits-grid">
-              <article className="benefit-card reveal is-visible">
-                <div className="benefit-icon"><FiCheckCircle /></div>
-                <h3>Professional Service</h3>
-                <p>A structured, safety-first approach to every recovery.</p>
-              </article>
-              <article className="benefit-card reveal is-visible">
-                <div className="benefit-icon"><FiPhoneCall /></div>
-                <h3>Customer-Focused</h3>
-                <p>Direct communication and prompt arrival time estimates.</p>
-              </article>
-              <article className="benefit-card reveal is-visible">
-                <div className="benefit-icon"><FiTruck /></div>
-                <h3>Multiple Towing Solutions</h3>
-                <p>Services for light cars, heavy trucks, and motorcycles.</p>
-              </article>
-              <article className="benefit-card reveal is-visible">
-                <div className="benefit-icon"><FaWhatsapp /></div>
-                <h3>Convenient Communication</h3>
-                <p>Fast dispatch updates and location sharing via WhatsApp.</p>
-              </article>
-              <article className="benefit-card reveal is-visible">
-                <div className="benefit-icon"><FiShield /></div>
-                <h3>Reliable Assistance</h3>
-                <p>Licensed, insured, and verified equipment on every job.</p>
-              </article>
-              <article className="benefit-card reveal is-visible">
-                <div className="benefit-icon"><FiClock /></div>
-                <h3>Fast Turnaround</h3>
-                <p>Immediate coordination to reduce roadside waiting time.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* Gallery */}
-        <section className="gallery section" id="gallery">
-          <div className="container">
-            <div className="section-heading reveal is-visible">
-              <span className="eyebrow">OUR WORK</span>
-              <h2>OUR TOWING &amp; RECOVERY GALLERY</h2>
-            </div>
-
-            <div className="gallery-grid">
-              {galleryImages.map((img, idx) => (
-                <button
-                  className="gallery-item reveal is-visible"
-                  type="button"
-                  key={idx}
-                  onClick={() => {
-                    setLightboxImage(img.src);
-                    setLightboxOpen(true);
-                  }}
-                  aria-label={img.alt}
-                >
-                  <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
-                  <span className="gallery-overlay">View</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works */}
-        <section className="process section" id="process">
-          <div className="container">
-            <div className="section-heading reveal is-visible">
-              <span className="eyebrow">HOW IT WORKS</span>
-              <h2>GET TOWING ASSISTANCE IN FOUR SIMPLE STEPS</h2>
-            </div>
-
-            <div className="steps-grid">
-              <article className="step-card reveal is-visible">
-                <div className="step-number">01</div>
-                <div className="step-icon"><FiPhoneCall /></div>
-                <h3>Contact Us</h3>
-                <p>Send Alvoratech a WhatsApp message explaining your vehicle problem.</p>
-              </article>
-              <article className="step-card reveal is-visible">
-                <div className="step-number">02</div>
-                <div className="step-icon"><FiMapPin /></div>
-                <h3>Share Location</h3>
-                <p>Provide your current GPS location and vehicle make and model.</p>
-              </article>
-              <article className="step-card reveal is-visible">
-                <div className="step-number">03</div>
-                <div className="step-icon"><FiTool /></div>
-                <h3>Confirm Service</h3>
-                <p>Confirm the required assistance (flatbed, wheel lift, roadside fix).</p>
-              </article>
-              <article className="step-card reveal is-visible">
-                <div className="step-number">04</div>
-                <div className="step-icon"><FiTruck /></div>
-                <h3>Receive Assistance</h3>
-                <p>Our operator arrives promptly and takes care of your vehicle.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Slider */}
         <section className="testimonials section" id="testimonials">
           <div className="container">
             <div className="section-heading reveal is-visible">
@@ -588,36 +489,6 @@ export default function TowingCompany() {
         </section>
 
         {/* FAQ Section */}
-        <section className="faq section" id="faq">
-          <div className="container faq-shell reveal is-visible">
-            <div className="section-heading section-heading--left">
-              <span className="eyebrow">FAQ</span>
-              <h2>FREQUENTLY ASKED QUESTIONS</h2>
-            </div>
-
-            <div className="faq-list">
-              {faqs.map((faq, idx) => (
-                <div className={`faq-item ${activeFaq === idx ? 'active' : ''}`} key={idx}>
-                  <button
-                    className="faq-question"
-                    type="button"
-                    aria-expanded={activeFaq === idx}
-                    onClick={() => setActiveFaq(activeFaq === idx ? -1 : idx)}
-                  >
-                    {faq.q}
-                  </button>
-                  {activeFaq === idx && (
-                    <div className="faq-answer">
-                      <p>{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Form Section */}
         <section className="contact section" id="contact">
           <div className="container contact-grid">
             <div className="contact-details reveal is-visible">
@@ -742,13 +613,480 @@ export default function TowingCompany() {
             </div>
           </div>
         </section>
+        </>
+      )}
+
+      {/* SERVICES VIEW */}
+      {currentView === 'services' && (
+        <>
+        <section className="services section" id="services">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <span className="eyebrow">OUR SERVICES</span>
+              <h2>COMPLETE TOWING &amp; ROADSIDE ASSISTANCE SOLUTIONS</h2>
+              <p>Professional vehicle transportation and roadside assistance tailored for any situation.</p>
+            </div>
+
+            <div className="service-grid">
+              {services.map((svc, idx) => {
+                const Icon = svc.icon;
+                return (
+                  <article className="service-card reveal is-visible" key={idx}>
+                    <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
+                    <div className="service-card__content">
+                      <div className="service-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Icon className="w-5 h-5 text-[#ff6b22]" />
+                      </div>
+                      <h3>{svc.title}</h3>
+                      <p>{svc.desc}</p>
+                      <a
+                        href="https://wa.me/message/RVTZQMFL7I6OH1"
+                        className="service-link"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        REQUEST THIS SERVICE &rarr;
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Mid-Page Promo Banner */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Schedule Service Consultation &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* ABOUT / STORY VIEW */}
+      {currentView === 'about' && (
+        <>
+        <section className="about section" id="about">
+          <div className="container about-grid">
+            <div className="about-media reveal is-visible">
+              <div className="about-image-wrap">
+                <img
+                  src="/towing-company/images/heavy-duty-towing.webp"
+                  alt="Ford F-350 tow truck"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="experience-badge">
+                <span>DEPENDABLE</span>
+                <strong>SUPPORT</strong>
+              </div>
+            </div>
+
+            <div className="about-content reveal is-visible">
+              <span className="eyebrow eyebrow--dark">ABOUT ALVORATECH</span>
+              <h2>DEPENDABLE TOWING SOLUTIONS WHEN YOU NEED THEM</h2>
+              <p>
+                Alvoratech is dedicated to providing professional towing, vehicle transportation, and
+                roadside assistance solutions. Our goal is to make vehicle recovery and transportation
+                easier through dependable service and clear communication.
+              </p>
+              <ul className="check-list">
+                <li>Professional Service Approach</li>
+                <li>Customer-Focused Assistance</li>
+                <li>Reliable Vehicle Transportation</li>
+              </ul>
+              <a
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                className="button button-primary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                CONTACT ON WHATSAPP
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="why-us section" id="why-us">
+          <div className="container">
+            <div className="section-heading reveal is-visible section-heading--light">
+              <span className="eyebrow">WHY CHOOSE US</span>
+              <h2>WHY CHOOSE ALVORATECH?</h2>
+            </div>
+
+            <div className="benefits-grid">
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiCheckCircle /></div>
+                <h3>Professional Service</h3>
+                <p>A structured, safety-first approach to every recovery.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiPhoneCall /></div>
+                <h3>Customer-Focused</h3>
+                <p>Direct communication and prompt arrival time estimates.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiTruck /></div>
+                <h3>Multiple Towing Solutions</h3>
+                <p>Services for light cars, heavy trucks, and motorcycles.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FaWhatsapp /></div>
+                <h3>Convenient Communication</h3>
+                <p>Fast dispatch updates and location sharing via WhatsApp.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiShield /></div>
+                <h3>Reliable Assistance</h3>
+                <p>Licensed, insured, and verified equipment on every job.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiClock /></div>
+                <h3>Fast Turnaround</h3>
+                <p>Immediate coordination to reduce roadside waiting time.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Connect With Our Specialists &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* WHY US VIEW */}
+      {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && (
+        <>
+        <section className="why-us section" id="why-us">
+          <div className="container">
+            <div className="section-heading reveal is-visible section-heading--light">
+              <span className="eyebrow">WHY CHOOSE US</span>
+              <h2>WHY CHOOSE ALVORATECH?</h2>
+            </div>
+
+            <div className="benefits-grid">
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiCheckCircle /></div>
+                <h3>Professional Service</h3>
+                <p>A structured, safety-first approach to every recovery.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiPhoneCall /></div>
+                <h3>Customer-Focused</h3>
+                <p>Direct communication and prompt arrival time estimates.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiTruck /></div>
+                <h3>Multiple Towing Solutions</h3>
+                <p>Services for light cars, heavy trucks, and motorcycles.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FaWhatsapp /></div>
+                <h3>Convenient Communication</h3>
+                <p>Fast dispatch updates and location sharing via WhatsApp.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiShield /></div>
+                <h3>Reliable Assistance</h3>
+                <p>Licensed, insured, and verified equipment on every job.</p>
+              </article>
+              <article className="benefit-card reveal is-visible">
+                <div className="benefit-icon"><FiClock /></div>
+                <h3>Fast Turnaround</h3>
+                <p>Immediate coordination to reduce roadside waiting time.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Work With Our Team &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* PROJECTS / PORTFOLIO VIEW */}
+      {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && (
+        <>
+        <section className="gallery section" id="gallery">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <span className="eyebrow">OUR WORK</span>
+              <h2>OUR TOWING &amp; RECOVERY GALLERY</h2>
+            </div>
+
+            <div className="gallery-grid">
+              {galleryImages.map((img, idx) => (
+                <button
+                  className="gallery-item reveal is-visible"
+                  type="button"
+                  key={idx}
+                  onClick={() => {
+                    setLightboxImage(img.src);
+                    setLightboxOpen(true);
+                  }}
+                  aria-label={img.alt}
+                >
+                  <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+                  <span className="gallery-overlay">View</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Request Project Estimate &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* REVIEWS / TESTIMONIALS VIEW */}
+      {(currentView === 'reviews' || currentView === 'testimonials') && (
+        <>
+        <section className="testimonials section" id="testimonials">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <span className="eyebrow">CLIENT FEEDBACK</span>
+              <h2>WHAT DRIVERS SAY ABOUT US</h2>
+            </div>
+
+            <div className="testimonial-slider reveal is-visible">
+              <button
+                className="slider-btn slider-btn--prev"
+                type="button"
+                aria-label="Previous testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              >
+                &lsaquo;
+              </button>
+              <div className="testimonial-track">
+                {testimonials.map((t, idx) => (
+                  <article
+                    className={`testimonial-card ${idx === testimonialIndex ? 'is-active' : ''}`}
+                    key={idx}
+                    style={{ display: idx === testimonialIndex ? 'block' : 'none' }}
+                  >
+                    <div className="stars" aria-label="5 star rating">Rating: 5.0 / 5.0</div>
+                    <p>&ldquo;{t.text}&rdquo;</p>
+                    <div className="testimonial-author">
+                      <strong>{t.author}</strong>
+                      <span>{t.role}</span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <button
+                className="slider-btn slider-btn--next"
+                type="button"
+                aria-label="Next testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev + 1) % testimonials.length)}
+              >
+                &rsaquo;
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Experience Our Certified Quality &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <>
+        <section className="faq section" id="faq">
+          <div className="container faq-shell reveal is-visible">
+            <div className="section-heading section-heading--left">
+              <span className="eyebrow">FAQ</span>
+              <h2>FREQUENTLY ASKED QUESTIONS</h2>
+            </div>
+
+            <div className="faq-list">
+              {faqs.map((faq, idx) => (
+                <div className={`faq-item ${activeFaq === idx ? 'active' : ''}`} key={idx}>
+                  <button
+                    className="faq-question"
+                    type="button"
+                    aria-expanded={activeFaq === idx}
+                    onClick={() => setActiveFaq(activeFaq === idx ? -1 : idx)}
+                  >
+                    {faq.q}
+                  </button>
+                  {activeFaq === idx && (
+                    <div className="faq-answer">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Form Section */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
+              Direct Line: +1 (412) 796-3968
+            </a>
+          </div>
+        </>
+      )}
+
+      {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
+      {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && (
+        <>
+        <section className="contact section" id="contact">
+          <div className="container contact-grid">
+            <div className="contact-details reveal is-visible">
+              <span className="eyebrow">CONTACT</span>
+              <h2>GET IN TOUCH WITH ALVORATECH</h2>
+              <ul className="contact-list">
+                <li>
+                  <span>WhatsApp:</span>
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noreferrer">
+                    +1 (412) 796-3968
+                  </a>
+                </li>
+                <li>
+                  <span>Email:</span>
+                  <a href="mailto:info@Alvoratechhq.com">info@Alvoratechhq.com</a>
+                </li>
+                <li>
+                  <span>Service Area:</span>
+                  <span>United States Metropolitan &amp; Interstate Regions</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="contact-form-wrap reveal is-visible">
+              <form id="contactForm" onSubmit={handleFormSubmit} noValidate>
+                <div className="form-row">
+                  <label>
+                    <span>Full Name *</span>
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>WhatsApp Number *</span>
+                    <input
+                      type="tel"
+                      name="whatsapp"
+                      value={formData.whatsapp}
+                      onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                      placeholder="+1 (___) ___-____"
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="form-row">
+                  <label>
+                    <span>Vehicle Type *</span>
+                    <input
+                      type="text"
+                      name="vehicleType"
+                      value={formData.vehicleType}
+                      onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
+                      placeholder="Sedan, SUV, Truck, Motorcycle"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Service Required *</span>
+                    <select
+                      name="serviceRequired"
+                      value={formData.serviceRequired}
+                      onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Emergency Towing">Emergency Towing</option>
+                      <option value="Flatbed Towing">Flatbed Towing</option>
+                      <option value="Heavy-Duty Towing">Heavy-Duty Towing</option>
+                      <option value="Accident Recovery">Accident Recovery</option>
+                      <option value="Motorcycle Towing">Motorcycle Towing</option>
+                      <option value="Long-Distance Towing">Long-Distance Towing</option>
+                      <option value="Roadside Assistance">Roadside Assistance</option>
+                      <option value="Jump-Start Services">Jump-Start Services</option>
+                      <option value="Tire Change Assistance">Tire Change Assistance</option>
+                      <option value="Vehicle Lockout Assistance">Vehicle Lockout Assistance</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div className="form-row form-row--single">
+                  <label>
+                    <span>Current Location / Coordinates *</span>
+                    <input
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                      placeholder="Current city, highway mile marker, or intersection"
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="form-row form-row--single">
+                  <label>
+                    <span>Description of Assistance Needed</span>
+                    <textarea
+                      name="description"
+                      rows={4}
+                      value={formData.description}
+                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                      placeholder="Tell us what happened and where you need the vehicle transported..."
+                    ></textarea>
+                  </label>
+                </div>
+
+                <button type="submit" className="button button-primary button-block">
+                  SEND SERVICE REQUEST ON WHATSAPP
+                </button>
+                {formStatus.message && (
+                  <p className={`form-status mt-3 text-sm font-semibold ${formStatus.type === 'is-error' ? 'text-red-500' : 'text-emerald-500'}`}>
+                    {formStatus.message}
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </section>
+        </>
+      )}
+
       </main>
 
-      {/* Footer */}
-      <footer className="site-footer">
+            <footer className="site-footer">
         <div className="container footer-grid">
           <div>
-            <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="brand brand--footer" aria-label="Alvoratech home">
+            <a href="#home" onClick={(e) => navigateTo('home', e)} className="brand brand--footer" aria-label="Alvoratech home">
               <span className="brand-mark" aria-hidden="true">
                 <svg viewBox="0 0 64 64" role="img" aria-label="Alvoratech slogan icon">
                   <path d="M12 43h4.7l3.4-11.6h16.9L39 43h13v4.8H12V43Zm8.7-2.4h6.6v-5.3h-6.6v5.3Zm19.8-12.3h5.8l3.8 7.6h-9.6v-7.6Zm-23.6 0h9.4v7.6H17.9v-7.6Zm9.4-9.8c0-3.4 2.8-6.2 6.2-6.2s6.2 2.8 6.2 6.2v5.1H27.3v-5.1Z" />
@@ -769,22 +1107,22 @@ export default function TowingCompany() {
           <div>
             <h3>Quick Links</h3>
             <ul className="footer-links">
-              <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a></li>
-              <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</a></li>
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Our Services</a></li>
-              <li><a href="#gallery" onClick={(e) => scrollToSection(e, 'gallery')}>Gallery</a></li>
-              <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
+              <li><a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a></li>
+              <li><a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Our Services</a></li>
+              <li><a href="#gallery" onClick={(e) => navigateTo('gallery', e)}>Gallery</a></li>
+              <li><a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a></li>
             </ul>
           </div>
 
           <div>
             <h3>Services</h3>
             <ul className="footer-links">
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Emergency Towing</a></li>
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Flatbed Towing</a></li>
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Roadside Assistance</a></li>
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Heavy-Duty Towing</a></li>
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Vehicle Recovery</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Emergency Towing</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Flatbed Towing</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Roadside Assistance</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Heavy-Duty Towing</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Vehicle Recovery</a></li>
             </ul>
           </div>
 
@@ -833,17 +1171,15 @@ export default function TowingCompany() {
           className="lightbox is-open"
           id="lightbox"
           aria-hidden="false"
-          onClick={() => setLightboxOpen(false)}
         >
           <button
             className="lightbox-close"
             type="button"
             aria-label="Close gallery image"
-            onClick={() => setLightboxOpen(false)}
           >
             &times;
           </button>
-          <img src={lightboxImage} alt="Expanded gallery view" id="lightboxImage" onClick={(e) => e.stopPropagation()} />
+          <img src={lightboxImage} alt="Expanded gallery view" id="lightboxImage" />
         </div>
       )}
     </div>

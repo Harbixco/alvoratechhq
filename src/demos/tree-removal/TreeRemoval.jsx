@@ -12,6 +12,42 @@ import { FaWhatsapp } from 'react-icons/fa';
 import './tree-removal.css';
 
 export default function TreeRemoval() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","projects","testimonials","faq","contact"].includes(hash)) return hash;
+      if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","projects","testimonials","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
+        setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const [navOpen, setNavOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
   const [activeFaq, setActiveFaq] = useState(0);
@@ -228,7 +264,7 @@ export default function TreeRemoval() {
       {/* Header Navigation */}
       <header className="site-header">
         <nav className="navbar container" aria-label="Primary navigation">
-          <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="logo" aria-label="Alvoratech home">
+          <a href="#home" onClick={(e) => navigateTo('home', e)} className="logo" aria-label="Alvoratech home">
             <span className="logo-mark" aria-hidden="true">
               <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tree icon">
                 <circle cx="32" cy="14" r="6" fill="currentColor" />
@@ -243,7 +279,6 @@ export default function TreeRemoval() {
             className={`nav-toggle ${navOpen ? 'is-open' : ''}`}
             aria-label="Toggle navigation"
             aria-expanded={navOpen}
-            onClick={() => setNavOpen(!navOpen)}
           >
             <span></span>
             <span></span>
@@ -252,15 +287,15 @@ export default function TreeRemoval() {
 
           <div className={`nav-menu-wrap ${navOpen ? 'open' : ''}`}>
             <ul className="nav-menu">
-              <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a></li>
-              <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</a></li>
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Services</a></li>
-              <li><a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>Projects</a></li>
-              <li><a href="#testimonials" onClick={(e) => scrollToSection(e, 'testimonials')}>Reviews</a></li>
-              <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
+              <li><a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a></li>
+              <li><a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a></li>
+              <li><a href="#projects" onClick={(e) => navigateTo('projects', e)}>Projects</a></li>
+              <li><a href="#testimonials" onClick={(e) => navigateTo('testimonials', e)}>Reviews</a></li>
+              <li><a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a></li>
               <li>
                 <a
-                  className="btn btn-primary nav-cta"
+                  className="btn btn-primary nav-cta desktop-only-btn"
                   href="https://wa.me/message/RVTZQMFL7I6OH1"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -275,7 +310,41 @@ export default function TreeRemoval() {
 
       {/* Main Content */}
       <main id="main-content">
-        {/* Hero Section */}
+
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#home" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              Certified master arborists, hazardous tree extraction, precision crane operations, and storm damage response.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* HOMEPAGE VIEW: High-converting, clean customer essentials */}
+      {currentView === 'home' && (
+        <>
         <section id="home" className="hero">
           <div className="hero-media" aria-hidden="true"></div>
           <div className="hero-overlay"></div>
@@ -311,52 +380,7 @@ export default function TreeRemoval() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="about section">
-          <div className="container about-grid">
-            <div className="about-image reveal is-visible">
-              <img
-                src="/tree-removal/images/arborist-tree-cutting.webp"
-                alt="Arborist using a chainsaw to remove a tree in sections"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="about-content reveal is-visible">
-              <p className="section-tag">About Alvoratech</p>
-              <h2>We Build Professional Websites That Help You Attract More Clients.</h2>
-              <p>
-                Alvoratech creates polished, professional websites that help businesses showcase their services, build
-                trust with potential customers, and attract more clients. We make it easier for your business to stand
-                out online and connect with the people who need what you offer.
-              </p>
-              <div className="highlight-list">
-                <article>
-                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
-                  <div>
-                    <h3>Customer-Focused Service</h3>
-                  </div>
-                </article>
-                <article>
-                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
-                  <div>
-                    <h3>Professional Approach</h3>
-                  </div>
-                </article>
-                <article>
-                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
-                  <div>
-                    <h3>Reliable Communication</h3>
-                  </div>
-                </article>
-              </div>
-              <a className="btn btn-primary" href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
-                Learn More
-              </a>
-            </div>
-          </div>
-        </section>
 
-        {/* Services Section */}
         <section id="services" className="services section">
           <div className="container">
             <div className="section-heading reveal is-visible">
@@ -385,107 +409,6 @@ export default function TreeRemoval() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="reasons section alt-bg">
-          <div className="container">
-            <div className="section-heading reveal is-visible">
-              <p className="section-tag">Why Choose Alvoratech?</p>
-              <h2>Reliable service, thoughtful communication, and dependable results.</h2>
-            </div>
-            <div className="feature-grid">
-              <article className="feature-card reveal is-visible">
-                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
-                <h3>Experienced Team</h3>
-              </article>
-              <article className="feature-card reveal is-visible">
-                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
-                <h3>Safety First Approach</h3>
-              </article>
-              <article className="feature-card reveal is-visible">
-                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
-                <h3>Proper Equipment</h3>
-              </article>
-              <article className="feature-card reveal is-visible">
-                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
-                <h3>Customer Satisfaction</h3>
-              </article>
-              <article className="feature-card reveal is-visible">
-                <div className="feature-icon" aria-hidden="true"><FiPhoneCall /></div>
-                <h3>Reliable Communication</h3>
-              </article>
-              <article className="feature-card reveal is-visible">
-                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
-                <h3>Comprehensive Services</h3>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Gallery */}
-        <section id="projects" className="projects section">
-          <div className="container">
-            <div className="section-heading reveal is-visible">
-              <p className="section-tag">Our Work</p>
-              <h2>Tree Service Work in Action</h2>
-              <p className="gallery-note">Illustrative photographs showcasing tree service operations.</p>
-            </div>
-
-            <div className="gallery-filters reveal is-visible" aria-label="Project filters">
-              <button
-                className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-                type="button"
-                onClick={() => setActiveFilter('all')}
-              >
-                All Projects
-              </button>
-              <button
-                className={`filter-btn ${activeFilter === 'removal' ? 'active' : ''}`}
-                type="button"
-                onClick={() => setActiveFilter('removal')}
-              >
-                Tree Removal
-              </button>
-              <button
-                className={`filter-btn ${activeFilter === 'trimming' ? 'active' : ''}`}
-                type="button"
-                onClick={() => setActiveFilter('trimming')}
-              >
-                Tree Trimming
-              </button>
-              <button
-                className={`filter-btn ${activeFilter === 'stump' ? 'active' : ''}`}
-                type="button"
-                onClick={() => setActiveFilter('stump')}
-              >
-                Stump Grinding
-              </button>
-              <button
-                className={`filter-btn ${activeFilter === 'clearing' ? 'active' : ''}`}
-                type="button"
-                onClick={() => setActiveFilter('clearing')}
-              >
-                Land Clearing
-              </button>
-            </div>
-
-            <div className="gallery-grid reveal is-visible">
-              {filteredProjects.map((p, idx) => (
-                <figure
-                  className="gallery-item cursor-pointer"
-                  key={idx}
-                  onClick={() => {
-                    setLightboxImage(p.image);
-                    setLightboxOpen(true);
-                  }}
-                >
-                  <img src={p.image} alt={p.alt} loading="lazy" decoding="async" />
-                  <figcaption>{p.title}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
         <section id="testimonials" className="testimonials section">
           <div className="container">
             <div className="section-heading reveal is-visible">
@@ -553,37 +476,6 @@ export default function TreeRemoval() {
         </div>
 
         {/* FAQ Section */}
-        <section className="faq section">
-          <div className="container faq-wrap">
-            <div className="section-heading reveal is-visible">
-              <p className="section-tag">Frequently Asked Questions</p>
-              <h2>Answers to common tree service questions.</h2>
-            </div>
-
-            <div className="faq-list reveal is-visible">
-              {faqs.map((faq, idx) => (
-                <article className={`faq-item ${activeFaq === idx ? 'active' : ''}`} key={idx}>
-                  <button
-                    className="faq-question"
-                    type="button"
-                    aria-expanded={activeFaq === idx}
-                    onClick={() => setActiveFaq(activeFaq === idx ? -1 : idx)}
-                  >
-                    <span>{faq.q}</span>
-                    <span className="faq-icon">{activeFaq === idx ? '-' : '+'}</span>
-                  </button>
-                  {activeFaq === idx && (
-                    <div className="faq-answer">
-                      <p>{faq.a}</p>
-                    </div>
-                  )}
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
         <section id="contact" className="contact section">
           <div className="container contact-grid">
             <div className="contact-copy reveal is-visible">
@@ -687,13 +579,499 @@ export default function TreeRemoval() {
             </div>
           </div>
         </section>
+        </>
+      )}
+
+      {/* SERVICES VIEW */}
+      {currentView === 'services' && (
+        <>
+        <section id="services" className="services section">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <p className="section-tag">Our Tree Services</p>
+              <h2>Complete Tree Care for Residential and Commercial Properties</h2>
+            </div>
+            <div className="service-grid">
+              {services.map((svc, idx) => (
+                <article className="service-card reveal is-visible" key={idx}>
+                  <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
+                  <div className="card-content">
+                    <h3>{svc.title}</h3>
+                    <p>{svc.desc}</p>
+                    <a
+                      href="https://wa.me/message/RVTZQMFL7I6OH1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Request a Quote &rarr;
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Schedule Service Consultation &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* ABOUT / STORY VIEW */}
+      {currentView === 'about' && (
+        <>
+        <section id="about" className="about section">
+          <div className="container about-grid">
+            <div className="about-image reveal is-visible">
+              <img
+                src="/tree-removal/images/arborist-tree-cutting.webp"
+                alt="Arborist using a chainsaw to remove a tree in sections"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="about-content reveal is-visible">
+              <p className="section-tag">About Alvoratech</p>
+              <h2>We Build Professional Websites That Help You Attract More Clients.</h2>
+              <p>
+                Alvoratech creates polished, professional websites that help businesses showcase their services, build
+                trust with potential customers, and attract more clients. We make it easier for your business to stand
+                out online and connect with the people who need what you offer.
+              </p>
+              <div className="highlight-list">
+                <article>
+                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
+                  <div>
+                    <h3>Customer-Focused Service</h3>
+                  </div>
+                </article>
+                <article>
+                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
+                  <div>
+                    <h3>Professional Approach</h3>
+                  </div>
+                </article>
+                <article>
+                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
+                  <div>
+                    <h3>Reliable Communication</h3>
+                  </div>
+                </article>
+              </div>
+              <a className="btn btn-primary" href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
+                Learn More
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="reasons section alt-bg">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <p className="section-tag">Why Choose Alvoratech?</p>
+              <h2>Reliable service, thoughtful communication, and dependable results.</h2>
+            </div>
+            <div className="feature-grid">
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Experienced Team</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Safety First Approach</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Proper Equipment</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Customer Satisfaction</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiPhoneCall /></div>
+                <h3>Reliable Communication</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Comprehensive Services</h3>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Gallery */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Connect With Our Specialists &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* WHY US VIEW */}
+      {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && (
+        <>
+        <section className="reasons section alt-bg">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <p className="section-tag">Why Choose Alvoratech?</p>
+              <h2>Reliable service, thoughtful communication, and dependable results.</h2>
+            </div>
+            <div className="feature-grid">
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Experienced Team</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Safety First Approach</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Proper Equipment</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Customer Satisfaction</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiPhoneCall /></div>
+                <h3>Reliable Communication</h3>
+              </article>
+              <article className="feature-card reveal is-visible">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Comprehensive Services</h3>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Gallery */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Work With Our Team &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* PROJECTS / PORTFOLIO VIEW */}
+      {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && (
+        <>
+        <section id="projects" className="projects section">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <p className="section-tag">Our Work</p>
+              <h2>Tree Service Work in Action</h2>
+              <p className="gallery-note">Illustrative photographs showcasing tree service operations.</p>
+            </div>
+
+            <div className="gallery-filters reveal is-visible" aria-label="Project filters">
+              <button
+                className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('all')}
+              >
+                All Projects
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'removal' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('removal')}
+              >
+                Tree Removal
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'trimming' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('trimming')}
+              >
+                Tree Trimming
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'stump' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('stump')}
+              >
+                Stump Grinding
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'clearing' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('clearing')}
+              >
+                Land Clearing
+              </button>
+            </div>
+
+            <div className="gallery-grid reveal is-visible">
+              {filteredProjects.map((p, idx) => (
+                <figure
+                  className="gallery-item cursor-pointer"
+                  key={idx}
+                  onClick={() => {
+                    setLightboxImage(p.image);
+                    setLightboxOpen(true);
+                  }}
+                >
+                  <img src={p.image} alt={p.alt} loading="lazy" decoding="async" />
+                  <figcaption>{p.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Request Project Estimate &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* REVIEWS / TESTIMONIALS VIEW */}
+      {(currentView === 'reviews' || currentView === 'testimonials') && (
+        <>
+        <section id="testimonials" className="testimonials section">
+          <div className="container">
+            <div className="section-heading reveal is-visible">
+              <p className="section-tag">Customer Testimonials</p>
+              <h2>Client feedback from property owners</h2>
+            </div>
+            <div className="testimonial-carousel reveal is-visible" aria-live="polite">
+              <button
+                className="carousel-btn prev"
+                type="button"
+                aria-label="Previous testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              >
+                <FiChevronLeft />
+              </button>
+              <div className="testimonial-track">
+                {testimonials.map((t, idx) => (
+                  <article
+                    className={`testimonial-item ${idx === testimonialIndex ? 'active' : ''}`}
+                    key={idx}
+                    style={{ display: idx === testimonialIndex ? 'block' : 'none' }}
+                  >
+                    <div className="stars" aria-label="Five star review">Rating: 5.0 / 5.0</div>
+                    <p>&ldquo;{t.quote}&rdquo;</p>
+                    <div className="person">
+                      <strong>{t.person}</strong>
+                      <span>{t.role}</span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <button
+                className="carousel-btn next"
+                type="button"
+                aria-label="Next testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev + 1) % testimonials.length)}
+              >
+                <FiChevronRight />
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Promo Banner */}
+        <div className="promo-banner middle-banner">
+          <div className="container promo-inner reveal is-visible">
+            <div>
+              <h2>Your Tree Service Business Deserves a Professional Online Presence.</h2>
+              <p>
+                Want a modern website like this for your business? Alvoratech creates professional websites that help you
+                showcase your services and connect with customers.
+              </p>
+            </div>
+            <div className="banner-buttons">
+              <a
+                className="btn btn-primary"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Started on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Experience Our Certified Quality &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <>
+        <section className="faq section">
+          <div className="container faq-wrap">
+            <div className="section-heading reveal is-visible">
+              <p className="section-tag">Frequently Asked Questions</p>
+              <h2>Answers to common tree service questions.</h2>
+            </div>
+
+            <div className="faq-list reveal is-visible">
+              {faqs.map((faq, idx) => (
+                <article className={`faq-item ${activeFaq === idx ? 'active' : ''}`} key={idx}>
+                  <button
+                    className="faq-question"
+                    type="button"
+                    aria-expanded={activeFaq === idx}
+                    onClick={() => setActiveFaq(activeFaq === idx ? -1 : idx)}
+                  >
+                    <span>{faq.q}</span>
+                    <span className="faq-icon">{activeFaq === idx ? '-' : '+'}</span>
+                  </button>
+                  {activeFaq === idx && (
+                    <div className="faq-answer">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
+              Direct Line: +1 (412) 796-3968
+            </a>
+          </div>
+        </>
+      )}
+
+      {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
+      {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && (
+        <>
+        <section id="contact" className="contact section">
+          <div className="container contact-grid">
+            <div className="contact-copy reveal is-visible">
+              <p className="section-tag">Contact Us</p>
+              <h2>Let's Talk About Your Tree Service Needs.</h2>
+              <ul className="contact-list">
+                <li>
+                  <strong>WhatsApp:</strong>{' '}
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+                    +1 (412) 796-3968
+                  </a>
+                </li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:info@Alvoratechhq.com">info@Alvoratechhq.com</a>
+                </li>
+                <li><strong>Service:</strong> Residential &amp; Commercial Service</li>
+              </ul>
+              <a
+                className="btn btn-primary whatsapp-button mt-4"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            <div className="contact-form-wrap reveal is-visible">
+              <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
+                <div className="form-grid">
+                  <label>
+                    <span>Full Name *</span>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Email Address</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="you@example.com"
+                    />
+                  </label>
+                  <label>
+                    <span>Phone Number *</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="(555) 123-4567"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Service Required *</span>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Tree Removal">Tree Removal</option>
+                      <option value="Tree Trimming & Pruning">Tree Trimming &amp; Pruning</option>
+                      <option value="Stump Grinding & Removal">Stump Grinding &amp; Removal</option>
+                      <option value="Emergency Tree Services">Emergency Tree Services</option>
+                      <option value="Land & Lot Clearing">Land &amp; Lot Clearing</option>
+                      <option value="Tree Maintenance">Tree Maintenance</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  <span>Project Description</span>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell us about the tree location, hazards, or property access..."
+                  ></textarea>
+                </label>
+                <button className="btn btn-primary submit-btn" type="submit">
+                  Send Your Request on WhatsApp
+                </button>
+                {formSubmitted && (
+                  <p className="form-message mt-3 text-sm font-semibold text-emerald-600">
+                    Your request was opened in WhatsApp.
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </section>
+        </>
+      )}
+
       </main>
 
-      {/* Footer */}
-      <footer className="site-footer">
+            <footer className="site-footer">
         <div className="container footer-grid">
           <div>
-            <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="logo footer-logo" aria-label="Alvoratech home">
+            <a href="#home" onClick={(e) => navigateTo('home', e)} className="logo footer-logo" aria-label="Alvoratech home">
               <span className="logo-mark" aria-hidden="true">
                 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tree icon">
                   <circle cx="32" cy="14" r="6" fill="currentColor" />
@@ -709,11 +1087,11 @@ export default function TreeRemoval() {
           <div>
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a></li>
-              <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</a></li>
-              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Our Services</a></li>
-              <li><a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>Our Projects</a></li>
-              <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
+              <li><a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a></li>
+              <li><a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Our Services</a></li>
+              <li><a href="#projects" onClick={(e) => navigateTo('projects', e)}>Our Projects</a></li>
+              <li><a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a></li>
             </ul>
           </div>
 
@@ -767,17 +1145,15 @@ export default function TreeRemoval() {
         <div
           className="lightbox"
           style={{ display: 'flex' }}
-          onClick={() => setLightboxOpen(false)}
         >
           <button
             className="lightbox-close"
             type="button"
             aria-label="Close image"
-            onClick={() => setLightboxOpen(false)}
           >
             &times;
           </button>
-          <img src={lightboxImage} alt="Expanded project view" onClick={(e) => e.stopPropagation()} />
+          <img src={lightboxImage} alt="Expanded project view" />
         </div>
       )}
     </div>

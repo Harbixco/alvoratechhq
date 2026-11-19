@@ -4,6 +4,57 @@ import './pest-control.css';
 
 export default function PestControl() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","gallery","why-us","faq","contact"].includes(hash)) {
+        return hash;
+      }
+      if (hash === 'gallery') return 'portfolio';
+      if (hash === 'our-work') return 'portfolio';
+      if (hash === 'why-choose') return 'why-us';
+      if (hash === 'about') return 'why-us';
+      if (hash === 'estimate' || hash === 'quote' || hash === 'book') return 'contact';
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","gallery","why-us","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (hash === 'gallery' || hash === 'our-work') {
+        setCurrentView('portfolio');
+      } else if (hash === 'why-choose' || hash === 'about') {
+        setCurrentView('why-us');
+      } else if (hash === 'estimate' || hash === 'quote' || hash === 'book') {
+        setCurrentView('contact');
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      runInit();
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [currentView]);
   useEffect(() => {
     try {
       /**
@@ -595,7 +646,7 @@ const runInit = () => {
     <div className="container-wide nav-container">
       
       {/* Brand Logo */}
-      <a href="#home" className="site-logo" aria-label="Alvoratech Home">
+      <a href="#home" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Home">
         <div className="logo-icon-box">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -606,17 +657,17 @@ const runInit = () => {
 
       {/* Desktop Navigation Links */}
       <nav className="nav-links" role="navigation" aria-label="Primary navigation">
-        <a href="#home" className="nav-link active">Home</a>
-        <a href="#about" className="nav-link">About</a>
-        <a href="#services" className="nav-link">Services</a>
+        <a href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link active">Home</a>
+        <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About</a>
+        <a href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
         <a href="#pest-guide" className="nav-link">Pest Identifier</a>
-        <a href="#why-choose" className="nav-link">Why Choose Us</a>
-        <a href="#contact" className="nav-link">Contact</a>
+        <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
+        <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
       </nav>
 
       {/* Desktop Header CTA */}
       <div className="nav-actions">
-        <a href="#contact" className="btn btn-primary btn-sm">
+        <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">
           <span>Request Inspection</span>
           <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -625,7 +676,7 @@ const runInit = () => {
         </a>
 
         {/* Mobile Hamburger Toggle */}
-        <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-expanded={mobileMenuOpen} id="mobileToggle" aria-label="Toggle navigation menu">
+        <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}  aria-expanded={mobileMenuOpen} id="mobileToggle" aria-label="Toggle navigation menu">
           <span></span>
           <span></span>
           <span></span>
@@ -636,25 +687,55 @@ const runInit = () => {
   </header>
 
   {/* Mobile Navigation Overlay & Drawer */}
-  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} id="mobileNavOverlay"></div>
+  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}  id="mobileNavOverlay"></div>
   <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} id="mobileDrawer" aria-label="Mobile Navigation">
     <nav>
-      <a onClick={() => setMobileMenuOpen(false)} href="#home" className="nav-link">Home</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#about" className="nav-link">About</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#services" className="nav-link">Services</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#pest-guide" className="nav-link">Pest Identifier</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#why-choose" className="nav-link">Why Choose Us</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="nav-link">Contact</a>
+      <a  href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link">Home</a>
+      <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About</a>
+      <a  href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
+      <a  href="#pest-guide" className="nav-link">Pest Identifier</a>
+      <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
+      <a  href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
     </nav>
     <div style={{"marginTop":"1.5rem"}}>
-      <a href="#contact" className="btn btn-primary" style={{"width":"100%"}}>Request Inspection</a>
+      <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{"width":"100%"}}>Request Inspection</a>
     </div>
   </aside>
 
-  <main>
-    {/* ========================================================================
-         HERO SECTION
-         ======================================================================== */}
+      <main id="main-content">
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
+              {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {currentView === 'contact' && 'Contact & Request Free Quote'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              Eco-conscious extermination, thermal bed bug eradication, termite barriers, and wildlife exclusion.
+            </p>
+          </div>
+        </section>
+      )}
+
+        {/* HOMEPAGE VIEW: Clean essentials */}
+        {currentView === 'home' && (
+          <>
     <section className="hero-section" id="home">
       {/* Radar Pulse Ring Accent */}
       <div className="radar-pulse-ring" aria-hidden="true"></div>
@@ -869,6 +950,259 @@ const runInit = () => {
     {/* ========================================================================
          PEST CONTROL SERVICES (8 SERVICES)
          ======================================================================== */}
+    <section className="section-padding bg-light testimonials-section" id="testimonials">
+      <div className="container">
+        
+        <div className="section-header">
+          <span className="section-eyebrow reveal">Customer Feedback</span>
+          <h2 className="reveal stagger-1">What Clients Value About Our Service</h2>
+          <div className="testimonials-disclaimer-pill reveal stagger-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Sample Demonstration Reviews — Representative customer feedback showcasing service standards.</span>
+          </div>
+        </div>
+
+        <div className="testimonials-carousel-wrapper reveal">
+          <div className="testimonials-slider">
+            <div className="testimonials-track" id="testimonialsTrack">
+              
+              {/* Review 1 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div>
+                  <p className="testimonial-text">"We discovered termite activity in our basement framework during a renovation. Alvoratech acted swiftly, conducted a thorough subterranean evaluation, and treated the perimeter. Complete relief!"</p>
+                  <div className="testimonial-author">
+                    <span className="author-name">David M.</span>
+                    <span className="author-role">Homeowner (Sample Review)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Review 2 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div>
+                  <p className="testimonial-text">"As a restaurant operator, health inspections are non-negotiable. Alvoratech provides punctual, discreet commercial pest management and detailed compliance logs. Invaluable partners."</p>
+                  <div className="testimonial-author">
+                    <span className="author-name">Sarah B.</span>
+                    <span className="author-role">Restaurant Operator (Sample Review)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Review 3 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div>
+                  <p className="testimonial-text">"We had a stubborn rodent problem in our attic that standard traps couldn't solve. Alvoratech found the roofline entry gaps, sealed them permanently, and cleared the space in days."</p>
+                  <div className="testimonial-author">
+                    <span className="author-name">Marcus T.</span>
+                    <span className="author-role">Property Owner (Sample Review)</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="slider-controls">
+            <button type="button" className="slider-btn" id="testimonialPrev" aria-label="Previous testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div className="slider-dots" id="sliderDots"></div>
+            <button type="button" className="slider-btn" id="testimonialNext" aria-label="Next testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         SPECIAL CALL-TO-ACTION SECTION
+         ======================================================================== */}
+    <section className="special-cta-section" aria-label="Call to Action">
+      <div className="special-cta-content reveal">
+        <h2>Take Back Your Home from Unwanted Pests.</h2>
+        <p>Don't let pests compromise your comfort, hygiene, or structural safety. Get in touch with Alvoratech today.</p>
+        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
+          </svg>
+          <span>Get Started on WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    {/* ========================================================================
+         FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION - 7 ITEMS)
+         ======================================================================== */}
+    <section className="section-padding bg-light" id="contact">
+      <div className="container">
+        
+        <div className="section-header">
+          <span className="section-eyebrow reveal">Inspection Request</span>
+          <h2 className="reveal stagger-1">Schedule Your Property Inspection</h2>
+          <p className="reveal stagger-2">Tell us about the pests you've observed, and our team will coordinate the next steps.</p>
+        </div>
+
+        <div className="contact-grid">
+          
+          {/* Contact Info Card */}
+          <div className="contact-info-card reveal">
+            <h3>Contact Information</h3>
+            <div className="contact-channels">
+              
+              {/* WhatsApp / Phone */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box whatsapp-bg">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>WhatsApp / Phone</h4>
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="channel-link">+1 (412) 796-3968</a>
+                  <div style={{"marginTop":"4px"}}>
+                    <a href="tel:+14127963968" style={{"fontSize":"0.85rem","color":"var(--color-forest)","fontWeight":"600"}}>(Call directly)</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>Email</h4>
+                  <a href="mailto:info@Alvoratechhq.com" className="channel-link">info@Alvoratechhq.com</a>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Location */}
+            <div className="contact-location-box">
+              <div className="contact-location-label">Location</div>
+              <div className="contact-location-value">*</div>
+            </div>
+
+          </div>
+
+          {/* Contact Form Card */}
+          <div className="contact-form-card reveal stagger-1">
+            <h3>Request an Inspection</h3>
+            <p>Tell us what pests you've seen and we will prepare your prefilled request directly in WhatsApp.</p>
+
+            <div className="form-status" id="formStatus" role="status"></div>
+
+            <form id="contactForm" novalidate>
+              
+              {/* Full Name */}
+              <div className="form-group">
+                <label htmlFor="fullName" className="form-label">Full Name *</label>
+                <input type="text" id="fullName" className="form-input" placeholder="e.g. Jason Miller" required />
+                <div className="form-error" id="fullNameError"></div>
+              </div>
+
+              {/* Email & Phone in Row */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">Email Address *</label>
+                  <input type="email" id="email" className="form-input" placeholder="e.g. jason@example.com" required />
+                  <div className="form-error" id="emailError"></div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone" className="form-label">Phone Number *</label>
+                  <input type="tel" id="phone" className="form-input" placeholder="e.g. +1 (412) 555-0199" required />
+                  <div className="form-error" id="phoneError"></div>
+                </div>
+              </div>
+
+              {/* Pest Type & Property Type in Row */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="pestType" className="form-label">Pest Type Observed *</label>
+                  <select id="pestType" className="form-select" required>
+                    <option value="">Select Pest Observed...</option>
+                    <option value="Termites">Termites</option>
+                    <option value="Rodents (Mice/Rats)">Rodents (Mice/Rats)</option>
+                    <option value="Bed Bugs">Bed Bugs</option>
+                    <option value="Ants">Ants</option>
+                    <option value="Cockroaches">Cockroaches</option>
+                    <option value="Mosquitoes & Ticks">Mosquitoes & Ticks</option>
+                    <option value="Wildlife">Wildlife</option>
+                    <option value="General / Unidentified">General / Unidentified</option>
+                  </select>
+                  <div className="form-error" id="pestTypeError"></div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="propertyType" className="form-label">Property Type *</label>
+                  <select id="propertyType" className="form-select" required>
+                    <option value="">Select Property Type...</option>
+                    <option value="Single-Family Home">Single-Family Home</option>
+                    <option value="Apartment / Condo">Apartment / Condo</option>
+                    <option value="Commercial / Retail">Commercial / Retail</option>
+                    <option value="Warehouse / Facility">Warehouse / Facility</option>
+                  </select>
+                  <div className="form-error" id="propertyTypeError"></div>
+                </div>
+              </div>
+
+              {/* Message */}
+              <div className="form-group">
+                <label htmlFor="message" className="form-label">Observed Activity / Space Details *</label>
+                <textarea id="message" className="form-textarea" placeholder="Describe the signs of activity (droppings, sawdust, sounds) and affected areas (attic, kitchen, basement)..." required></textarea>
+                <div className="form-error" id="messageError"></div>
+              </div>
+
+              {/* Submit Button */}
+              <button type="submit" className="btn btn-primary btn-lg" style={{"width":"100%"}}>
+                <span>Send Inspection Request</span>
+                <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+
+              <p className="form-notice">
+                Upon submitting, your inspection details will open directly in WhatsApp so our team can coordinate with you immediately.
+              </p>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+          </>
+        )}
+
+        {/* SERVICES VIEW */}
+        {currentView === 'services' && (
+          <>
     <section className="section-padding bg-white" id="services">
       <div className="container-wide">
         
@@ -1125,6 +1459,139 @@ const runInit = () => {
     {/* ========================================================================
          WHY CHOOSE ALVORATECH SECTION
          ======================================================================== */}
+    <section className="section-padding bg-light" id="how-it-works">
+      <div className="container">
+        
+        <div className="section-header">
+          <span className="section-eyebrow reveal">Systematic Protection</span>
+          <h2 className="reveal stagger-1">Our 4-Step Pest Defense Cycle</h2>
+          <p className="reveal stagger-2">A systematic approach to diagnosing, eliminating, and preventing pest infestations.</p>
+        </div>
+
+        <div className="steps-timeline">
+          
+          <div className="step-item reveal">
+            <div className="step-number-box">01</div>
+            <h3>Request Inspection</h3>
+            <p>Contact Alvoratech via WhatsApp, form, or phone to describe the issue.</p>
+          </div>
+
+          <div className="step-item reveal stagger-1">
+            <div className="step-number-box">02</div>
+            <h3>Property Evaluation</h3>
+            <p>We examine entry points, nesting zones, and moisture conditions.</p>
+          </div>
+
+          <div className="step-item reveal stagger-2">
+            <div className="step-number-box">03</div>
+            <h3>Targeted Application</h3>
+            <p>We deploy species-specific treatments to eradicate active pests.</p>
+          </div>
+
+          <div className="step-item reveal stagger-3">
+            <div className="step-number-box">04</div>
+            <h3>Perimeter Defense</h3>
+            <p>Establish protective barriers for year-round peace of mind.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         FIELD WORK & INSPECTION GALLERY SECTION
+         ======================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Request Service Consultation &rarr;
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* WHY US / ABOUT VIEW */}
+        {(currentView === 'why-us' || currentView === 'why-choose' || currentView === 'about') && (
+          <>
+    <section className="section-padding bg-light" id="about">
+      <div className="container about-grid">
+        
+        {/* Left Media */}
+        <div className="about-media reveal">
+          <div className="about-image-wrapper">
+            <img src="/pest-control/assets/images/pest-about.jpg" alt="Alvoratech pest control technician performing a thorough foundation inspection" className="about-image" width="540" height="490" loading="lazy" />
+          </div>
+        </div>
+
+        {/* Right Content */}
+        <div className="about-content">
+          <span className="section-eyebrow reveal">About Alvoratech</span>
+          
+          <h2 className="reveal stagger-1">Defending Homes and Businesses with Precision and Care.</h2>
+          
+          <p className="reveal stagger-2">
+            At Alvoratech, we understand the stress and disruption unwanted pests cause to homeowners and commercial facilities. Our mission is to deliver comprehensive pest management solutions focused on detailed property evaluations, targeted treatment methodologies, and proactive perimeter protection.
+          </p>
+
+          {/* 3 Supporting Feature Cards */}
+          <div className="about-features-list">
+            
+            <div className="about-feature-card reveal stagger-1">
+              <div className="feature-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <div className="feature-info">
+                <h4>Thorough Diagnostic Approach</h4>
+                <p>We trace infestations to their source, inspecting crawlspaces, attics, foundation cracks, and entry voids.</p>
+              </div>
+            </div>
+
+            <div className="about-feature-card reveal stagger-2">
+              <div className="feature-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div className="feature-info">
+                <h4>Modern Application Equipment</h4>
+                <p>Utilizing high-precision misting tools, targeted micro-injectors, and tamper-resistant monitoring stations.</p>
+              </div>
+            </div>
+
+            <div className="about-feature-card reveal stagger-3">
+              <div className="feature-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div className="feature-info">
+                <h4>Targeted Species Solutions</h4>
+                <p>Specific eradication strategies customized for termites, rodents, bed bugs, ants, and outdoor pests.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="reveal stagger-4">
+            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+              <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
+              </svg>
+              <span>Speak With Our Team</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         PEST CONTROL SERVICES (8 SERVICES)
+         ======================================================================== */}
     <section className="section-padding bg-white" id="why-choose">
       <div className="container why-grid">
         
@@ -1214,49 +1681,18 @@ const runInit = () => {
     {/* ========================================================================
          HOW IT WORKS (THE 4-STEP DEFENSE CYCLE)
          ======================================================================== */}
-    <section className="section-padding bg-light" id="how-it-works">
-      <div className="container">
-        
-        <div className="section-header">
-          <span className="section-eyebrow reveal">Systematic Protection</span>
-          <h2 className="reveal stagger-1">Our 4-Step Pest Defense Cycle</h2>
-          <p className="reveal stagger-2">A systematic approach to diagnosing, eliminating, and preventing pest infestations.</p>
-        </div>
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Partner With Our Specialists &rarr;
+              </button>
+            </div>
+          </>
+        )}
 
-        <div className="steps-timeline">
-          
-          <div className="step-item reveal">
-            <div className="step-number-box">01</div>
-            <h3>Request Inspection</h3>
-            <p>Contact Alvoratech via WhatsApp, form, or phone to describe the issue.</p>
-          </div>
+        {/* PORTFOLIO / GALLERY VIEW */}
+        {(currentView === 'portfolio' || currentView === 'gallery') && (
+          <>
 
-          <div className="step-item reveal stagger-1">
-            <div className="step-number-box">02</div>
-            <h3>Property Evaluation</h3>
-            <p>We examine entry points, nesting zones, and moisture conditions.</p>
-          </div>
-
-          <div className="step-item reveal stagger-2">
-            <div className="step-number-box">03</div>
-            <h3>Targeted Application</h3>
-            <p>We deploy species-specific treatments to eradicate active pests.</p>
-          </div>
-
-          <div className="step-item reveal stagger-3">
-            <div className="step-number-box">04</div>
-            <h3>Perimeter Defense</h3>
-            <p>Establish protective barriers for year-round peace of mind.</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    {/* ========================================================================
-         FIELD WORK & INSPECTION GALLERY SECTION
-         ======================================================================== */}
     <section className="section-padding bg-white" id="gallery">
       <div className="container-wide">
         
@@ -1358,109 +1794,17 @@ const runInit = () => {
     {/* ========================================================================
          CUSTOMER TESTIMONIALS SECTION
          ======================================================================== */}
-    <section className="section-padding bg-light testimonials-section" id="testimonials">
-      <div className="container">
-        
-        <div className="section-header">
-          <span className="section-eyebrow reveal">Customer Feedback</span>
-          <h2 className="reveal stagger-1">What Clients Value About Our Service</h2>
-          <div className="testimonials-disclaimer-pill reveal stagger-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>Sample Demonstration Reviews — Representative customer feedback showcasing service standards.</span>
-          </div>
-        </div>
-
-        <div className="testimonials-carousel-wrapper reveal">
-          <div className="testimonials-slider">
-            <div className="testimonials-track" id="testimonialsTrack">
-              
-              {/* Review 1 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <p className="testimonial-text">"We discovered termite activity in our basement framework during a renovation. Alvoratech acted swiftly, conducted a thorough subterranean evaluation, and treated the perimeter. Complete relief!"</p>
-                  <div className="testimonial-author">
-                    <span className="author-name">David M.</span>
-                    <span className="author-role">Homeowner (Sample Review)</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Review 2 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <p className="testimonial-text">"As a restaurant operator, health inspections are non-negotiable. Alvoratech provides punctual, discreet commercial pest management and detailed compliance logs. Invaluable partners."</p>
-                  <div className="testimonial-author">
-                    <span className="author-name">Sarah B.</span>
-                    <span className="author-role">Restaurant Operator (Sample Review)</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Review 3 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <p className="testimonial-text">"We had a stubborn rodent problem in our attic that standard traps couldn't solve. Alvoratech found the roofline entry gaps, sealed them permanently, and cleared the space in days."</p>
-                  <div className="testimonial-author">
-                    <span className="author-name">Marcus T.</span>
-                    <span className="author-role">Property Owner (Sample Review)</span>
-                  </div>
-                </div>
-              </div>
-
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Book Your Transformation &rarr;
+              </button>
             </div>
-          </div>
+          </>
+        )}
 
-          {/* Controls */}
-          <div className="slider-controls">
-            <button type="button" className="slider-btn" id="testimonialPrev" aria-label="Previous testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <div className="slider-dots" id="sliderDots"></div>
-            <button type="button" className="slider-btn" id="testimonialNext" aria-label="Next testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    {/* ========================================================================
-         SPECIAL CALL-TO-ACTION SECTION
-         ======================================================================== */}
-    <section className="special-cta-section" aria-label="Call to Action">
-      <div className="special-cta-content reveal">
-        <h2>Take Back Your Home from Unwanted Pests.</h2>
-        <p>Don't let pests compromise your comfort, hygiene, or structural safety. Get in touch with Alvoratech today.</p>
-        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
-          </svg>
-          <span>Get Started on WhatsApp</span>
-        </a>
-      </div>
-    </section>
-
-    {/* ========================================================================
-         FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION - 7 ITEMS)
-         ======================================================================== */}
+        {/* FAQ VIEW */}
+        {currentView === 'faq' && (
+          <>
     <section className="section-padding bg-white" id="faq">
       <div className="container">
         
@@ -1585,6 +1929,15 @@ const runInit = () => {
     {/* ========================================================================
          CONTACT & INSPECTION REQUEST SECTION
          ======================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+            </div>
+          </>
+        )}
+
+        {/* CONTACT VIEW */}
+        {currentView === 'contact' && (
+          <>
     <section className="section-padding bg-light" id="contact">
       <div className="container">
         
@@ -1729,34 +2082,15 @@ const runInit = () => {
 
       </div>
     </section>
-
-    {/* ========================================================================
-         BOTTOM DEMO BANNER
-         ======================================================================== */}
-    <aside className="bottom-demo-banner" aria-label="Closing demo invitation">
-      <div className="bottom-demo-card reveal">
-        <h2>Ready to Protect Your Home from Unwanted Pests?</h2>
-        <p>Contact Alvoratech today to discuss targeted residential or commercial pest management.</p>
-        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
-          </svg>
-          <span>Chat on WhatsApp</span>
-        </a>
-      </div>
-    </aside>
-
-  </main>
-
-  {/* ========================================================================
-       FOOTER
-       ======================================================================== */}
+          </>
+        )}
+      </main>
   <footer className="site-footer" role="contentinfo">
     <div className="container footer-grid">
       
       {/* Col 1: Brand */}
       <div className="footer-col-brand">
-        <a href="#home" className="site-logo">
+        <a href="#home" onClick={(e) => navigateTo('home', e)} className="site-logo">
           <div className="logo-icon-box">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -1771,12 +2105,12 @@ const runInit = () => {
       <div className="footer-col">
         <h4 className="footer-heading">Quick Links</h4>
         <div className="footer-links">
-          <a href="#home" className="footer-link">Home</a>
-          <a href="#about" className="footer-link">About</a>
-          <a href="#services" className="footer-link">Services</a>
+          <a href="#home" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
           <a href="#pest-guide" className="footer-link">Pest Identifier</a>
-          <a href="#why-choose" className="footer-link">Why Choose Us</a>
-          <a href="#contact" className="footer-link">Contact</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a>
+          <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
         </div>
       </div>
 
@@ -1784,12 +2118,12 @@ const runInit = () => {
       <div className="footer-col">
         <h4 className="footer-heading">Our Services</h4>
         <div className="footer-links">
-          <a href="#services" className="footer-link">Termite Defense</a>
-          <a href="#services" className="footer-link">Rodent Exclusion</a>
-          <a href="#services" className="footer-link">Bed Bug Treatments</a>
-          <a href="#services" className="footer-link">Mosquito Control</a>
-          <a href="#services" className="footer-link">Ant Defense</a>
-          <a href="#services" className="footer-link">Commercial Pest Management</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Termite Defense</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Rodent Exclusion</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Bed Bug Treatments</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Mosquito Control</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Ant Defense</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Commercial Pest Management</a>
         </div>
       </div>
 

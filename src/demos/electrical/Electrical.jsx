@@ -4,6 +4,52 @@ import './electrical.css';
 
 export default function Electrical() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (['services', 'portfolio', 'gallery', 'why-us', 'about', 'faq', 'contact', 'dispatch', 'estimate'].includes(hash)) {
+        if (hash === 'gallery') return 'portfolio';
+        if (hash === 'about') return 'why-us';
+        if (hash === 'dispatch' || hash === 'estimate') return 'contact';
+        return hash;
+      }
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (['services', 'portfolio', 'gallery', 'why-us', 'about', 'faq', 'contact', 'dispatch', 'estimate'].includes(hash)) {
+        if (hash === 'gallery') setCurrentView('portfolio');
+        else if (hash === 'about') setCurrentView('why-us');
+        else if (hash === 'dispatch' || hash === 'estimate') setCurrentView('contact');
+        else setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      runInit();
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [currentView]);
   useEffect(() => {
     try {
       /**
@@ -483,86 +529,115 @@ const runInit = () => {
       <DemoTopBar demoName="Alvoratech Electrical Contractors" />
       
 
-  {/* ==========================================================================
-       1. TOP DEMO BANNER
+      {/* ==========================================================================
+       2. STICKY HEADER & NAVIGATION
        ========================================================================== */}
-  <div className="top-demo-banner" role="region" aria-label="Demo notice">
-    <div className="top-demo-content">
-      <span className="demo-pill">DEMO WEBSITE</span>
-      <span className="top-demo-text">You're viewing a demonstration website for <strong>Alvoratech Electrical Contractors</strong>.</span>
-    </div>
-  </div>
+      <header className="site-header" role="banner">
+        <div className="container-wide">
+          <div className="nav-container">
+            {/* Logo */}
+            <a href="#hero" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Home">
+              <div className="logo-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
+              <div>
+                <span className="logo-text">ALVORATECH</span>
+                <span className="logo-tagline">Electrical Contractors</span>
+              </div>
+            </a>
 
-  {/* ==========================================================================
-       2. STICKY HEADER & STREAMLINED NAVIGATION
-       ========================================================================== */}
-  <header className="site-header" role="banner">
-    <div className="container-wide">
-      <div className="nav-container">
-        {/* Logo */}
-        <a href="#hero" className="site-logo" aria-label="Alvoratech Home">
-          <div className="logo-icon-box">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
+            {/* Desktop Navigation Links */}
+            <nav className="nav-links" role="navigation" aria-label="Main Navigation">
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+              <a href="#services" onClick={(e) => navigateTo('services', e)} className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Services</a>
+              <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Portfolio</a>
+              <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Us</a>
+              <a href="#faq" onClick={(e) => navigateTo('faq', e)} className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
+              <a href="#contact" onClick={(e) => navigateTo('contact', e)} className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
+            </nav>
+
+            {/* Nav CTA Actions */}
+            <div className="nav-actions">
+              <a href="#dispatch" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">
+                <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+                Schedule Service
+              </a>
+              <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-expanded={mobileMenuOpen} aria-label="Open navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
           </div>
-          <div>
-            <span className="logo-text">ALVORATECH</span>
-            <span className="logo-tagline">Electrical Contractors</span>
-          </div>
-        </a>
-
-        {/* Desktop Navigation Links (Clean 5-Item Structure) */}
-        <nav className="nav-links" role="navigation" aria-label="Main Navigation">
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#portfolio" className="nav-link">Portfolio</a>
-          <a href="#why-us" className="nav-link">Why Us</a>
-          <a href="#faq" className="nav-link">FAQ</a>
-          <a href="#contact" className="nav-link">Contact</a>
-        </nav>
-
-        {/* Nav CTA Actions */}
-        <div className="nav-actions">
-          <a href="#dispatch" className="btn btn-amber btn-sm">
-            <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
-            Schedule Service
-          </a>
-          <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-expanded={mobileMenuOpen} aria-label="Open navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
         </div>
-      </div>
-    </div>
-  </header>
+      </header>
 
-  {/* Mobile Navigation Overlay & Drawer */}
-  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
-  <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
-    <a onClick={() => setMobileMenuOpen(false)} href="#hero" className="nav-link">Home</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#services" className="nav-link">Electrical Services</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#portfolio" className="nav-link">Project Gallery</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#why-us" className="nav-link">Why Choose Us</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#faq" className="nav-link">FAQ</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="nav-link">Contact & Location</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-amber" style={{"marginTop":"1rem"}}>
-      Emergency Call: +1 (412) 796-3968
-    </a>
-    <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
-      <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-      </svg>
-      Chat On WhatsApp
-    </a>
-  </aside>
+      {/* Mobile Navigation Overlay & Drawer */}
+      <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
+      <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
+        <a onClick={(e) => navigateTo('home', e)} href="#hero" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+        <a onClick={(e) => navigateTo('services', e)} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Electrical Services</a>
+        <a onClick={(e) => navigateTo('portfolio', e)} href="#portfolio" className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Project Gallery</a>
+        <a onClick={(e) => navigateTo('why-us', e)} href="#why-us" className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Choose Us</a>
+        <a onClick={(e) => navigateTo('faq', e)} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
+        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Dispatch</a>
+        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
+          Schedule Service
+        </a>
+        <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ "marginTop": "0.5rem" }}>
+          Call: +1 (412) 796-3968
+        </a>
+        <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ "marginTop": "0.5rem" }}>
+          Chat On WhatsApp
+        </a>
+      </aside>
+      <main id="main-content">
+      {/* Section Breadcrumb & Hero Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600 }}>
+                {currentView === 'services' && 'Services'}
+                {currentView === 'portfolio' && 'Portfolio'}
+                {currentView === 'why-us' && 'Why Choose Us'}
+                {currentView === 'faq' && 'Frequently Asked Questions'}
+                {currentView === 'contact' && 'Contact & Emergency Dispatch'}
+              </span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Electrical Services & Capabilities'}
+              {currentView === 'portfolio' && 'Project Portfolio & Panel Transformations'}
+              {currentView === 'why-us' && 'About Alvoratech & Why Property Owners Choose Us'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {currentView === 'contact' && 'Schedule Service & Emergency Dispatch'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              {currentView === 'services' && 'Master-certified electrical panel upgrades, EV infrastructure, whole-home rewiring, and emergency dispatch.'}
+              {currentView === 'portfolio' && 'Browse clean electrical upgrades, commercial subpanels, and residential lighting installations.'}
+              {currentView === 'why-us' && '100% NEC code compliance, licensed electricians, and transparent flat-rate pricing with zero hidden fees.'}
+              {currentView === 'faq' && 'Direct answers regarding panel capacities, EV charging requirements, permits, and safety warranties.'}
+              {currentView === 'contact' && 'Speak directly with our on-call master electricians for immediate emergency dispatch or schedule an upcoming inspection.'}
+            </p>
+          </div>
+        </section>
+      )}
 
-  <main id="main-content">
-    {/* ==========================================================================
-         3. HERO SECTION
-         ========================================================================== */}
+        {/* HOMEPAGE VIEW: Clean, customer-centric essentials */}
+        {currentView === 'home' && (
+          <>
     <section className="hero-section" id="hero">
       <div className="container">
         <div className="hero-grid">
@@ -692,6 +767,277 @@ const runInit = () => {
     {/* ==========================================================================
          5. CORE ELECTRICAL SERVICES (8 COMPREHENSIVE CARDS)
          ========================================================================== */}
+        {/* ==========================================================================
+             HOME FEATURED SERVICES PREVIEW
+             ========================================================================== */}
+        <section className="section-padding services-section" id="services">
+          <div className="container">
+            <div className="section-header text-center reveal">
+              <span className="section-eyebrow">OUR SPECIALTIES</span>
+              <h2>Licensed Electrical Solutions</h2>
+              <p className="section-subtitle">
+                Master-certified electrical engineering, 200A panel upgrades, EV infrastructure, and 24/7 emergency response.
+              </p>
+            </div>
+            
+            <div className="services-grid-8">
+              <article className="service-card reveal stagger-1">
+                <div className="service-image-box">
+                  <img src="/electrical/assets/images/service-panel.jpg" alt="200 Amp breaker panel replacement" className="service-image" loading="lazy" />
+                  <span className="service-badge">Heavy Up</span>
+                </div>
+                <div className="service-content">
+                  <h3>200A Main Service Panel Upgrades</h3>
+                  <p>Upgrade outdated, hazardous fuse boxes and 100A panels to 200A square-D or Siemens QO systems with surge suppression.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+
+              <article className="service-card reveal stagger-2">
+                <div className="service-image-box">
+                  <img src="/electrical/assets/images/service-ev.jpg" alt="EV level 2 home charging station" className="service-image" loading="lazy" />
+                  <span className="service-badge">EV Certified</span>
+                </div>
+                <div className="service-content">
+                  <h3>EV Level 2 Charger Installation</h3>
+                  <p>Dedicated 240V circuits and NEMA 14-50 installations engineered for Tesla, Rivian, and all universal electric vehicles.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+
+              <article className="service-card reveal stagger-3">
+                <div className="service-image-box">
+                  <img src="/electrical/assets/images/service-generator.jpg" alt="Whole-home standby generator system" className="service-image" loading="lazy" />
+                  <span className="service-badge">Power Defense</span>
+                </div>
+                <div className="service-content">
+                  <h3>Whole-Home Backup Generators</h3>
+                  <p>Automatic transfer switches and whole-house standby power delivering instant, seamless electricity during grid failures.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+
+              <article className="service-card reveal stagger-4">
+                <div className="service-image-box">
+                  <img src="/electrical/assets/images/service-rewire.jpg" alt="Knob and tube copper rewiring" className="service-image" loading="lazy" />
+                  <span className="service-badge">Code Safety</span>
+                </div>
+                <div className="service-content">
+                  <h3>Whole-House Copper Rewiring</h3>
+                  <p>Eliminate hazardous knob-and-tube or ungrounded cloth wiring with modern Romex NM-B copper lines meeting NEC codes.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <button onClick={(e) => navigateTo('services', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', fontWeight: 600 }}>
+                View All 8 Electrical Services &rarr;
+              </button>
+            </div>
+          </div>
+        </section>
+    <section className="section-padding" id="about" style={{"backgroundColor":"var(--color-bg-light)"}}>
+      <div className="container">
+        <div className="why-grid">
+          <div className="why-image-card reveal">
+            <img src="/electrical/assets/images/elec-about.jpg" alt="Alvoratech certified electrical technician checking voltage diagnostics" className="why-image" loading="lazy" />
+          </div>
+          <div className="reveal stagger-1">
+            <span className="section-eyebrow">ABOUT ALVORATECH</span>
+            <h2>Setting the Standard in American Electrical Contracting</h2>
+            <p style={{"fontSize":"1.0625rem","marginBottom":"1.25rem"}}>
+              Electricity powers modern life, but unsafe installations threaten lives and property. At Alvoratech, our licensed master electricians operate on a foundational promise: strict National Electrical Code (NEC) compliance, zero shortcut wiring, and uncompromising craftsmanship.
+            </p>
+            <p style={{"marginBottom":"2rem"}}>
+              Our technicians arrive in fully stocked mobile service vans prepared to handle 95% of service panel, EV charging, and emergency repairs on the spot. We respect your property, wear protective floor booties, and conduct a full thermal safety audit before leaving.
+            </p>
+            <div style={{"display":"flex","gap":"1rem","flexWrap":"wrap"}}>
+              <a href="#dispatch" className="btn btn-amber">Request Electrical Dispatch</a>
+              <a href="tel:+14127963968" className="btn btn-secondary">Emergency: +1 (412) 796-3968</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         12. FILTERABLE ELECTRICAL PORTFOLIO GALLERY (LIGHTBOX ENABLED)
+         ========================================================================== */}
+    <section className="section-padding testimonials-section">
+      <div className="container">
+        <div className="section-header reveal">
+          <span className="section-eyebrow blue">CLIENT REVIEWS</span>
+          <h2>Trusted by Homeowners, Builders & Facility Managers</h2>
+          <div style={{"marginTop":"0.5rem","fontSize":"0.75rem","textTransform":"uppercase","letterSpacing":"0.08em","color":"var(--color-amber)","fontWeight":"700"}}>
+            Demonstration Testimonials • Sample Verified Client Feedback
+          </div>
+        </div>
+
+        <div className="testimonials-slider-box reveal stagger-1">
+          <div className="testimonial-track-container">
+            <div className="testimonial-track">
+              {/* Slide 1 */}
+              <div className="testimonial-card">
+                <div className="test-stars">★★★★★</div>
+                <blockquote className="test-quote">
+                  "We bought a 1968 home that still had a dangerous Zinsco panel. Alvoratech upgraded our service to 200 Amps with a Square D panel and installed our Tesla Wall Connector in one afternoon. Clean, punctual, and pulled all permits!"
+                </blockquote>
+                <div className="test-author">
+                  <h4>Michael & Rachel S.</h4>
+                  <span>Residential Homeowners • 200A Panel & Tesla EV Install</span>
+                </div>
+              </div>
+
+              {/* Slide 2 */}
+              <div className="testimonial-card">
+                <div className="test-stars">★★★★★</div>
+                <blockquote className="test-quote">
+                  "At 10:30 PM our main breaker started buzzing and smoking. I called Alvoratech's emergency line, and a master technician arrived in 35 minutes. He diagnosed a loose utility lug, secured the connection, and prevented a house fire."
+                </blockquote>
+                <div className="test-author">
+                  <h4>Gregory T.</h4>
+                  <span>Emergency Night Dispatch • Hazardous Breaker Repair</span>
+                </div>
+              </div>
+
+              {/* Slide 3 */}
+              <div className="testimonial-card">
+                <div className="test-stars">★★★★★</div>
+                <blockquote className="test-quote">
+                  "We hired Alvoratech for our new 8,000 sq ft logistics facility. Their conduit bending is like artwork—laser-straight, properly supported, and fully compliant with all local commercial inspectors."
+                </blockquote>
+                <div className="test-author">
+                  <h4>Brian K.</h4>
+                  <span>Commercial Operations Director • Three-Phase 480V Buildout</span>
+                </div>
+              </div>
+
+              {/* Slide 4 */}
+              <div className="testimonial-card">
+                <div className="test-stars">★★★★★</div>
+                <blockquote className="test-quote">
+                  "Having our Generac whole-home generator installed by Alvoratech gave us total peace of mind. During the recent winter storm, our power kicked on automatically in 7 seconds while the rest of the neighborhood was dark."
+                </blockquote>
+                <div className="test-author">
+                  <h4>Amanda L.</h4>
+                  <span>Standby Power Client • Generac 24kW Generator</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Carousel Dots */}
+          <div className="testimonial-dots">
+            <button className="test-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+            <button className="test-dot" data-slide="1" aria-label="Go to slide 2"></button>
+            <button className="test-dot" data-slide="2" aria-label="Go to slide 3"></button>
+            <button className="test-dot" data-slide="3" aria-label="Go to slide 4"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         15. FREQUENTLY ASKED QUESTIONS (ACCORDION)
+         ========================================================================== */}
+    <section className="section-padding estimate-form-section" id="dispatch">
+      <div className="container">
+        <div className="section-header reveal">
+          <span className="section-eyebrow">FAST DISPATCH REQUEST</span>
+          <h2>Schedule Electrical Service or Emergency Dispatch</h2>
+          <p>Fill out the service form below. Our licensed master dispatchers will immediately review your project details and follow up.</p>
+        </div>
+
+        <div className="estimate-form-wrapper reveal stagger-1">
+          <form id="electric-dispatch-form" novalidate>
+            <div className="form-grid-2">
+              <div className="form-group">
+                <label className="form-label" htmlFor="form-name">Full Name *</label>
+                <input type="text" id="form-name" className="form-input" placeholder="e.g. Robert Anderson" required />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="form-phone">Phone Number *</label>
+                <input type="tel" id="form-phone" className="form-input" placeholder="+1 (555) 000-0000" required />
+              </div>
+            </div>
+
+            <div className="form-grid-2">
+              <div className="form-group">
+                <label className="form-label" htmlFor="form-email">Email Address</label>
+                <input type="email" id="form-email" className="form-input" placeholder="robert@example.com" />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="form-service">Required Service *</label>
+                <select id="form-service" className="form-select" required>
+                  <option value="" disabled selected>Select Electrical Specialty</option>
+                  <option value="Main Panel Upgrade 200A">200A / 400A Main Panel Heavy-Up</option>
+                  <option value="EV Charger Installation">Level 2 EV Charger (Tesla/Universal)</option>
+                  <option value="Standby Generator">Generac Whole-Home Generator</option>
+                  <option value="24/7 Emergency Outage">24/7 Emergency Outage / Hazard</option>
+                  <option value="Commercial Electrical">Commercial Electrical Contracting</option>
+                  <option value="Lighting & Smart Dimmers">Architectural Recessed Lighting</option>
+                  <option value="Surge Protection">Whole-House Surge Protection</option>
+                  <option value="Safety Inspection">Electrical Code Inspection</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="form-grid-2">
+              <div className="form-group">
+                <label className="form-label" htmlFor="form-urgency">Urgency Level</label>
+                <select id="form-urgency" className="form-select">
+                  <option value="Immediate Emergency (< 1 hour)">Immediate Emergency (&lt; 1 Hour Dispatch)</option>
+                  <option value="Same-Day Service">Same-Day Service Preferred</option>
+                  <option value="Standard Scheduling" selected>Standard Scheduling / Free Quote</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="form-property">Property Type</label>
+                <select id="form-property" className="form-select">
+                  <option value="Residential Single Family">Residential Single Family Home</option>
+                  <option value="Condo / Multi-Family">Condo / Multi-Family Unit</option>
+                  <option value="Commercial / Industrial">Commercial / Industrial Facility</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label className="form-label" htmlFor="form-notes">Issue Description & Panel Details</label>
+              <textarea id="form-notes" className="form-textarea" placeholder="Describe the electrical issue, current panel amperage, or planned additions (e.g. Tesla charger or frequent breaker tripping)..."></textarea>
+            </div>
+
+            <button type="submit" className="btn btn-amber btn-lg" style={{"width":"100%"}}>
+              <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              Submit & Connect with Dispatch on WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         17. BOTTOM DEMO BANNER
+         ========================================================================== */}
+          </>
+        )}
+
+        {/* SERVICES VIEW: Complete Services, Load Calculator & Panel Matrix */}
+        {currentView === 'services' && (
+          <>
     <section className="section-padding services-section" id="services">
       <div className="container">
         <div className="section-header reveal">
@@ -923,23 +1269,6 @@ const runInit = () => {
     {/* ==========================================================================
          6. MIDDLE DEMO BANNER
          ========================================================================== */}
-    <section className="middle-demo-banner" role="region" aria-label="Demo conversion showcase">
-      <div className="middle-demo-card reveal">
-        <span className="demo-pill">DEMONSTRATION SHOWCASE</span>
-        <h3>POWER YOUR BUSINESS WITH A HIGH-CONVERTING CONTRACTOR PLATFORM</h3>
-        <p>This is a live demonstration showing how Alvoratech captures high-value panel upgrades, EV charger installations, and commercial contracts online.</p>
-        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-          </svg>
-          Discuss This Web Build on WhatsApp
-        </a>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         7. INTERACTIVE ELECTRICAL LOAD CALCULATOR
-         ========================================================================== */}
     <section className="section-padding calculator-section" id="load-calculator">
       <div className="container">
         <div className="section-header reveal">
@@ -1056,56 +1385,6 @@ const runInit = () => {
     {/* ==========================================================================
          8. 5-SCENARIO BEFORE & AFTER COMPARISON SLIDER
          ========================================================================== */}
-    <section className="section-padding ba-section" id="transformations">
-      <div className="container">
-        <div className="section-header reveal">
-          <span className="section-eyebrow">DRAMATIC TRANSFORMATIONS</span>
-          <h2>Inspecting the Quality of Certified Electrical Work</h2>
-          <p>Drag the interactive slider handle left and right to inspect real-world service panel upgrades, commercial EMT conduit, and Generac backup systems.</p>
-        </div>
-
-        {/* Scenario Tabs */}
-        <div className="ba-tabs-nav reveal">
-          <button className="ba-tab-btn active" data-scenario="panel">200A Panel Heavy-Up</button>
-          <button className="ba-tab-btn" data-scenario="ev">Tesla EV Charger</button>
-          <button className="ba-tab-btn" data-scenario="conduit">Commercial Conduit</button>
-          <button className="ba-tab-btn" data-scenario="gen">Standby Generator</button>
-          <button className="ba-tab-btn" data-scenario="light">Recessed LED Lighting</button>
-        </div>
-
-        {/* Slider Widget Container */}
-        <div className="ba-slider-container reveal stagger-1">
-          {/* Before Image */}
-          <img src="/electrical/assets/images/ba-panel-before.jpg" alt="Before electrical upgrade" className="ba-image ba-image-before" id="ba-image-before" />
-          <span className="ba-badge ba-badge-before">BEFORE (HAZARDOUS)</span>
-
-          {/* After Image with dynamic clip wrap */}
-          <div className="ba-image-after-wrap" id="ba-after-wrap">
-            <img src="/electrical/assets/images/ba-panel-after.jpg" alt="After code-compliant electrical installation" className="ba-image ba-image-after" id="ba-image-after" />
-          </div>
-          <span className="ba-badge ba-badge-after">AFTER ALVORATECH</span>
-
-          {/* Handle */}
-          <div className="ba-handle" id="ba-handle">
-            <div className="ba-handle-button" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{"marginLeft":"-6px"}}>
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </div>
-          </div>
-
-          {/* Accessible Range Input */}
-          <input type="range" min="0" max="100" value="50" className="ba-range-input" id="ba-range" aria-label="Percentage before after slider" />
-        </div>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         9. OBSOLETE & HAZARDOUS ELECTRICAL PANELS WARNING MATRIX
-         ========================================================================== */}
     <section className="section-padding panels-matrix-section">
       <div className="container">
         <div className="section-header reveal">
@@ -1193,32 +1472,71 @@ const runInit = () => {
     {/* ==========================================================================
          11. ABOUT ALVORATECH
          ========================================================================== */}
-    <section className="section-padding" id="about" style={{"backgroundColor":"var(--color-bg-light)"}}>
+            <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div className="container" style={{ maxWidth: '700px' }}>
+                <span className="section-eyebrow">READY TO UPGRADE YOUR ELECTRICAL?</span>
+                <h2>Get a Comprehensive On-Site Inspection</h2>
+                <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Schedule a consultation with our master electricians for panel evaluations, load calculations, and code upgrades.</p>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                  Schedule Inspection &rarr;
+                </button>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* PORTFOLIO VIEW: Before/After Slider & Gallery */}
+        {currentView === 'portfolio' && (
+          <>
+    <section className="section-padding ba-section" id="transformations">
       <div className="container">
-        <div className="why-grid">
-          <div className="why-image-card reveal">
-            <img src="/electrical/assets/images/elec-about.jpg" alt="Alvoratech certified electrical technician checking voltage diagnostics" className="why-image" loading="lazy" />
+        <div className="section-header reveal">
+          <span className="section-eyebrow">DRAMATIC TRANSFORMATIONS</span>
+          <h2>Inspecting the Quality of Certified Electrical Work</h2>
+          <p>Drag the interactive slider handle left and right to inspect real-world service panel upgrades, commercial EMT conduit, and Generac backup systems.</p>
+        </div>
+
+        {/* Scenario Tabs */}
+        <div className="ba-tabs-nav reveal">
+          <button className="ba-tab-btn active" data-scenario="panel">200A Panel Heavy-Up</button>
+          <button className="ba-tab-btn" data-scenario="ev">Tesla EV Charger</button>
+          <button className="ba-tab-btn" data-scenario="conduit">Commercial Conduit</button>
+          <button className="ba-tab-btn" data-scenario="gen">Standby Generator</button>
+          <button className="ba-tab-btn" data-scenario="light">Recessed LED Lighting</button>
+        </div>
+
+        {/* Slider Widget Container */}
+        <div className="ba-slider-container reveal stagger-1">
+          {/* Before Image */}
+          <img src="/electrical/assets/images/ba-panel-before.jpg" alt="Before electrical upgrade" className="ba-image ba-image-before" id="ba-image-before" />
+          <span className="ba-badge ba-badge-before">BEFORE (HAZARDOUS)</span>
+
+          {/* After Image with dynamic clip wrap */}
+          <div className="ba-image-after-wrap" id="ba-after-wrap">
+            <img src="/electrical/assets/images/ba-panel-after.jpg" alt="After code-compliant electrical installation" className="ba-image ba-image-after" id="ba-image-after" />
           </div>
-          <div className="reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH</span>
-            <h2>Setting the Standard in American Electrical Contracting</h2>
-            <p style={{"fontSize":"1.0625rem","marginBottom":"1.25rem"}}>
-              Electricity powers modern life, but unsafe installations threaten lives and property. At Alvoratech, our licensed master electricians operate on a foundational promise: strict National Electrical Code (NEC) compliance, zero shortcut wiring, and uncompromising craftsmanship.
-            </p>
-            <p style={{"marginBottom":"2rem"}}>
-              Our technicians arrive in fully stocked mobile service vans prepared to handle 95% of service panel, EV charging, and emergency repairs on the spot. We respect your property, wear protective floor booties, and conduct a full thermal safety audit before leaving.
-            </p>
-            <div style={{"display":"flex","gap":"1rem","flexWrap":"wrap"}}>
-              <a href="#dispatch" className="btn btn-amber">Request Electrical Dispatch</a>
-              <a href="tel:+14127963968" className="btn btn-secondary">Emergency: +1 (412) 796-3968</a>
+          <span className="ba-badge ba-badge-after">AFTER ALVORATECH</span>
+
+          {/* Handle */}
+          <div className="ba-handle" id="ba-handle">
+            <div className="ba-handle-button" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{"marginLeft":"-6px"}}>
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
             </div>
           </div>
+
+          {/* Accessible Range Input */}
+          <input type="range" min="0" max="100" value="50" className="ba-range-input" id="ba-range" aria-label="Percentage before after slider" />
         </div>
       </div>
     </section>
 
     {/* ==========================================================================
-         12. FILTERABLE ELECTRICAL PORTFOLIO GALLERY (LIGHTBOX ENABLED)
+         9. OBSOLETE & HAZARDOUS ELECTRICAL PANELS WARNING MATRIX
          ========================================================================== */}
     <section className="section-padding gallery-section" id="portfolio">
       <div className="container">
@@ -1325,6 +1643,49 @@ const runInit = () => {
 
     {/* ==========================================================================
          13. WHY CHOOSE ALVORATECH (4 PILLARS)
+         ========================================================================== */}
+            <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div className="container" style={{ maxWidth: '700px' }}>
+                <span className="section-eyebrow">PRECISION CRAFTSMANSHIP</span>
+                <h2>Flawless Wiring, Clean Breaker Panels</h2>
+                <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Every installation is executed to the highest architectural standards with lifetime workmanship warranties.</p>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                  Book Service &rarr;
+                </button>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* WHY US VIEW: Company Standards, 4 Pillars & Testimonials */}
+        {currentView === 'why-us' && (
+          <>
+    <section className="section-padding" id="about" style={{"backgroundColor":"var(--color-bg-light)"}}>
+      <div className="container">
+        <div className="why-grid">
+          <div className="why-image-card reveal">
+            <img src="/electrical/assets/images/elec-about.jpg" alt="Alvoratech certified electrical technician checking voltage diagnostics" className="why-image" loading="lazy" />
+          </div>
+          <div className="reveal stagger-1">
+            <span className="section-eyebrow">ABOUT ALVORATECH</span>
+            <h2>Setting the Standard in American Electrical Contracting</h2>
+            <p style={{"fontSize":"1.0625rem","marginBottom":"1.25rem"}}>
+              Electricity powers modern life, but unsafe installations threaten lives and property. At Alvoratech, our licensed master electricians operate on a foundational promise: strict National Electrical Code (NEC) compliance, zero shortcut wiring, and uncompromising craftsmanship.
+            </p>
+            <p style={{"marginBottom":"2rem"}}>
+              Our technicians arrive in fully stocked mobile service vans prepared to handle 95% of service panel, EV charging, and emergency repairs on the spot. We respect your property, wear protective floor booties, and conduct a full thermal safety audit before leaving.
+            </p>
+            <div style={{"display":"flex","gap":"1rem","flexWrap":"wrap"}}>
+              <a href="#dispatch" className="btn btn-amber">Request Electrical Dispatch</a>
+              <a href="tel:+14127963968" className="btn btn-secondary">Emergency: +1 (412) 796-3968</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         12. FILTERABLE ELECTRICAL PORTFOLIO GALLERY (LIGHTBOX ENABLED)
          ========================================================================== */}
     <section className="section-padding why-section" id="why-us">
       <div className="container">
@@ -1468,6 +1829,12 @@ const runInit = () => {
     {/* ==========================================================================
          15. FREQUENTLY ASKED QUESTIONS (ACCORDION)
          ========================================================================== */}
+          </>
+        )}
+
+        {/* FAQ VIEW: Comprehensive Accordions */}
+        {currentView === 'faq' && (
+          <>
     <section className="section-padding faq-section" id="faq">
       <div className="container">
         <div className="section-header reveal">
@@ -1561,6 +1928,23 @@ const runInit = () => {
     {/* ==========================================================================
          16. FAST EMERGENCY & ESTIMATE DISPATCH FORM
          ========================================================================== */}
+            <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div className="container" style={{ maxWidth: '700px' }}>
+                <span className="section-eyebrow">NEED IMMEDIATE ASSISTANCE?</span>
+                <h2>24/7 On-Call Emergency Electricians</h2>
+                <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Electrical emergencies cannot wait. Our licensed technicians are on-call 24 hours a day, 7 days a week.</p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">Chat On WhatsApp</a>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* CONTACT VIEW: Full Dispatch Form & Details */}
+        {currentView === 'contact' && (
+          <>
     <section className="section-padding estimate-form-section" id="dispatch">
       <div className="container">
         <div className="section-header reveal">
@@ -1644,28 +2028,9 @@ const runInit = () => {
     {/* ==========================================================================
          17. BOTTOM DEMO BANNER
          ========================================================================== */}
-    <section className="bottom-demo-banner" role="region" aria-label="Demo pre-footer banner">
-      <div className="bottom-demo-container reveal">
-        <div className="bottom-demo-text">
-          <span className="demo-pill" style={{"marginBottom":"0.75rem","display":"inline-block"}}>DEMONSTRATION WEBSITE</span>
-          <h3>Ready to Upgrade Your Electrical Safety & Capacity?</h3>
-          <p>Contact Alvoratech today for upfront flat-rate pricing, licensed master repairs, and 24/7 emergency electrical solutions.</p>
-        </div>
-        <div>
-          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            Chat With Us
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  {/* ==========================================================================
-       18. FOOTER
-       ========================================================================== */}
+          </>
+        )}
+      </main>
   <footer className="site-footer" id="contact" role="contentinfo">
     <div className="container">
       <div className="footer-grid">
@@ -1694,13 +2059,13 @@ const runInit = () => {
         <div className="footer-col">
           <h4>Electrical Services</h4>
           <div className="footer-links">
-            <a href="#services" className="footer-link">200A Main Panel Heavy-Up</a>
-            <a href="#services" className="footer-link">Level 2 EV Charger Stations</a>
-            <a href="#services" className="footer-link">Generac Standby Generators</a>
-            <a href="#services" className="footer-link">24/7 Emergency Repairs</a>
-            <a href="#services" className="footer-link">Commercial Three-Phase Power</a>
-            <a href="#services" className="footer-link">Architectural Recessed Lighting</a>
-            <a href="#services" className="footer-link">Whole-Home Surge Protection</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">200A Main Panel Heavy-Up</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Level 2 EV Charger Stations</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Generac Standby Generators</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">24/7 Emergency Repairs</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Commercial Three-Phase Power</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Architectural Recessed Lighting</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Whole-Home Surge Protection</a>
           </div>
         </div>
 
@@ -1709,11 +2074,11 @@ const runInit = () => {
           <h4>Navigation</h4>
           <div className="footer-links">
             <a href="#hero" className="footer-link">Home</a>
-            <a href="#services" className="footer-link">Services</a>
-            <a href="#portfolio" className="footer-link">Project Gallery</a>
-            <a href="#why-us" className="footer-link">Why Choose Us</a>
-            <a href="#faq" className="footer-link">FAQ</a>
-            <a href="#contact" className="footer-link">Contact & Location</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
+            <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Project Gallery</a>
+            <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a>
+            <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQ</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact & Location</a>
           </div>
         </div>
 

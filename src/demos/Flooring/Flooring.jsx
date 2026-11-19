@@ -4,6 +4,57 @@ import './flooring.css';
 
 export default function Flooring() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","portfolio","gallery","why-us","faq","contact"].includes(hash)) {
+        return hash;
+      }
+      if (hash === 'gallery') return 'portfolio';
+      if (hash === 'our-work') return 'portfolio';
+      if (hash === 'why-choose') return 'why-us';
+      if (hash === 'about') return 'why-us';
+      if (hash === 'estimate' || hash === 'quote' || hash === 'book') return 'contact';
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","portfolio","gallery","why-us","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (hash === 'gallery' || hash === 'our-work') {
+        setCurrentView('portfolio');
+      } else if (hash === 'why-choose' || hash === 'about') {
+        setCurrentView('why-us');
+      } else if (hash === 'estimate' || hash === 'quote' || hash === 'book') {
+        setCurrentView('contact');
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      runInit();
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [currentView]);
   useEffect(() => {
     try {
       /**
@@ -662,7 +713,7 @@ const runInit = () => {
     <div className="container-wide">
       <div className="nav-container">
         {/* Logo */}
-        <a href="#hero" className="site-logo" aria-label="Alvoratech Home">
+        <a href="#hero" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Home">
           <div className="logo-icon-box">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 3h18v18H3z"/>
@@ -678,18 +729,18 @@ const runInit = () => {
 
         {/* Desktop Navigation Links */}
         <nav className="nav-links" role="navigation" aria-label="Main Navigation">
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#about" className="nav-link">About Us</a>
-          <a href="#why-us" className="nav-link">Why Us</a>
-          <a href="#portfolio" className="nav-link">Portfolio</a>
-          <a href="#faq" className="nav-link">FAQ</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About Us</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Us</a>
+          <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Portfolio</a>
+          <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="nav-link">FAQ</a>
+          <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
         </nav>
 
         {/* Nav CTA Actions */}
         <div className="nav-actions">
-          <a href="#contact" className="btn btn-primary btn-sm">Schedule In-Home Estimate</a>
-          <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-expanded={mobileMenuOpen} aria-label="Open navigation menu">
+          <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">Schedule In-Home Estimate</a>
+          <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}  aria-expanded={mobileMenuOpen} aria-label="Open navigation menu">
             <span></span>
             <span></span>
             <span></span>
@@ -700,16 +751,16 @@ const runInit = () => {
   </header>
 
   {/* Mobile Navigation Overlay & Drawer */}
-  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
+  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}  aria-hidden="true"></div>
   <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
-    <a onClick={() => setMobileMenuOpen(false)} href="#hero" className="nav-link">Home</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#services" className="nav-link">Flooring Services</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#about" className="nav-link">About Us</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#why-us" className="nav-link">Why Choose Us</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#portfolio" className="nav-link">Portfolio Gallery</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#faq" className="nav-link">FAQ</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="nav-link">Contact & Estimate</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"marginTop":"1rem"}}>
+    <a  href="#hero" onClick={(e) => navigateTo('home', e)} className="nav-link">Home</a>
+    <a  href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Flooring Services</a>
+    <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About Us</a>
+    <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
+    <a  href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Portfolio Gallery</a>
+    <a  href="#faq" onClick={(e) => navigateTo('faq', e)} className="nav-link">FAQ</a>
+    <a  href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact & Estimate</a>
+    <a  href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"marginTop":"1rem"}}>
       <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
       </svg>
@@ -717,10 +768,40 @@ const runInit = () => {
     </a>
   </aside>
 
-  <main id="main-content">
-    {/* ==========================================================================
-         3. HERO SECTION
-         ========================================================================== */}
+      <main id="main-content">
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
+              {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {currentView === 'contact' && 'Contact & Request Free Quote'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              Hardwood refinishing, luxury vinyl plank, designer tile installation, and commercial flooring.
+            </p>
+          </div>
+        </section>
+      )}
+
+        {/* HOMEPAGE VIEW: Clean essentials */}
+        {currentView === 'home' && (
+          <>
     <section className="hero-section" id="hero">
       <div className="wood-particle plank-1" aria-hidden="true"></div>
       <div className="wood-particle plank-2" aria-hidden="true"></div>
@@ -931,6 +1012,256 @@ const runInit = () => {
     {/* ==========================================================================
          6. CORE FLOORING SERVICES (8 SERVICES)
          ========================================================================== */}
+    <section className="section-padding bg-white testimonials-section" id="testimonials">
+      <div className="container">
+        <div className="section-header reveal">
+          <span className="section-eyebrow">CLIENT TESTIMONIALS</span>
+          <h2>What Homeowners Say About Alvoratech</h2>
+          <div className="testimonials-disclaimer-pill">
+            Demonstration Reviews • Sample Client Feedback
+          </div>
+        </div>
+
+        <div className="testimonials-carousel-wrapper reveal stagger-1">
+          <div className="testimonials-slider">
+            <div className="testimonials-track">
+              {/* Slide 1 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
+                  <blockquote className="testimonial-text">
+                    "Alvoratech replaced 2,200 sq. ft. of old carpet with European White Oak in our open-concept home. The mobile showroom made selecting the right wood stain effortless in our natural sunlight. Their crew showed up at 7:30 sharp, leveled our uneven subfloor, and the finished floor is completely quiet and breathtaking."
+                  </blockquote>
+                  <div className="testimonial-author">
+                    <span className="author-name">Jonathan & Claire Sterling</span>
+                    <span className="author-role">Residential Homeowners</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Slide 2 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
+                  <blockquote className="testimonial-text">
+                    "We had our 1920s original oak floors refinished. I was terrified of sawdust settling in my kitchen cabinets, but Alvoratech's dustless sanding system had zero airborne residue! The satin walnut finish brought historical richness back to life. Highly recommend their master installers."
+                  </blockquote>
+                  <div className="testimonial-author">
+                    <span className="author-name">Rachel Kensington</span>
+                    <span className="author-role">Historic Home Renovation</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Slide 3 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
+                  <blockquote className="testimonial-text">
+                    "With three large golden retrievers, we needed 100% waterproof flooring for our finished walkout basement. Alvoratech installed rigid core LVP with flush stair nosing. It looks exactly like genuine hardwood, has resisted claws and water spills completely, and felt solid underfoot from day one."
+                  </blockquote>
+                  <div className="testimonial-author">
+                    <span className="author-name">Michael & Brenda Hayes</span>
+                    <span className="author-role">Pet-Friendly Basement Upgrade</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Carousel Controls */}
+          <div className="slider-controls">
+            <button className="slider-btn slider-prev" aria-label="Previous testimonial slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div className="slider-dots"></div>
+            <button className="slider-btn slider-next" aria-label="Next testimonial slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         14. SPECIAL CALL-TO-ACTION SECTION
+         ========================================================================== */}
+    <section className="special-cta-section" aria-label="Call to action">
+      <div className="special-cta-content reveal">
+        <span className="demo-pill" style={{"marginBottom":"1.25rem","display":"inline-block"}}>TRANSFORM YOUR FLOORS TODAY</span>
+        <h2>Transform Your Home From The Ground Up</h2>
+        <p>
+          From sample selection in your living room to precision laser installation and guaranteed lifetime durability. Connect with Alvoratech today for your free on-site design consultation and estimate.
+        </p>
+        <div className="hero-actions" style={{"justifyContent":"center"}}>
+          <a href="#contact" className="btn btn-primary btn-lg">Schedule In-Home Estimate</a>
+          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Chat with Us on WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         15. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)
+         ========================================================================== */}
+    <section className="section-padding bg-white" id="contact">
+      <div className="container">
+        <div className="contact-grid">
+          {/* Left Column: Contact Info Card */}
+          <div className="contact-info-card reveal">
+            <span className="section-eyebrow">GET IN TOUCH</span>
+            <h3>Connect With Alvoratech</h3>
+            <p>Ready to select your dream floors? Contact our master estimating and installation team directly via phone, WhatsApp, or email.</p>
+
+            <div className="contact-channels">
+              {/* WhatsApp / Phone */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box whatsapp-bg">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>WhatsApp / Phone</h4>
+                  <a href="tel:+14127963968" className="channel-link">+1 (412) 796-3968</a>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>Email Support</h4>
+                  <a href="mailto:info@Alvoratechhq.com" className="channel-link">info@Alvoratechhq.com</a>
+                </div>
+              </div>
+
+              {/* Location (Strictly *) */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>Location</h4>
+                  <span className="channel-link">*</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div className="contact-location-box">
+              <div className="contact-location-label">Operating Hours</div>
+              <div style={{"fontSize":"0.95rem","color":"var(--color-navy)","fontWeight":"600"}}>
+                Monday – Saturday: 7:00 AM – 6:00 PM <br />
+                <span style={{"color":"var(--color-text-muted)","fontWeight":"normal"}}>Sunday: In-Home Design Consultations By Appointment</span>
+              </div>
+            </div>
+
+            <div style={{"marginTop":"1.75rem"}}>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"width":"100%"}}>
+                <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Chat on WhatsApp Now
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Estimate Form */}
+          <div className="contact-form-card reveal stagger-1">
+            <span className="section-eyebrow">MOBILE SHOWROOM APPOINTMENT</span>
+            <h3>Schedule Your In-Home Flooring Estimate</h3>
+            <p>Tell us about your space. Submitting instantly generates a customized WhatsApp request with our scheduling manager.</p>
+
+            <div id="formStatus" className="form-status" role="alert"></div>
+
+            <form id="estimateForm" novalidate>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="fullName" className="form-label">Full Name *</label>
+                  <input type="text" id="fullName" className="form-input" placeholder="e.g. William Harrington" required />
+                  <span id="fullNameError" className="form-error">Please enter your full name.</span>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="phoneNumber" className="form-label">Phone Number *</label>
+                  <input type="tel" id="phoneNumber" className="form-input" placeholder="e.g. +1 (412) 555-0144" required />
+                  <span id="phoneError" className="form-error">Please enter a valid telephone number.</span>
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="emailAddress" className="form-label">Email Address *</label>
+                  <input type="email" id="emailAddress" className="form-input" placeholder="e.g. william@example.com" required />
+                  <span id="emailError" className="form-error">Please enter a valid email address.</span>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="sqftRange" className="form-label">Estimated Area (Sq. Ft.)</label>
+                  <select id="sqftRange" className="form-select">
+                    <option value="under500">Under 500 sq. ft. (1-2 Rooms)</option>
+                    <option value="500-1000">500 – 1,000 sq. ft. (Partial Home / Floor)</option>
+                    <option value="1000-2500">1,000 – 2,500 sq. ft. (Full Main Level)</option>
+                    <option value="2500plus">2,500+ sq. ft. (Entire Home / Commercial)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="flooringType" className="form-label">Flooring Type Required *</label>
+                <select id="flooringType" className="form-select" required>
+                  <option value="">-- Select Desired Flooring Solution --</option>
+                  <option value="hardwood">Solid & Engineered Hardwood Installation</option>
+                  <option value="lvp">Luxury Vinyl Plank (LVP / EVP) 100% Waterproof</option>
+                  <option value="tile">Porcelain, Ceramic & Marble Tile</option>
+                  <option value="refinish">Dustless Hardwood Sanding & Refinishing</option>
+                  <option value="laminate">Waterproof High-Performance Laminate</option>
+                  <option value="stairs">Custom Hardwood Staircases & Moldings</option>
+                  <option value="commercial">Commercial Flooring Solutions</option>
+                  <option value="subfloor">Subfloor Repair & Laser Self-Leveling</option>
+                </select>
+                <span id="flooringError" className="form-error">Please select a flooring type.</span>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="projectDetails" className="form-label">Room Details / Goals</label>
+                <textarea id="projectDetails" className="form-textarea" placeholder="Mention rooms (living, kitchen, basement), current floor type (carpet, tile, vinyl), and if you have pets or subfloor concerns..."></textarea>
+              </div>
+
+              <button type="submit" className="btn btn-primary btn-lg" style={{"width":"100%"}}>
+                Submit Free Estimate Request
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <div className="form-notice">
+                🔒 Privacy guaranteed. Your contact details are never shared with external parties.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+          </>
+        )}
+
+        {/* SERVICES VIEW */}
+        {currentView === 'services' && (
+          <>
     <section className="section-padding bg-white" id="services">
       <div className="container-wide">
         <div className="section-header reveal">
@@ -1099,6 +1430,222 @@ const runInit = () => {
     {/* ==========================================================================
          8. INTERACTIVE BEFORE-AND-AFTER TRANSFORMATION SLIDER
          ========================================================================== */}
+    <section className="section-padding bg-white" id="process">
+      <div className="container">
+        <div className="section-header reveal">
+          <span className="section-eyebrow">SEAMLESS CLIENT JOURNEY</span>
+          <h2>Our 4-Step Flooring Process</h2>
+          <p>
+            Experience a stress-free path from sample selection to your finished, hand-wiped new floors.
+          </p>
+        </div>
+
+        <div className="steps-timeline">
+          {/* Step 1 */}
+          <div className="step-item reveal stagger-1">
+            <div className="step-number-box">01</div>
+            <h3>In-Home Consultation</h3>
+            <p>Our mobile showroom arrives at your door with 200+ samples so you can see textures in your actual room lighting.</p>
+          </div>
+
+          {/* Step 2 */}
+          <div className="step-item reveal stagger-2">
+            <div className="step-number-box">02</div>
+            <h3>Laser Measuring & Moisture Check</h3>
+            <p>We calculate exact square footage, test subfloor moisture levels, and give you an all-inclusive line-item proposal.</p>
+          </div>
+
+          {/* Step 3 */}
+          <div className="step-item reveal stagger-3">
+            <div className="step-number-box">03</div>
+            <h3>Artisan Installation</h3>
+            <p>Certified master installers level the subfloor, install moisture barriers, and lay planks with millimeter precision.</p>
+          </div>
+
+          {/* Step 4 */}
+          <div className="step-item reveal stagger-4">
+            <div className="step-number-box">04</div>
+            <h3>Walkthrough & Warranty</h3>
+            <p>We clean the space, vacuum, inspect every transition with you, and hand you your Lifetime Installation Certificate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         12. OUR WORK PORTFOLIO GALLERY & LIGHTBOX
+         ========================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Request Service Consultation &rarr;
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* WHY US / ABOUT VIEW */}
+        {(currentView === 'why-us' || currentView === 'why-choose' || currentView === 'about') && (
+          <>
+    <section className="section-padding bg-sand" id="about">
+      <div className="container">
+        <div className="about-grid">
+          {/* Image Column */}
+          <div className="about-media reveal">
+            <div className="about-image-wrapper">
+              <img src="/flooring/assets/images/floor-about.jpg" alt="Alvoratech master craftsman laying architectural hardwood planks" className="about-image" width="600" height="490" />
+            </div>
+          </div>
+
+          {/* Text Column */}
+          <div className="about-content reveal stagger-1">
+            <span className="section-eyebrow">ABOUT ALVORATECH</span>
+            <h2>Architectural Precision. <br />Crafted From The Foundation Up.</h2>
+            <p>
+              At Alvoratech, we know that breathtaking floors begin beneath the surface. While typical contractors rush to lay planks over irregular subfloors, our master installers conduct comprehensive digital moisture profiling, laser grade leveling, and acoustic decoupling to ensure your floors remain dead flat, quiet, and stunning for decades.
+            </p>
+            <p>
+              Whether you are curating European wide-plank white oak for a custom residence, upgrading to 100% waterproof rigid core luxury vinyl plank (LVP), or reviving historical hardwoods with dustless restoration, we handle furniture moving, existing floor haul-away, and final trim work seamlessly.
+            </p>
+
+            <div className="about-features-list">
+              <div className="about-feature-card">
+                <div className="feature-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                </div>
+                <div className="feature-info">
+                  <h4>Precision Subfloor Preparation</h4>
+                  <p>Self-leveling underlayment and digital planar mapping guarantee the NWFA standard of 3/16" flatness across a 10-foot radius.</p>
+                </div>
+              </div>
+
+              <div className="about-feature-card">
+                <div className="feature-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                  </svg>
+                </div>
+                <div className="feature-info">
+                  <h4>Digital Moisture Profiling</h4>
+                  <p>Pinless capacitive moisture testing across concrete and plywood prevents cupping, crowning, and post-installation plank failure.</p>
+                </div>
+              </div>
+
+              <div className="about-feature-card">
+                <div className="feature-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <div className="feature-info">
+                  <h4>White-Glove Furniture & Clean Service</h4>
+                  <p>Our crews carefully move your heavy furniture, haul away old carpet or tile, and leave your home spotless each evening.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-navy">
+              Book an In-Home Consultation
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         6. CORE FLOORING SERVICES (8 SERVICES)
+         ========================================================================== */}
+    <section className="section-padding bg-sand" id="why-us">
+      <div className="container">
+        <div className="why-grid">
+          {/* Left Media */}
+          <div className="why-image-wrapper reveal">
+            <img src="/flooring/assets/images/floor-why.jpg" alt="Alvoratech premium flooring craftsmanship and laser leveling" className="why-image" width="600" height="520" />
+          </div>
+
+          {/* Right Content */}
+          <div className="why-content reveal stagger-1">
+            <span className="section-eyebrow">THE ALVORATECH ADVANTAGE</span>
+            <h2>Why Homeowners and Designers Trust Alvoratech</h2>
+            <p>
+              We treat floor installation with architectural discipline. From our in-home mobile showroom to our certified dustless containment, your satisfaction is guaranteed.
+            </p>
+
+            <div className="why-benefits-grid">
+              <div className="why-benefit-card">
+                <div className="why-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h4>Fully Licensed & Insured</h4>
+                <p>\$2M comprehensive liability coverage protecting your home and family at every stage.</p>
+              </div>
+
+              <div className="why-benefit-card">
+                <div className="why-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </div>
+                <h4>Laser Subfloor Leveling</h4>
+                <p>We grind down high points and fill low spots to eliminate creaks, hollow spots, and bounce.</p>
+              </div>
+
+              <div className="why-benefit-card">
+                <div className="why-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                </div>
+                <h4>99.8% Dustless HEPA Sanding</h4>
+                <p>No dust on your walls, HVAC ducts, or furniture during hardwood refinishing.</p>
+              </div>
+
+              <div className="why-benefit-card">
+                <div className="why-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                </div>
+                <h4>Furniture Moving & Haul Away</h4>
+                <p>Full-service turnkey care: we move heavy items and haul away old carpeting responsibly.</p>
+              </div>
+
+              <div className="why-benefit-card">
+                <div className="why-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                </div>
+                <h4>Transparent Sq. Ft. Pricing</h4>
+                <p>Detailed written proposals including underlayment, transitions, and shoe moldings.</p>
+              </div>
+
+              <div className="why-benefit-card">
+                <div className="why-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <h4>Lifetime Installation Warranty</h4>
+                <p>Unconditional craftsmanship guarantee against plank buckling, gapping, or separation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         11. HOW IT WORKS (OUR 4-STEP CLIENT JOURNEY)
+         ========================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Partner With Our Specialists &rarr;
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* PORTFOLIO / GALLERY VIEW */}
+        {(currentView === 'portfolio' || currentView === 'gallery') && (
+          <>
     <section className="section-padding bg-sand ba-section" id="transformations">
       <div className="container">
         <div className="section-header reveal">
@@ -1243,124 +1790,6 @@ const runInit = () => {
     {/* ==========================================================================
          10. WHY CHOOSE ALVORATECH SECTION
          ========================================================================== */}
-    <section className="section-padding bg-sand" id="why-us">
-      <div className="container">
-        <div className="why-grid">
-          {/* Left Media */}
-          <div className="why-image-wrapper reveal">
-            <img src="/flooring/assets/images/floor-why.jpg" alt="Alvoratech premium flooring craftsmanship and laser leveling" className="why-image" width="600" height="520" />
-          </div>
-
-          {/* Right Content */}
-          <div className="why-content reveal stagger-1">
-            <span className="section-eyebrow">THE ALVORATECH ADVANTAGE</span>
-            <h2>Why Homeowners and Designers Trust Alvoratech</h2>
-            <p>
-              We treat floor installation with architectural discipline. From our in-home mobile showroom to our certified dustless containment, your satisfaction is guaranteed.
-            </p>
-
-            <div className="why-benefits-grid">
-              <div className="why-benefit-card">
-                <div className="why-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                </div>
-                <h4>Fully Licensed & Insured</h4>
-                <p>\$2M comprehensive liability coverage protecting your home and family at every stage.</p>
-              </div>
-
-              <div className="why-benefit-card">
-                <div className="why-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </div>
-                <h4>Laser Subfloor Leveling</h4>
-                <p>We grind down high points and fill low spots to eliminate creaks, hollow spots, and bounce.</p>
-              </div>
-
-              <div className="why-benefit-card">
-                <div className="why-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
-                </div>
-                <h4>99.8% Dustless HEPA Sanding</h4>
-                <p>No dust on your walls, HVAC ducts, or furniture during hardwood refinishing.</p>
-              </div>
-
-              <div className="why-benefit-card">
-                <div className="why-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-                </div>
-                <h4>Furniture Moving & Haul Away</h4>
-                <p>Full-service turnkey care: we move heavy items and haul away old carpeting responsibly.</p>
-              </div>
-
-              <div className="why-benefit-card">
-                <div className="why-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                </div>
-                <h4>Transparent Sq. Ft. Pricing</h4>
-                <p>Detailed written proposals including underlayment, transitions, and shoe moldings.</p>
-              </div>
-
-              <div className="why-benefit-card">
-                <div className="why-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                </div>
-                <h4>Lifetime Installation Warranty</h4>
-                <p>Unconditional craftsmanship guarantee against plank buckling, gapping, or separation.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         11. HOW IT WORKS (OUR 4-STEP CLIENT JOURNEY)
-         ========================================================================== */}
-    <section className="section-padding bg-white" id="process">
-      <div className="container">
-        <div className="section-header reveal">
-          <span className="section-eyebrow">SEAMLESS CLIENT JOURNEY</span>
-          <h2>Our 4-Step Flooring Process</h2>
-          <p>
-            Experience a stress-free path from sample selection to your finished, hand-wiped new floors.
-          </p>
-        </div>
-
-        <div className="steps-timeline">
-          {/* Step 1 */}
-          <div className="step-item reveal stagger-1">
-            <div className="step-number-box">01</div>
-            <h3>In-Home Consultation</h3>
-            <p>Our mobile showroom arrives at your door with 200+ samples so you can see textures in your actual room lighting.</p>
-          </div>
-
-          {/* Step 2 */}
-          <div className="step-item reveal stagger-2">
-            <div className="step-number-box">02</div>
-            <h3>Laser Measuring & Moisture Check</h3>
-            <p>We calculate exact square footage, test subfloor moisture levels, and give you an all-inclusive line-item proposal.</p>
-          </div>
-
-          {/* Step 3 */}
-          <div className="step-item reveal stagger-3">
-            <div className="step-number-box">03</div>
-            <h3>Artisan Installation</h3>
-            <p>Certified master installers level the subfloor, install moisture barriers, and lay planks with millimeter precision.</p>
-          </div>
-
-          {/* Step 4 */}
-          <div className="step-item reveal stagger-4">
-            <div className="step-number-box">04</div>
-            <h3>Walkthrough & Warranty</h3>
-            <p>We clean the space, vacuum, inspect every transition with you, and hand you your Lifetime Installation Certificate.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         12. OUR WORK PORTFOLIO GALLERY & LIGHTBOX
-         ========================================================================== */}
     <section className="section-padding bg-sand" id="portfolio">
       <div className="container-wide">
         <div className="section-header reveal">
@@ -1469,102 +1898,17 @@ const runInit = () => {
     {/* ==========================================================================
          13. CUSTOMER TESTIMONIALS SECTION & CAROUSEL
          ========================================================================== */}
-    <section className="section-padding bg-white testimonials-section" id="testimonials">
-      <div className="container">
-        <div className="section-header reveal">
-          <span className="section-eyebrow">CLIENT TESTIMONIALS</span>
-          <h2>What Homeowners Say About Alvoratech</h2>
-          <div className="testimonials-disclaimer-pill">
-            Demonstration Reviews • Sample Client Feedback
-          </div>
-        </div>
-
-        <div className="testimonials-carousel-wrapper reveal stagger-1">
-          <div className="testimonials-slider">
-            <div className="testimonials-track">
-              {/* Slide 1 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
-                  <blockquote className="testimonial-text">
-                    "Alvoratech replaced 2,200 sq. ft. of old carpet with European White Oak in our open-concept home. The mobile showroom made selecting the right wood stain effortless in our natural sunlight. Their crew showed up at 7:30 sharp, leveled our uneven subfloor, and the finished floor is completely quiet and breathtaking."
-                  </blockquote>
-                  <div className="testimonial-author">
-                    <span className="author-name">Jonathan & Claire Sterling</span>
-                    <span className="author-role">Residential Homeowners</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Slide 2 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
-                  <blockquote className="testimonial-text">
-                    "We had our 1920s original oak floors refinished. I was terrified of sawdust settling in my kitchen cabinets, but Alvoratech's dustless sanding system had zero airborne residue! The satin walnut finish brought historical richness back to life. Highly recommend their master installers."
-                  </blockquote>
-                  <div className="testimonial-author">
-                    <span className="author-name">Rachel Kensington</span>
-                    <span className="author-role">Historic Home Renovation</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Slide 3 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
-                  <blockquote className="testimonial-text">
-                    "With three large golden retrievers, we needed 100% waterproof flooring for our finished walkout basement. Alvoratech installed rigid core LVP with flush stair nosing. It looks exactly like genuine hardwood, has resisted claws and water spills completely, and felt solid underfoot from day one."
-                  </blockquote>
-                  <div className="testimonial-author">
-                    <span className="author-name">Michael & Brenda Hayes</span>
-                    <span className="author-role">Pet-Friendly Basement Upgrade</span>
-                  </div>
-                </div>
-              </div>
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Book Your Transformation &rarr;
+              </button>
             </div>
-          </div>
+          </>
+        )}
 
-          {/* Carousel Controls */}
-          <div className="slider-controls">
-            <button className="slider-btn slider-prev" aria-label="Previous testimonial slide">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            <div className="slider-dots"></div>
-            <button className="slider-btn slider-next" aria-label="Next testimonial slide">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         14. SPECIAL CALL-TO-ACTION SECTION
-         ========================================================================== */}
-    <section className="special-cta-section" aria-label="Call to action">
-      <div className="special-cta-content reveal">
-        <span className="demo-pill" style={{"marginBottom":"1.25rem","display":"inline-block"}}>TRANSFORM YOUR FLOORS TODAY</span>
-        <h2>Transform Your Home From The Ground Up</h2>
-        <p>
-          From sample selection in your living room to precision laser installation and guaranteed lifetime durability. Connect with Alvoratech today for your free on-site design consultation and estimate.
-        </p>
-        <div className="hero-actions" style={{"justifyContent":"center"}}>
-          <a href="#contact" className="btn btn-primary btn-lg">Schedule In-Home Estimate</a>
-          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            Chat with Us on WhatsApp
-          </a>
-        </div>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         15. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)
-         ========================================================================== */}
+        {/* FAQ VIEW */}
+        {currentView === 'faq' && (
+          <>
     <section className="section-padding bg-sand" id="faq">
       <div className="container">
         <div className="section-header reveal">
@@ -1673,6 +2017,15 @@ const runInit = () => {
     {/* ==========================================================================
          16. CONTACT & ESTIMATE REQUEST SECTION
          ========================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+            </div>
+          </>
+        )}
+
+        {/* CONTACT VIEW */}
+        {currentView === 'contact' && (
+          <>
     <section className="section-padding bg-white" id="contact">
       <div className="container">
         <div className="contact-grid">
@@ -1821,36 +2174,15 @@ const runInit = () => {
         </div>
       </div>
     </section>
-
-    {/* ==========================================================================
-         17. BOTTOM DEMO BANNER
-         ========================================================================== */}
-    <section className="bottom-demo-banner" role="region" aria-label="Demo site conclusion">
-      <div className="container">
-        <div className="bottom-demo-card reveal">
-          <span className="demo-pill" style={{"marginBottom":"1rem","display":"inline-block"}}>DEMONSTRATION SHOWCASE</span>
-          <h2>Ready to Elevate Your Home With Flawless Floors?</h2>
-          <p>Experience how Alvoratech can elevate residential residences and commercial properties. Connect with our team today and discover master-grade flooring craftsmanship.</p>
-          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            Chat With Us
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  {/* ==========================================================================
-       18. FOOTER
-       ========================================================================== */}
+          </>
+        )}
+      </main>
   <footer className="site-footer" role="contentinfo">
     <div className="container-wide">
       <div className="footer-grid">
         {/* Brand Info */}
         <div className="footer-col-brand">
-          <a href="#hero" className="site-logo">
+          <a href="#hero" onClick={(e) => navigateTo('home', e)} className="site-logo">
             <div className="logo-icon-box">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 3h18v18H3z"/>
@@ -1872,14 +2204,14 @@ const runInit = () => {
         <div>
           <h4 className="footer-heading">Flooring Solutions</h4>
           <ul className="footer-links">
-            <li><a href="#services" className="footer-link">Engineered Hardwood</a></li>
-            <li><a href="#services" className="footer-link">Solid Hardwood Installation</a></li>
-            <li><a href="#services" className="footer-link">Luxury Vinyl Plank (LVP)</a></li>
-            <li><a href="#services" className="footer-link">Porcelain & Marble Tile</a></li>
-            <li><a href="#services" className="footer-link">Dustless Floor Refinishing</a></li>
-            <li><a href="#services" className="footer-link">Waterproof Laminate</a></li>
-            <li><a href="#services" className="footer-link">Custom Staircase Treads</a></li>
-            <li><a href="#services" className="footer-link">Subfloor Laser Leveling</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Engineered Hardwood</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Solid Hardwood Installation</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Luxury Vinyl Plank (LVP)</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Porcelain & Marble Tile</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Dustless Floor Refinishing</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Waterproof Laminate</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Custom Staircase Treads</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Subfloor Laser Leveling</a></li>
           </ul>
         </div>
 
@@ -1887,16 +2219,16 @@ const runInit = () => {
         <div>
           <h4 className="footer-heading">Navigation</h4>
           <ul className="footer-links">
-            <li><a href="#hero" className="footer-link">Home</a></li>
-            <li><a href="#about" className="footer-link">About Alvoratech</a></li>
-            <li><a href="#transformations" className="footer-link">Before & After Slider</a></li>
+            <li><a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a></li>
+            <li><a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Alvoratech</a></li>
+            <li><a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Before & After Slider</a></li>
             <li><a href="#guide" className="footer-link">Material Comparison Guide</a></li>
-            <li><a href="#why-us" className="footer-link">Why Choose Us</a></li>
+            <li><a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a></li>
             <li><a href="#process" className="footer-link">Our 4-Step Process</a></li>
-            <li><a href="#portfolio" className="footer-link">Project Portfolio</a></li>
+            <li><a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Project Portfolio</a></li>
             <li><a href="#testimonials" className="footer-link">Client Reviews</a></li>
-            <li><a href="#faq" className="footer-link">FAQ</a></li>
-            <li><a href="#contact" className="footer-link">Request In-Home Estimate</a></li>
+            <li><a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQ</a></li>
+            <li><a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Request In-Home Estimate</a></li>
           </ul>
         </div>
 

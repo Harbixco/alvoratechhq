@@ -2448,3 +2448,42 @@
     box-sizing: border-box !important;
   }
 }
+
+
+/* ENFORCE MOBILE HAMBURGER AND HIDE DESKTOP CTA ON <= 1024px */
+@media (max-width: 1024px) {
+  .cleaning-demo .desktop-only-btn,
+  .cleaning-demo .nav-actions .desktop-only-btn,
+  .cleaning-demo .nav-actions .btn,
+  .cleaning-demo .site-header .nav-actions .btn,
+  .cleaning-demo .site-header .nav-actions a.btn {
+    display: none !important;
+  }
+  .cleaning-demo .mobile-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 10px 8px !important;
+    background: transparent !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    z-index: 1060 !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+  .cleaning-demo .mobile-toggle span {
+    display: block !important;
+    width: 22px !important;
+    height: 2.5px !important;
+    background-color: currentColor !important;
+    border-radius: 2px !important;
+    transition: all 0.25s ease !important;
+  }
+}

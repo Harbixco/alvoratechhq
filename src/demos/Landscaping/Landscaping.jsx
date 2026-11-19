@@ -4,6 +4,57 @@ import './landscaping.css';
 
 export default function Landscaping() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","portfolio","gallery","why-us","faq","contact"].includes(hash)) {
+        return hash;
+      }
+      if (hash === 'gallery') return 'portfolio';
+      if (hash === 'our-work') return 'portfolio';
+      if (hash === 'why-choose') return 'why-us';
+      if (hash === 'about') return 'why-us';
+      if (hash === 'estimate' || hash === 'quote' || hash === 'book') return 'contact';
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","portfolio","gallery","why-us","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (hash === 'gallery' || hash === 'our-work') {
+        setCurrentView('portfolio');
+      } else if (hash === 'why-choose' || hash === 'about') {
+        setCurrentView('why-us');
+      } else if (hash === 'estimate' || hash === 'quote' || hash === 'book') {
+        setCurrentView('contact');
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      runInit();
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [currentView]);
   useEffect(() => {
     try {
       /**
@@ -686,7 +737,7 @@ const runInit = () => {
     <div className="container-wide">
       <div className="nav-container">
         {/* Logo */}
-        <a href="#hero" className="site-logo" aria-label="Alvoratech Home">
+        <a href="#hero" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Home">
           <div className="logo-icon-box">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
@@ -698,20 +749,20 @@ const runInit = () => {
 
         {/* Desktop Navigation Links */}
         <nav className="nav-links" role="navigation" aria-label="Main Navigation">
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#transformations" className="nav-link">Before & After</a>
-          <a href="#about" className="nav-link">About Us</a>
-          <a href="#why-us" className="nav-link">Why Us</a>
-          <a href="#portfolio" className="nav-link">Portfolio</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
+          <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Before & After</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About Us</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Us</a>
+          <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Portfolio</a>
           <a href="#testimonials" className="nav-link">Testimonials</a>
-          <a href="#faq" className="nav-link">FAQ</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="nav-link">FAQ</a>
+          <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
         </nav>
 
         {/* Nav CTA Actions */}
         <div className="nav-actions">
-          <a href="#contact" className="btn btn-primary btn-sm">Get Free Estimate</a>
-          <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-expanded={mobileMenuOpen} aria-label="Open navigation menu">
+          <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">Get Free Estimate</a>
+          <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}  aria-expanded={mobileMenuOpen} aria-label="Open navigation menu">
             <span></span>
             <span></span>
             <span></span>
@@ -722,18 +773,18 @@ const runInit = () => {
   </header>
 
   {/* Mobile Navigation Overlay & Drawer */}
-  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
+  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}  aria-hidden="true"></div>
   <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
-    <a onClick={() => setMobileMenuOpen(false)} href="#hero" className="nav-link">Home</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#services" className="nav-link">Services</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#transformations" className="nav-link">Before & After</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#about" className="nav-link">About Us</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#why-us" className="nav-link">Why Choose Us</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#portfolio" className="nav-link">Portfolio Gallery</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#testimonials" className="nav-link">Client Reviews</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#faq" className="nav-link">Frequently Asked Questions</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="nav-link">Contact & Quotes</a>
-    <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"marginTop":"1rem"}}>
+    <a  href="#hero" onClick={(e) => navigateTo('home', e)} className="nav-link">Home</a>
+    <a  href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
+    <a  href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Before & After</a>
+    <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About Us</a>
+    <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
+    <a  href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Portfolio Gallery</a>
+    <a  href="#testimonials" className="nav-link">Client Reviews</a>
+    <a  href="#faq" onClick={(e) => navigateTo('faq', e)} className="nav-link">Frequently Asked Questions</a>
+    <a  href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact & Quotes</a>
+    <a  href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"marginTop":"1rem"}}>
       <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
       </svg>
@@ -741,10 +792,40 @@ const runInit = () => {
     </a>
   </aside>
 
-  <main id="main-content">
-    {/* ==========================================================================
-         3. HERO SECTION
-         ========================================================================== */}
+      <main id="main-content">
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
+              {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {currentView === 'contact' && 'Contact & Request Free Quote'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              Custom architectural stonework, outdoor living environments, irrigation, and grounds management.
+            </p>
+          </div>
+        </section>
+      )}
+
+        {/* HOMEPAGE VIEW: Clean essentials */}
+        {currentView === 'home' && (
+          <>
     <section className="hero-section" id="hero">
       {/* Animated Floating Foliage Elements */}
       <div className="leaf-particle leaf-1" aria-hidden="true"></div>
@@ -953,6 +1034,255 @@ const runInit = () => {
     {/* ==========================================================================
          6. LANDSCAPING SERVICES (8 SERVICES)
          ========================================================================== */}
+    <section className="section-padding bg-light testimonials-section" id="testimonials">
+      <div className="container">
+        <div className="section-header reveal">
+          <span className="section-eyebrow">CLIENT TESTIMONIALS</span>
+          <h2>What Property Owners Say About Alvoratech</h2>
+          <div className="testimonials-disclaimer-pill">
+            Demonstration Reviews • Sample Client Feedback
+          </div>
+        </div>
+
+        <div className="testimonials-carousel-wrapper reveal stagger-1">
+          <div className="testimonials-slider">
+            <div className="testimonials-track">
+              {/* Slide 1 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
+                  <blockquote className="testimonial-text">
+                    "Alvoratech transformed our backyard from a sloped, unusable mud pit into an architectural masterpiece. The 3D render preview was exact to the millimeter. Their team worked tirelessly, showed up right on time each morning, and the craftsmanship of the natural stone patio has increased our property value tremendously."
+                  </blockquote>
+                  <div className="testimonial-author">
+                    <span className="author-name">David & Sarah Miller</span>
+                    <span className="author-role">Residential Estate Homeowners</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Slide 2 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
+                  <blockquote className="testimonial-text">
+                    "As a facility director managing an 18-acre corporate park, finding a reliable grounds contractor was always challenging. Alvoratech stepped in with proactive weekly communication, immaculate turf striped lines, and automated smart irrigation that cut our exterior water bill by 32%."
+                  </blockquote>
+                  <div className="testimonial-author">
+                    <span className="author-name">Marcus Vance</span>
+                    <span className="author-role">Director of Facilities, Tech Ridge Campus</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Slide 3 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
+                  <blockquote className="testimonial-text">
+                    "We had a severe grading and water runoff problem that threatened our foundation during heavy rains. Alvoratech engineered a multi-tier retaining wall and French drain network that solved the drainage completely, while creating a stunning tiered botanical garden. Highly recommended!"
+                  </blockquote>
+                  <div className="testimonial-author">
+                    <span className="author-name">Elena Rostova</span>
+                    <span className="author-role">Private Homeowner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Carousel Controls */}
+          <div className="slider-controls">
+            <button className="slider-btn slider-prev" aria-label="Previous testimonial slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div className="slider-dots"></div>
+            <button className="slider-btn slider-next" aria-label="Next testimonial slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         13. SPECIAL CALL-TO-ACTION SECTION
+         ========================================================================== */}
+    <section className="special-cta-section" aria-label="Call to action">
+      <div className="special-cta-content reveal">
+        <span className="demo-pill" style={{"marginBottom":"1.25rem","display":"inline-block"}}>TRANSFORM YOUR PROPERTY TODAY</span>
+        <h2>Ready to Elevate Your Outdoor Living Space?</h2>
+        <p>
+          From concept 3D blueprints to the final stone paver, Alvoratech delivers unmatched landscaping artistry and engineering. Speak with our landscape consultants today for a no-obligation site consultation.
+        </p>
+        <div className="hero-actions" style={{"justifyContent":"center"}}>
+          <a href="#contact" className="btn btn-primary btn-lg">Request Free Estimate</a>
+          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Chat with Us on WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         14. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)
+         ========================================================================== */}
+    <section className="section-padding bg-light" id="contact">
+      <div className="container">
+        <div className="contact-grid">
+          {/* Left Column: Contact Information Card */}
+          <div className="contact-info-card reveal">
+            <span className="section-eyebrow">GET IN TOUCH</span>
+            <h3>Connect With Alvoratech</h3>
+            <p>Ready to start your landscape journey? Reach out to our design and estimating team directly via phone, WhatsApp, or email.</p>
+
+            <div className="contact-channels">
+              {/* WhatsApp Channel */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box whatsapp-bg">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>WhatsApp / Phone</h4>
+                  <a href="tel:+14127963968" className="channel-link">+1 (412) 796-3968</a>
+                </div>
+              </div>
+
+              {/* Email Channel */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>Email Support</h4>
+                  <a href="mailto:info@Alvoratechhq.com" className="channel-link">info@Alvoratechhq.com</a>
+                </div>
+              </div>
+
+              {/* Location Box (Strictly *) */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>Location</h4>
+                  <span className="channel-link">*</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Operating Hours */}
+            <div className="contact-location-box">
+              <div className="contact-location-label">Business Hours</div>
+              <div style={{"fontSize":"0.95rem","color":"var(--color-navy)","fontWeight":"600"}}>
+                Monday – Saturday: 7:00 AM – 6:00 PM <br />
+                <span style={{"color":"var(--color-text-muted)","fontWeight":"normal"}}>Sunday: Emergency Property Response</span>
+              </div>
+            </div>
+
+            <div style={{"marginTop":"1.75rem"}}>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"width":"100%"}}>
+                <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Chat on WhatsApp Now
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Estimate Request Form */}
+          <div className="contact-form-card reveal stagger-1">
+            <span className="section-eyebrow">ESTIMATE CALCULATOR</span>
+            <h3>Request Your Free Property Estimate</h3>
+            <p>Fill out the details below. Submitting will immediately generate a customized WhatsApp summary for our landscape estimators.</p>
+
+            <div id="formStatus" className="form-status" role="alert"></div>
+
+            <form id="estimateForm" novalidate>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="fullName" className="form-label">Full Name *</label>
+                  <input type="text" id="fullName" className="form-input" placeholder="e.g. Robert Anderson" required />
+                  <span id="fullNameError" className="form-error">Please enter your full name.</span>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="phoneNumber" className="form-label">Phone Number *</label>
+                  <input type="tel" id="phoneNumber" className="form-input" placeholder="e.g. +1 (412) 555-0192" required />
+                  <span id="phoneError" className="form-error">Please enter a valid telephone number.</span>
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="emailAddress" className="form-label">Email Address *</label>
+                  <input type="email" id="emailAddress" className="form-input" placeholder="e.g. robert@example.com" required />
+                  <span id="emailError" className="form-error">Please enter a valid email address.</span>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="propertyType" className="form-label">Property Type</label>
+                  <select id="propertyType" className="form-select">
+                    <option value="residential">Residential Estate</option>
+                    <option value="commercial">Commercial / Corporate Campus</option>
+                    <option value="hoa">HOA / Multi-Family Community</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="serviceNeeded" className="form-label">Primary Service Required *</label>
+                <select id="serviceNeeded" className="form-select" required>
+                  <option value="">-- Select a Landscaping Service --</option>
+                  <option value="hardscape">Custom Hardscaping & Paver Patios</option>
+                  <option value="design">Landscape Architecture & 3D Design</option>
+                  <option value="retaining_wall">Retaining Walls & Slope Grading</option>
+                  <option value="lawn_care">Lawn Care & Turf Management</option>
+                  <option value="irrigation">Smart Irrigation & French Drains</option>
+                  <option value="planting">Specimen Tree & Shrub Planting</option>
+                  <option value="lighting">Architectural Outdoor Night Lighting</option>
+                  <option value="commercial">Commercial Grounds Maintenance</option>
+                </select>
+                <span id="serviceError" className="form-error">Please select a service.</span>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="projectDetails" className="form-label">Project Details / Goals</label>
+                <textarea id="projectDetails" className="form-textarea" placeholder="Describe your yard dimensions, desired features (fire pit, patio, turf aeration), or current drainage issues..."></textarea>
+              </div>
+
+              <button type="submit" className="btn btn-primary btn-lg" style={{"width":"100%"}}>
+                Submit Free Estimate Request
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <div className="form-notice">
+                🔒 Privacy guaranteed. Your contact information is never shared with third parties.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+          </>
+        )}
+
+        {/* SERVICES VIEW */}
+        {currentView === 'services' && (
+          <>
     <section className="section-padding bg-white" id="services">
       <div className="container-wide">
         <div className="section-header reveal">
@@ -1121,68 +1451,135 @@ const runInit = () => {
     {/* ==========================================================================
          8. INTERACTIVE BEFORE-AND-AFTER TRANSFORMATION SLIDER
          ========================================================================== */}
-    <section className="section-padding bg-light ba-section" id="transformations">
+    <section className="section-padding bg-light" id="process">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">VISUAL PROOF & TRANSFORMATIONS</span>
-          <h2>Witness the Power of Professional Landscaping</h2>
+          <span className="section-eyebrow">SEAMLESS CLIENT JOURNEY</span>
+          <h2>Our 4-Step Landscape Process</h2>
           <p>
-            Drag the interactive slider handle left and right to reveal the dramatic real-world property transformations executed by Alvoratech's specialized crews.
+            Experience a structured, stress-free path from conceptual vision to complete outdoor living reality.
           </p>
-          <div className="ba-disclaimer-pill">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            Drag handle left or right to compare Before & After
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </div>
         </div>
 
-        {/* Before-After Category Tabs */}
-        <div className="ba-tabs reveal">
-          <button className="ba-tab-btn active" data-tab="patio">Backyard Patio</button>
-          <button className="ba-tab-btn" data-tab="curb">Front Yard Curb</button>
-          <button className="ba-tab-btn" data-tab="lawn">Lawn Revitalization</button>
-          <button className="ba-tab-btn" data-tab="wall">Retaining Wall</button>
-          <button className="ba-tab-btn" data-tab="living">Outdoor Living Room</button>
-        </div>
-
-        {/* Interactive Slider Box */}
-        <div className="ba-slider-container reveal stagger-1" aria-label="Before and after transformation comparison slider">
-          {/* After (Background) */}
-          <div className="ba-image-wrapper ba-image-after">
-            <img src="/landscaping/assets/images/ba-patio-after.jpg" alt="Backyard transformed after Alvoratech paver patio construction" className="ba-img" />
-            <span className="ba-label ba-label-after">AFTER</span>
+        <div className="steps-timeline">
+          {/* Step 1 */}
+          <div className="step-item reveal stagger-1">
+            <div className="step-number-box">01</div>
+            <h3>On-Site Consultation</h3>
+            <p>We walk your grounds, evaluate sun exposure, soil, and drainage, and discuss your lifestyle desires and budget.</p>
           </div>
 
-          {/* Before (Clipped Foreground) */}
-          <div className="ba-image-before">
-            <img src="/landscaping/assets/images/ba-patio-before.jpg" alt="Backyard before Alvoratech landscaping intervention" className="ba-img" />
-            <span className="ba-label ba-label-before">BEFORE</span>
+          {/* Step 2 */}
+          <div className="step-item reveal stagger-2">
+            <div className="step-number-box">02</div>
+            <h3>3D Concept & Materials</h3>
+            <p>Our landscape architects generate 3D renders and guide you through stone samples, paver textures, and plant schedules.</p>
           </div>
 
-          {/* Draggable Handle */}
-          <div className="ba-handle" aria-label="Slider handle">
-            <div className="ba-handle-circle">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-                <polyline points="9 18 15 12 9 6" transform="translate(6, 0)"></polyline>
-              </svg>
-            </div>
+          {/* Step 3 */}
+          <div className="step-item reveal stagger-3">
+            <div className="step-number-box">03</div>
+            <h3>Precision Construction</h3>
+            <p>Our skilled masons and horticulturalists execute site grading, compaction, masonry, and planting with daily superintendent oversight.</p>
           </div>
-        </div>
 
-        {/* Dynamic Caption */}
-        <p className="ba-caption reveal">
-          Backyard Transformation: Overgrown unpaved yard transformed into an architectural paver patio with seating & evening lighting.
-        </p>
-
-        <div style={{"textAlign":"center","marginTop":"2.5rem"}} className="reveal">
-          <a href="#contact" className="btn btn-primary">Start Your Own Property Transformation</a>
+          {/* Step 4 */}
+          <div className="step-item reveal stagger-4">
+            <div className="step-number-box">04</div>
+            <h3>Walkthrough & Care</h3>
+            <p>We review every inch with you, provide custom maintenance instructions, and activate your multi-year warranty.</p>
+          </div>
         </div>
       </div>
     </section>
 
     {/* ==========================================================================
-         9. WHY CHOOSE ALVORATECH SECTION
+         11. OUR WORK PORTFOLIO GALLERY & LIGHTBOX
+         ========================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Request Service Consultation &rarr;
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* WHY US / ABOUT VIEW */}
+        {(currentView === 'why-us' || currentView === 'why-choose' || currentView === 'about') && (
+          <>
+    <section className="section-padding bg-light" id="about">
+      <div className="container">
+        <div className="about-grid">
+          {/* Image Column */}
+          <div className="about-media reveal">
+            <div className="about-image-wrapper">
+              <img src="/landscaping/assets/images/landscape-about.jpg" alt="Alvoratech landscaping crew performing precision estate planting" className="about-image" width="600" height="490" />
+            </div>
+          </div>
+
+          {/* Text Column */}
+          <div className="about-content reveal stagger-1">
+            <span className="section-eyebrow">ABOUT ALVORATECH</span>
+            <h2>Rooted in Craftsmanship. <br />Driven by Precision Outdoor Design.</h2>
+            <p>
+              At Alvoratech, we believe your exterior property is an extension of your home's architecture and living space. Founded with a commitment to uncompromised craftsmanship, we merge architectural hardscaping, environmental horticulture, and high-efficiency water management into seamless outdoor sanctuaries.
+            </p>
+            <p>
+              Whether constructing expansive natural bluestone terraces, stabilizing steep slopes with structural retaining walls, or maintaining premier corporate grounds, our team executes every phase with laser precision and courteous professionalism.
+            </p>
+
+            <div className="about-features-list">
+              <div className="about-feature-card">
+                <div className="feature-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <div className="feature-info">
+                  <h4>Architectural Structural Integrity</h4>
+                  <p>Proper sub-base compaction, laser leveling, and geogrid reinforcement guarantee zero settling or sagging for decades.</p>
+                </div>
+              </div>
+
+              <div className="about-feature-card">
+                <div className="feature-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                  </svg>
+                </div>
+                <div className="feature-info">
+                  <h4>Climate-Adapted Botanical Science</h4>
+                  <p>Tailored soil amendments and climate-resilient native plant palettes ensure lush seasonal color with minimal water waste.</p>
+                </div>
+              </div>
+
+              <div className="about-feature-card">
+                <div className="feature-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <div className="feature-info">
+                  <h4>Turnkey Communication & Oversight</h4>
+                  <p>A single dedicated project superintendent manages your project from excavation to final walkthrough and ongoing maintenance.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-navy">
+              Talk With Our Landscape Designers
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ==========================================================================
+         6. LANDSCAPING SERVICES (8 SERVICES)
          ========================================================================== */}
     <section className="section-padding bg-white" id="why-us">
       <div className="container">
@@ -1257,50 +1654,79 @@ const runInit = () => {
     {/* ==========================================================================
          10. HOW IT WORKS (OUR 4-STEP LANDSCAPE PROCESS)
          ========================================================================== */}
-    <section className="section-padding bg-light" id="process">
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Partner With Our Specialists &rarr;
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* PORTFOLIO / GALLERY VIEW */}
+        {(currentView === 'portfolio' || currentView === 'gallery') && (
+          <>
+    <section className="section-padding bg-light ba-section" id="transformations">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">SEAMLESS CLIENT JOURNEY</span>
-          <h2>Our 4-Step Landscape Process</h2>
+          <span className="section-eyebrow">VISUAL PROOF & TRANSFORMATIONS</span>
+          <h2>Witness the Power of Professional Landscaping</h2>
           <p>
-            Experience a structured, stress-free path from conceptual vision to complete outdoor living reality.
+            Drag the interactive slider handle left and right to reveal the dramatic real-world property transformations executed by Alvoratech's specialized crews.
           </p>
+          <div className="ba-disclaimer-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Drag handle left or right to compare Before & After
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
         </div>
 
-        <div className="steps-timeline">
-          {/* Step 1 */}
-          <div className="step-item reveal stagger-1">
-            <div className="step-number-box">01</div>
-            <h3>On-Site Consultation</h3>
-            <p>We walk your grounds, evaluate sun exposure, soil, and drainage, and discuss your lifestyle desires and budget.</p>
+        {/* Before-After Category Tabs */}
+        <div className="ba-tabs reveal">
+          <button className="ba-tab-btn active" data-tab="patio">Backyard Patio</button>
+          <button className="ba-tab-btn" data-tab="curb">Front Yard Curb</button>
+          <button className="ba-tab-btn" data-tab="lawn">Lawn Revitalization</button>
+          <button className="ba-tab-btn" data-tab="wall">Retaining Wall</button>
+          <button className="ba-tab-btn" data-tab="living">Outdoor Living Room</button>
+        </div>
+
+        {/* Interactive Slider Box */}
+        <div className="ba-slider-container reveal stagger-1" aria-label="Before and after transformation comparison slider">
+          {/* After (Background) */}
+          <div className="ba-image-wrapper ba-image-after">
+            <img src="/landscaping/assets/images/ba-patio-after.jpg" alt="Backyard transformed after Alvoratech paver patio construction" className="ba-img" />
+            <span className="ba-label ba-label-after">AFTER</span>
           </div>
 
-          {/* Step 2 */}
-          <div className="step-item reveal stagger-2">
-            <div className="step-number-box">02</div>
-            <h3>3D Concept & Materials</h3>
-            <p>Our landscape architects generate 3D renders and guide you through stone samples, paver textures, and plant schedules.</p>
+          {/* Before (Clipped Foreground) */}
+          <div className="ba-image-before">
+            <img src="/landscaping/assets/images/ba-patio-before.jpg" alt="Backyard before Alvoratech landscaping intervention" className="ba-img" />
+            <span className="ba-label ba-label-before">BEFORE</span>
           </div>
 
-          {/* Step 3 */}
-          <div className="step-item reveal stagger-3">
-            <div className="step-number-box">03</div>
-            <h3>Precision Construction</h3>
-            <p>Our skilled masons and horticulturalists execute site grading, compaction, masonry, and planting with daily superintendent oversight.</p>
+          {/* Draggable Handle */}
+          <div className="ba-handle" aria-label="Slider handle">
+            <div className="ba-handle-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+                <polyline points="9 18 15 12 9 6" transform="translate(6, 0)"></polyline>
+              </svg>
+            </div>
           </div>
+        </div>
 
-          {/* Step 4 */}
-          <div className="step-item reveal stagger-4">
-            <div className="step-number-box">04</div>
-            <h3>Walkthrough & Care</h3>
-            <p>We review every inch with you, provide custom maintenance instructions, and activate your multi-year warranty.</p>
-          </div>
+        {/* Dynamic Caption */}
+        <p className="ba-caption reveal">
+          Backyard Transformation: Overgrown unpaved yard transformed into an architectural paver patio with seating & evening lighting.
+        </p>
+
+        <div style={{"textAlign":"center","marginTop":"2.5rem"}} className="reveal">
+          <a href="#contact" className="btn btn-primary">Start Your Own Property Transformation</a>
         </div>
       </div>
     </section>
 
     {/* ==========================================================================
-         11. OUR WORK PORTFOLIO GALLERY & LIGHTBOX
+         9. WHY CHOOSE ALVORATECH SECTION
          ========================================================================== */}
     <section className="section-padding bg-white" id="portfolio">
       <div className="container-wide">
@@ -1410,102 +1836,17 @@ const runInit = () => {
     {/* ==========================================================================
          12. CUSTOMER TESTIMONIALS SECTION & CAROUSEL
          ========================================================================== */}
-    <section className="section-padding bg-light testimonials-section" id="testimonials">
-      <div className="container">
-        <div className="section-header reveal">
-          <span className="section-eyebrow">CLIENT TESTIMONIALS</span>
-          <h2>What Property Owners Say About Alvoratech</h2>
-          <div className="testimonials-disclaimer-pill">
-            Demonstration Reviews • Sample Client Feedback
-          </div>
-        </div>
-
-        <div className="testimonials-carousel-wrapper reveal stagger-1">
-          <div className="testimonials-slider">
-            <div className="testimonials-track">
-              {/* Slide 1 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
-                  <blockquote className="testimonial-text">
-                    "Alvoratech transformed our backyard from a sloped, unusable mud pit into an architectural masterpiece. The 3D render preview was exact to the millimeter. Their team worked tirelessly, showed up right on time each morning, and the craftsmanship of the natural stone patio has increased our property value tremendously."
-                  </blockquote>
-                  <div className="testimonial-author">
-                    <span className="author-name">David & Sarah Miller</span>
-                    <span className="author-role">Residential Estate Homeowners</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Slide 2 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
-                  <blockquote className="testimonial-text">
-                    "As a facility director managing an 18-acre corporate park, finding a reliable grounds contractor was always challenging. Alvoratech stepped in with proactive weekly communication, immaculate turf striped lines, and automated smart irrigation that cut our exterior water bill by 32%."
-                  </blockquote>
-                  <div className="testimonial-author">
-                    <span className="author-name">Marcus Vance</span>
-                    <span className="author-role">Director of Facilities, Tech Ridge Campus</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Slide 3 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 stars">★★★★★</div>
-                  <blockquote className="testimonial-text">
-                    "We had a severe grading and water runoff problem that threatened our foundation during heavy rains. Alvoratech engineered a multi-tier retaining wall and French drain network that solved the drainage completely, while creating a stunning tiered botanical garden. Highly recommended!"
-                  </blockquote>
-                  <div className="testimonial-author">
-                    <span className="author-name">Elena Rostova</span>
-                    <span className="author-role">Private Homeowner</span>
-                  </div>
-                </div>
-              </div>
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Book Your Transformation &rarr;
+              </button>
             </div>
-          </div>
+          </>
+        )}
 
-          {/* Carousel Controls */}
-          <div className="slider-controls">
-            <button className="slider-btn slider-prev" aria-label="Previous testimonial slide">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            <div className="slider-dots"></div>
-            <button className="slider-btn slider-next" aria-label="Next testimonial slide">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         13. SPECIAL CALL-TO-ACTION SECTION
-         ========================================================================== */}
-    <section className="special-cta-section" aria-label="Call to action">
-      <div className="special-cta-content reveal">
-        <span className="demo-pill" style={{"marginBottom":"1.25rem","display":"inline-block"}}>TRANSFORM YOUR PROPERTY TODAY</span>
-        <h2>Ready to Elevate Your Outdoor Living Space?</h2>
-        <p>
-          From concept 3D blueprints to the final stone paver, Alvoratech delivers unmatched landscaping artistry and engineering. Speak with our landscape consultants today for a no-obligation site consultation.
-        </p>
-        <div className="hero-actions" style={{"justifyContent":"center"}}>
-          <a href="#contact" className="btn btn-primary btn-lg">Request Free Estimate</a>
-          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            Chat with Us on WhatsApp
-          </a>
-        </div>
-      </div>
-    </section>
-
-    {/* ==========================================================================
-         14. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)
-         ========================================================================== */}
+        {/* FAQ VIEW */}
+        {currentView === 'faq' && (
+          <>
     <section className="section-padding bg-white" id="faq">
       <div className="container">
         <div className="section-header reveal">
@@ -1614,6 +1955,15 @@ const runInit = () => {
     {/* ==========================================================================
          15. CONTACT & ESTIMATE REQUEST SECTION
          ========================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+            </div>
+          </>
+        )}
+
+        {/* CONTACT VIEW */}
+        {currentView === 'contact' && (
+          <>
     <section className="section-padding bg-light" id="contact">
       <div className="container">
         <div className="contact-grid">
@@ -1761,36 +2111,15 @@ const runInit = () => {
         </div>
       </div>
     </section>
-
-    {/* ==========================================================================
-         16. BOTTOM DEMO BANNER
-         ========================================================================== */}
-    <section className="bottom-demo-banner" role="region" aria-label="Demo site conclusion">
-      <div className="container">
-        <div className="bottom-demo-card reveal">
-          <span className="demo-pill" style={{"marginBottom":"1rem","display":"inline-block"}}>DEMONSTRATION SHOWCASE</span>
-          <h2>Ready for a Breathtaking Outdoor Transformation?</h2>
-          <p>Experience how Alvoratech can elevate residential estates and commercial grounds. Connect with our team today and discover a higher tier of landscape craftsmanship.</p>
-          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            Chat With Us
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  {/* ==========================================================================
-       17. FOOTER
-       ========================================================================== */}
+          </>
+        )}
+      </main>
   <footer className="site-footer" role="contentinfo">
     <div className="container-wide">
       <div className="footer-grid">
         {/* Brand Info */}
         <div className="footer-col-brand">
-          <a href="#hero" className="site-logo">
+          <a href="#hero" onClick={(e) => navigateTo('home', e)} className="site-logo">
             <div className="logo-icon-box">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
@@ -1808,14 +2137,14 @@ const runInit = () => {
         <div>
           <h4 className="footer-heading">Our Services</h4>
           <ul className="footer-links">
-            <li><a href="#services" className="footer-link">Landscape Architecture</a></li>
-            <li><a href="#services" className="footer-link">Custom Paver Patios</a></li>
-            <li><a href="#services" className="footer-link">Retaining Walls & Grading</a></li>
-            <li><a href="#services" className="footer-link">Lawn Care & Aeration</a></li>
-            <li><a href="#services" className="footer-link">Smart Irrigation & Drainage</a></li>
-            <li><a href="#services" className="footer-link">Specimen Tree Planting</a></li>
-            <li><a href="#services" className="footer-link">Outdoor Night Lighting</a></li>
-            <li><a href="#services" className="footer-link">Commercial Grounds</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Landscape Architecture</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Custom Paver Patios</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Retaining Walls & Grading</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Lawn Care & Aeration</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Smart Irrigation & Drainage</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Specimen Tree Planting</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Outdoor Night Lighting</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Commercial Grounds</a></li>
           </ul>
         </div>
 
@@ -1823,15 +2152,15 @@ const runInit = () => {
         <div>
           <h4 className="footer-heading">Navigation</h4>
           <ul className="footer-links">
-            <li><a href="#hero" className="footer-link">Home</a></li>
-            <li><a href="#about" className="footer-link">About Alvoratech</a></li>
-            <li><a href="#transformations" className="footer-link">Before & After Slider</a></li>
-            <li><a href="#why-us" className="footer-link">Why Choose Us</a></li>
+            <li><a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a></li>
+            <li><a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Alvoratech</a></li>
+            <li><a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Before & After Slider</a></li>
+            <li><a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a></li>
             <li><a href="#process" className="footer-link">Our 4-Step Process</a></li>
-            <li><a href="#portfolio" className="footer-link">Project Portfolio</a></li>
+            <li><a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Project Portfolio</a></li>
             <li><a href="#testimonials" className="footer-link">Client Reviews</a></li>
-            <li><a href="#faq" className="footer-link">FAQ</a></li>
-            <li><a href="#contact" className="footer-link">Request Free Estimate</a></li>
+            <li><a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQ</a></li>
+            <li><a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Request Free Estimate</a></li>
           </ul>
         </div>
 

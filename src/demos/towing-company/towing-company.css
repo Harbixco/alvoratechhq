@@ -1521,3 +1521,13 @@
     transform: none;
   }
 }
+
+/* ENFORCE MOBILE HAMBURGER AND HIDE DESKTOP CTA ON <= 1024px */
+@media (max-width: 1024px) {
+  .desktop-only-btn,
+  .nav-cta,
+  .button--nav,
+  .nav-actions .btn {
+    display: none !important;
+  }
+}

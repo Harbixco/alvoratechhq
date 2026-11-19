@@ -4,6 +4,57 @@ import './pressure-demo.css';
 
 export default function PressureDemo() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","portfolio","gallery","why-us","faq","contact"].includes(hash)) {
+        return hash;
+      }
+      if (hash === 'gallery') return 'portfolio';
+      if (hash === 'our-work') return 'portfolio';
+      if (hash === 'why-choose') return 'why-us';
+      if (hash === 'about') return 'why-us';
+      if (hash === 'estimate' || hash === 'quote' || hash === 'book') return 'contact';
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","portfolio","gallery","why-us","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (hash === 'gallery' || hash === 'our-work') {
+        setCurrentView('portfolio');
+      } else if (hash === 'why-choose' || hash === 'about') {
+        setCurrentView('why-us');
+      } else if (hash === 'estimate' || hash === 'quote' || hash === 'book') {
+        setCurrentView('contact');
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      runInit();
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [currentView]);
   useEffect(() => {
     try {
       /**
@@ -635,7 +686,7 @@ const runInit = () => {
     <div className="container-wide nav-container">
       
       {/* Brand Logo */}
-      <a href="#home" className="site-logo" aria-label="Alvoratech Home">
+      <a href="#home" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Home">
         <div className="logo-icon-box">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
@@ -646,17 +697,17 @@ const runInit = () => {
 
       {/* Desktop Navigation Links */}
       <nav className="nav-links" role="navigation" aria-label="Primary navigation">
-        <a href="#home" className="nav-link active">Home</a>
-        <a href="#about" className="nav-link">About</a>
-        <a href="#services" className="nav-link">Services</a>
-        <a href="#our-work" className="nav-link">Our Work</a>
-        <a href="#why-choose" className="nav-link">Why Choose Us</a>
-        <a href="#contact" className="nav-link">Contact</a>
+        <a href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link active">Home</a>
+        <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About</a>
+        <a href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
+        <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Our Work</a>
+        <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
+        <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
       </nav>
 
       {/* Desktop Header CTA */}
       <div className="nav-actions">
-        <a href="#contact" className="btn btn-primary btn-sm">
+        <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">
           <span>Get a Free Quote</span>
           <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -665,7 +716,7 @@ const runInit = () => {
         </a>
 
         {/* Mobile Hamburger Toggle */}
-        <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-expanded={mobileMenuOpen} id="mobileToggle" aria-label="Toggle navigation menu">
+        <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}  aria-expanded={mobileMenuOpen} id="mobileToggle" aria-label="Toggle navigation menu">
           <span></span>
           <span></span>
           <span></span>
@@ -676,25 +727,55 @@ const runInit = () => {
   </header>
 
   {/* Mobile Navigation Overlay & Drawer */}
-  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} id="mobileNavOverlay"></div>
+  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}  id="mobileNavOverlay"></div>
   <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} id="mobileDrawer" aria-label="Mobile Navigation">
     <nav>
-      <a onClick={() => setMobileMenuOpen(false)} href="#home" className="nav-link">Home</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#about" className="nav-link">About</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#services" className="nav-link">Services</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#our-work" className="nav-link">Our Work</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#why-choose" className="nav-link">Why Choose Us</a>
-      <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="nav-link">Contact</a>
+      <a  href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link">Home</a>
+      <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About</a>
+      <a  href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
+      <a  href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Our Work</a>
+      <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
+      <a  href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
     </nav>
     <div style={{"marginTop":"1.5rem"}}>
-      <a href="#contact" className="btn btn-primary" style={{"width":"100%"}}>Get a Free Quote</a>
+      <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{"width":"100%"}}>Get a Free Quote</a>
     </div>
   </aside>
 
-  <main>
-    {/* ========================================================================
-         HERO SECTION
-         ======================================================================== */}
+      <main id="main-content">
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
+              {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {currentView === 'contact' && 'Contact & Request Free Quote'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              Commercial surface restoration, soft-wash exterior cleaning, oil stain extraction, and roof maintenance.
+            </p>
+          </div>
+        </section>
+      )}
+
+        {/* HOMEPAGE VIEW: Clean essentials */}
+        {currentView === 'home' && (
+          <>
     <section className="hero-section" id="home">
       {/* Decorative Floating Water Droplets */}
       <div className="droplet-particle droplet-1" aria-hidden="true"></div>
@@ -919,6 +1000,259 @@ const runInit = () => {
     {/* ========================================================================
          PRESSURE WASHING SERVICES (8 SERVICES)
          ======================================================================== */}
+    <section className="section-padding bg-light testimonials-section" id="testimonials">
+      <div className="container">
+        
+        <div className="section-header">
+          <span className="section-eyebrow reveal">Customer Feedback</span>
+          <h2 className="reveal stagger-1">What Customers Appreciate About Our Service</h2>
+          <div className="ba-disclaimer-pill reveal stagger-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Sample Demonstration Reviews — Representative customer feedback showcasing service standards.</span>
+          </div>
+        </div>
+
+        <div className="testimonials-carousel-wrapper reveal">
+          <div className="testimonials-slider">
+            <div className="testimonials-track" id="testimonialsTrack">
+              
+              {/* Review 1 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div>
+                  <p className="testimonial-text">"Our driveway had years of accumulated moss, mildew, and engine oil stains. Alvoratech washed it completely clean. The concrete looks practically brand new!"</p>
+                  <div className="testimonial-author">
+                    <span className="author-name">Mark S.</span>
+                    <span className="author-role">Residential Homeowner (Sample Review)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Review 2 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div>
+                  <p className="testimonial-text">"The soft washing technique they used on our house siding made an unbelievable difference without risking any damage to our stucco. Punctual and professional from start to finish."</p>
+                  <div className="testimonial-author">
+                    <span className="author-name">Elena K.</span>
+                    <span className="author-role">Property Owner (Sample Review)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Review 3 */}
+              <div className="testimonial-slide">
+                <div className="testimonial-card">
+                  <div className="stars-rating" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div>
+                  <p className="testimonial-text">"We manage several commercial retail storefronts. Alvoratech handled our concrete parking areas and sidewalks outside of business hours with immaculate results."</p>
+                  <div className="testimonial-author">
+                    <span className="author-name">Robert D.</span>
+                    <span className="author-role">Commercial Facility Manager (Sample Review)</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="slider-controls">
+            <button type="button" className="slider-btn" id="testimonialPrev" aria-label="Previous testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div className="slider-dots" id="sliderDots"></div>
+            <button type="button" className="slider-btn" id="testimonialNext" aria-label="Next testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         SPECIAL CALL-TO-ACTION SECTION
+         ======================================================================== */}
+    <section className="special-cta-section" aria-label="Call to Action">
+      <div className="special-cta-content reveal">
+        <h2>Your Property Deserves a Fresh Start.</h2>
+        <p>Let Alvoratech help restore the appearance of your outdoor spaces with professional pressure washing solutions.</p>
+        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
+          </svg>
+          <span>Get a Free Quote</span>
+        </a>
+      </div>
+    </section>
+
+    {/* ========================================================================
+         FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION - 7 ITEMS)
+         ======================================================================== */}
+    <section className="section-padding bg-light" id="contact">
+      <div className="container">
+        
+        <div className="section-header">
+          <span className="section-eyebrow reveal">Get in Touch</span>
+          <h2 className="reveal stagger-1">Let's Give Your Property a Fresh Look.</h2>
+          <p className="reveal stagger-2">Tell us what needs cleaning and our team will help you discuss the next steps.</p>
+        </div>
+
+        <div className="contact-grid">
+          
+          {/* Contact Info Card */}
+          <div className="contact-info-card reveal">
+            <h3>Contact Information</h3>
+            <div className="contact-channels">
+              
+              {/* WhatsApp / Phone */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box whatsapp-bg">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>WhatsApp / Phone</h4>
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="channel-link">+1 (412) 796-3968</a>
+                  <div style={{"marginTop":"4px"}}>
+                    <a href="tel:+14127963968" style={{"fontSize":"0.85rem","color":"var(--color-blue-electric)","fontWeight":"600"}}>(Call directly)</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="contact-channel-item">
+                <div className="channel-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div className="channel-info">
+                  <h4>Email</h4>
+                  <a href="mailto:info@Alvoratechhq.com" className="channel-link">info@Alvoratechhq.com</a>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Location */}
+            <div className="contact-location-box">
+              <div className="contact-location-label">Location</div>
+              <div className="contact-location-value">*</div>
+            </div>
+
+          </div>
+
+          {/* Contact Form Card */}
+          <div className="contact-form-card reveal stagger-1">
+            <h3>Request a Free Quote</h3>
+            <p>Share your surface cleaning requirements and we will prepare your prefilled request directly in WhatsApp.</p>
+
+            <div className="form-status" id="formStatus" role="status"></div>
+
+            <form id="contactForm" novalidate>
+              
+              {/* Full Name */}
+              <div className="form-group">
+                <label htmlFor="fullName" className="form-label">Full Name *</label>
+                <input type="text" id="fullName" className="form-input" placeholder="e.g. Jason Miller" required />
+                <div className="form-error" id="fullNameError"></div>
+              </div>
+
+              {/* Email & Phone in Row */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">Email Address *</label>
+                  <input type="email" id="email" className="form-input" placeholder="e.g. jason@example.com" required />
+                  <div className="form-error" id="emailError"></div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone" className="form-label">Phone Number *</label>
+                  <input type="tel" id="phone" className="form-input" placeholder="e.g. +1 (412) 555-0199" required />
+                  <div className="form-error" id="phoneError"></div>
+                </div>
+              </div>
+
+              {/* Service & Property Type in Row */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="serviceRequired" className="form-label">Service Required *</label>
+                  <select id="serviceRequired" className="form-select" required>
+                    <option value="">Select a Service...</option>
+                    <option value="Driveway Pressure Washing">Driveway Pressure Washing</option>
+                    <option value="House Washing">House Washing</option>
+                    <option value="Roof Soft Washing">Roof Soft Washing</option>
+                    <option value="Deck and Fence Cleaning">Deck and Fence Cleaning</option>
+                    <option value="Patio and Sidewalk Cleaning">Patio and Sidewalk Cleaning</option>
+                    <option value="Commercial Pressure Washing">Commercial Pressure Washing</option>
+                    <option value="Gutter and Exterior Cleaning">Gutter and Exterior Cleaning</option>
+                    <option value="Parking Lot and Concrete Cleaning">Parking Lot and Concrete Cleaning</option>
+                  </select>
+                  <div className="form-error" id="serviceRequiredError"></div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="propertyType" className="form-label">Property Type *</label>
+                  <select id="propertyType" className="form-select" required>
+                    <option value="">Select Property Type...</option>
+                    <option value="Residential Property">Residential Property</option>
+                    <option value="Commercial Building">Commercial Building</option>
+                    <option value="Multi-Family / HOA">Multi-Family / HOA</option>
+                    <option value="Retail / Storefront">Retail / Storefront</option>
+                  </select>
+                  <div className="form-error" id="propertyTypeError"></div>
+                </div>
+              </div>
+
+              {/* Message */}
+              <div className="form-group">
+                <label htmlFor="message" className="form-label">Surface Details & Cleaning Needs *</label>
+                <textarea id="message" className="form-textarea" placeholder="Describe the size, surface material (concrete, brick, wood, siding), and condition of the area..." required></textarea>
+                <div className="form-error" id="messageError"></div>
+              </div>
+
+              {/* Submit Button */}
+              <button type="submit" className="btn btn-primary btn-lg" style={{"width":"100%"}}>
+                <span>Request My Quote</span>
+                <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+
+              <p className="form-notice">
+                Upon submitting, WhatsApp will open with your prefilled quote request so you can chat directly with our team.
+              </p>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+          </>
+        )}
+
+        {/* SERVICES VIEW */}
+        {currentView === 'services' && (
+          <>
     <section className="section-padding bg-white" id="services">
       <div className="container-wide">
         
@@ -1111,67 +1445,139 @@ const runInit = () => {
     {/* ========================================================================
          BEFORE-AND-AFTER TRANSFORMATION GALLERY (ESSENTIAL SECTION)
          ======================================================================== */}
-    <section className="section-padding bg-light ba-section" id="transformations">
+    <section className="section-padding bg-light" id="how-it-works">
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Real Results</span>
-          <h2 className="reveal stagger-1">See the Difference a Professional Clean Makes.</h2>
-          <div className="ba-disclaimer-pill reveal stagger-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>Demonstration Images — Illustrative examples showcasing before-and-after cleaning transformations.</span>
-          </div>
+          <span className="section-eyebrow reveal">Simple Process</span>
+          <h2 className="reveal stagger-1">How It Works</h2>
+          <p className="reveal stagger-2">Getting your property pressure-washed is clean, prompt, and hassle-free.</p>
         </div>
 
-        {/* Transformation Selector Tabs */}
-        <div className="ba-tabs reveal">
-          <button type="button" className="ba-tab-btn active" data-target="driveway">Driveway</button>
-          <button type="button" className="ba-tab-btn" data-target="concrete">Concrete Walkway</button>
-          <button type="button" className="ba-tab-btn" data-target="patio">Patio</button>
-          <button type="button" className="ba-tab-btn" data-target="house">House Siding</button>
-          <button type="button" className="ba-tab-btn" data-target="deck">Wooden Deck</button>
-        </div>
-
-        {/* Interactive Drag Slider */}
-        <div className="ba-slider-container reveal" id="baSliderContainer">
+        <div className="steps-timeline">
           
-          {/* Background: AFTER Image */}
-          <div className="ba-image-wrapper">
-            <img src="/pressure-demo/assets/images/ba-driveway-after.jpg" alt="Cleaned pressure washed driveway" className="ba-img" id="baAfterImg" />
-            <span className="ba-label ba-label-after">AFTER</span>
+          <div className="step-item reveal">
+            <div className="step-number-box">01</div>
+            <h3>Get In Touch</h3>
+            <p>Contact Alvoratech and tell us about your exterior cleaning needs.</p>
           </div>
 
-          {/* Foreground: BEFORE Image (clipped dynamically) */}
-          <div className="ba-image-before" id="baImageBefore">
-            <img src="/pressure-demo/assets/images/ba-driveway-before.jpg" alt="Dirty stained concrete driveway before pressure washing" className="ba-img" id="baBeforeImg" />
-            <span className="ba-label ba-label-before">BEFORE</span>
+          <div className="step-item reveal stagger-1">
+            <div className="step-number-box">02</div>
+            <h3>Discuss Your Property</h3>
+            <p>Share information about the surface and cleaning requirements.</p>
           </div>
 
-          {/* Draggable Center Handle */}
-          <div className="ba-handle" id="baHandle" role="slider" aria-label="Before and after comparison slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            <div className="ba-handle-circle">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </div>
+          <div className="step-item reveal stagger-2">
+            <div className="step-number-box">03</div>
+            <h3>Request Your Quote</h3>
+            <p>Receive information about the requested cleaning service.</p>
+          </div>
+
+          <div className="step-item reveal stagger-3">
+            <div className="step-number-box">04</div>
+            <h3>Enjoy a Fresher Property</h3>
+            <p>Get ready for a cleaner-looking, refreshed exterior.</p>
           </div>
 
         </div>
-
-        <p className="ba-caption reveal" id="baCaption">
-          <strong>Driveway Pressure Washing Transformation</strong> — Deep embedded grime, oil, and atmospheric staining washed away.
-        </p>
 
       </div>
     </section>
 
     {/* ========================================================================
-         WHY CHOOSE ALVORATECH SECTION
+         OUR WORK GALLERY SECTION
+         ======================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Request Service Consultation &rarr;
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* WHY US / ABOUT VIEW */}
+        {(currentView === 'why-us' || currentView === 'why-choose' || currentView === 'about') && (
+          <>
+    <section className="section-padding bg-light" id="about">
+      <div className="container about-grid">
+        
+        {/* Left Media */}
+        <div className="about-media reveal">
+          <div className="about-image-wrapper">
+            <img src="/pressure-demo/assets/images/pw-about.jpg" alt="Alvoratech pressure washing technician working on a residential property" className="about-image" width="540" height="490" loading="lazy" />
+          </div>
+        </div>
+
+        {/* Right Content */}
+        <div className="about-content">
+          <span className="section-eyebrow reveal">About Alvoratech</span>
+          
+          <h2 className="reveal stagger-1">Bringing Back the Beauty of Every Surface.</h2>
+          
+          <p className="reveal stagger-2">
+            Alvoratech provides pressure washing and exterior cleaning solutions designed to help homeowners and businesses maintain cleaner, more attractive properties. From driveways and sidewalks to building exteriors and outdoor spaces, our focus is on delivering a professional cleaning experience with attention to detail.
+          </p>
+
+          {/* 3 Supporting Feature Cards */}
+          <div className="about-features-list">
+            
+            <div className="about-feature-card reveal stagger-1">
+              <div className="feature-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div className="feature-info">
+                <h4>Detail-Oriented Service</h4>
+                <p>We assess individual surface materials and conditions before applying the optimal cleaning technique.</p>
+              </div>
+            </div>
+
+            <div className="about-feature-card reveal stagger-2">
+              <div className="feature-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div className="feature-info">
+                <h4>Modern Cleaning Equipment</h4>
+                <p>Equipped with commercial-grade rotary surface cleaners, pressure wands, and soft-wash pumps.</p>
+              </div>
+            </div>
+
+            <div className="about-feature-card reveal stagger-3">
+              <div className="feature-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div className="feature-info">
+                <h4>Solutions for Different Surfaces</h4>
+                <p>Specialized treatments tailored for concrete, stone, wood, vinyl siding, stucco, and roofing tiles.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="reveal stagger-4">
+            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+              <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
+              </svg>
+              <span>Contact Our Team</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         PRESSURE WASHING SERVICES (8 SERVICES)
          ======================================================================== */}
     <section className="section-padding bg-white" id="why-choose">
       <div className="container why-grid">
@@ -1264,48 +1670,78 @@ const runInit = () => {
     {/* ========================================================================
          HOW IT WORKS SECTION
          ======================================================================== */}
-    <section className="section-padding bg-light" id="how-it-works">
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Partner With Our Specialists &rarr;
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* PORTFOLIO / GALLERY VIEW */}
+        {(currentView === 'portfolio' || currentView === 'gallery') && (
+          <>
+    <section className="section-padding bg-light ba-section" id="transformations">
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Simple Process</span>
-          <h2 className="reveal stagger-1">How It Works</h2>
-          <p className="reveal stagger-2">Getting your property pressure-washed is clean, prompt, and hassle-free.</p>
+          <span className="section-eyebrow reveal">Real Results</span>
+          <h2 className="reveal stagger-1">See the Difference a Professional Clean Makes.</h2>
+          <div className="ba-disclaimer-pill reveal stagger-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Demonstration Images — Illustrative examples showcasing before-and-after cleaning transformations.</span>
+          </div>
         </div>
 
-        <div className="steps-timeline">
+        {/* Transformation Selector Tabs */}
+        <div className="ba-tabs reveal">
+          <button type="button" className="ba-tab-btn active" data-target="driveway">Driveway</button>
+          <button type="button" className="ba-tab-btn" data-target="concrete">Concrete Walkway</button>
+          <button type="button" className="ba-tab-btn" data-target="patio">Patio</button>
+          <button type="button" className="ba-tab-btn" data-target="house">House Siding</button>
+          <button type="button" className="ba-tab-btn" data-target="deck">Wooden Deck</button>
+        </div>
+
+        {/* Interactive Drag Slider */}
+        <div className="ba-slider-container reveal" id="baSliderContainer">
           
-          <div className="step-item reveal">
-            <div className="step-number-box">01</div>
-            <h3>Get In Touch</h3>
-            <p>Contact Alvoratech and tell us about your exterior cleaning needs.</p>
+          {/* Background: AFTER Image */}
+          <div className="ba-image-wrapper">
+            <img src="/pressure-demo/assets/images/ba-driveway-after.jpg" alt="Cleaned pressure washed driveway" className="ba-img" id="baAfterImg" />
+            <span className="ba-label ba-label-after">AFTER</span>
           </div>
 
-          <div className="step-item reveal stagger-1">
-            <div className="step-number-box">02</div>
-            <h3>Discuss Your Property</h3>
-            <p>Share information about the surface and cleaning requirements.</p>
+          {/* Foreground: BEFORE Image (clipped dynamically) */}
+          <div className="ba-image-before" id="baImageBefore">
+            <img src="/pressure-demo/assets/images/ba-driveway-before.jpg" alt="Dirty stained concrete driveway before pressure washing" className="ba-img" id="baBeforeImg" />
+            <span className="ba-label ba-label-before">BEFORE</span>
           </div>
 
-          <div className="step-item reveal stagger-2">
-            <div className="step-number-box">03</div>
-            <h3>Request Your Quote</h3>
-            <p>Receive information about the requested cleaning service.</p>
-          </div>
-
-          <div className="step-item reveal stagger-3">
-            <div className="step-number-box">04</div>
-            <h3>Enjoy a Fresher Property</h3>
-            <p>Get ready for a cleaner-looking, refreshed exterior.</p>
+          {/* Draggable Center Handle */}
+          <div className="ba-handle" id="baHandle" role="slider" aria-label="Before and after comparison slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            <div className="ba-handle-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
           </div>
 
         </div>
+
+        <p className="ba-caption reveal" id="baCaption">
+          <strong>Driveway Pressure Washing Transformation</strong> — Deep embedded grime, oil, and atmospheric staining washed away.
+        </p>
 
       </div>
     </section>
 
     {/* ========================================================================
-         OUR WORK GALLERY SECTION
+         WHY CHOOSE ALVORATECH SECTION
          ======================================================================== */}
     <section className="section-padding bg-white" id="our-work">
       <div className="container-wide">
@@ -1417,109 +1853,17 @@ const runInit = () => {
     {/* ========================================================================
          CUSTOMER TESTIMONIALS SECTION
          ======================================================================== */}
-    <section className="section-padding bg-light testimonials-section" id="testimonials">
-      <div className="container">
-        
-        <div className="section-header">
-          <span className="section-eyebrow reveal">Customer Feedback</span>
-          <h2 className="reveal stagger-1">What Customers Appreciate About Our Service</h2>
-          <div className="ba-disclaimer-pill reveal stagger-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>Sample Demonstration Reviews — Representative customer feedback showcasing service standards.</span>
-          </div>
-        </div>
-
-        <div className="testimonials-carousel-wrapper reveal">
-          <div className="testimonials-slider">
-            <div className="testimonials-track" id="testimonialsTrack">
-              
-              {/* Review 1 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <p className="testimonial-text">"Our driveway had years of accumulated moss, mildew, and engine oil stains. Alvoratech washed it completely clean. The concrete looks practically brand new!"</p>
-                  <div className="testimonial-author">
-                    <span className="author-name">Mark S.</span>
-                    <span className="author-role">Residential Homeowner (Sample Review)</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Review 2 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <p className="testimonial-text">"The soft washing technique they used on our house siding made an unbelievable difference without risking any damage to our stucco. Punctual and professional from start to finish."</p>
-                  <div className="testimonial-author">
-                    <span className="author-name">Elena K.</span>
-                    <span className="author-role">Property Owner (Sample Review)</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Review 3 */}
-              <div className="testimonial-slide">
-                <div className="testimonial-card">
-                  <div className="stars-rating" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <p className="testimonial-text">"We manage several commercial retail storefronts. Alvoratech handled our concrete parking areas and sidewalks outside of business hours with immaculate results."</p>
-                  <div className="testimonial-author">
-                    <span className="author-name">Robert D.</span>
-                    <span className="author-role">Commercial Facility Manager (Sample Review)</span>
-                  </div>
-                </div>
-              </div>
-
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                Book Your Transformation &rarr;
+              </button>
             </div>
-          </div>
+          </>
+        )}
 
-          {/* Controls */}
-          <div className="slider-controls">
-            <button type="button" className="slider-btn" id="testimonialPrev" aria-label="Previous testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <div className="slider-dots" id="sliderDots"></div>
-            <button type="button" className="slider-btn" id="testimonialNext" aria-label="Next testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    {/* ========================================================================
-         SPECIAL CALL-TO-ACTION SECTION
-         ======================================================================== */}
-    <section className="special-cta-section" aria-label="Call to Action">
-      <div className="special-cta-content reveal">
-        <h2>Your Property Deserves a Fresh Start.</h2>
-        <p>Let Alvoratech help restore the appearance of your outdoor spaces with professional pressure washing solutions.</p>
-        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
-          </svg>
-          <span>Get a Free Quote</span>
-        </a>
-      </div>
-    </section>
-
-    {/* ========================================================================
-         FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION - 7 ITEMS)
-         ======================================================================== */}
+        {/* FAQ VIEW */}
+        {currentView === 'faq' && (
+          <>
     <section className="section-padding bg-white" id="faq">
       <div className="container">
         
@@ -1644,6 +1988,15 @@ const runInit = () => {
     {/* ========================================================================
          CONTACT SECTION
          ======================================================================== */}
+            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+            </div>
+          </>
+        )}
+
+        {/* CONTACT VIEW */}
+        {currentView === 'contact' && (
+          <>
     <section className="section-padding bg-light" id="contact">
       <div className="container">
         
@@ -1788,34 +2141,15 @@ const runInit = () => {
 
       </div>
     </section>
-
-    {/* ========================================================================
-         BOTTOM DEMO BANNER
-         ======================================================================== */}
-    <aside className="bottom-demo-banner" aria-label="Closing demo invitation">
-      <div className="bottom-demo-card reveal">
-        <h2>Ready to Bring Back Your Property's Shine?</h2>
-        <p>Contact Alvoratech today to discuss your exterior cleaning needs.</p>
-        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
-          </svg>
-          <span>Chat With Us</span>
-        </a>
-      </div>
-    </aside>
-
-  </main>
-
-  {/* ========================================================================
-       FOOTER
-       ======================================================================== */}
+          </>
+        )}
+      </main>
   <footer className="site-footer" role="contentinfo">
     <div className="container footer-grid">
       
       {/* Col 1: Brand */}
       <div className="footer-col-brand">
-        <a href="#home" className="site-logo">
+        <a href="#home" onClick={(e) => navigateTo('home', e)} className="site-logo">
           <div className="logo-icon-box">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
@@ -1830,11 +2164,11 @@ const runInit = () => {
       <div className="footer-col">
         <h4 className="footer-heading">Quick Links</h4>
         <div className="footer-links">
-          <a href="#home" className="footer-link">Home</a>
-          <a href="#about" className="footer-link">About</a>
-          <a href="#services" className="footer-link">Services</a>
-          <a href="#our-work" className="footer-link">Our Work</a>
-          <a href="#contact" className="footer-link">Contact</a>
+          <a href="#home" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
+          <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Our Work</a>
+          <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
         </div>
       </div>
 
@@ -1842,12 +2176,12 @@ const runInit = () => {
       <div className="footer-col">
         <h4 className="footer-heading">Our Services</h4>
         <div className="footer-links">
-          <a href="#services" className="footer-link">Driveway Washing</a>
-          <a href="#services" className="footer-link">House Washing</a>
-          <a href="#services" className="footer-link">Roof Soft Washing</a>
-          <a href="#services" className="footer-link">Deck Cleaning</a>
-          <a href="#services" className="footer-link">Commercial Washing</a>
-          <a href="#services" className="footer-link">Patio Cleaning</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Driveway Washing</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">House Washing</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Roof Soft Washing</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Deck Cleaning</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Commercial Washing</a>
+          <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Patio Cleaning</a>
         </div>
       </div>
 

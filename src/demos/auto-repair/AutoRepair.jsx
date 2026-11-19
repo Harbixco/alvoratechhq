@@ -10,6 +10,41 @@ import './auto-repair.css';
  */
 export default function AutoRepair() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","difference","team","reviews","appointment","faq","contact"].includes(hash)) return hash;
+      if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","difference","team","reviews","appointment","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
+        setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const [heroIndex, setHeroIndex] = useState(0);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [appointmentSubmitted, setAppointmentSubmitted] = useState(false);
@@ -105,7 +140,7 @@ export default function AutoRepair() {
       {/* Site Header */}
       <header className="site-header">
         <div className="header-top">
-          <a href="#top" className="brand" aria-label="Alvoratech home" onClick={(e) => scrollToSection(e, 'top')}>
+          <a href="#home" onClick={(e) => navigateTo('home', e)} className="brand" aria-label="Alvoratech home">
             <span className="brand__mark" aria-hidden="true">
               <svg viewBox="0 0 42 42" fill="none">
                 <path d="M5 31.5 18.5 6h5L37 31.5h-8l-2.7-5.3H15.8l-2.7 5.3H5Z" fill="currentColor" />
@@ -139,7 +174,6 @@ export default function AutoRepair() {
             type="button"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span></span>
             <span></span>
@@ -150,14 +184,14 @@ export default function AutoRepair() {
         <nav className={`main-nav ${mobileMenuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
           <div className="main-nav__inner">
             <div className="nav-links">
-              <a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Services</a>
-              <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>Our story</a>
-              <a href="#difference" onClick={(e) => scrollToSection(e, 'difference')}>Why Alvoratech</a>
-              <a href="#team" onClick={(e) => scrollToSection(e, 'team')}>Our team</a>
-              <a href="#reviews" onClick={(e) => scrollToSection(e, 'reviews')}>Reviews</a>
-              <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
+              <a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a>
+              <a href="#about" onClick={(e) => navigateTo('about', e)}>Our story</a>
+              <a href="#difference" onClick={(e) => navigateTo('difference', e)}>Why Alvoratech</a>
+              <a href="#team" onClick={(e) => navigateTo('team', e)}>Our team</a>
+              <a href="#reviews" onClick={(e) => navigateTo('reviews', e)}>Reviews</a>
+              <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
             </div>
-            <a className="button button--nav" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
+            <a className="button button--nav desktop-only-btn" href="#appointment" onClick={(e) => navigateTo('appointment', e)}>
               Book a visit <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -165,7 +199,41 @@ export default function AutoRepair() {
       </header>
 
       <main id="main">
-        {/* ── HERO SECTION ── */}
+
+      {/* Section Breadcrumb & Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#home" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Services & Capabilities'}
+              {currentView === 'about' && 'About Alvoratech'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              Factory-grade automotive diagnostics, ASE-certified technicians, precision engine tuning, and transparent repair estimates.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* HOMEPAGE VIEW: High-converting, clean customer essentials */}
+      {currentView === 'home' && (
+        <>
         <section className="hero" aria-label="Alvoratech auto care">
           <div className="hero__slides" aria-hidden="true">
             {heroSlides.map((slide, idx) => (
@@ -254,6 +322,7 @@ export default function AutoRepair() {
         </div>
 
         {/* ── SERVICES SECTION ── */}
+
         <section className="section services-section" id="services">
           <div className="container">
             <div className="section-heading section-heading--split">
@@ -393,6 +462,322 @@ export default function AutoRepair() {
         </section>
 
         {/* ── ABOUT SECTION ── */}
+        <section className="reviews-section section" id="reviews">
+          <div className="container reviews-layout">
+            <div className="reviews-intro">
+              <div className="eyebrow">
+                <span></span> Kind words, miles later
+              </div>
+              <h2>
+                Trust is earned<br /><em>one visit at a time.</em>
+              </h2>
+              <div className="review-score">
+                <strong>5.0</strong>
+                <span>
+                  <b>★★★★★</b>
+                  <small>Based on customer feedback</small>
+                </span>
+              </div>
+            </div>
+
+            <div className="review-carousel" aria-roledescription="carousel" aria-label="Customer testimonials">
+              <div className="review-track">
+                {reviews.map((rev, idx) => (
+                  <blockquote
+                    key={idx}
+                    className={`review-slide ${idx === reviewIndex ? 'is-active' : ''}`}
+                  >
+                    <span className="quote-mark">“</span>
+                    <p>{rev.quote}</p>
+                    <footer>
+                      <span className="review-avatar">{rev.avatar}</span>
+                      <span>
+                        <b>{rev.name}</b>
+                        <small>{rev.role}</small>
+                      </span>
+                      <span className="review-stars" aria-label="5 out of 5 stars">
+                        ★★★★★
+                      </span>
+                    </footer>
+                  </blockquote>
+                ))}
+              </div>
+
+              <div className="review-controls">
+                <span className="review-dots" aria-label="Choose testimonial">
+                  {reviews.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      className={dotIdx === reviewIndex ? 'is-active' : ''}
+                      aria-label={`Show testimonial ${dotIdx + 1}`}
+                      onClick={() => setReviewIndex(dotIdx)}
+                    />
+                  ))}
+                </span>
+                <div>
+                  <button
+                    className="review-prev"
+                    aria-label="Previous testimonial"
+                    onClick={() => setReviewIndex((prev) => (prev - 1 + reviews.length) % reviews.length)}
+                  >
+                    ←
+                  </button>
+                  <button
+                    className="review-next"
+                    aria-label="Next testimonial"
+                    onClick={() => setReviewIndex((prev) => (prev + 1) % reviews.length)}
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── APPOINTMENT SECTION ── */}
+        <section className="contact-section" id="contact">
+          <div className="container contact-layout">
+            <div className="contact-copy">
+              <div className="eyebrow eyebrow--light">
+                <span></span> Come say hello
+              </div>
+              <h2>
+                Good people.<br /><em>Good roads ahead.</em>
+              </h2>
+              <p>Questions, a curious noise, or just need a place to start? We’re here for you.</p>
+              <a className="button button--outline-light" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
+                Book a visit <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div className="contact-details">
+              <div className="contact-detail">
+                <span>WHATSAPP ONLY</span>
+                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 796-3968
+                </a>
+              </div>
+              <div className="contact-detail">
+                <span>SEND US A NOTE</span>
+                <a href="mailto:service@alvoratechhq.com">service@alvoratechhq.com</a>
+              </div>
+              <div className="contact-detail">
+                <span>FIND THE SHOP</span>
+                <p>124 Industrial Parkway<br />Metro District, Suite 100</p>
+              </div>
+              <div className="contact-detail">
+                <span>WHEN WE'RE HERE</span>
+                <p>
+                  Monday–Friday <b>8:00 am – 6:00 pm</b><br />
+                  Saturday <b>9:00 am – 2:00 pm</b><br />
+                  Sunday <b>Closed</b>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="container">
+            <form className="contact-form" id="contact-form" onSubmit={handleContactSubmit}>
+              <div className="contact-form__heading">
+                <div className="eyebrow eyebrow--light">
+                  <span></span> Send us a note
+                </div>
+                <p>We’d love to hear from you.</p>
+              </div>
+
+              <label className="field">
+                Your name <b>*</b>
+                <input name="name" type="text" autoComplete="name" required minLength="2" />
+              </label>
+              <label className="field">
+                Email address <b>*</b>
+                <input name="email" type="email" autoComplete="email" required />
+              </label>
+              <label className="field contact-form__message">
+                Your message <b>*</b>
+                <textarea name="message" rows="3" required minLength="5"></textarea>
+              </label>
+
+              <div className="contact-form__submit">
+                <button className="button button--accent" type="submit">
+                  Send a message <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+
+              {contactSubmitted && (
+                <div className="form-success contact-form__success" role="status">
+                  <span>✓</span>
+                  <div>
+                    <b>Message sent in demo mode!</b>
+                    <p>In a live website, the Alvoratech automated customer inbox routes this message directly to your staff's mobile devices.</p>
+                  </div>
+                </div>
+              )}
+            </form>
+          </div>
+
+          <div className="contact-bottom container">
+            <span>ALVORATECH — PRECISION AUTO CARE</span>
+            <span>LOCAL CARE. LONG-HAUL TRUST.</span>
+          </div>
+        </section>
+        </>
+      )}
+
+      {/* SERVICES VIEW */}
+      {currentView === 'services' && (
+        <>
+        <section className="section services-section" id="services">
+          <div className="container">
+            <div className="section-heading section-heading--split">
+              <div>
+                <div className="eyebrow">
+                  <span></span> Complete auto care
+                </div>
+                <h2>
+                  One trusted team.<br /><em>Every turn.</em>
+                </h2>
+              </div>
+              <p>
+                From the quick essentials to the complex fixes, our technicians bring precision and a personal touch to every service.
+              </p>
+            </div>
+
+            <div className="services-grid">
+              {[
+                {
+                  id: '01',
+                  title: 'Engine diagnostics',
+                  desc: 'Clear answers for warning lights, strange sounds and performance issues.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <path d="M9 20h5l4-6h13l5 6h4v17h-4l-3 4H17l-3-4H9V20Z" />
+                      <path d="M19 14V9h11v5m-13 9h15m-4 5 4 3-4 3" />
+                    </svg>
+                  ),
+                },
+                {
+                  id: '02',
+                  title: 'Brake repair',
+                  desc: 'Confident stopping starts with a thorough inspection and expert care.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <circle cx="24" cy="25" r="15" />
+                      <circle cx="24" cy="25" r="7" />
+                      <path d="M19 8h10v5H19zM11 13l4 4m18-4-4 4" />
+                    </svg>
+                  ),
+                },
+                {
+                  id: '03',
+                  title: 'Oil & filter',
+                  desc: 'Routine maintenance made easy, with the right oil for your vehicle.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <path d="M18 8h12l-1 8 7 8v14H12V24l7-8-1-8Z" />
+                      <path d="M19 28h10m-5-8v13" />
+                    </svg>
+                  ),
+                },
+                {
+                  id: '04',
+                  title: 'Transmission',
+                  desc: 'Careful diagnostics and repair to keep every gear change smooth.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <path d="M9 14h30v21H9zM15 14V9m18 5V9M9 23h30m-20 0v12m10-12v12" />
+                      <circle cx="16" cy="19" r="1" />
+                      <circle cx="24" cy="19" r="1" />
+                      <circle cx="32" cy="19" r="1" />
+                    </svg>
+                  ),
+                },
+                {
+                  id: '05',
+                  title: 'Tires & alignment',
+                  desc: 'Balanced handling and a confident ride, mile after mile.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <circle cx="24" cy="24" r="16" />
+                      <circle cx="24" cy="24" r="8" />
+                      <path d="M24 8v8m0 16v8M8 24h8m16 0h8M13 13l6 6m10 10 6 6m0-22-6 6m-10 10-6 6" />
+                    </svg>
+                  ),
+                },
+                {
+                  id: '06',
+                  title: 'Battery care',
+                  desc: 'Testing and replacement so you can count on a strong start.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <rect x="9" y="15" width="30" height="23" rx="2" />
+                      <path d="M17 15v-4h14v4m-7 5v13m-6-6h12" />
+                    </svg>
+                  ),
+                },
+                {
+                  id: '07',
+                  title: 'Suspension',
+                  desc: 'Smoother, steadier driving with suspension care tailored to your car.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <path d="M15 9v8l-4 3 8 6-8 6 8 7m14-30v8l4 3-8 6 8 6-8 7" />
+                    </svg>
+                  ),
+                },
+                {
+                  id: '08',
+                  title: 'Vehicle maintenance',
+                  desc: 'Proactive care that helps protect your vehicle and your plans.',
+                  svg: (
+                    <svg viewBox="0 0 48 48">
+                      <path d="m24 7 4 4 6-1 1 6 5 4-3 5 1 6-6 2-3 6-6-2-6 2-3-6-6-2 1-6-3-5 5-4 1-6 6 1 6-4Z" />
+                      <circle cx="24" cy="24" r="6" />
+                    </svg>
+                  ),
+                },
+              ].map((service) => (
+                <div
+                  key={service.id}
+                  className="service-card"
+                  onClick={(e) => {
+                    setSelectedService(service.title);
+                    scrollToSection(e, 'appointment');
+                  }}
+                >
+                  <span className="service-card__number">{service.id}</span>
+                  <span className="service-icon" aria-hidden="true">
+                    {service.svg}
+                  </span>
+                  <h3>{service.title}</h3>
+                  <p>{service.desc}</p>
+                  <span className="card-arrow" aria-hidden="true">↗</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="services-foot">
+              <span>Not sure what your vehicle needs?</span>
+              <a className="text-link" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
+                Tell us what's going on <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── ABOUT SECTION ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Schedule Service Consultation &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* ABOUT / STORY VIEW */}
+      {currentView === 'about' && (
+        <>
         <section className="about-section" id="about">
           <div className="container about-layout">
             <div className="about-visual">
@@ -498,63 +883,70 @@ export default function AutoRepair() {
         </section>
 
         {/* ── TEAM SECTION ── */}
-        <section className="team-section section" id="team">
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Connect With Our Specialists &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* WHY US VIEW */}
+      {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && (
+        <>
+        <section className="difference-section section" id="difference">
           <div className="container">
-            <div className="section-heading section-heading--split">
-              <div>
-                <div className="eyebrow">
-                  <span></span> The people behind the work
-                </div>
-                <h2>
-                  Skill you can trust.<br /><em>People you know.</em>
-                </h2>
+            <div className="section-heading section-heading--center">
+              <div className="eyebrow">
+                <span></span> What matters most
               </div>
-              <p>
-                Good repairs start with good people. Meet the kind of thoughtful experts we’d want looking after our own cars.
-              </p>
+              <h2>
+                Car care, without<br /><em>the guesswork.</em>
+              </h2>
+              <p>Every visit is shaped around your time, your questions and what’s right for your vehicle.</p>
             </div>
 
-            <div className="team-grid">
-              <article className="team-card">
-                <div className="team-card__image">
-                  <img
-                    src="/demos/auto-repair/images/technician.jpg"
-                    alt="Automotive technician standing beside an open vehicle hood"
-                    loading="lazy"
-                  />
-                  <span className="team-card__tag">LEAD TECHNICIAN</span>
-                </div>
-                <div className="team-card__details">
-                  <div>
-                    <h3>Jordan Mitchell</h3>
-                    <p>Diagnostics &amp; repair</p>
-                  </div>
-                  <a href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')} aria-label="Book an appointment with Jordan">↗</a>
-                </div>
+            <div className="difference-grid">
+              <article className="difference-card">
+                <span className="difference-card__num">01 / HONESTY</span>
+                <div className="difference-icon" aria-hidden="true">◉</div>
+                <h3>Clear, upfront guidance</h3>
+                <p>We explain what we find and talk through your options before work begins.</p>
               </article>
-
-              <article className="team-card">
-                <div className="team-card__image">
-                  <img
-                    src="/demos/auto-repair/images/alt-workshop.jpg"
-                    alt="Mechanic inspecting an open engine in a service bay"
-                    loading="lazy"
-                  />
-                  <span className="team-card__tag">MASTER MECHANIC</span>
-                </div>
-                <div className="team-card__details">
-                  <div>
-                    <h3>Sam Rivera</h3>
-                    <p>Maintenance &amp; repair</p>
-                  </div>
-                  <a href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')} aria-label="Book an appointment with Sam">↗</a>
-                </div>
+              <article className="difference-card">
+                <span className="difference-card__num">02 / CRAFT</span>
+                <div className="difference-icon" aria-hidden="true">✳</div>
+                <h3>Work with intention</h3>
+                <p>Experienced technicians, modern diagnostic equipment and attention to detail.</p>
+              </article>
+              <article className="difference-card">
+                <span className="difference-card__num">03 / RESPECT</span>
+                <div className="difference-icon" aria-hidden="true">↗</div>
+                <h3>Your time matters</h3>
+                <p>Thoughtful scheduling and helpful updates keep you in the loop at every step.</p>
+              </article>
+              <article className="difference-card">
+                <span className="difference-card__num">04 / CARE</span>
+                <div className="difference-icon" aria-hidden="true">♡</div>
+                <h3>People come first</h3>
+                <p>We’re here to make the repair experience a little more human, every time.</p>
               </article>
             </div>
           </div>
         </section>
 
-        {/* ── GALLERY SECTION ── */}
+        {/* ── TEAM SECTION ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Work With Our Team &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* PROJECTS / PORTFOLIO VIEW */}
+      {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && (
+        <>
         <section className="gallery-section">
           <div className="container gallery-heading">
             <div>
@@ -605,6 +997,17 @@ export default function AutoRepair() {
         </section>
 
         {/* ── REVIEWS SECTION ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Request Project Estimate &rarr;
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* REVIEWS / TESTIMONIALS VIEW */}
+      {(currentView === 'reviews' || currentView === 'testimonials') && (
+        <>
         <section className="reviews-section section" id="reviews">
           <div className="container reviews-layout">
             <div className="reviews-intro">
@@ -679,103 +1082,17 @@ export default function AutoRepair() {
         </section>
 
         {/* ── APPOINTMENT SECTION ── */}
-        <section className="appointment-section" id="appointment">
-          <div className="container appointment-layout">
-            <div className="appointment-copy">
-              <div className="eyebrow eyebrow--light">
-                <span></span> Let's get you moving
-              </div>
-              <h2>
-                A better visit<br />starts <em>right here.</em>
-              </h2>
-              <p>
-                Tell us a little about your vehicle and what it needs. Our service team will be in touch to confirm a time.
-              </p>
-              <div className="appointment-note">
-                <span className="note-icon">✓</span>
-                <span>
-                  <b>No pressure. Just helpful service.</b>
-                  <small>This demonstration form does not transmit or store information.</small>
-                </span>
-              </div>
-              <div className="appointment-contact">
-                <span>Have a question? Message us on WhatsApp only.</span>
-                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 796-3968 (WhatsApp Only) <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-
-            <form className="appointment-form" id="appointment-form" onSubmit={handleAppointmentSubmit}>
-              <div className="form-heading">
-                <span>01 — APPOINTMENT REQUEST</span>
-                <p>All fields marked <b>*</b> are required.</p>
-              </div>
-
-              <div className="form-grid">
-                <label className="field">
-                  Your name <b>*</b>
-                  <input name="name" type="text" autoComplete="name" required minLength="2" placeholder="First and last name" />
-                </label>
-                <label className="field">
-                  Phone number <b>*</b>
-                  <input name="phone" type="tel" autoComplete="tel" required minLength="7" placeholder="Your best contact number" />
-                </label>
-                <label className="field">
-                  Email address <b>*</b>
-                  <input name="email" type="email" autoComplete="email" required placeholder="you@domain.com" />
-                </label>
-                <label className="field">
-                  Vehicle <b>*</b>
-                  <input name="vehicle" type="text" required placeholder="Year, make and model" />
-                </label>
-                <label className="field field--full">
-                  What can we help with? <b>*</b>
-                  <select
-                    name="service"
-                    required
-                    value={selectedService}
-                    onChange={(e) => setSelectedService(e.target.value)}
-                  >
-                    <option value="">Select a service</option>
-                    <option>Engine diagnostics</option>
-                    <option>Brake repair</option>
-                    <option>Oil & filter</option>
-                    <option>Transmission</option>
-                    <option>Tires & alignment</option>
-                    <option>Battery care</option>
-                    <option>Suspension</option>
-                    <option>Vehicle maintenance</option>
-                    <option>Other / not sure</option>
-                  </select>
-                </label>
-                <label className="field field--full">
-                  Anything else we should know?
-                  <textarea name="message" rows="3" placeholder="A few details can help us prepare"></textarea>
-                </label>
-              </div>
-
-              <div className="form-submit">
-                <button className="button button--accent" type="submit">
-                  Request an appointment <span aria-hidden="true">↗</span>
-                </button>
-                <span className="form-privacy">Your details stay with our team.</span>
-              </div>
-
-              {appointmentSubmitted && (
-                <div className="form-success" role="status">
-                  <span>✓</span>
-                  <div>
-                    <b>Request received — in this demo.</b>
-                    <p>Your information has been logged in this preview. In a live production deployment, your staff receives an instant SMS & email notification.</p>
-                  </div>
-                </div>
-              )}
-            </form>
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Experience Our Certified Quality &rarr;
+            </button>
           </div>
-        </section>
+        </>
+      )}
 
-        {/* ── FAQ SECTION ── */}
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <>
         <section className="faq-section section" id="faq">
           <div className="container faq-layout">
             <div className="faq-intro">
@@ -842,6 +1159,17 @@ export default function AutoRepair() {
         </section>
 
         {/* ── CONTACT SECTION ── */}
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
+              Direct Line: +1 (412) 796-3968
+            </a>
+          </div>
+        </>
+      )}
+
+      {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
+      {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && (
+        <>
         <section className="contact-section" id="contact">
           <div className="container contact-layout">
             <div className="contact-copy">
@@ -928,12 +1256,14 @@ export default function AutoRepair() {
             <span>LOCAL CARE. LONG-HAUL TRUST.</span>
           </div>
         </section>
+        </>
+      )}
+
       </main>
 
-      {/* ── FOOTER ── */}
-      <footer className="site-footer">
+            <footer className="site-footer">
         <div className="container footer-main">
-          <a className="brand brand--footer" href="#top" onClick={(e) => scrollToSection(e, 'top')}>
+          <a className="brand brand--footer" href="#home" onClick={(e) => navigateTo('home', e)}>
             <span className="brand__mark" aria-hidden="true">
               <svg viewBox="0 0 42 42" fill="none">
                 <path d="M5 31.5 18.5 6h5L37 31.5h-8l-2.7-5.3H15.8l-2.7 5.3H5Z" fill="currentColor" />
@@ -947,11 +1277,11 @@ export default function AutoRepair() {
           </a>
           <p>Expert auto care, delivered with a little more heart.</p>
           <div className="footer-links">
-            <a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Services</a>
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>Our story</a>
-            <a href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>Appointments</a>
-            <a href="#faq" onClick={(e) => scrollToSection(e, 'faq')}>FAQs</a>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a>
+            <a href="#about" onClick={(e) => navigateTo('about', e)}>Our story</a>
+            <a href="#appointment" onClick={(e) => navigateTo('appointment', e)}>Appointments</a>
+            <a href="#faq" onClick={(e) => navigateTo('faq', e)}>FAQs</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
           </div>
           <div className="footer-contact">
             <span>
@@ -965,7 +1295,7 @@ export default function AutoRepair() {
         </div>
         <div className="container footer-legal">
           <span>© 2026 Alvoratech. Demonstration website — template preview.</span>
-          <a href="#top" onClick={(e) => scrollToSection(e, 'top')}>Back to top ↑</a>
+          <a href="#home" onClick={(e) => navigateTo('home', e)}>Back to top ↑</a>
         </div>
       </footer>
     </div>

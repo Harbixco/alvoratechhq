@@ -305,3 +305,13 @@
   .dental-care-demo .footer-content { grid-template-columns: 1fr; gap: 30px; }
 }
 
+
+/* ENFORCE MOBILE HAMBURGER AND HIDE DESKTOP CTA ON <= 1024px */
+@media (max-width: 1024px) {
+  .desktop-only-btn,
+  .nav-cta,
+  .button--nav,
+  .nav-actions .btn {
+    display: none !important;
+  }
+}

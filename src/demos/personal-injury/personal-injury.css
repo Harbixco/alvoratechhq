@@ -474,3 +474,13 @@
 .personal-injury-demo *, .personal-injury-demo *::before, .personal-injury-demo *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 .personal-injury-demo .reveal { opacity: 1; transform: none; }
 }
+
+/* ENFORCE MOBILE HAMBURGER AND HIDE DESKTOP CTA ON <= 1024px */
+@media (max-width: 1024px) {
+  .desktop-only-btn,
+  .nav-cta,
+  .button--nav,
+  .nav-actions .btn {
+    display: none !important;
+  }
+}

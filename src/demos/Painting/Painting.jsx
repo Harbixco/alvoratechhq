@@ -4,6 +4,52 @@ import './painting.css';
 
 export default function Painting() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (['services', 'portfolio', 'gallery', 'why-us', 'about', 'faq', 'contact', 'estimate'].includes(hash)) {
+        if (hash === 'gallery') return 'portfolio';
+        if (hash === 'about') return 'why-us';
+        if (hash === 'estimate') return 'contact';
+        return hash;
+      }
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (['services', 'portfolio', 'gallery', 'why-us', 'about', 'faq', 'contact', 'estimate'].includes(hash)) {
+        if (hash === 'gallery') setCurrentView('portfolio');
+        else if (hash === 'about') setCurrentView('why-us');
+        else if (hash === 'estimate') setCurrentView('contact');
+        else setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      runInit();
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [currentView]);
   useEffect(() => {
     try {
       /**
@@ -211,7 +257,7 @@ export default function Painting() {
         const baScenarios = {
           cabinets: {
             before: '/painting/assets/images/ba-cabinets-before.jpg',
-            after: '/painting/assets/images/ba-cabinets-after.jpg',
+            after: '/painting/assets/images/service-cabinet-refinishing.jpg?v=5',
             title: 'Kitchen Cabinet Refinishing & Factory Urethane Spray'
           },
           exterior: {
@@ -558,13 +604,6 @@ export default function Painting() {
       {/* ==========================================================================
        1. TOP DEMO BANNER
        ========================================================================== */}
-      <div className="top-demo-banner" role="region" aria-label="Demo notice">
-        <div className="top-demo-content">
-          <span className="demo-pill">DEMO WEBSITE</span>
-          <span className="top-demo-text">You're viewing a demonstration website for <strong>Alvoratech Painting Contractors</strong>.</span>
-        </div>
-      </div>
-
       {/* ==========================================================================
        2. STICKY HEADER & NAVIGATION
        ========================================================================== */}
@@ -572,7 +611,7 @@ export default function Painting() {
         <div className="container-wide">
           <div className="nav-container">
             {/* Logo */}
-            <a href="#hero" className="site-logo" aria-label="Alvoratech Home">
+            <a href="#hero" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Home">
               <div className="logo-icon-box">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M19 11V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h4" />
@@ -589,16 +628,17 @@ export default function Painting() {
 
             {/* Desktop Navigation Links */}
             <nav className="nav-links" role="navigation" aria-label="Main Navigation">
-              <a href="#services" className="nav-link">Services</a>
-              <a href="#portfolio" className="nav-link">Portfolio</a>
-              <a href="#why-us" className="nav-link">Why Us</a>
-              <a href="#faq" className="nav-link">FAQ</a>
-              <a href="#contact" className="nav-link">Contact</a>
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+              <a href="#services" onClick={(e) => navigateTo('services', e)} className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Services</a>
+              <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Portfolio</a>
+              <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Us</a>
+              <a href="#faq" onClick={(e) => navigateTo('faq', e)} className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
+              <a href="#contact" onClick={(e) => navigateTo('contact', e)} className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
             </nav>
 
             {/* Nav CTA Actions */}
             <div className="nav-actions">
-              <a href="#estimate" className="btn btn-primary btn-sm">
+              <a href="#estimate" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">
                 <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
@@ -620,27 +660,68 @@ export default function Painting() {
       {/* Mobile Navigation Overlay & Drawer */}
       <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
       <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
-        <a onClick={() => setMobileMenuOpen(false)} href="#hero" className="nav-link">Home</a>
-        <a onClick={() => setMobileMenuOpen(false)} href="#services" className="nav-link">Painting Services</a>
-        <a onClick={() => setMobileMenuOpen(false)} href="#portfolio" className="nav-link">Project Gallery</a>
-        <a onClick={() => setMobileMenuOpen(false)} href="#why-us" className="nav-link">Why Choose Us</a>
-        <a onClick={() => setMobileMenuOpen(false)} href="#faq" className="nav-link">FAQ</a>
-        <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="nav-link">Contact & Location</a>
-        <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
+        <a onClick={(e) => navigateTo('home', e)} href="#hero" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+        <a onClick={(e) => navigateTo('services', e)} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Painting Services</a>
+        <a onClick={(e) => navigateTo('portfolio', e)} href="#portfolio" className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Project Gallery</a>
+        <a onClick={(e) => navigateTo('why-us', e)} href="#why-us" className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Choose Us</a>
+        <a onClick={(e) => navigateTo('faq', e)} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
+        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Location</a>
+        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
+          Get Free Estimate
+        </a>
+        <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ "marginTop": "0.5rem" }}>
           Call: +1 (412) 796-3968
         </a>
-        <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+        <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ "marginTop": "0.5rem" }}>
           <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
           </svg>
           Chat On WhatsApp
         </a>
       </aside>
-
       <main id="main-content">
-        {/* ==========================================================================
-         3. HERO SECTION
-         ========================================================================== */}
+      {/* Section Breadcrumb & Hero Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '3.5rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
+              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
+              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
+              <span style={{ color: '#f59e0b', fontWeight: 600 }}>
+                {currentView === 'services' && 'Services'}
+                {currentView === 'portfolio' && 'Portfolio'}
+                {currentView === 'why-us' && 'Why Choose Us'}
+                {currentView === 'faq' && 'Frequently Asked Questions'}
+                {currentView === 'contact' && 'Contact & Free Estimate'}
+              </span>
+            </nav>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Our Painting Services & Capabilities'}
+              {currentView === 'portfolio' && 'Project Portfolio & Transformations'}
+              {currentView === 'why-us' && 'About Alvoratech & Why Homeowners Choose Us'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {currentView === 'contact' && 'Request Your Free Estimate'}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+              {currentView === 'services' && 'From fine interior finishes and clean cabinet spray booths to durable commercial weatherproofing coatings.'}
+              {currentView === 'portfolio' && 'Explore authentic residential, commercial, and cabinetry transformations across the greater region.'}
+              {currentView === 'why-us' && 'Our trade standards, licensed master painters, and zero-shortcut architectural philosophy.'}
+              {currentView === 'faq' && 'Transparent answers regarding preparation, materials, pricing, project timelines, and our 10-year warranty.'}
+              {currentView === 'contact' && 'Get in touch with our master painting team for an upfront, transparent consultation and detailed project estimate.'}
+            </p>
+          </div>
+        </section>
+      )}
+
+        {/* HOMEPAGE VIEW: Clean, customer-centric essentials */}
+        {currentView === 'home' && (
+          <>
         <section className="hero-section" id="hero">
           <div className="container">
             <div className="hero-grid">
@@ -691,7 +772,7 @@ export default function Painting() {
               {/* Right Column Image Presentation */}
               <div className="hero-media reveal stagger-2">
                 <div className="hero-image-wrapper">
-                  <img src="/painting/assets/images/paint-hero.jpg?v=3" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
+                  <img src="/painting/assets/images/hero-painter-roller.jpg?v=5" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
 
                   {/* Floating Overlay Badge */}
                   <div className="hero-floating-card">
@@ -767,6 +848,260 @@ export default function Painting() {
         {/* ==========================================================================
          5. CORE PAINTING SERVICES (8 COMPREHENSIVE CARDS)
          ========================================================================== */}
+        {/* ==========================================================================
+             HOME FEATURED SERVICES PREVIEW
+             ========================================================================== */}
+        <section className="section-padding services-section" id="services">
+          <div className="container">
+            <div className="section-header text-center reveal">
+              <span className="section-eyebrow">OUR SPECIALTIES</span>
+              <h2>Architectural Painting Services</h2>
+              <p className="section-subtitle">
+                Engineered for maximum longevity, flawless aesthetics, and zero disruption to your daily routine.
+              </p>
+            </div>
+            
+            <div className="services-grid-8">
+              {/* Service 1: Interior */}
+              <article className="service-card reveal stagger-1">
+                <div className="service-image-box">
+                  <img src="/painting/assets/images/service-interior.jpg" alt="Interior room painting" className="service-image" loading="lazy" />
+                  <span className="service-badge">Interior Precision</span>
+                </div>
+                <div className="service-content">
+                  <h3>Interior Wall & Ceiling Painting</h3>
+                  <p>Flawless brushwork and rolling with zero splatter, razor-sharp cut lines, and odor-free premium low-VOC paints.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+
+              {/* Service 2: Exterior */}
+              <article className="service-card reveal stagger-2">
+                <div className="service-image-box">
+                  <img src="/painting/assets/images/service-exterior.jpg" alt="Exterior home painting" className="service-image" loading="lazy" />
+                  <span className="service-badge">Weather Defense</span>
+                </div>
+                <div className="service-content">
+                  <h3>Exterior Siding & Trim Protection</h3>
+                  <p>Elastomeric sealants and weather-tested coatings shielding siding, brick, and stucco against seasonal weathering.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+
+              {/* Service 3: Cabinets */}
+              <article className="service-card reveal stagger-3">
+                <div className="service-image-box">
+                  <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="Kitchen cabinet spraying" className="service-image" loading="lazy" />
+                  <span className="service-badge">Kitchen Cabinets</span>
+                </div>
+                <div className="service-content">
+                  <h3>Cabinet Spraying & Refinishing</h3>
+                  <p>Breathe new life into your kitchen with factory-smooth urethane enamels at 70% less cost than replacement.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+
+              {/* Service 4: Commercial */}
+              <article className="service-card reveal stagger-4">
+                <div className="service-image-box">
+                  <img src="/painting/assets/images/service-commercial.jpg" alt="Commercial interior and exterior painting" className="service-image" loading="lazy" />
+                  <span className="service-badge">Commercial</span>
+                </div>
+                <div className="service-content">
+                  <h3>Commercial & Architectural Coating</h3>
+                  <p>Fast-turnaround commercial coating solutions scheduled after-hours to keep your facilities fully operational.</p>
+                  <button onClick={(e) => navigateTo('services', e)} className="service-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    Explore Service Details &rarr;
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <button onClick={(e) => navigateTo('services', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', fontWeight: 600 }}>
+                View All 8 Services & Specialty Solutions &rarr;
+              </button>
+            </div>
+          </div>
+        </section>
+        <section className="section-padding" id="about" style={{ "backgroundColor": "var(--color-bg-light)" }}>
+          <div className="container">
+            <div className="why-grid">
+              <div className="why-image-card reveal">
+                <img src="/painting/assets/images/about-painter-wall.jpg?v=5" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+              </div>
+              <div className="reveal stagger-1">
+                <span className="section-eyebrow">ABOUT ALVORATECH</span>
+                <h2>Raising the Standard of Residential & Commercial Painting</h2>
+                <p style={{ "fontSize": "1.0625rem", "marginBottom": "1.25rem" }}>
+                  At Alvoratech, painting isn’t just a trade—it’s an architectural discipline. We believe homeowners deserve a contractor who arrives on time, treats their property like a museum, communicates transparently, and leaves behind immaculate, enduring beauty.
+                </p>
+                <p style={{ "marginBottom": "2rem" }}>
+                  Our crews are background-checked, fully insured professionals trained in fine lacquer spraying, historical trim preservation, and advanced weather-barrier coatings. We never subcontract your trust to third parties.
+                </p>
+                <div style={{ "display": "flex", "gap": "1rem", "flexWrap": "wrap" }}>
+                  <a href="#estimate" className="btn btn-coral">Request Your Consultation</a>
+                  <a href="tel:+14127963968" className="btn btn-secondary">Direct Line: +1 (412) 796-3968</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+         12. FILTERABLE PROJECT GALLERY (LIGHTBOX ENABLED)
+         ========================================================================== */}
+        <section className="section-padding testimonials-section">
+          <div className="container">
+            <div className="section-header reveal">
+              <span className="section-eyebrow blue">CLIENT VOICES</span>
+              <h2>What Property Owners Say About Alvoratech</h2>
+              <div style={{ "marginTop": "0.5rem", "fontSize": "0.75rem", "textTransform": "uppercase", "letterSpacing": "0.08em", "color": "var(--color-coral)", "fontWeight": "700" }}>
+                Demonstration Testimonials • Verified Client Feedback Examples
+              </div>
+            </div>
+
+            <div className="testimonials-slider-box reveal stagger-1">
+              <div className="testimonial-track-container">
+                <div className="testimonial-track">
+                  {/* Slide 1 */}
+                  <div className="testimonial-card">
+                    <div className="test-stars">★★★★★</div>
+                    <blockquote className="test-quote">
+                      "Alvoratech transformed our outdated honey-oak kitchen cabinets into flawless factory-smooth white shaker perfection. You cannot see a single brush stroke. They finished on Thursday right on schedule!"
+                    </blockquote>
+                    <div className="test-author">
+                      <h4>Sarah M.</h4>
+                      <span>Residential Homeowner • Kitchen Cabinet Refinishing</span>
+                    </div>
+                  </div>
+
+                  {/* Slide 2 */}
+                  <div className="testimonial-card">
+                    <div className="test-stars">★★★★★</div>
+                    <blockquote className="test-quote">
+                      "The level of prep work Alvoratech put into our home exterior was extraordinary. They scraped, sealed, caulked every seam, and applied two coats of Duration. Our house looks brand new!"
+                    </blockquote>
+                    <div className="test-author">
+                      <h4>David & Karen P.</h4>
+                      <span>Complete Exterior Siding & Trim Project</span>
+                    </div>
+                  </div>
+
+                  {/* Slide 3 */}
+                  <div className="testimonial-card">
+                    <div className="test-stars">★★★★★</div>
+                    <blockquote className="test-quote">
+                      "As a property manager overseeing medical suites, I need painters who are quiet, clean, and use zero-odor low-VOC coatings. Alvoratech worked over the weekend and left the office immaculate."
+                    </blockquote>
+                    <div className="test-author">
+                      <h4>Marcus R.</h4>
+                      <span>Commercial Facility Manager</span>
+                    </div>
+                  </div>
+
+                  {/* Slide 4 */}
+                  <div className="testimonial-card">
+                    <div className="test-stars">★★★★★</div>
+                    <blockquote className="test-quote">
+                      "Their color consultation was invaluable. We were stuck between five shades of white and greige. Their designer brought large samples and analyzed our lighting. The results are stunning!"
+                    </blockquote>
+                    <div className="test-author">
+                      <h4>Elena V.</h4>
+                      <span>Whole-Home Interior Renovation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Carousel Dots */}
+              <div className="testimonial-dots">
+                <button className="test-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                <button className="test-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                <button className="test-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                <button className="test-dot" data-slide="3" aria-label="Go to slide 4"></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+         16. FREQUENTLY ASKED QUESTIONS (ACCORDION)
+         ========================================================================== */}
+        <section className="section-padding estimate-form-section" id="estimate">
+          <div className="container">
+            <div className="section-header reveal">
+              <span className="section-eyebrow">FAST ESTIMATE DISPATCH</span>
+              <h2>Request Your Free On-Site Consultation</h2>
+              <p>Fill out the simple form below. Our estimators will review your project details and follow up promptly with scheduling options.</p>
+            </div>
+
+            <div className="estimate-form-wrapper reveal stagger-1">
+              <form id="estimate-request-form" novalidate>
+                <div className="form-grid-2">
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="form-name">Full Name *</label>
+                    <input type="text" id="form-name" className="form-input" placeholder="e.g. John Miller" required />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="form-phone">Phone Number *</label>
+                    <input type="tel" id="form-phone" className="form-input" placeholder="+1 (555) 000-0000" required />
+                  </div>
+                </div>
+
+                <div className="form-grid-2">
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="form-email">Email Address</label>
+                    <input type="email" id="form-email" className="form-input" placeholder="john@example.com" />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="form-service">Project Type *</label>
+                    <select id="form-service" className="form-select" required>
+                      <option value="" disabled selected>Select Painting Scope</option>
+                      <option value="Interior Painting">Interior Home Painting</option>
+                      <option value="Exterior Painting">Exterior House Painting</option>
+                      <option value="Kitchen Cabinets">Kitchen Cabinet Spraying</option>
+                      <option value="Commercial Painting">Commercial / Office Painting</option>
+                      <option value="Deck Staining">Deck Staining & Sealing</option>
+                      <option value="Drywall & Texture">Drywall Repair / Ceiling</option>
+                      <option value="Epoxy Floors">Epoxy Garage Floor</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label" htmlFor="form-notes">Project Notes & Square Footage Details</label>
+                  <textarea id="form-notes" className="form-textarea" placeholder="Tell us about your home, number of rooms, desired colors, or timeline preferences..."></textarea>
+                </div>
+
+                <button type="submit" className="btn btn-coral btn-lg" style={{ "width": "100%" }}>
+                  <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                  </svg>
+                  Submit & Connect on WhatsApp
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+         18. BOTTOM DEMO BANNER
+         ========================================================================== */}
+          </>
+        )}
+
+        {/* SERVICES VIEW: Complete Services, Visualizer, Calculator & Prep */}
+        {currentView === 'services' && (
+          <>
         <section className="section-padding services-section" id="services">
           <div className="container">
             <div className="section-header reveal">
@@ -833,7 +1168,7 @@ export default function Painting() {
               {/* Service 3 */}
               <article className="service-card reveal stagger-3">
                 <div className="service-image-box">
-                  <img src="/painting/assets/images/service-cabinets.jpg?v=3" alt="Kitchen cabinet factory spraying and refinishing" className="service-image" loading="lazy" />
+                  <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="Kitchen cabinet factory spraying and refinishing" className="service-image" loading="lazy" />
                   <span className="service-badge">Kitchen Cabinets</span>
                 </div>
                 <div className="service-content">
@@ -998,23 +1333,6 @@ export default function Painting() {
         {/* ==========================================================================
          6. MIDDLE DEMO BANNER
          ========================================================================== */}
-        <section className="middle-demo-banner" role="region" aria-label="Demo conversion showcase">
-          <div className="middle-demo-card reveal">
-            <span className="demo-pill">DEMONSTRATION SHOWCASE</span>
-            <h3>TRANSFORM HOW CLIENTS EXPERIENCE YOUR PAINTING CRAFTSMANSHIP</h3>
-            <p>This is a live demonstration showing how Alvoratech captures premium residential and commercial painting contracts through interactive visualizers and zero-friction quoting.</p>
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-              <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-              </svg>
-              Discuss This Web Build on WhatsApp
-            </a>
-          </div>
-        </section>
-
-        {/* ==========================================================================
-         7. INTERACTIVE COLOR PALETTE VISUALIZER
-         ========================================================================== */}
         <section className="section-padding visualizer-section" id="visualizer">
           <div className="container">
             <div className="section-header reveal">
@@ -1123,55 +1441,91 @@ export default function Painting() {
         {/* ==========================================================================
          8. 5-SCENARIO BEFORE & AFTER COMPARISON SLIDER
          ========================================================================== */}
-        <section className="section-padding ba-section" id="transformations">
+        <section className="section-padding calculator-section" id="estimator">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">DRAMATIC TRANSFORMATIONS</span>
-              <h2>Witness the Power of Professional Prep & Spray</h2>
-              <p>Drag the interactive handle left and right to inspect real-world finish restorations across cabinets, exteriors, living spaces, and outdoor decks.</p>
+              <span className="section-eyebrow">INSTANT TRANSPARENCY</span>
+              <h2>Interactive Painting Project Cost Estimator</h2>
+              <p>Select your scope and adjust the estimated square footage to receive an instant preliminary investment estimate.</p>
             </div>
 
-            {/* Scenario Tabs */}
-            <div className="ba-tabs-nav reveal">
-              <button className="ba-tab-btn active" data-scenario="cabinets">Kitchen Cabinets</button>
-              <button className="ba-tab-btn" data-scenario="exterior">Home Exterior</button>
-              <button className="ba-tab-btn" data-scenario="living">Living Room</button>
-              <button className="ba-tab-btn" data-scenario="deck">Deck Staining</button>
-              <button className="ba-tab-btn" data-scenario="commercial">Commercial Office</button>
-            </div>
+            <div className="calculator-wrapper reveal stagger-1">
+              {/* Inputs Column */}
+              <div className="calc-inputs">
+                <h3>Project Scope & Size</h3>
+                <p>Estimates include all labor, high-adhesion primers, two finish coats, and thorough masking.</p>
 
-            {/* Slider Widget Container */}
-            <div className="ba-slider-container reveal stagger-1">
-              {/* Before Image */}
-              <img src="/painting/assets/images/ba-cabinets-before.jpg" alt="Before painting condition" className="ba-image ba-image-before" id="ba-image-before" />
-              <span className="ba-badge ba-badge-before">BEFORE PREP</span>
-
-              {/* After Image with dynamic clip wrap */}
-              <div className="ba-image-after-wrap" id="ba-after-wrap">
-                <img src="/painting/assets/images/ba-cabinets-after.jpg" alt="After professional spray finish" className="ba-image ba-image-after" id="ba-image-after" />
-              </div>
-              <span className="ba-badge ba-badge-after">AFTER ALVORATECH</span>
-
-              {/* Handle */}
-              <div className="ba-handle" id="ba-handle">
-                <div className="ba-handle-button" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ "marginLeft": "-6px" }}>
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
+                {/* Service Selection */}
+                <div className="calc-group">
+                  <label className="calc-label">Choose Service Category</label>
+                  <div className="calc-service-grid">
+                    <button className="calc-service-btn" data-service="interior-room">Single/Multi Room</button>
+                    <button className="calc-service-btn active" data-service="full-interior">Whole Home Interior</button>
+                    <button className="calc-service-btn" data-service="cabinets">Kitchen Cabinets</button>
+                    <button className="calc-service-btn" data-service="exterior">Home Exterior</button>
+                  </div>
                 </div>
+
+                {/* Square Footage Range */}
+                <div className="calc-group">
+                  <label className="calc-label" htmlFor="calc-sqft-range">Estimated Floor / Surface Area</label>
+                  <div className="range-slider-wrapper">
+                    <div className="range-value-display">
+                      <span>Selected Area:</span>
+                      <strong id="calc-sqft-display">1,800 sq ft</strong>
+                    </div>
+                    <input type="range" min="300" max="4500" step="50" value="1800" className="custom-range" id="calc-sqft-range" />
+                    <div style={{ "display": "flex", "justifyContent": "space-between", "fontSize": "0.75rem", "color": "var(--color-text-muted)" }}>
+                      <span>300 sq ft</span>
+                      <span>2,400 sq ft</span>
+                      <span>4,500+ sq ft</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p style={{ "fontSize": "0.8125rem", "color": "var(--color-text-muted)", "marginTop": "1rem" }}>
+                  *Final firm quotes are provided in writing following a brief 15-minute on-site assessment.
+                </p>
               </div>
 
-              {/* Accessible Range Input */}
-              <input type="range" min="0" max="100" value="50" className="ba-range-input" id="ba-range" aria-label="Percentage before after slider" />
+              {/* Results Column */}
+              <div className="calc-results-panel">
+                <span className="calc-results-badge">Preliminary Estimate</span>
+
+                <div className="calc-estimate-box">
+                  <span>Estimated Investment Range:</span>
+                  <div className="calc-price-output" id="calc-price-output">$4,860 – $6,120</div>
+                </div>
+
+                <div className="calc-meta-list">
+                  <div className="calc-meta-row">
+                    <span>Selected Service:</span>
+                    <strong id="calc-meta-service">Complete Home Interior</strong>
+                  </div>
+                  <div className="calc-meta-row">
+                    <span>Projected Timeline:</span>
+                    <strong id="calc-meta-timeline">3 – 5 Days</strong>
+                  </div>
+                  <div className="calc-meta-row">
+                    <span>Included Warranty:</span>
+                    <strong>2-Year Written Guarantee</strong>
+                  </div>
+                  <div className="calc-meta-row">
+                    <span>Paint Grade:</span>
+                    <strong>Sherwin-Williams / Benjamin Moore</strong>
+                  </div>
+                </div>
+
+                <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-lg" id="calc-whatsapp-btn">
+                  Lock In This Estimate on WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ==========================================================================
-         9. 5-STEP METICULOUS PREPARATION PROCESS
+         14. WHY CHOOSE ALVORATECH (4 PILLARS)
          ========================================================================== */}
         <section className="section-padding prep-section" id="prep">
           <div className="container">
@@ -1265,32 +1619,71 @@ export default function Painting() {
         {/* ==========================================================================
          11. ABOUT ALVORATECH
          ========================================================================== */}
-        <section className="section-padding" id="about" style={{ "backgroundColor": "var(--color-bg-light)" }}>
-          <div className="container">
-            <div className="why-grid">
-              <div className="why-image-card reveal">
-                <img src="/painting/assets/images/paint-about.jpg?v=3" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+            <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div className="container" style={{ maxWidth: '700px' }}>
+                <span className="section-eyebrow">READY TO TRANSFORM YOUR SPACE?</span>
+                <h2>Get a Custom Quote For Your Project</h2>
+                <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Schedule a complimentary in-home or on-site estimate with our certified architectural coating specialists.</p>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                  Request Free Estimate &rarr;
+                </button>
               </div>
-              <div className="reveal stagger-1">
-                <span className="section-eyebrow">ABOUT ALVORATECH</span>
-                <h2>Raising the Standard of Residential & Commercial Painting</h2>
-                <p style={{ "fontSize": "1.0625rem", "marginBottom": "1.25rem" }}>
-                  At Alvoratech, painting isn’t just a trade—it’s an architectural discipline. We believe homeowners deserve a contractor who arrives on time, treats their property like a museum, communicates transparently, and leaves behind immaculate, enduring beauty.
-                </p>
-                <p style={{ "marginBottom": "2rem" }}>
-                  Our crews are background-checked, fully insured professionals trained in fine lacquer spraying, historical trim preservation, and advanced weather-barrier coatings. We never subcontract your trust to third parties.
-                </p>
-                <div style={{ "display": "flex", "gap": "1rem", "flexWrap": "wrap" }}>
-                  <a href="#estimate" className="btn btn-coral">Request Your Consultation</a>
-                  <a href="tel:+14127963968" className="btn btn-secondary">Direct Line: +1 (412) 796-3968</a>
+            </section>
+          </>
+        )}
+
+        {/* PORTFOLIO VIEW: Before/After Slider & Filterable Lightbox Gallery */}
+        {currentView === 'portfolio' && (
+          <>
+        <section className="section-padding ba-section" id="transformations">
+          <div className="container">
+            <div className="section-header reveal">
+              <span className="section-eyebrow">DRAMATIC TRANSFORMATIONS</span>
+              <h2>Witness the Power of Professional Prep & Spray</h2>
+              <p>Drag the interactive handle left and right to inspect real-world finish restorations across cabinets, exteriors, living spaces, and outdoor decks.</p>
+            </div>
+
+            {/* Scenario Tabs */}
+            <div className="ba-tabs-nav reveal">
+              <button className="ba-tab-btn active" data-scenario="cabinets">Kitchen Cabinets</button>
+              <button className="ba-tab-btn" data-scenario="exterior">Home Exterior</button>
+              <button className="ba-tab-btn" data-scenario="living">Living Room</button>
+              <button className="ba-tab-btn" data-scenario="deck">Deck Staining</button>
+              <button className="ba-tab-btn" data-scenario="commercial">Commercial Office</button>
+            </div>
+
+            {/* Slider Widget Container */}
+            <div className="ba-slider-container reveal stagger-1">
+              {/* Before Image */}
+              <img src="/painting/assets/images/ba-cabinets-before.jpg" alt="Before painting condition" className="ba-image ba-image-before" id="ba-image-before" />
+              <span className="ba-badge ba-badge-before">BEFORE PREP</span>
+
+              {/* After Image with dynamic clip wrap */}
+              <div className="ba-image-after-wrap" id="ba-after-wrap">
+                <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="After professional spray finish" className="ba-image ba-image-after" id="ba-image-after" />
+              </div>
+              <span className="ba-badge ba-badge-after">AFTER ALVORATECH</span>
+
+              {/* Handle */}
+              <div className="ba-handle" id="ba-handle">
+                <div className="ba-handle-button" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ "marginLeft": "-6px" }}>
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
                 </div>
               </div>
+
+              {/* Accessible Range Input */}
+              <input type="range" min="0" max="100" value="50" className="ba-range-input" id="ba-range" aria-label="Percentage before after slider" />
             </div>
           </div>
         </section>
 
         {/* ==========================================================================
-         12. FILTERABLE PROJECT GALLERY (LIGHTBOX ENABLED)
+         9. 5-STEP METICULOUS PREPARATION PROCESS
          ========================================================================== */}
         <section className="section-padding gallery-section" id="portfolio">
           <div className="container">
@@ -1322,7 +1715,7 @@ export default function Painting() {
 
               {/* Item 2 */}
               <div className="gallery-item" data-category="cabinets">
-                <img src="/painting/assets/images/gallery-kitchenspray.jpg" alt="Custom sprayed white shaker kitchen cabinets" loading="lazy" />
+                <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="Custom sprayed white shaker kitchen cabinets" loading="lazy" />
                 <div className="gallery-overlay">
                   <h4>Custom Shaker Cabinet Refinishing</h4>
                   <span>Factory Lacquer Finish</span>
@@ -1398,91 +1791,48 @@ export default function Painting() {
         {/* ==========================================================================
          13. INTERACTIVE PAINTING COST ESTIMATOR
          ========================================================================== */}
-        <section className="section-padding calculator-section" id="estimator">
-          <div className="container">
-            <div className="section-header reveal">
-              <span className="section-eyebrow">INSTANT TRANSPARENCY</span>
-              <h2>Interactive Painting Project Cost Estimator</h2>
-              <p>Select your scope and adjust the estimated square footage to receive an instant preliminary investment estimate.</p>
-            </div>
-
-            <div className="calculator-wrapper reveal stagger-1">
-              {/* Inputs Column */}
-              <div className="calc-inputs">
-                <h3>Project Scope & Size</h3>
-                <p>Estimates include all labor, high-adhesion primers, two finish coats, and thorough masking.</p>
-
-                {/* Service Selection */}
-                <div className="calc-group">
-                  <label className="calc-label">Choose Service Category</label>
-                  <div className="calc-service-grid">
-                    <button className="calc-service-btn" data-service="interior-room">Single/Multi Room</button>
-                    <button className="calc-service-btn active" data-service="full-interior">Whole Home Interior</button>
-                    <button className="calc-service-btn" data-service="cabinets">Kitchen Cabinets</button>
-                    <button className="calc-service-btn" data-service="exterior">Home Exterior</button>
-                  </div>
-                </div>
-
-                {/* Square Footage Range */}
-                <div className="calc-group">
-                  <label className="calc-label" htmlFor="calc-sqft-range">Estimated Floor / Surface Area</label>
-                  <div className="range-slider-wrapper">
-                    <div className="range-value-display">
-                      <span>Selected Area:</span>
-                      <strong id="calc-sqft-display">1,800 sq ft</strong>
-                    </div>
-                    <input type="range" min="300" max="4500" step="50" value="1800" className="custom-range" id="calc-sqft-range" />
-                    <div style={{ "display": "flex", "justifyContent": "space-between", "fontSize": "0.75rem", "color": "var(--color-text-muted)" }}>
-                      <span>300 sq ft</span>
-                      <span>2,400 sq ft</span>
-                      <span>4,500+ sq ft</span>
-                    </div>
-                  </div>
-                </div>
-
-                <p style={{ "fontSize": "0.8125rem", "color": "var(--color-text-muted)", "marginTop": "1rem" }}>
-                  *Final firm quotes are provided in writing following a brief 15-minute on-site assessment.
-                </p>
+            <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div className="container" style={{ maxWidth: '700px' }}>
+                <span className="section-eyebrow">YOUR HOME COULD BE NEXT</span>
+                <h2>Love The Way Your Space Looks</h2>
+                <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Every project includes meticulous surface preparation, dustless sanding, and a comprehensive 10-year warranty.</p>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                  Start Your Consultation &rarr;
+                </button>
               </div>
+            </section>
+          </>
+        )}
 
-              {/* Results Column */}
-              <div className="calc-results-panel">
-                <span className="calc-results-badge">Preliminary Estimate</span>
-
-                <div className="calc-estimate-box">
-                  <span>Estimated Investment Range:</span>
-                  <div className="calc-price-output" id="calc-price-output">$4,860 – $6,120</div>
+        {/* WHY US VIEW: Company Standards, 4 Pillars & Customer Testimonials */}
+        {currentView === 'why-us' && (
+          <>
+        <section className="section-padding" id="about" style={{ "backgroundColor": "var(--color-bg-light)" }}>
+          <div className="container">
+            <div className="why-grid">
+              <div className="why-image-card reveal">
+                <img src="/painting/assets/images/about-painter-wall.jpg?v=5" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+              </div>
+              <div className="reveal stagger-1">
+                <span className="section-eyebrow">ABOUT ALVORATECH</span>
+                <h2>Raising the Standard of Residential & Commercial Painting</h2>
+                <p style={{ "fontSize": "1.0625rem", "marginBottom": "1.25rem" }}>
+                  At Alvoratech, painting isn’t just a trade—it’s an architectural discipline. We believe homeowners deserve a contractor who arrives on time, treats their property like a museum, communicates transparently, and leaves behind immaculate, enduring beauty.
+                </p>
+                <p style={{ "marginBottom": "2rem" }}>
+                  Our crews are background-checked, fully insured professionals trained in fine lacquer spraying, historical trim preservation, and advanced weather-barrier coatings. We never subcontract your trust to third parties.
+                </p>
+                <div style={{ "display": "flex", "gap": "1rem", "flexWrap": "wrap" }}>
+                  <a href="#estimate" className="btn btn-coral">Request Your Consultation</a>
+                  <a href="tel:+14127963968" className="btn btn-secondary">Direct Line: +1 (412) 796-3968</a>
                 </div>
-
-                <div className="calc-meta-list">
-                  <div className="calc-meta-row">
-                    <span>Selected Service:</span>
-                    <strong id="calc-meta-service">Complete Home Interior</strong>
-                  </div>
-                  <div className="calc-meta-row">
-                    <span>Projected Timeline:</span>
-                    <strong id="calc-meta-timeline">3 – 5 Days</strong>
-                  </div>
-                  <div className="calc-meta-row">
-                    <span>Included Warranty:</span>
-                    <strong>2-Year Written Guarantee</strong>
-                  </div>
-                  <div className="calc-meta-row">
-                    <span>Paint Grade:</span>
-                    <strong>Sherwin-Williams / Benjamin Moore</strong>
-                  </div>
-                </div>
-
-                <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-lg" id="calc-whatsapp-btn">
-                  Lock In This Estimate on WhatsApp
-                </a>
               </div>
             </div>
           </div>
         </section>
 
         {/* ==========================================================================
-         14. WHY CHOOSE ALVORATECH (4 PILLARS)
+         12. FILTERABLE PROJECT GALLERY (LIGHTBOX ENABLED)
          ========================================================================== */}
         <section className="section-padding why-section" id="why-us">
           <div className="container">
@@ -1626,6 +1976,22 @@ export default function Painting() {
         {/* ==========================================================================
          16. FREQUENTLY ASKED QUESTIONS (ACCORDION)
          ========================================================================== */}
+            <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div className="container" style={{ maxWidth: '700px' }}>
+                <span className="section-eyebrow">STANDARDS YOU CAN TRUST</span>
+                <h2>Work With Master-Certified Painters</h2>
+                <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Fully licensed, insured, and background-checked technicians who treat your property like a museum.</p>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+                  Speak With Our Team &rarr;
+                </button>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* FAQ VIEW: Comprehensive Accordions */}
+        {currentView === 'faq' && (
+          <>
         <section className="section-padding faq-section" id="faq">
           <div className="container">
             <div className="section-header reveal">
@@ -1719,6 +2085,23 @@ export default function Painting() {
         {/* ==========================================================================
          17. FAST ESTIMATE REQUEST FORM SECTION
          ========================================================================== */}
+            <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div className="container" style={{ maxWidth: '700px' }}>
+                <span className="section-eyebrow">STILL HAVE QUESTIONS?</span>
+                <h2>We're Here to Help</h2>
+                <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Speak directly with our master contractor today or send us a message for immediate assistance.</p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">Chat On WhatsApp</a>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* CONTACT VIEW: Full Estimate Form & Location Details */}
+        {currentView === 'contact' && (
+          <>
         <section className="section-padding estimate-form-section" id="estimate">
           <div className="container">
             <div className="section-header reveal">
@@ -1781,28 +2164,9 @@ export default function Painting() {
         {/* ==========================================================================
          18. BOTTOM DEMO BANNER
          ========================================================================== */}
-        <section className="bottom-demo-banner" role="region" aria-label="Demo pre-footer banner">
-          <div className="bottom-demo-container reveal">
-            <div className="bottom-demo-text">
-              <span className="demo-pill" style={{ "marginBottom": "0.75rem", "display": "inline-block" }}>DEMONSTRATION WEBSITE</span>
-              <h3>Ready to Refresh Your Property with Flawless Color?</h3>
-              <p>Contact Alvoratech today to discuss your residential or commercial exterior and interior painting needs.</p>
-            </div>
-            <div>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-                <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                </svg>
-                Chat With Us
-              </a>
-            </div>
-          </div>
-        </section>
+          </>
+        )}
       </main>
-
-      {/* ==========================================================================
-       19. FOOTER
-       ========================================================================== */}
       <footer className="site-footer" id="contact" role="contentinfo">
         <div className="container">
           <div className="footer-grid">
@@ -1834,13 +2198,13 @@ export default function Painting() {
             <div className="footer-col">
               <h4>Our Services</h4>
               <div className="footer-links">
-                <a href="#services" className="footer-link">Interior Home Painting</a>
-                <a href="#services" className="footer-link">Exterior Siding & Trim</a>
-                <a href="#services" className="footer-link">Cabinet Spraying & Lacquer</a>
-                <a href="#services" className="footer-link">Commercial Offices</a>
-                <a href="#services" className="footer-link">Deck Staining & Sealing</a>
-                <a href="#services" className="footer-link">Drywall Patching & Texture</a>
-                <a href="#services" className="footer-link">Epoxy Garage Floors</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Interior Home Painting</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Exterior Siding & Trim</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Cabinet Spraying & Lacquer</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Commercial Offices</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Deck Staining & Sealing</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Drywall Patching & Texture</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Epoxy Garage Floors</a>
               </div>
             </div>
 
@@ -1849,11 +2213,11 @@ export default function Painting() {
               <h4>Navigation</h4>
               <div className="footer-links">
                 <a href="#hero" className="footer-link">Home</a>
-                <a href="#services" className="footer-link">Painting Services</a>
-                <a href="#portfolio" className="footer-link">Project Gallery</a>
-                <a href="#why-us" className="footer-link">Why Choose Us</a>
-                <a href="#faq" className="footer-link">FAQ</a>
-                <a href="#contact" className="footer-link">Contact & Location</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Painting Services</a>
+                <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Project Gallery</a>
+                <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a>
+                <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQ</a>
+                <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact & Location</a>
               </div>
             </div>
 
