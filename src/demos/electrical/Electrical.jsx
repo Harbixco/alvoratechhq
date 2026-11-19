@@ -2058,16 +2058,16 @@ const runInit = () => {
         </div>
 
         {/* Col 3: Clean Quick Links */}
-        <div className="footer-col">
-          <h4>Quick Links</h4>
-          <div className="footer-links">
-            <a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
-            <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Us</a>
-            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
-            <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Gallery</a>
-            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
-          </div>
-        </div>
+            <div className="footer-col">
+              <h4>Quick Links</h4>
+              <div className="footer-links">
+                <a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
+                <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Portfolio</a>
+                <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Us</a>
+                <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
+              </div>
+            </div>
 
         {/* Col 4: Contact & Exact Constraints */}
         <div className="footer-col">

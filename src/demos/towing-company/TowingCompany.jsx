@@ -281,9 +281,9 @@ export default function TowingCompany() {
       </div>
 
       {/* Main Header */}
-      <header className={`site-header ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
+      <header className={`site-header ${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}>
         <div className="container nav-shell">
-          <a href="#home" onClick={(e) => navigateTo('home', e)} className="brand" aria-label="Alvoratech home">
+          <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} className="brand" aria-label="Alvoratech home">
             <span className="brand-mark" aria-hidden="true">
               <svg viewBox="0 0 64 64" role="img" aria-label="Towing service icon">
                 <path d="M12 43h4.7l3.4-11.6h16.9L39 43h13v4.8H12V43Zm8.7-2.4h6.6v-5.3h-6.6v5.3Zm19.8-12.3h5.8l3.8 7.6h-9.6v-7.6Zm-23.6 0h9.4v7.6H17.9v-7.6Zm9.4-9.8c0-3.4 2.8-6.2 6.2-6.2s6.2 2.8 6.2 6.2v5.1H27.3v-5.1Z" />
@@ -298,8 +298,10 @@ export default function TowingCompany() {
 
           <button
             className="nav-toggle"
-            aria-expanded={menuOpen}
+            aria-expanded={mobileMenuOpen}
             aria-controls="primary-navigation"
+            aria-label="Toggle navigation menu"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span></span>
             <span></span>
@@ -307,17 +309,18 @@ export default function TowingCompany() {
           </button>
 
           <nav className="site-nav" id="primary-navigation" aria-label="Main navigation">
-            <a href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link active">Home</a>
-            <a href="#about" onClick={(e) => navigateTo('about', e)} className="nav-link">About Us</a>
-            <a href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
-            <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Us</a>
-            <a href="#gallery" onClick={(e) => navigateTo('gallery', e)} className="nav-link">Gallery</a>
-            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
+            <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} className="nav-link active">Home</a>
+            <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }} className="nav-link">About Us</a>
+            <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} className="nav-link">Services</a>
+            <a href="#why-us" onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-us', e); }} className="nav-link">Why Us</a>
+            <a href="#gallery" onClick={(e) => { setMobileMenuOpen(false); navigateTo('gallery', e); }} className="nav-link">Gallery</a>
+            <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="nav-link">Contact</a>
             <a
               href="https://wa.me/message/RVTZQMFL7I6OH1"
-              className="nav-cta desktop-only-btn"
+              className="nav-cta"
               target="_blank"
               rel="noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
             >
               DISPATCH NOW
             </a>
@@ -1139,7 +1142,7 @@ export default function TowingCompany() {
         <div className="footer-bottom">
           <div className="container footer-bottom__inner">
             <p>&copy; {new Date().getFullYear()} Alvoratech. All Rights Reserved.</p>
-            <span className="demo-pill">Website Demo</span>
+            
           </div>
         </div>
       </footer>

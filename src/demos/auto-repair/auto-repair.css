@@ -382,7 +382,7 @@
   .auto-repair-demo .main-nav.is-open { display: block; }
   .auto-repair-demo .main-nav__inner { min-height: 0; overflow: hidden; display: block; }
   .auto-repair-demo .nav-links { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 0; }
-  .auto-repair-demo .nav-links a { padding: 12px 3px; border-bottom: 1px solid var(--line); font-size: 12px; }
+  .auto-repair-demo .nav-links a { padding: 12px 8px; border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 500; color: var(--ink); }
   .auto-repair-demo .nav-links a::after { display: none; }
   .auto-repair-demo .button--nav { width: 100%; margin: 6px 0 17px; }
   .auto-repair-demo .hero { min-height: 600px; }

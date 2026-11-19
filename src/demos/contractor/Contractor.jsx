@@ -161,26 +161,6 @@ export default function Contractor() {
       {/* ── TOP DEMO BAR WITH RETURN BUTTON ── */}
       <DemoTopBar demoName="Alvoratech General Contractor & Construction" />
 
-      {/* Demo Notice Banner */}
-      {!bannerDismissed && (
-        <aside className="demo-banner" aria-label="Demo website notice">
-          <span className="demo-badge">DEMO</span>
-          <p>
-            DEMO WEBSITE <span className="demo-divider">—</span> This is a construction website preview created by Alvoratech.
-          </p>
-          <button
-            className="banner-close"
-            type="button"
-            aria-label="Dismiss demo notice"
-            onClick={() => setBannerDismissed(true)}
-          >
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="m5 5 10 10M15 5 5 15" />
-            </svg>
-          </button>
-        </aside>
-      )}
-
       {/* Site Header */}
       <header className="site-header">
         <nav className="nav-shell container" aria-label="Main navigation">
@@ -201,23 +181,24 @@ export default function Contractor() {
             className="menu-toggle"
             type="button"
             aria-label="Toggle navigation menu"
-            aria-expanded={menuOpen}
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span></span>
             <span></span>
           </button>
 
-          <div className={`nav-panel ${menuOpen ? 'is-open' : ''}`}>
+          <div className={`nav-panel ${mobileMenuOpen ? 'is-open' : ''}`}>
             <div className="nav-links">
-              <a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a>
-              <a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a>
-              <a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a>
-              <a href="#projects" onClick={(e) => navigateTo('projects', e)}>Projects</a>
-              <a href="#process" onClick={(e) => navigateTo('process', e)}>Our Process</a>
-              <a href="#testimonials" onClick={(e) => navigateTo('testimonials', e)}>Testimonials</a>
-              <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
+              <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }}>Home</a>
+              <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>
+              <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
+              <a href="#projects" onClick={(e) => { setMobileMenuOpen(false); navigateTo('projects', e); }}>Projects</a>
+              <a href="#process" onClick={(e) => { setMobileMenuOpen(false); navigateTo('process', e); }}>Our Process</a>
+              <a href="#testimonials" onClick={(e) => { setMobileMenuOpen(false); navigateTo('testimonials', e); }}>Testimonials</a>
+              <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
             </div>
-            <a className="button button-gold nav-cta desktop-only-btn desktop-only-btn" href="#contact" onClick={(e) => navigateTo('contact', e)}>
+            <a className="button button-gold nav-cta" href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>
               Request a Free Quote <span>↗</span>
             </a>
           </div>

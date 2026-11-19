@@ -775,7 +775,7 @@ export default function Painting() {
               {/* Right Column Image Presentation */}
               <div className="hero-media reveal stagger-2">
                 <div className="hero-image-wrapper">
-                  <img src="/painting/assets/images/hero-painter-roller.jpg?v=7" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
+                  <img src="/painting/assets/images/hero-painter-roller.jpg?v=10" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
                 </div>
               </div>
             </div>
@@ -924,7 +924,7 @@ export default function Painting() {
           <div className="container">
             <div className="why-grid">
               <div className="why-image-card reveal">
-                <img src="/painting/assets/images/about-painter-wall.jpg?v=7" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+                <img src="/painting/assets/images/about-painter-wall.jpg?v=10" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
               </div>
               <div className="reveal stagger-1">
                 <span className="section-eyebrow">ABOUT ALVORATECH</span>
@@ -1801,7 +1801,7 @@ export default function Painting() {
           <div className="container">
             <div className="why-grid">
               <div className="why-image-card reveal">
-                <img src="/painting/assets/images/about-painter-wall.jpg?v=7" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+                <img src="/painting/assets/images/about-painter-wall.jpg?v=10" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
               </div>
               <div className="reveal stagger-1">
                 <span className="section-eyebrow">ABOUT ALVORATECH</span>
@@ -2198,17 +2198,17 @@ export default function Painting() {
               </div>
             </div>
 
-            {/* Col 3: Clean Quick Links */}
-            <div className="footer-col">
-              <h4>Quick Links</h4>
-              <div className="footer-links">
-                <a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
-                <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Us</a>
-                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
-                <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Gallery</a>
-                <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
-              </div>
-            </div>
+        {/* Col 3: Clean Quick Links */}
+        <div className="footer-col">
+          <h4>Quick Links</h4>
+          <div className="footer-links">
+            <a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
+            <a href="#about" onClick={(e) => navigateTo('about', e)} className="footer-link">About Us</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
+            <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Gallery</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
+          </div>
+        </div>
 
             {/* Col 4: Contact & Exact Constraints */}
             <div className="footer-col">

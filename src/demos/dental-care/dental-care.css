@@ -292,9 +292,12 @@
   .dental-care-demo .nav-container { width: calc(100% - 40px); min-height: 70px; }
   .dental-care-demo .menu-toggle { display: flex; width: 42px; height: 42px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 3px; background: var(--white); cursor: pointer; }
   .dental-care-demo .menu-toggle span { display: block; width: 18px; height: 1.5px; background: var(--navy); transition: transform .2s ease; }
+  .dental-care-demo .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
+  .dental-care-demo .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+
   .dental-care-demo .nav-links { position: absolute; top: calc(100% - 1px); right: 0; left: 0; display: none; padding: 10px 22px 22px; flex-direction: column; align-items: stretch; gap: 0; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 16px 26px rgba(11, 25, 44, .08); }
   .dental-care-demo .nav-links.active { display: flex; }
-  .dental-care-demo .nav-links > a:not(.button) { padding: 12px 2px; border-bottom: 1px solid #eff1f3; color: var(--navy); font-size: 13px; }
+  .dental-care-demo .nav-links > a:not(.button) { padding: 12px 2px; border-bottom: 1px solid #eff1f3; color: var(--navy); font-size: 15px; font-weight: 500; }
   .dental-care-demo .nav-links .button { margin-top: 12px; }
   .dental-care-demo .hero { grid-template-columns: 1fr; gap: 32px; padding-top: 50px; }
   .dental-care-demo .about-section { grid-template-columns: 1fr; gap: 35px; padding-top: 60px; padding-bottom: 60px; }

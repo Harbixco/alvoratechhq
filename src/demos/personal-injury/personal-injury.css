@@ -360,7 +360,7 @@
 .personal-injury-demo .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 .personal-injury-demo .primary-nav { position: fixed; z-index: 0; inset: 0; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 0; padding: 86px 32px 32px; background: rgba(13,25,37,.99); opacity: 0; pointer-events: none; transform: translateY(-9px); transition: opacity .25s ease, transform .25s ease; }
 .personal-injury-demo .primary-nav.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.personal-injury-demo .primary-nav > a:not(.button) { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.14); color: #fff; font-family: var(--serif); font-size: 22px; }
+.personal-injury-demo .primary-nav > a:not(.button) { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.14); color: #fff; font-size: 16px; font-weight: 500; }
 .personal-injury-demo .primary-nav > a:not(.button)::after { display: none; }
 .personal-injury-demo .primary-nav .nav-ct.personal-injury-demo a { margin-top: 22px; }
 .personal-injury-demo .hero { min-height: 700px; min-height: min(740px, calc(100svh - 137px)); }

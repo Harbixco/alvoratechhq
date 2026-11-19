@@ -279,6 +279,7 @@ export default function TreeRemoval() {
             className={`nav-toggle ${navOpen ? 'is-open' : ''}`}
             aria-label="Toggle navigation"
             aria-expanded={navOpen}
+            onClick={() => setNavOpen(!navOpen)}
           >
             <span></span>
             <span></span>
@@ -287,18 +288,19 @@ export default function TreeRemoval() {
 
           <div className={`nav-menu-wrap ${navOpen ? 'open' : ''}`}>
             <ul className="nav-menu">
-              <li><a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a></li>
-              <li><a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a></li>
-              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a></li>
-              <li><a href="#projects" onClick={(e) => navigateTo('projects', e)}>Projects</a></li>
-              <li><a href="#testimonials" onClick={(e) => navigateTo('testimonials', e)}>Reviews</a></li>
-              <li><a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a></li>
+              <li><a href="#home" onClick={(e) => { setNavOpen(false); navigateTo('home', e); }}>Home</a></li>
+              <li><a href="#about" onClick={(e) => { setNavOpen(false); navigateTo('about', e); }}>About Us</a></li>
+              <li><a href="#services" onClick={(e) => { setNavOpen(false); navigateTo('services', e); }}>Services</a></li>
+              <li><a href="#projects" onClick={(e) => { setNavOpen(false); navigateTo('projects', e); }}>Projects</a></li>
+              <li><a href="#testimonials" onClick={(e) => { setNavOpen(false); navigateTo('testimonials', e); }}>Reviews</a></li>
+              <li><a href="#contact" onClick={(e) => { setNavOpen(false); navigateTo('contact', e); }}>Contact</a></li>
               <li>
                 <a
-                  className="btn btn-primary nav-cta desktop-only-btn"
+                  className="btn btn-primary nav-cta"
                   href="https://wa.me/message/RVTZQMFL7I6OH1"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setNavOpen(false)}
                 >
                   Get a Free Estimate
                 </a>

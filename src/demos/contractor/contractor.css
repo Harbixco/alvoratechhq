@@ -334,10 +334,13 @@
   .contractor-demo .nav-shell { min-height: 70px; }
   .contractor-demo .menu-toggle { display: flex; width: 43px; height: 43px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid rgba(255,255,255,.4); background: transparent; cursor: pointer; }
   .contractor-demo .menu-toggle span { display: block; width: 18px; height: 1px; background: currentColor; transition: transform .25s; }
+  .contractor-demo .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .contractor-demo .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
   .contractor-demo .nav-panel { position: absolute; top: 100%; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 15px; padding: 25px 20px; background: #111a24; box-shadow: 0 15px 30px rgba(0,0,0,.3); border-bottom: 1px solid rgba(255,255,255,.1); }
   .contractor-demo .nav-panel.is-open { display: flex; }
   .contractor-demo .nav-links { display: flex; flex-direction: column; align-items: stretch; gap: 4px; }
-  .contractor-demo .nav-links a { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.11); font-size: 13px; }
+  .contractor-demo .nav-links a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.11); font-size: 15px; font-weight: 500; }
   .contractor-demo .nav-links a::after { display: none; }
   .contractor-demo .nav-cta { align-self: flex-start; min-height: 42px; font-size: 10px; }
   .contractor-demo .hero { min-height: 600px; }

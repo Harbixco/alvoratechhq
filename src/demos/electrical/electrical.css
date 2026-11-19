@@ -2466,3 +2466,20 @@
   align-items: center !important;
   justify-content: center !important;
 }
+
+  .electrical-demo .mobile-drawer .nav-link {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    padding: 0.65rem 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #1e293b !important;
+    display: block !important;
+  }
+  .electrical-demo .mobile-drawer .btn {
+    font-size: 0.875rem !important;
+    padding: 0.75rem 1rem !important;
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }

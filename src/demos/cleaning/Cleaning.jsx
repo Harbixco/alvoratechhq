@@ -864,14 +864,6 @@ const runInit = () => {
         <div className="section-header">
           <span className="section-eyebrow reveal">Client Feedback</span>
           <h2 className="reveal stagger-1">What Our Customers Say</h2>
-          <div className="testimonials-disclaimer-pill reveal stagger-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>Demonstration Content — Sample customer feedback showcasing service standards.</span>
-          </div>
         </div>
 
         <div className="testimonials-carousel-wrapper reveal">
@@ -1266,14 +1258,6 @@ const runInit = () => {
         <div className="section-header">
           <span className="section-eyebrow reveal">Client Feedback</span>
           <h2 className="reveal stagger-1">What Our Customers Say</h2>
-          <div className="testimonials-disclaimer-pill reveal stagger-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>Demonstration Content — Sample customer feedback showcasing service standards.</span>
-          </div>
         </div>
 
         <div className="testimonials-carousel-wrapper reveal">
@@ -1498,27 +1482,6 @@ const runInit = () => {
     </section>
 
     {/* ========================================================================
-         MIDDLE DEMO BANNER (B)
-         ======================================================================== */}
-    <aside className="middle-demo-banner" aria-label="Demo interactive banner">
-      <div className="middle-demo-card reveal">
-        <div className="middle-demo-text">
-          <span className="middle-demo-badge">THIS IS A WEBSITE DEMO</span>
-          <h3>Experience how Alvoratech showcases professional cleaning services online.</h3>
-          <p>This demonstration demonstrates custom-designed layouts, real-time WhatsApp inquiry integration, and optimized user workflows.</p>
-        </div>
-        <div>
-          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-            <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
-            </svg>
-            <span>Chat With Us</span>
-          </a>
-        </div>
-      </div>
-    </aside>
-
-    {/* ========================================================================
          WHY CHOOSE ALVORATECH SECTION
          ======================================================================== */}
     <section className="section-padding bg-light" id="how-it-works">
@@ -1727,14 +1690,6 @@ const runInit = () => {
         <div className="section-header">
           <span className="section-eyebrow reveal">Client Feedback</span>
           <h2 className="reveal stagger-1">What Our Customers Say</h2>
-          <div className="testimonials-disclaimer-pill reveal stagger-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>Demonstration Content — Sample customer feedback showcasing service standards.</span>
-          </div>
         </div>
 
         <div className="testimonials-carousel-wrapper reveal">

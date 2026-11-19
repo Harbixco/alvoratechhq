@@ -85,19 +85,20 @@ export default function DentalCare() {
             type="button"
             aria-label="Open navigation menu"
             aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span></span>
             <span></span>
           </button>
 
           <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-            <a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a>
-            <a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a>
-            <a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a>
-            <a href="#technology" onClick={(e) => navigateTo('technology', e)}>Technology</a>
-            <a href="#reviews" onClick={(e) => navigateTo('reviews', e)}>Patient Reviews</a>
-            <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
-            <a className="button button-small nav-cta glowing-btn desktop-only-btn desktop-only-btn" href="#contact" onClick={(e) => navigateTo('contact', e)}>
+            <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }}>Home</a>
+            <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>
+            <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
+            <a href="#technology" onClick={(e) => { setMobileMenuOpen(false); navigateTo('technology', e); }}>Technology</a>
+            <a href="#reviews" onClick={(e) => { setMobileMenuOpen(false); navigateTo('reviews', e); }}>Patient Reviews</a>
+            <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
+            <a className="button button-small nav-cta glowing-btn" href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>
               Book an Appointment <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
             </a>
           </nav>

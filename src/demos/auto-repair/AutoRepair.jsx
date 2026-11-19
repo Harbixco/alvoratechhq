@@ -174,6 +174,7 @@ export default function AutoRepair() {
             type="button"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span></span>
             <span></span>
@@ -184,14 +185,14 @@ export default function AutoRepair() {
         <nav className={`main-nav ${mobileMenuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
           <div className="main-nav__inner">
             <div className="nav-links">
-              <a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a>
-              <a href="#about" onClick={(e) => navigateTo('about', e)}>Our story</a>
-              <a href="#difference" onClick={(e) => navigateTo('difference', e)}>Why Alvoratech</a>
-              <a href="#team" onClick={(e) => navigateTo('team', e)}>Our team</a>
-              <a href="#reviews" onClick={(e) => navigateTo('reviews', e)}>Reviews</a>
-              <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
+              <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
+              <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>Our story</a>
+              <a href="#difference" onClick={(e) => { setMobileMenuOpen(false); navigateTo('difference', e); }}>Why Alvoratech</a>
+              <a href="#team" onClick={(e) => { setMobileMenuOpen(false); navigateTo('team', e); }}>Our team</a>
+              <a href="#reviews" onClick={(e) => { setMobileMenuOpen(false); navigateTo('reviews', e); }}>Reviews</a>
+              <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
             </div>
-            <a className="button button--nav desktop-only-btn" href="#appointment" onClick={(e) => navigateTo('appointment', e)}>
+            <a className="button button--nav" href="#appointment" onClick={(e) => { setMobileMenuOpen(false); navigateTo('appointment', e); }}>
               Book a visit <span aria-hidden="true">↗</span>
             </a>
           </div>

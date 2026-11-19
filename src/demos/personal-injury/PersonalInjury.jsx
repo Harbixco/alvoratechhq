@@ -169,18 +169,19 @@ export default function PersonalInjury() {
             aria-expanded={mobileMenuOpen}
             aria-controls="primary-navigation"
             aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span></span>
             <span></span>
           </button>
 
           <nav className={`primary-nav ${mobileMenuOpen ? 'is-open' : ''}`} id="primary-navigation" aria-label="Main navigation">
-            <a href="#about" onClick={(e) => navigateTo('about', e)}>The Attorney</a>
-            <a href="#services" onClick={(e) => navigateTo('services', e)}>How I Help</a>
-            <a href="#process">Your Case</a>
-            <a href="#resources">Resources</a>
-            <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
-            <a className="button button--small button--gold nav-cta desktop-only-btn" href="#consultation" onClick={(e) => navigateTo('consultation', e)}>
+            <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>The Attorney</a>
+            <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>How I Help</a>
+            <a href="#process" onClick={() => setMobileMenuOpen(false)}>Your Case</a>
+            <a href="#resources" onClick={() => setMobileMenuOpen(false)}>Resources</a>
+            <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
+            <a className="button button--small button--gold nav-cta" href="#consultation" onClick={(e) => { setMobileMenuOpen(false); navigateTo('consultation', e); }}>
               Free Consultation <span aria-hidden="true">↗</span>
             </a>
           </nav>
