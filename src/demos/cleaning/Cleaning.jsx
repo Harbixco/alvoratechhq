@@ -622,7 +622,6 @@ const runInit = () => {
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} href="#home" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }} href="#about" className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>About Us</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Cleaning Services</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-choose', e); }} href="#why-choose" className={`nav-link ${currentView === 'why-choose' ? 'active' : ''}`}>Why Choose Us</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('gallery', e); }} href="#gallery" className={`nav-link ${currentView === 'gallery' ? 'active' : ''}`}>Gallery</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
@@ -681,12 +680,7 @@ const runInit = () => {
         
         {/* Left Content */}
         <div className="hero-content">
-          <div className="hero-badge reveal">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-            <span>Fresh Spaces, Happy Places</span>
-          </div>
+          
 
           <h1 className="hero-title reveal stagger-1">
             A Cleaner Space.<br />
@@ -721,39 +715,6 @@ const runInit = () => {
         <div className="hero-media-wrapper reveal">
           <div className="hero-image-container">
             <img src="/cleaning/assets/images/hero-cleaner.jpg" alt="Professional cleaner working in a bright modern home kitchen" className="hero-image" width="600" height="480" />
-            
-            {/* Sparkle Accent */}
-            <div className="sparkle-badge" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-            </div>
-          </div>
-
-          {/* Floating Badge 1: Checklist */}
-          <div className="floating-card-1">
-            <div className="floating-icon-box icon-green">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <div className="floating-card-text">
-              <strong>Spotless Standards</strong>
-              <span>100% Detailed Inspection</span>
-            </div>
-          </div>
-
-          {/* Floating Badge 2: Quality Focus */}
-          <div className="floating-card-2">
-            <div className="floating-icon-box icon-blue">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <div className="floating-card-text">
-              <strong>Quality Focused</strong>
-              <span>Residential & Commercial</span>
-            </div>
           </div>
         </div>
 

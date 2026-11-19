@@ -817,12 +817,7 @@ const runInit = () => {
         <div className="hero-grid">
           {/* Left Column */}
           <div className="hero-content reveal">
-            <span className="hero-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-              AMERICA’S PREMIER HARDWOOD, LVP & TILE SPECIALISTS
-            </span>
+            
             <h1 className="hero-title">
               Flawless Floors. <br />
               <span className="text-gradient">Timeless Craftsmanship.</span>
@@ -859,17 +854,6 @@ const runInit = () => {
           <div className="hero-media-wrapper reveal stagger-1">
             <div className="hero-image-container">
               <img src="/flooring/assets/images/floor-hero.jpg" alt="Luxury European wide-plank white oak hardwood floor by Alvoratech" className="hero-image" width="700" height="490" />
-            </div>
-            <div className="floating-craft-card">
-              <div className="floating-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-              </div>
-              <div className="floating-text">
-                <strong>Master Installed</strong>
-                <span>100% Dustless Sanding</span>
-              </div>
             </div>
           </div>
         </div>
@@ -1093,7 +1077,6 @@ const runInit = () => {
          ========================================================================== */}
     <section className="special-cta-section" aria-label="Call to action">
       <div className="special-cta-content reveal">
-        <span className="demo-pill" style={{"marginBottom":"1.25rem","display":"inline-block"}}>TRANSFORM YOUR FLOORS TODAY</span>
         <h2>Transform Your Home From The Ground Up</h2>
         <p>
           From sample selection in your living room to precision laser installation and guaranteed lifetime durability. Connect with Alvoratech today for your free on-site design consultation and estimate.

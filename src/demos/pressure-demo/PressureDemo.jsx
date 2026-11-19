@@ -727,7 +727,7 @@ const runInit = () => {
   </header>
 
   {/* Mobile Navigation Overlay & Drawer */}
-  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}  id="mobileNavOverlay"></div>
+  <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} id="mobileNavOverlay"></div>
   <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} id="mobileDrawer" aria-label="Mobile Navigation">
     <div className="mobile-drawer-header">
       <span className="mobile-drawer-title">Pressure Washing Menu</span>
@@ -736,15 +736,15 @@ const runInit = () => {
       </button>
     </div>
     <nav>
-      <a  href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link">Home</a>
-      <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About</a>
-      <a  href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
-      <a  href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Our Work</a>
-      <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
-      <a  href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
+      <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} className="nav-link">Home</a>
+      <a href="#why-us" onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-us', e); }} className="nav-link">About Us</a>
+      <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} className="nav-link">Services</a>
+      <a href="#portfolio" onClick={(e) => { setMobileMenuOpen(false); navigateTo('portfolio', e); }} className="nav-link">Our Work</a>
+      <a href="#faq" onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} className="nav-link">FAQ</a>
+      <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="nav-link">Contact</a>
     </nav>
     <div style={{"marginTop":"1.5rem"}}>
-      <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{"width":"100%"}}>Get a Free Quote</a>
+      <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="btn btn-primary" style={{"width":"100%"}}>Get a Free Quote</a>
     </div>
   </aside>
 
@@ -793,12 +793,7 @@ const runInit = () => {
         
         {/* Left Content */}
         <div className="hero-content">
-          <div className="hero-badge reveal">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-            </svg>
-            <span>High-Pressure & Soft Wash Solutions</span>
-          </div>
+          
 
           <h1 className="hero-title reveal stagger-1">
             Restore the Beauty of <span className="text-gradient">Your Property.</span>
@@ -2171,9 +2166,9 @@ const runInit = () => {
         <h4 className="footer-heading">Quick Links</h4>
         <div className="footer-links">
           <a href="#home" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
-          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About</a>
+          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Us</a>
           <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
-          <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Our Work</a>
+          <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Gallery</a>
           <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
         </div>
       </div>

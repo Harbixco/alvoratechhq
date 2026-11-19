@@ -733,10 +733,7 @@ export default function Painting() {
             <div className="hero-grid">
               {/* Left Column Content */}
               <div className="hero-content reveal">
-                <div className="hero-badge">
-                  <span className="hero-badge-dot"></span>
-                  <span className="hero-badge-text">NOW BOOKING FOR THE UPCOMING SEASON</span>
-                </div>
+                
 
                 <h1 className="hero-title">
                   Flawless Color. Meticulous Prep. <span className="highlight-accent">Enduring Craftsmanship.</span>
@@ -779,19 +776,6 @@ export default function Painting() {
               <div className="hero-media reveal stagger-2">
                 <div className="hero-image-wrapper">
                   <img src="/painting/assets/images/hero-painter-roller.jpg?v=7" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
-
-                  {/* Floating Overlay Badge */}
-                  <div className="hero-floating-card">
-                    <div className="floating-card-icon">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                      </svg>
-                    </div>
-                    <div className="floating-card-text">
-                      <strong>Sherwin-Williams & Benjamin Moore</strong>
-                      <span>Certified Architectural Application Partner</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -2214,16 +2198,15 @@ export default function Painting() {
               </div>
             </div>
 
-            {/* Col 3: Quick Navigation */}
+            {/* Col 3: Clean Quick Links */}
             <div className="footer-col">
-              <h4>Navigation</h4>
+              <h4>Quick Links</h4>
               <div className="footer-links">
-                <a href="#hero" className="footer-link">Home</a>
-                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Painting Services</a>
-                <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Project Gallery</a>
-                <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a>
-                <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQ</a>
-                <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact & Location</a>
+                <a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
+                <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Us</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
+                <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Gallery</a>
+                <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
               </div>
             </div>
 

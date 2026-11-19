@@ -2185,8 +2185,13 @@
   }
 
   .electrical-demo .hero-media {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
+    display: none !important;
+  }
+  .electrical-demo .hero-image-wrapper {
+    display: none !important;
+  }
+  .electrical-demo .hero-image {
+    display: none !important;
   }
 
   .electrical-demo .site-header {

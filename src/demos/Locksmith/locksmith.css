@@ -658,20 +658,7 @@
   gap: clamp(2rem, 5vw, 4.5rem);
 }
 
-.locksmith-demo .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--color-amber-light);
-  color: var(--color-amber-hover);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-}
+.locksmith-demo .hero-badge { display: none !important; }
 
 .locksmith-demo .hero-title {
   margin-bottom: 1.25rem;
@@ -2498,31 +2485,9 @@
   }
 
   /* Hero Badge: Normal text size, no hyphenated word breaks */
-  .locksmith-demo .hero-badge,
-  .locksmith-demo [class*="hero-badge"] {
-    display: inline-flex !important;
-    align-items: center !important;
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    padding: 0.35rem 0.75rem !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.35 !important;
-    white-space: normal !important;
-    max-width: 100% !important;
-    text-align: left !important;
-    margin-bottom: 0.85rem !important;
-    word-break: normal !important;
-    hyphens: none !important;
-  }
+  .locksmith-demo .hero-badge { display: none !important; }
 
-  .locksmith-demo .hero-badge-text {
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.35 !important;
-    word-break: normal !important;
-    hyphens: none !important;
-  }
+  .locksmith-demo .hero-badge { display: none !important; }
 
   /* Normal, comfortable Hero Heading size */
   .locksmith-demo h1,
@@ -2699,4 +2664,55 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+/* MOBILE VIEW OPTIMIZATIONS (py, pb, mb, my & drawer typography) */
+@media (max-width: 768px) {
+  .locksmith-demo .hero-section {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+  .locksmith-demo .section-padding {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .locksmith-demo .site-header {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  .locksmith-demo h1,
+  .locksmith-demo .hero-title {
+    font-size: 1.65rem !important;
+    line-height: 1.22 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .locksmith-demo .hero-subtitle,
+  .locksmith-demo .hero-description,
+  .locksmith-demo .hero-content p {
+    font-size: 0.92rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .locksmith-demo .hero-media-wrapper,
+  .locksmith-demo .hero-image-container,
+  .locksmith-demo .hero-image,
+  .locksmith-demo .hero-media,
+  .locksmith-demo .about-media,
+  .locksmith-demo .about-image-wrapper,
+  .locksmith-demo .about-image,
+  .locksmith-demo .why-image-wrapper,
+  .locksmith-demo .why-image {
+    display: none !important;
+  }
+  
+  .locksmith-demo .mobile-drawer .nav-link {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    padding: 0.65rem 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #1e293b !important;
+    display: block !important;
+  }
 }

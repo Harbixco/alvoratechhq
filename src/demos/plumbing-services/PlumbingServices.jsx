@@ -273,7 +273,7 @@ export default function PlumbingServices() {
  className={`pf-hero-copy ${isActive ? 'is-active' : ''} ${isBefore ? 'is-before' : ''}`}
  aria-hidden={!isActive}
  >
- <div className="pf-hero-badge">{slide.badge}</div>
+ 
  <h1>
  {slide.title}
  <em>{slide.titleEm}</em>

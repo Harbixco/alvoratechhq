@@ -366,7 +366,7 @@ export default function TowingCompany() {
           <div className="hero-backdrop" aria-hidden="true"></div>
           <div className="container hero-inner">
             <div className="hero-content reveal is-visible">
-              <span className="hero-badge">PROFESSIONAL TOWING &amp; ROADSIDE ASSISTANCE</span>
+              
               <h1>FAST, RELIABLE &amp; PROFESSIONAL TOWING SERVICES</h1>
               <p>
                 Stranded on the road? Alvoratech provides dependable towing and roadside assistance
@@ -677,10 +677,6 @@ export default function TowingCompany() {
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              <div className="experience-badge">
-                <span>DEPENDABLE</span>
-                <strong>SUPPORT</strong>
               </div>
             </div>
 

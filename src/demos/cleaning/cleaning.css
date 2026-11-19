@@ -650,21 +650,7 @@
   z-index: 2;
 }
 
-.cleaning-demo .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--color-green-light);
-  color: var(--color-green);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(66, 184, 131, 0.25);
-  box-shadow: 0 2px 8px rgba(66, 184, 131, 0.15);
-}
+.cleaning-demo .hero-badge { display: none !important; }
 
 .cleaning-demo .hero-title {
   margin-bottom: 1.25rem;
@@ -2313,31 +2299,9 @@
   }
 
   /* Hero Badge: Normal text size, no hyphenated word breaks */
-  .cleaning-demo .hero-badge,
-  .cleaning-demo [class*="hero-badge"] {
-    display: inline-flex !important;
-    align-items: center !important;
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    padding: 0.35rem 0.75rem !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.35 !important;
-    white-space: normal !important;
-    max-width: 100% !important;
-    text-align: left !important;
-    margin-bottom: 0.85rem !important;
-    word-break: normal !important;
-    hyphens: none !important;
-  }
+  .cleaning-demo .hero-badge { display: none !important; }
 
-  .cleaning-demo .hero-badge-text {
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.35 !important;
-    word-break: normal !important;
-    hyphens: none !important;
-  }
+  .cleaning-demo .hero-badge { display: none !important; }
 
   /* Normal, comfortable Hero Heading size */
   .cleaning-demo h1,
@@ -2524,4 +2488,43 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+/* MOBILE VIEW OPTIMIZATIONS (py, pb, mb, my & drawer typography) */
+@media (max-width: 768px) {
+  .cleaning-demo .hero-section {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+  .cleaning-demo .section-padding {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .cleaning-demo .site-header {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  .cleaning-demo h1,
+  .cleaning-demo .hero-title {
+    font-size: 1.65rem !important;
+    line-height: 1.22 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .cleaning-demo .hero-subtitle,
+  .cleaning-demo .hero-description,
+  .cleaning-demo .hero-content p {
+    font-size: 0.92rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .cleaning-demo .mobile-drawer .nav-link {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    padding: 0.65rem 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #1e293b !important;
+    display: block !important;
+  }
 }

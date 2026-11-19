@@ -649,11 +649,6 @@ const runInit = () => {
         <div className="hero-grid">
           {/* Left Column Content */}
           <div className="hero-content reveal">
-            <div className="hero-badge">
-              <span className="hero-badge-dot"></span>
-              <span className="hero-badge-text">24/7 EMERGENCY ELECTRICAL DISPATCH ON-CALL</span>
-            </div>
-            
             <h1 className="hero-title">
               Master-Certified Electrical. Zero Shortcuts. <span className="highlight-amber">100% Code-Compliant.</span>
             </h1>
@@ -698,19 +693,6 @@ const runInit = () => {
           <div className="hero-media reveal stagger-2">
             <div className="hero-image-wrapper">
               <img src="/electrical/assets/images/elec-hero.jpg" alt="Alvoratech master electrician working inside electrical service panel" className="hero-image" loading="eager" />
-              
-              {/* Floating Overlay Badge */}
-              <div className="hero-floating-card">
-                <div className="floating-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
-                </div>
-                <div className="floating-card-text">
-                  <strong>Square D® & Generac® Certified</strong>
-                  <span>Tier-1 Licensed Energy Application Partner</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -2075,16 +2057,15 @@ const runInit = () => {
           </div>
         </div>
 
-        {/* Col 3: Streamlined Quick Navigation */}
+        {/* Col 3: Clean Quick Links */}
         <div className="footer-col">
-          <h4>Navigation</h4>
+          <h4>Quick Links</h4>
           <div className="footer-links">
-            <a href="#hero" className="footer-link">Home</a>
+            <a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
+            <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Us</a>
             <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a>
-            <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Project Gallery</a>
-            <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a>
-            <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQ</a>
-            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact & Location</a>
+            <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Gallery</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a>
           </div>
         </div>
 

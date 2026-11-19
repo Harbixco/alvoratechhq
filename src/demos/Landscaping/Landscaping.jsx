@@ -781,20 +781,17 @@ const runInit = () => {
         &times;
       </button>
     </div>
-    <a  href="#hero" onClick={(e) => navigateTo('home', e)} className="nav-link">Home</a>
-    <a  href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
-    <a  href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Before & After</a>
-    <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About Us</a>
-    <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Choose Us</a>
-    <a  href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Portfolio Gallery</a>
-    <a  href="#testimonials" className="nav-link">Client Reviews</a>
-    <a  href="#faq" onClick={(e) => navigateTo('faq', e)} className="nav-link">Frequently Asked Questions</a>
-    <a  href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact & Quotes</a>
-    <a  href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"marginTop":"1rem"}}>
-      <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-      </svg>
-      Chat with Us
+    <a href="#hero" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} className="nav-link">Home</a>
+    <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} className="nav-link">Services</a>
+    <a href="#why-us" onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-us', e); }} className="nav-link">About Us</a>
+    <a href="#portfolio" onClick={(e) => { setMobileMenuOpen(false); navigateTo('portfolio', e); }} className="nav-link">Portfolio Gallery</a>
+    <a href="#faq" onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} className="nav-link">FAQ</a>
+    <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="nav-link">Contact & Estimate</a>
+    <a href="tel:+14127963968" className="btn btn-primary" style={{"marginTop":"1rem"}}>
+      Call: +1 (412) 796-3968
+    </a>
+    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"marginTop":"0.5rem"}}>
+      Chat on WhatsApp
     </a>
   </aside>
 
@@ -843,12 +840,7 @@ const runInit = () => {
         <div className="hero-grid">
           {/* Left Column: Value Copy */}
           <div className="hero-content reveal">
-            <span className="hero-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-              PREMIER AMERICAN LANDSCAPE ARCHITECTURE & GROUNDS CARE
-            </span>
+            
             <h1 className="hero-title">
               Crafting Landscapes. <br />
               <span className="text-gradient">Elevating Outdoor Living.</span>
@@ -881,21 +873,10 @@ const runInit = () => {
             </div>
           </div>
 
-          {/* Right Column: Visual Feature & Floating Badge */}
+          {/* Right Column: Visual Feature */}
           <div className="hero-media-wrapper reveal stagger-1">
             <div className="hero-image-container">
               <img src="/landscaping/assets/images/landscape-hero.jpg" alt="Luxury estate manicured landscaping and architectural hardscaping by Alvoratech" className="hero-image" width="700" height="490" />
-            </div>
-            <div className="floating-craft-card">
-              <div className="floating-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-              </div>
-              <div className="floating-text">
-                <strong>Master Crafted</strong>
-                <span>100% Satisfaction Guarantee</span>
-              </div>
             </div>
           </div>
         </div>
@@ -1116,7 +1097,6 @@ const runInit = () => {
          ========================================================================== */}
     <section className="special-cta-section" aria-label="Call to action">
       <div className="special-cta-content reveal">
-        <span className="demo-pill" style={{"marginBottom":"1.25rem","display":"inline-block"}}>TRANSFORM YOUR PROPERTY TODAY</span>
         <h2>Ready to Elevate Your Outdoor Living Space?</h2>
         <p>
           From concept 3D blueprints to the final stone paver, Alvoratech delivers unmatched landscaping artistry and engineering. Speak with our landscape consultants today for a no-obligation site consultation.
@@ -2156,17 +2136,13 @@ const runInit = () => {
 
         {/* Quick Links */}
         <div>
-          <h4 className="footer-heading">Navigation</h4>
+          <h4 className="footer-heading">Quick Links</h4>
           <ul className="footer-links">
             <li><a href="#hero" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a></li>
-            <li><a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Alvoratech</a></li>
-            <li><a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Before & After Slider</a></li>
-            <li><a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">Why Choose Us</a></li>
-            <li><a href="#process" className="footer-link">Our 4-Step Process</a></li>
-            <li><a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Project Portfolio</a></li>
-            <li><a href="#testimonials" className="footer-link">Client Reviews</a></li>
-            <li><a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQ</a></li>
-            <li><a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Request Free Estimate</a></li>
+            <li><a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="footer-link">About Us</a></li>
+            <li><a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Services</a></li>
+            <li><a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="footer-link">Gallery</a></li>
+            <li><a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact</a></li>
           </ul>
         </div>
 
