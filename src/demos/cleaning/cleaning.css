@@ -2487,3 +2487,41 @@
     transition: all 0.25s ease !important;
   }
 }
+
+/* Hide second image (About image) on mobile */
+@media (max-width: 768px) {
+  .cleaning-demo .about-media,
+  .cleaning-demo .about-image-wrapper {
+    display: none !important;
+  }
+}
+
+/* Mobile Drawer Header with Close Button */
+.cleaning-demo .mobile-drawer-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  width: 100% !important;
+}
+.cleaning-demo .mobile-drawer-title {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--color-primary) !important;
+}
+.cleaning-demo .mobile-drawer-close {
+  background: transparent !important;
+  border: none !important;
+  font-size: 1.75rem !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 0.25rem 0.5rem !important;
+  color: var(--color-primary) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

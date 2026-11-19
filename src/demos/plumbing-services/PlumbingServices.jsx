@@ -181,13 +181,17 @@ export default function PlumbingServices() {
 
  {/* Mobile Navigation Drawer */}
  <div className={`pf-mobile-nav ${mobileNavOpen ? 'is-open' : ''}`}>
- <a href="#top" onClick={(e) => navigateTo('home', e)}>Home</a>
- <a href="#residential" onClick={(e) => navigateTo('residential', e)}>Residential Plumbing</a>
- <a href="#commercial" onClick={(e) => navigateTo('commercial', e)}>Commercial Plumbing</a>
- <a href="#drain" onClick={(e) => navigateTo('drain', e)}>Drain & Sewer Cleaning</a>
- <a href="#water-damage" onClick={(e) => navigateTo('water-damage', e)}>Water Damage Mitigation</a>
- <a href="#about" onClick={(e) => navigateTo('about', e)}>About ProFlow</a>
- <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="pf-mobile-cta">
+ <div className="pf-mobile-nav-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+   <span style={{ fontWeight: 700, textTransform: 'uppercase', fontSize: '0.9rem', color: '#ffffff' }}>Plumbing Menu</span>
+   <button type="button" onClick={() => setMobileNavOpen(false)} style={{ background: 'transparent', border: 'none', color: '#ffffff', fontSize: '1.75rem', cursor: 'pointer', lineHeight: 1, padding: '0.25rem 0.5rem' }} aria-label="Close menu">&times;</button>
+ </div>
+ <a href="#top" onClick={(e) => { setMobileNavOpen(false); navigateTo('home', e); }}>Home</a>
+ <a href="#residential" onClick={(e) => { setMobileNavOpen(false); navigateTo('residential', e); }}>Residential Plumbing</a>
+ <a href="#commercial" onClick={(e) => { setMobileNavOpen(false); navigateTo('commercial', e); }}>Commercial Plumbing</a>
+ <a href="#drain" onClick={(e) => { setMobileNavOpen(false); navigateTo('drain', e); }}>Drain & Sewer Cleaning</a>
+ <a href="#water-damage" onClick={(e) => { setMobileNavOpen(false); navigateTo('water-damage', e); }}>Water Damage Mitigation</a>
+ <a href="#about" onClick={(e) => { setMobileNavOpen(false); navigateTo('about', e); }}>About ProFlow</a>
+ <a href="#contact" onClick={(e) => { setMobileNavOpen(false); navigateTo('contact', e); }} className="pf-mobile-cta">
  Get Free Quote
  </a>
  </div>

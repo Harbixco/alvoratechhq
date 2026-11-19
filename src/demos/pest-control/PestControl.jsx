@@ -689,6 +689,12 @@ const runInit = () => {
   {/* Mobile Navigation Overlay & Drawer */}
   <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}  id="mobileNavOverlay"></div>
   <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} id="mobileDrawer" aria-label="Mobile Navigation">
+    <div className="mobile-drawer-header">
+      <span className="mobile-drawer-title">Pest Control Menu</span>
+      <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+        &times;
+      </button>
+    </div>
     <nav>
       <a  href="#home" onClick={(e) => navigateTo('home', e)} className="nav-link">Home</a>
       <a  href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About</a>

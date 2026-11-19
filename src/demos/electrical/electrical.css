@@ -2166,41 +2166,49 @@
     max-width: 100vw !important;
   }
 
-  /* Hero Badge: Normal text size, no hyphenated word breaks */
-  .electrical-demo .hero-badge,
-  .electrical-demo [class*="hero-badge"] {
-    display: inline-flex !important;
-    align-items: center !important;
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    padding: 0.35rem 0.75rem !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.35 !important;
-    white-space: normal !important;
-    max-width: 100% !important;
-    text-align: left !important;
-    margin-bottom: 0.85rem !important;
-    word-break: normal !important;
-    hyphens: none !important;
+  /* Reduced py, pb, my, mb on mobile */
+  .electrical-demo .hero-section {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
   }
 
-  .electrical-demo .hero-badge-text {
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.35 !important;
-    word-break: normal !important;
-    hyphens: none !important;
+  .electrical-demo .section-padding {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .electrical-demo .metrics-strip {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .electrical-demo .hero-media {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .electrical-demo .site-header {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  /* Remove Fourth Image: The 24/7 emergency dispatch pill badge from hero on mobile */
+  .electrical-demo .hero-badge,
+  .electrical-demo [class*="hero-badge"] {
+    display: none !important;
   }
 
   /* Normal, comfortable Hero Heading size */
   .electrical-demo h1,
   .electrical-demo .hero-title {
-    font-size: clamp(1.65rem, 5.5vw, 2.1rem) !important;
+    font-size: 1.65rem !important;
     line-height: 1.22 !important;
     letter-spacing: -0.02em !important;
     font-weight: 800 !important;
-    margin-bottom: 1rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
     word-break: normal !important;
     hyphens: none !important;
   }
@@ -2209,10 +2217,92 @@
   .electrical-demo .hero-subtitle,
   .electrical-demo .hero-description,
   .electrical-demo .hero-content p {
-    font-size: 0.95rem !important;
-    line-height: 1.55 !important;
-    margin-bottom: 1.5rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 1.25rem !important;
     color: #475569 !important;
+  }
+
+  /* 5th Image Fix: Load Toggle Cards layout and +40A badge sizing */
+  .electrical-demo .load-toggle-card {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.65rem 0.75rem !important;
+    gap: 0.5rem !important;
+    min-height: auto !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .electrical-demo .load-toggle-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .electrical-demo .load-toggle-icon {
+    width: 2rem !important;
+    height: 2rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .electrical-demo .load-toggle-title strong {
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .electrical-demo .load-toggle-title span {
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .electrical-demo .load-amp-pill {
+    font-size: 0.72rem !important;
+    padding: 0.2rem 0.5rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+    border-radius: 999px !important;
+  }
+
+  /* 6th Image Fix: Calculator Output Card width and padding */
+  .electrical-demo .calc-output-card {
+    padding: 1.5rem 1rem !important;
+    border-radius: var(--radius-lg) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .electrical-demo .gauge-amps-display {
+    font-size: 1.75rem !important;
+  }
+
+  .electrical-demo .gauge-recommendation-box h4 {
+    font-size: 1.1rem !important;
+  }
+
+  /* 7th Image Fix: WhatsApp dispatch submit button width, text wrap, and padding */
+  .electrical-demo .btn-whatsapp,
+  .electrical-demo .dispatch-form .btn,
+  .electrical-demo button[type="submit"].btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    font-size: 0.925rem !important;
+    padding: 0.85rem 1rem !important;
+    line-height: 1.3 !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   /* Section Headings */
@@ -2340,4 +2430,34 @@
     border-radius: 2px !important;
     transition: all 0.25s ease !important;
   }
+}
+
+/* Mobile Drawer Header with Close Button */
+.electrical-demo .mobile-drawer-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  width: 100% !important;
+}
+.electrical-demo .mobile-drawer-title {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--color-primary, #0C2233) !important;
+}
+.electrical-demo .mobile-drawer-close {
+  background: transparent !important;
+  border: none !important;
+  font-size: 1.75rem !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 0.25rem 0.5rem !important;
+  color: var(--color-primary, #0C2233) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }

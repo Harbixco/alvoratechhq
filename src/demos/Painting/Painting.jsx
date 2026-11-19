@@ -257,7 +257,7 @@ export default function Painting() {
         const baScenarios = {
           cabinets: {
             before: '/painting/assets/images/ba-cabinets-before.jpg',
-            after: '/painting/assets/images/service-cabinet-refinishing.jpg?v=5',
+            after: '/painting/assets/images/service-cabinet-refinishing.jpg?v=7',
             title: 'Kitchen Cabinet Refinishing & Factory Urethane Spray'
           },
           exterior: {
@@ -660,13 +660,19 @@ export default function Painting() {
       {/* Mobile Navigation Overlay & Drawer */}
       <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
       <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
-        <a onClick={(e) => navigateTo('home', e)} href="#hero" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
-        <a onClick={(e) => navigateTo('services', e)} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Painting Services</a>
-        <a onClick={(e) => navigateTo('portfolio', e)} href="#portfolio" className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Project Gallery</a>
-        <a onClick={(e) => navigateTo('why-us', e)} href="#why-us" className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Choose Us</a>
-        <a onClick={(e) => navigateTo('faq', e)} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
-        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Location</a>
-        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
+        <div className="mobile-drawer-header">
+          <span className="mobile-drawer-title">Painting Menu</span>
+          <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+            &times;
+          </button>
+        </div>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} href="#hero" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Painting Services</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('portfolio', e); }} href="#portfolio" className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Project Gallery</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-us', e); }} href="#why-us" className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Choose Us</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Location</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
           Get Free Estimate
         </a>
         <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ "marginTop": "0.5rem" }}>
@@ -772,7 +778,7 @@ export default function Painting() {
               {/* Right Column Image Presentation */}
               <div className="hero-media reveal stagger-2">
                 <div className="hero-image-wrapper">
-                  <img src="/painting/assets/images/hero-painter-roller.jpg?v=5" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
+                  <img src="/painting/assets/images/hero-painter-roller.jpg?v=7" alt="Alvoratech professional painting contractor rolling crisp interior wall" className="hero-image" loading="eager" />
 
                   {/* Floating Overlay Badge */}
                   <div className="hero-floating-card">
@@ -895,7 +901,7 @@ export default function Painting() {
               {/* Service 3: Cabinets */}
               <article className="service-card reveal stagger-3">
                 <div className="service-image-box">
-                  <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="Kitchen cabinet spraying" className="service-image" loading="lazy" />
+                  <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=7" alt="Kitchen cabinet spraying" className="service-image" loading="lazy" />
                   <span className="service-badge">Kitchen Cabinets</span>
                 </div>
                 <div className="service-content">
@@ -934,7 +940,7 @@ export default function Painting() {
           <div className="container">
             <div className="why-grid">
               <div className="why-image-card reveal">
-                <img src="/painting/assets/images/about-painter-wall.jpg?v=5" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+                <img src="/painting/assets/images/about-painter-wall.jpg?v=7" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
               </div>
               <div className="reveal stagger-1">
                 <span className="section-eyebrow">ABOUT ALVORATECH</span>
@@ -1168,7 +1174,7 @@ export default function Painting() {
               {/* Service 3 */}
               <article className="service-card reveal stagger-3">
                 <div className="service-image-box">
-                  <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="Kitchen cabinet factory spraying and refinishing" className="service-image" loading="lazy" />
+                  <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=7" alt="Kitchen cabinet factory spraying and refinishing" className="service-image" loading="lazy" />
                   <span className="service-badge">Kitchen Cabinets</span>
                 </div>
                 <div className="service-content">
@@ -1660,7 +1666,7 @@ export default function Painting() {
 
               {/* After Image with dynamic clip wrap */}
               <div className="ba-image-after-wrap" id="ba-after-wrap">
-                <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="After professional spray finish" className="ba-image ba-image-after" id="ba-image-after" />
+                <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=7" alt="After professional spray finish" className="ba-image ba-image-after" id="ba-image-after" />
               </div>
               <span className="ba-badge ba-badge-after">AFTER ALVORATECH</span>
 
@@ -1715,7 +1721,7 @@ export default function Painting() {
 
               {/* Item 2 */}
               <div className="gallery-item" data-category="cabinets">
-                <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=5" alt="Custom sprayed white shaker kitchen cabinets" loading="lazy" />
+                <img src="/painting/assets/images/service-cabinet-refinishing.jpg?v=7" alt="Custom sprayed white shaker kitchen cabinets" loading="lazy" />
                 <div className="gallery-overlay">
                   <h4>Custom Shaker Cabinet Refinishing</h4>
                   <span>Factory Lacquer Finish</span>
@@ -1811,7 +1817,7 @@ export default function Painting() {
           <div className="container">
             <div className="why-grid">
               <div className="why-image-card reveal">
-                <img src="/painting/assets/images/about-painter-wall.jpg?v=5" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
+                <img src="/painting/assets/images/about-painter-wall.jpg?v=7" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
               </div>
               <div className="reveal stagger-1">
                 <span className="section-eyebrow">ABOUT ALVORATECH</span>

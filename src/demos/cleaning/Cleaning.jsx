@@ -613,14 +613,20 @@ const runInit = () => {
       {/* Mobile Drawer */}
       <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}></div>
       <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`}>
-        <a onClick={(e) => navigateTo('home', e)} href="#home" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
-        <a onClick={(e) => navigateTo('about', e)} href="#about" className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>About Us</a>
-        <a onClick={(e) => navigateTo('services', e)} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Cleaning Services</a>
-        <a onClick={(e) => navigateTo('why-choose', e)} href="#why-choose" className={`nav-link ${currentView === 'why-choose' ? 'active' : ''}`}>Why Choose Us</a>
-        <a onClick={(e) => navigateTo('gallery', e)} href="#gallery" className={`nav-link ${currentView === 'gallery' ? 'active' : ''}`}>Gallery</a>
-        <a onClick={(e) => navigateTo('faq', e)} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
-        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
-        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className="btn btn-primary" style={{ marginTop: '1rem' }}>Get Free Quote</a>
+        <div className="mobile-drawer-header">
+          <span className="mobile-drawer-title">Cleaning Menu</span>
+          <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+            &times;
+          </button>
+        </div>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} href="#home" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }} href="#about" className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>About Us</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Cleaning Services</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-choose', e); }} href="#why-choose" className={`nav-link ${currentView === 'why-choose' ? 'active' : ''}`}>Why Choose Us</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('gallery', e); }} href="#gallery" className={`nav-link ${currentView === 'gallery' ? 'active' : ''}`}>Gallery</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary" style={{ marginTop: '1rem' }}>Get Free Quote</a>
         <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ marginTop: '0.5rem' }}>Call: +1 (412) 796-3968</a>
         <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ marginTop: '0.5rem' }}>Chat on WhatsApp</a>
       </aside>

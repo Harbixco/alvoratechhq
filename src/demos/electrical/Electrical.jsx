@@ -560,7 +560,7 @@ const runInit = () => {
 
             {/* Nav CTA Actions */}
             <div className="nav-actions">
-              <a href="#dispatch" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">
+              <a href="#dispatch" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm desktop-only-btn">
                 <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                 </svg>
@@ -579,13 +579,19 @@ const runInit = () => {
       {/* Mobile Navigation Overlay & Drawer */}
       <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
       <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
-        <a onClick={(e) => navigateTo('home', e)} href="#hero" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
-        <a onClick={(e) => navigateTo('services', e)} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Electrical Services</a>
-        <a onClick={(e) => navigateTo('portfolio', e)} href="#portfolio" className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Project Gallery</a>
-        <a onClick={(e) => navigateTo('why-us', e)} href="#why-us" className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Choose Us</a>
-        <a onClick={(e) => navigateTo('faq', e)} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
-        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Dispatch</a>
-        <a onClick={(e) => navigateTo('contact', e)} href="#contact" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
+        <div className="mobile-drawer-header">
+          <span className="mobile-drawer-title">Electrical Menu</span>
+          <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+            &times;
+          </button>
+        </div>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} href="#hero" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Electrical Services</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('portfolio', e); }} href="#portfolio" className={`nav-link ${currentView === 'portfolio' ? 'active' : ''}`}>Project Gallery</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-us', e); }} href="#why-us" className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Choose Us</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Dispatch</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
           Schedule Service
         </a>
         <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ "marginTop": "0.5rem" }}>
