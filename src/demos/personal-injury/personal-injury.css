@@ -28,10 +28,10 @@
 .personal-injury-demo .skip-link { position: fixed; z-index: 1000; top: 8px; left: 8px; padding: 10px 16px; color: var(--white); background: var(--navy); transform: translateY(-150%); }
 .personal-injury-demo .skip-link:focus { transform: translateY(0); }
 
-.personal-injury-demo .demo-banner { position: relative; z-index: 30; display: flex; min-height: 35px; align-items: center; justify-content: center; gap: 10px; padding: 6px 16px; color: #fff; background: #a97936; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-align: center; }
-.personal-injury-demo .demo-banner__mark { display: inline-grid; width: 15px; height: 15px; place-items: center; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; font-size: 10px; line-height: 1; }
+.personal-injury-demo .demo-banner { position: relative; z-index: 30; display: flex; min-height: 35px; align-items: center; justify-content: center; gap: 10px; padding: 6px 16px; color: #fff; background: #a97936; font-size: 0.8125rem; font-weight: 700; letter-spacing: .16em; text-align: center; }
+.personal-injury-demo .demo-banner__mark { display: inline-grid; width: 15px; height: 15px; place-items: center; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; font-size: 0.875rem; line-height: 1; }
 .personal-injury-demo .demo-banner__dash { padding-inline: 5px; opacity: .7; }
-.personal-injury-demo .utility-bar { color: #d3d9df; background: #0c1722; font-size: 11px; letter-spacing: .04em; }
+.personal-injury-demo .utility-bar { color: #d3d9df; background: #0c1722; font-size: 0.875rem; letter-spacing: .04em; }
 .personal-injury-demo .utility-bar__inner, .personal-injury-demo .utility-bar__contact { display: flex; align-items: center; justify-content: space-between; }
 .personal-injury-demo .utility-bar__inner { min-height: 35px; }
 .personal-injury-demo .utility-bar p { margin: 0; }
@@ -46,15 +46,15 @@
 .personal-injury-demo .brand { display: inline-flex; align-items: center; gap: 12px; }
 .personal-injury-demo .brand__monogram { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid var(--gold); color: var(--gold-light); font-family: var(--serif); font-size: 25px; line-height: 1; }
 .personal-injury-demo .brand__name { display: flex; flex-direction: column; color: #fff; font-size: 18px; font-weight: 600; letter-spacing: .15em; line-height: 1.2; }
-.personal-injury-demo .brand__name span { margin-top: 4px; color: #bdc3c8; font-size: 8px; font-weight: 500; letter-spacing: .18em; }
+.personal-injury-demo .brand__name span { margin-top: 4px; color: #bdc3c8; font-size: 0.75rem; font-weight: 500; letter-spacing: .18em; }
 .personal-injury-demo .primary-nav { display: flex; align-items: center; gap: clamp(18px, 2.2vw, 34px); }
-.personal-injury-demo .primary-nav > a:not(.button) { position: relative; color: #e0e3e5; font-size: 12px; transition: color .2s ease; }
+.personal-injury-demo .primary-nav > a:not(.button) { position: relative; color: #e0e3e5; font-size: 0.9375rem; transition: color .2s ease; }
 .personal-injury-demo .primary-nav > a:not(.button)::after { position: absolute; right: 0; bottom: -7px; left: 0; height: 1px; background: var(--gold); content: ""; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
 .personal-injury-demo .primary-nav > a:not(.button):hover { color: var(--gold-light); }
 .personal-injury-demo .primary-nav > a:not(.button):hover::after { transform: scaleX(1); }
-.personal-injury-demo .button { display: inline-flex; min-height: 54px; align-items: center; justify-content: center; gap: 18px; padding: 0 24px; border: 1px solid transparent; font-size: 12px; font-weight: 700; letter-spacing: .02em; transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease; }
+.personal-injury-demo .button { display: inline-flex; min-height: 54px; align-items: center; justify-content: center; gap: 18px; padding: 0 24px; border: 1px solid transparent; font-size: 0.95rem; font-weight: 700; letter-spacing: .02em; transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease; }
 .personal-injury-demo .button:hover { transform: translateY(-2px); }
-.personal-injury-demo .button--small { min-height: 42px; padding-inline: 17px; font-size: 11px; }
+.personal-injury-demo .button--small { min-height: 42px; padding-inline: 17px; font-size: 0.875rem; }
 .personal-injury-demo .button--gold { color: var(--navy); background: var(--gold-light); }
 .personal-injury-demo .button--gold:hover { background: #ecd7ad; }
 .personal-injury-demo .button--outline { color: var(--navy); border-color: #b7a176; background: transparent; }
@@ -71,7 +71,7 @@
 .personal-injury-demo .hero__overlay { background: linear-gradient(90deg, rgba(10,20,30,.91) 0%, rgba(11,21,31,.81) 39%, rgba(11,21,31,.32) 76%, rgba(11,21,31,.1) 100%), linear-gradient(0deg, rgba(8,16,24,.35), transparent 34%); }
 .personal-injury-demo .hero__content { position: relative; z-index: 1; display: flex; min-height: inherit; flex-direction: column; justify-content: center; padding-top: 42px; padding-bottom: 64px; }
 .personal-injury-demo .hero__copy { max-width: 695px; }
-.personal-injury-demo .eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 20px; color: #8d744c; font-size: 10px; font-weight: 700; letter-spacing: .17em; line-height: 1.4; text-transform: uppercase; }
+.personal-injury-demo .eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 20px; color: #8d744c; font-size: 0.8125rem; font-weight: 700; letter-spacing: .17em; line-height: 1.4; text-transform: uppercase; }
 .personal-injury-demo .eyebrow > span { display: inline-block; width: 26px; height: 1px; background: var(--gold); }
 .personal-injury-demo .eyebrow--light { color: #dfcba4; }
 .personal-injury-demo .hero h1, .personal-injury-demo h2 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -.035em; }
@@ -79,20 +79,20 @@
 .personal-injury-demo .hero h1 em, .personal-injury-demo h2 em { color: var(--gold-light); font-weight: 400; }
 .personal-injury-demo .hero__intro { max-width: 485px; margin: 23px 0 30px; color: #e1e3e4; font-size: 15px; }
 .personal-injury-demo .hero__actions { display: flex; align-items: center; gap: 29px; }
-.personal-injury-demo .text-link { display: inline-flex; align-items: center; gap: 12px; color: var(--navy); font-size: 12px; font-weight: 700; }
+.personal-injury-demo .text-link { display: inline-flex; align-items: center; gap: 12px; color: var(--navy); font-size: 0.9375rem; font-weight: 700; }
 .personal-injury-demo .text-link span, .personal-injury-demo .service-card__body a span { transition: transform .2s ease; }
 .personal-injury-demo .text-link:hover span, .personal-injury-demo .service-card__body a:hover span { transform: translateX(4px); }
 .personal-injury-demo .text-link--light { color: #fff; }
 .personal-injury-demo .text-link--light:hover { color: var(--gold-light); }
 .personal-injury-demo .hero__proof { display: flex; align-items: center; gap: 14px; margin-top: 45px; }
-.personal-injury-demo .hero__initials { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(223,194,143,.7); border-radius: 50%; color: var(--gold-light); font-family: var(--serif); font-size: 12px; }
-.personal-injury-demo .hero__proof p { margin: 0; color: #d1d6db; font-size: 10px; line-height: 1.65; }
-.personal-injury-demo .hero__proof strong { color: #fff; font-size: 11px; font-weight: 600; }
-.personal-injury-demo .hero__caption { position: absolute; right: 0; bottom: 36px; display: flex; align-items: center; gap: 14px; color: #d4d7da; font-size: 9px; letter-spacing: .08em; }
+.personal-injury-demo .hero__initials { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(223,194,143,.7); border-radius: 50%; color: var(--gold-light); font-family: var(--serif); font-size: 0.875rem; }
+.personal-injury-demo .hero__proof p { margin: 0; color: #d1d6db; font-size: 0.875rem; line-height: 1.65; }
+.personal-injury-demo .hero__proof strong { color: #fff; font-size: 0.9375rem; font-weight: 600; }
+.personal-injury-demo .hero__caption { position: absolute; right: 0; bottom: 36px; display: flex; align-items: center; gap: 14px; color: #d4d7da; font-size: 0.8125rem; letter-spacing: .08em; }
 .personal-injury-demo .hero__caption-rule { width: 62px; height: 1px; background: var(--gold); }
 .personal-injury-demo .hero__slide-count { color: #aeb4b9; }
 .personal-injury-demo .hero__slide-count b { color: var(--gold-light); font-weight: 600; }
-.personal-injury-demo .scroll-cue { position: absolute; bottom: 31px; left: max(32px, calc((100% - var(--container))/2)); display: flex; align-items: center; gap: 12px; color: #d3d6d9; font-size: 9px; letter-spacing: .09em; text-transform: uppercase; writing-mode: horizontal-tb; }
+.personal-injury-demo .scroll-cue { position: absolute; bottom: 31px; left: max(32px, calc((100% - var(--container))/2)); display: flex; align-items: center; gap: 12px; color: #d3d6d9; font-size: 0.8125rem; letter-spacing: .09em; text-transform: uppercase; writing-mode: horizontal-tb; }
 .personal-injury-demo .scroll-cue span { width: 26px; height: 1px; background: var(--gold); }
 
 .personal-injury-demo .welcome { padding-block: 86px; background: var(--paper); }
@@ -103,17 +103,17 @@
 .personal-injury-demo .welcome h2, .personal-injury-demo .section-heading h2, .personal-injury-demo .about h2, .personal-injury-demo .faq h2, .personal-injury-demo .contact h2 { color: var(--navy); font-size: clamp(37px, 4vw, 53px); line-height: 1.17; }
 .personal-injury-demo .welcome h2 em, .personal-injury-demo .section-heading h2 em, .personal-injury-demo .about h2 em, .personal-injury-demo .faq h2 em, .personal-injury-demo .contact h2 em { color: #a77f46; }
 .personal-injury-demo .welcome__lead { max-width: 620px; margin: 22px 0 13px; color: #333b42; font-size: 17px; line-height: 1.65; }
-.personal-injury-demo .welcome__body > p:not(.welcome__lead) { max-width: 610px; margin: 0 0 24px; color: #6d7376; font-size: 13px; }
+.personal-injury-demo .welcome__body > p:not(.welcome__lead) { max-width: 610px; margin: 0 0 24px; color: #6d7376; font-size: 1rem; }
 .personal-injury-demo .welcome__stamp { display: flex; width: 145px; height: 145px; flex-direction: column; align-items: center; justify-content: center; justify-self: end; border: 1px solid #d5c6a9; border-radius: 50%; color: #9c7a4d; text-align: center; transform: rotate(9deg); }
-.personal-injury-demo .welcome__stamp > span { font-size: 6px; font-weight: 700; letter-spacing: .13em; }
+.personal-injury-demo .welcome__stamp > span { font-size: 0.75rem; font-weight: 700; letter-spacing: .13em; }
 .personal-injury-demo .welcome__stamp b { margin-block: 8px; font-family: var(--serif); font-size: 14px; font-weight: 500; line-height: 1.14; letter-spacing: .1em; }
 .personal-injury-demo .welcome .text-link { margin-top: 1px; }
 
 .personal-injury-demo .trust-strip { padding: 25px 0 12px; color: white; background: var(--navy); }
 .personal-injury-demo .trust-strip__inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-.personal-injury-demo .trust-strip__inner > div { display: flex; align-items: center; gap: 10px; font-size: 11px; }
+.personal-injury-demo .trust-strip__inner > div { display: flex; align-items: center; gap: 10px; font-size: 0.9375rem; }
 .personal-injury-demo .trust-icon { color: var(--gold-light); font-size: 14px; }
-.personal-injury-demo .trust-strip__note { margin: 11px auto 0; color: #9ba5ae; font-size: 9px; text-align: center; }
+.personal-injury-demo .trust-strip__note { margin: 11px auto 0; color: #9ba5ae; font-size: 0.8125rem; text-align: center; }
 
 .personal-injury-demo .about { background: #fff; }
 .personal-injury-demo .about__grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(58px, 9vw, 130px); }
@@ -121,29 +121,29 @@
 .personal-injury-demo .about__portrait { position: relative; width: 100%; aspect-ratio: 4 / 4.85; overflow: hidden; background: #e4e0d8; }
 .personal-injury-demo .about__portrait::after { position: absolute; inset: 0; border: 1px solid rgba(201,165,106,.45); content: ""; pointer-events: none; }
 .personal-injury-demo .about__portrait .personal-injury-demo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
-.personal-injury-demo .about__portrait-note { display: flex; align-items: center; gap: 10px; margin-top: 14px; color: #8c8d89; font-size: 8px; font-weight: 600; letter-spacing: .16em; }
+.personal-injury-demo .about__portrait-note { display: flex; align-items: center; gap: 10px; margin-top: 14px; color: #8c8d89; font-size: 0.8125rem; font-weight: 600; letter-spacing: .16em; }
 .personal-injury-demo .about__note-line { width: 25px; height: 1px; background: var(--gold); }
 .personal-injury-demo .about__experience { position: absolute; right: -37px; bottom: 50px; display: flex; width: 143px; height: 143px; flex-direction: column; align-items: center; justify-content: center; border: 7px solid #fff; border-radius: 50%; color: var(--navy); background: var(--gold-light); text-align: center; }
 .personal-injury-demo .about__experience strong { font-family: var(--serif); font-size: 34px; font-weight: 400; line-height: 1.15; }
-.personal-injury-demo .about__experience span { font-size: 9px; line-height: 1.4; }
+.personal-injury-demo .about__experience span { font-size: 0.8125rem; line-height: 1.4; }
 .personal-injury-demo .about__copy h2 { margin-bottom: 13px; }
 .personal-injury-demo .fiction-asterisk { display: inline-block; margin-left: 2px; color: #a77f46; font-family: var(--sans); font-size: .34em; font-style: normal; font-weight: 700; vertical-align: super; }
-.personal-injury-demo .about__role { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; color: #7d8184; font-size: 11px; letter-spacing: .02em; }
-.personal-injury-demo .fiction-tag { padding: 3px 6px; color: #8e6d3c; background: #f3eadb; font-size: 7px; font-weight: 700; letter-spacing: .1em; }
+.personal-injury-demo .about__role { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; color: #7d8184; font-size: 0.875rem; letter-spacing: .02em; }
+.personal-injury-demo .fiction-tag { padding: 3px 6px; color: #8e6d3c; background: #f3eadb; font-size: 0.75rem; font-weight: 700; letter-spacing: .1em; }
 .personal-injury-demo .about__lead { margin: 0 0 12px; color: #303942; font-family: var(--serif); font-size: 19px; line-height: 1.5; }
-.personal-injury-demo .about__copy > p:not(.eyebrow, .personal-injury-demo .about__role, .personal-injury-demo .about__lead, .personal-injury-demo .micro-disclaimer) { margin: 0 0 13px; color: #73787a; font-size: 12px; }
+.personal-injury-demo .about__copy > p:not(.eyebrow, .personal-injury-demo .about__role, .personal-injury-demo .about__lead, .personal-injury-demo .micro-disclaimer) { margin: 0 0 13px; color: #73787a; font-size: 1rem; }
 .personal-injury-demo .credential-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0 26px; padding-block: 16px; border-block: 1px solid var(--line); }
 .personal-injury-demo .credential-list > div { display: flex; align-items: flex-start; gap: 10px; }
 .personal-injury-demo .credential-list__icon { color: #aa854f; font-family: var(--serif); font-size: 17px; }
-.personal-injury-demo .credential-list p { margin: 0; color: #73787a; font-size: 10px; line-height: 1.65; }
-.personal-injury-demo .credential-list strong { color: var(--navy); font-size: 11px; }
-.personal-injury-demo .micro-disclaimer { margin: 16px 0 0; color: #858887; font-size: 9px; line-height: 1.55; }
+.personal-injury-demo .credential-list p { margin: 0; color: #73787a; font-size: 0.9375rem; line-height: 1.65; }
+.personal-injury-demo .credential-list strong { color: var(--navy); font-size: 1rem; }
+.personal-injury-demo .micro-disclaimer { margin: 16px 0 0; color: #858887; font-size: 0.8125rem; line-height: 1.55; }
 
 .personal-injury-demo .services { background: var(--paper); }
 .personal-injury-demo .section-heading { margin-bottom: 42px; }
 .personal-injury-demo .section-heading--split { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
 .personal-injury-demo .section-heading h2 { margin-top: 0; }
-.personal-injury-demo .section-heading--split > p { max-width: 340px; margin: 0 0 6px; color: #727779; font-size: 12px; }
+.personal-injury-demo .section-heading--split > p { max-width: 340px; margin: 0 0 6px; color: #727779; font-size: 1.0625rem; }
 .personal-injury-demo .services__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
 .personal-injury-demo .service-card { min-width: 0; background: #fff; box-shadow: 0 8px 26px rgba(16,29,43,.035); transition: box-shadow .25s ease, transform .25s ease; }
 .personal-injury-demo .service-card:hover { box-shadow: 0 15px 34px rgba(16,29,43,.11); transform: translateY(-4px); }
@@ -151,74 +151,74 @@
 .personal-injury-demo .service-card__image::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,18,27,.28), transparent 60%); content: ""; }
 .personal-injury-demo .service-card__image .personal-injury-demo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .personal-injury-demo .service-card:hover .service-card__image .personal-injury-demo img { transform: scale(1.06); }
-.personal-injury-demo .service-card__number { position: absolute; z-index: 1; right: 12px; bottom: 9px; color: white; font-family: var(--serif); font-size: 12px; }
+.personal-injury-demo .service-card__number { position: absolute; z-index: 1; right: 12px; bottom: 9px; color: white; font-family: var(--serif); font-size: 0.875rem; }
 .service-card__
-.personal-injury-demo .service-card h3 { margin: 0 0 7px; color: var(--navy); font-family: var(--serif); font-size: 17px; font-weight: 500; line-height: 1.3; }
-.personal-injury-demo .service-card p { min-height: 60px; margin: 0 0 12px; color: #73797b; font-size: 10px; line-height: 1.65; }
-.personal-injury-demo .service-card__body .personal-injury-demo a { display: inline-flex; align-items: center; gap: 9px; color: #94703d; font-size: 9px; font-weight: 700; }
+.personal-injury-demo .service-card h3 { margin: 0 0 7px; color: var(--navy); font-family: var(--serif); font-size: 1.35rem; font-weight: 500; line-height: 1.3; }
+.personal-injury-demo .service-card p { min-height: 60px; margin: 0 0 12px; color: #73797b; font-size: 0.95rem; line-height: 1.65; }
+.personal-injury-demo .service-card__body .personal-injury-demo a { display: inline-flex; align-items: center; gap: 9px; color: #94703d; font-size: 0.9375rem; font-weight: 700; }
 
 .personal-injury-demo .difference { display: grid; grid-template-columns: 1fr 1fr; padding: 0; color: white; background: var(--navy); }
 .personal-injury-demo .difference__image { min-height: 700px; background-image: linear-gradient(0deg, rgba(10,20,30,.18), rgba(10,20,30,.05)), url("/demos/personal-injury/images/client-meeting-alt.jpg"); background-position: center; background-size: cover; }
 .personal-injury-demo .difference__content { max-width: 610px; align-self: center; padding: 90px clamp(45px, 7vw, 105px); }
 .personal-injury-demo .difference h2, .personal-injury-demo .results h2, .personal-injury-demo .consultation h2 { margin-bottom: 18px; color: white; font-size: clamp(37px, 4vw, 51px); line-height: 1.2; }
-.personal-injury-demo .difference__content > p:not(.eyebrow) { margin: 0 0 29px; color: #c3cad0; font-size: 12px; }
+.personal-injury-demo .difference__content > p:not(.eyebrow) { margin: 0 0 29px; color: #c3cad0; font-size: 1.0625rem; }
 .personal-injury-demo .difference__list { margin: 0 0 30px; padding: 0; list-style: none; }
 .personal-injury-demo .difference__list li { display: flex; gap: 18px; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.15); }
-.personal-injury-demo .difference__list li > span { padding-top: 3px; color: var(--gold-light); font-family: var(--serif); font-size: 12px; }
-.personal-injury-demo .difference__list strong { font-size: 12px; font-weight: 600; }
-.personal-injury-demo .difference__list p { margin: 1px 0 0; color: #aab4bc; font-size: 10px; }
+.personal-injury-demo .difference__list li > span { padding-top: 3px; color: var(--gold-light); font-family: var(--serif); font-size: 0.875rem; }
+.personal-injury-demo .difference__list strong { font-size: 1.125rem; font-weight: 600; }
+.personal-injury-demo .difference__list p { margin: 1px 0 0; color: #aab4bc; font-size: 0.9375rem; }
 
 .personal-injury-demo .process { background: #fff; }
 .personal-injury-demo .section-heading--center { max-width: 680px; margin: 0 auto 62px; text-align: center; }
 .personal-injury-demo .section-heading--center .eyebrow { justify-content: center; }
-.personal-injury-demo .section-heading--center > p:last-child { max-width: 520px; margin: 16px auto 0; color: #707679; font-size: 12px; }
+.personal-injury-demo .section-heading--center > p:last-child { max-width: 520px; margin: 16px auto 0; color: #707679; font-size: 1.0625rem; }
 .personal-injury-demo .process__steps { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; margin: 0; padding: 0; list-style: none; }
 .personal-injury-demo .process__steps::before { position: absolute; top: 25px; right: 10%; left: 10%; height: 1px; background: #ded7c9; content: ""; }
 .personal-injury-demo .process-step { position: relative; z-index: 1; }
-.personal-injury-demo .process-step__number { position: absolute; top: 2px; left: 49px; color: #9c7c4c; font-size: 9px; font-weight: 700; }
+.personal-injury-demo .process-step__number { position: absolute; top: 2px; left: 49px; color: #9c7c4c; font-size: 0.8125rem; font-weight: 700; }
 .personal-injury-demo .process-step__icon { display: grid; width: 51px; height: 51px; place-items: center; margin-bottom: 22px; border: 1px solid #cbb58e; border-radius: 50%; color: var(--navy); background: white; font-family: var(--serif); font-size: 21px; transition: color .25s ease, background .25s ease, transform .25s ease; }
 .personal-injury-demo .process-step:hover .process-step__icon { color: white; background: var(--navy); transform: translateY(-3px); }
 .personal-injury-demo .process-step h3 { margin: 0 0 7px; color: var(--navy); font-family: var(--serif); font-size: 16px; font-weight: 500; }
-.personal-injury-demo .process-step p { max-width: 195px; margin: 0; color: #767b7d; font-size: 10px; }
-.personal-injury-demo .process__note { max-width: 800px; margin: 46px auto 0; color: #858987; font-size: 10px; text-align: center; }
+.personal-injury-demo .process-step p { max-width: 195px; margin: 0; color: #767b7d; font-size: 0.95rem; }
+.personal-injury-demo .process__note { max-width: 800px; margin: 46px auto 0; color: #858987; font-size: 0.875rem; text-align: center; }
 
 .personal-injury-demo .results { color: white; background: var(--navy-soft); }
 .personal-injury-demo .results__inner { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 90px; }
-.personal-injury-demo .results__copy > p:not(.eyebrow) { color: #c1c8cc; font-size: 11px; }
+.personal-injury-demo .results__copy > p:not(.eyebrow) { color: #c1c8cc; font-size: 1.0625rem; }
 .personal-injury-demo .results__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
 .personal-injury-demo .result-card { display: flex; min-height: 183px; flex-direction: column; justify-content: center; padding: 22px; border: 1px solid rgba(223,194,143,.31); background: rgba(255,255,255,.035); }
 .personal-injury-demo .result-card:first-child { grid-column: span 2; min-height: 175px; }
-.personal-injury-demo .result-card > span { color: var(--gold-light); font-size: 7px; font-weight: 700; letter-spacing: .12em; }
+.personal-injury-demo .result-card > span { color: var(--gold-light); font-size: 0.75rem; font-weight: 700; letter-spacing: .12em; }
 .personal-injury-demo .result-card strong { margin: 6px 0 0; color: white; font-family: var(--serif); font-size: 39px; font-weight: 400; line-height: 1.2; }
-.personal-injury-demo .result-card p { margin: 1px 0; color: #e7e8e8; font-size: 10px; }
-.personal-injury-demo .result-card i { color: #aeb7bd; font-size: 8px; font-style: normal; }
-.personal-injury-demo .results__disclaimer { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); color: #aeb7bd; font-size: 9px; }
+.personal-injury-demo .result-card p { margin: 1px 0; color: #e7e8e8; font-size: 0.9375rem; }
+.personal-injury-demo .result-card i { color: #aeb7bd; font-size: 0.8125rem; font-style: normal; }
+.personal-injury-demo .results__disclaimer { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); color: #aeb7bd; font-size: 0.8125rem; }
 
 .personal-injury-demo .testimonials { background: var(--paper); }
 .personal-injury-demo .testimonials__inner { display: grid; grid-template-columns: .72fr 1.28fr; align-items: center; gap: 90px; }
 .personal-injury-demo .testimonials__aside h2 { color: var(--navy); font-size: 45px; line-height: 1.15; }
 .personal-injury-demo .testimonials__aside h2 em { color: #a77f46; }
-.personal-injury-demo .testimonials__aside > p:not(.eyebrow) { max-width: 250px; margin: 17px 0 25px; color: #73787a; font-size: 11px; }
+.personal-injury-demo .testimonials__aside > p:not(.eyebrow) { max-width: 250px; margin: 17px 0 25px; color: #73787a; font-size: 1.0625rem; }
 .personal-injury-demo .carousel-controls { display: flex; align-items: center; gap: 13px; }
 .personal-injury-demo .carousel-arrow { display: grid; width: 37px; height: 37px; place-items: center; border: 1px solid #cfc7b8; color: var(--navy); background: transparent; cursor: pointer; transition: color .2s, background .2s; }
 .personal-injury-demo .carousel-arrow:hover { color: white; background: var(--navy); }
 .personal-injury-demo .carousel-arrow:focus-visible { outline: 2px solid #a77f46; outline-offset: 3px; }
-.personal-injury-demo .carousel-count { color: #8c8e8b; font-size: 10px; }
+.personal-injury-demo .carousel-count { color: #8c8e8b; font-size: 0.875rem; }
 .personal-injury-demo .carousel-count b { color: var(--navy); font-weight: 700; }
 .personal-injury-demo .testimonial-carousel { position: relative; min-height: 260px; padding: 38px 44px; border: 1px solid #e1ddd5; background: #fff; }
 .personal-injury-demo .testimonial-slide { display: none; animation: quote-in .45s ease both; }
 .personal-injury-demo .testimonial-slide.is-active { display: block; }
 .personal-injury-demo .quote-mark { display: block; height: 42px; color: var(--gold); font-family: var(--serif); font-size: 71px; line-height: 1; }
 .personal-injury-demo .testimonial-slide blockquote { max-width: 590px; margin: 5px 0 28px; color: var(--navy); font-family: var(--serif); font-size: clamp(21px, 2.3vw, 29px); line-height: 1.5; }
-.personal-injury-demo .testimonial-slide__name { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--navy); font-size: 10px; font-weight: 700; }
-.personal-injury-demo .testimonial-slide__name span { color: #9b7a4c; font-size: 7px; letter-spacing: .08em; }
-.personal-injury-demo .testimonial-disclaimer { position: absolute; right: 44px; bottom: 14px; left: 44px; margin: 0; color: #8c8f8c; font-size: 8px; }
+.personal-injury-demo .testimonial-slide__name { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--navy); font-size: 1rem; font-weight: 700; }
+.personal-injury-demo .testimonial-slide__name span { color: #9b7a4c; font-size: 0.8125rem; letter-spacing: .08em; }
+.personal-injury-demo .testimonial-disclaimer { position: absolute; right: 44px; bottom: 14px; left: 44px; margin: 0; color: #8c8f8c; font-size: 0.8125rem; }
 @keyframes quote-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 .personal-injury-demo .faq { background: #fff; }
 .personal-injury-demo .faq__grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 100px; }
 .personal-injury-demo .faq__intro { align-self: start; position: sticky; top: 125px; }
-.personal-injury-demo .faq__intro > p:not(.eyebrow) { max-width: 320px; margin: 19px 0 22px; color: #73787a; font-size: 11px; }
+.personal-injury-demo .faq__intro > p:not(.eyebrow) { max-width: 320px; margin: 19px 0 22px; color: #73787a; font-size: 1.0625rem; }
 .personal-injury-demo .faq-item { border-top: 1px solid var(--line); }
 .personal-injury-demo .faq-item:last-child { border-bottom: 1px solid var(--line); }
 .personal-injury-demo .faq-item summary { display: flex; min-height: 70px; align-items: center; justify-content: space-between; gap: 15px; color: var(--navy); font-family: var(--serif); font-size: 17px; cursor: pointer; list-style: none; }
@@ -229,7 +229,7 @@
 .personal-injury-demo .faq-item summary i::after { transform: rotate(90deg); }
 .personal-injury-demo .faq-item[open] summary i::after { transform: rotate(0); }
 .personal-injury-demo .faq-item__answer { padding: 0 35px 20px 0; animation: answer-in .25s ease; }
-.personal-injury-demo .faq-item__answer p { margin: 0; color: #73787a; font-size: 11px; }
+.personal-injury-demo .faq-item__answer p { margin: 0; color: #73787a; font-size: 1.0625rem; }
 @keyframes answer-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
 .personal-injury-demo .resources { background: var(--paper); }
@@ -239,44 +239,44 @@
 .personal-injury-demo .resource-card__image::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,18,27,.45), transparent 55%); content: ""; }
 .personal-injury-demo .resource-card__image .personal-injury-demo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .personal-injury-demo .resource-card:hover .resource-card__image .personal-injury-demo img { transform: scale(1.05); }
-.personal-injury-demo .resource-card__image span { position: absolute; z-index: 1; bottom: 15px; left: 18px; color: white; font-size: 8px; font-weight: 700; letter-spacing: .1em; }
+.personal-injury-demo .resource-card__image span { position: absolute; z-index: 1; bottom: 15px; left: 18px; color: white; font-size: 0.75rem; font-weight: 700; letter-spacing: .1em; }
 .resource-card__
-.personal-injury-demo .resource-card__category { margin: 0 0 9px; color: #a07d4b; font-size: 8px; font-weight: 700; letter-spacing: .12em; }
+.personal-injury-demo .resource-card__category { margin: 0 0 9px; color: #a07d4b; font-size: 0.8125rem; font-weight: 700; letter-spacing: .12em; }
 .personal-injury-demo .resource-card h3 { margin: 0 0 10px; color: var(--navy); font-family: var(--serif); font-size: 21px; font-weight: 500; line-height: 1.3; }
-.personal-injury-demo .resource-card__body > p:not(.resource-card__category) { min-height: 54px; margin: 0 0 15px; color: #74797b; font-size: 10px; }
-.personal-injury-demo .resource-card .text-link { color: #94703d; font-size: 10px; }
-.personal-injury-demo .resource-footnote { margin-top: 23px; color: #818581; font-size: 9px; }
+.personal-injury-demo .resource-card__body > p:not(.resource-card__category) { min-height: 54px; margin: 0 0 15px; color: #74797b; font-size: 0.95rem; }
+.personal-injury-demo .resource-card .text-link { color: #94703d; font-size: 0.9375rem; }
+.personal-injury-demo .resource-footnote { margin-top: 23px; color: #818581; font-size: 0.8125rem; }
 
 .personal-injury-demo .consultation { color: white; background: var(--navy); }
 .personal-injury-demo .consultation__grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: clamp(50px, 8vw, 115px); }
 .personal-injury-demo .consultation__copy { position: sticky; top: 125px; }
-.personal-injury-demo .consultation__copy > p:not(.eyebrow) { max-width: 400px; margin: 0 0 25px; color: #c5cbd0; font-size: 12px; }
+.personal-injury-demo .consultation__copy > p:not(.eyebrow) { max-width: 400px; margin: 0 0 25px; color: #c5cbd0; font-size: 1.0625rem; }
 .personal-injury-demo .consultation__contact { display: flex; gap: 45px; padding: 23px 0; border-top: 1px solid rgba(255,255,255,.16); border-bottom: 1px solid rgba(255,255,255,.16); }
 .personal-injury-demo .consultation__contact div { display: flex; flex-direction: column; }
-.personal-injury-demo .consultation__contact span, .personal-injury-demo .contact-detail > span { color: var(--gold-light); font-size: 8px; font-weight: 700; letter-spacing: .14em; }
+.personal-injury-demo .consultation__contact span, .personal-injury-demo .contact-detail > span { color: var(--gold-light); font-size: 0.8125rem; font-weight: 700; letter-spacing: .14em; }
 .personal-injury-demo .consultation__contact .personal-injury-demo a { margin-top: 4px; color: white; font-family: var(--serif); font-size: 19px; }
 .personal-injury-demo .consultation__notice { display: flex; gap: 11px; margin-top: 22px; color: #aeb8bf; }
-.personal-injury-demo .consultation__notice > span { display: grid; width: 18px; height: 18px; flex: 0 0 18px; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-light); font-family: var(--serif); font-size: 11px; }
-.personal-injury-demo .consultation__notice p { margin: 0; font-size: 9px; line-height: 1.6; }
+.personal-injury-demo .consultation__notice > span { display: grid; width: 18px; height: 18px; flex: 0 0 18px; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-light); font-family: var(--serif); font-size: 0.875rem; }
+.personal-injury-demo .consultation__notice p { margin: 0; font-size: 0.875rem; line-height: 1.6; }
 .personal-injury-demo .consultation-form { padding: 36px; color: var(--ink); background: var(--paper); }
 .personal-injury-demo .form-intro { margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid #dcd7cc; }
-.personal-injury-demo .form-intro span { color: #977443; font-size: 8px; font-weight: 700; letter-spacing: .12em; }
-.personal-injury-demo .form-intro p { margin: 4px 0 0; color: #777b7a; font-size: 10px; }
-.personal-injury-demo .consultation-form label:not(.form-consent) { display: block; margin-bottom: 14px; color: var(--navy); font-size: 10px; font-weight: 600; }
+.personal-injury-demo .form-intro span { color: #977443; font-size: 0.8125rem; font-weight: 700; letter-spacing: .12em; }
+.personal-injury-demo .form-intro p { margin: 4px 0 0; color: #777b7a; font-size: 0.875rem; }
+.personal-injury-demo .consultation-form label:not(.form-consent) { display: block; margin-bottom: 14px; color: var(--navy); font-size: 0.875rem; font-weight: 600; }
 .personal-injury-demo .consultation-form label > span:not(.label-optional) { color: #9e6d36; }
-.personal-injury-demo .label-optional { display: block; margin-top: 3px; color: #8e918e; font-size: 7px; font-weight: 500; letter-spacing: .04em; }
+.personal-injury-demo .label-optional { display: block; margin-top: 3px; color: #8e918e; font-size: 0.75rem; font-weight: 500; letter-spacing: .04em; }
 .personal-injury-demo .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.personal-injury-demo .consultation-form input:not([type="checkbox"]), .personal-injury-demo .consultation-form select, .personal-injury-demo .consultation-form textarea { display: block; width: 100%; min-height: 43px; margin-top: 6px; padding: 10px 12px; border: 1px solid #d7d4cb; border-radius: 0; color: var(--ink); background: white; font-size: 10px; font-weight: 400; }
+.personal-injury-demo .consultation-form input:not([type="checkbox"]), .personal-injury-demo .consultation-form select, .personal-injury-demo .consultation-form textarea { display: block; width: 100%; min-height: 43px; margin-top: 6px; padding: 10px 12px; border: 1px solid #d7d4cb; border-radius: 0; color: var(--ink); background: white; font-size: 0.95rem; font-weight: 400; }
 .personal-injury-demo .consultation-form textarea { min-height: 82px; resize: vertical; }
 .personal-injury-demo .consultation-form input::placeholder, .personal-injury-demo .consultation-form textarea::placeholder { color: #9b9d9a; }
 .personal-injury-demo .consultation-form input:focus, .personal-injury-demo .consultation-form select:focus, .personal-injury-demo .consultation-form textarea:focus { outline: 2px solid #c6a36a; outline-offset: 1px; }
-.personal-injury-demo .form-consent { display: flex; align-items: flex-start; gap: 9px; margin: 10px 0 15px; color: #666d6e; font-size: 9px; line-height: 1.55; }
+.personal-injury-demo .form-consent { display: flex; align-items: flex-start; gap: 9px; margin: 10px 0 15px; color: #666d6e; font-size: 0.875rem; line-height: 1.55; }
 .personal-injury-demo .form-consent input { flex: 0 0 auto; margin: 2px 0 0; accent-color: var(--navy); }
 .personal-injury-demo .form-consent b { color: #9e6d36; }
 .personal-injury-demo .button--form { width: 100%; border: 0; cursor: pointer; }
-.personal-injury-demo .form-error { margin: 0 0 12px; color: #9d2925; font-size: 10px; }
-.personal-injury-demo .form-success { margin: 13px 0 0; padding: 11px; color: #31503a; background: #e4eee2; font-size: 10px; }
-.personal-injury-demo .form-legal { margin: 12px 0 0; color: #888b87; font-size: 8px; text-align: center; }
+.personal-injury-demo .form-error { margin: 0 0 12px; color: #9d2925; font-size: 0.9375rem; }
+.personal-injury-demo .form-success { margin: 13px 0 0; padding: 11px; color: #31503a; background: #e4eee2; font-size: 0.9375rem; }
+.personal-injury-demo .form-legal { margin: 12px 0 0; color: #888b87; font-size: 0.8125rem; text-align: center; }
 
 .personal-injury-demo .contact { background: #fff; }
 .personal-injury-demo .contact__top { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 50px; }
@@ -284,7 +284,7 @@
 .personal-injury-demo .contact__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 40px; }
 .personal-injury-demo .contact-detail { min-height: 138px; padding: 20px; border: 1px solid var(--line); }
 .personal-injury-demo .contact-detail > a, .personal-injury-demo .contact-detail > p:not(:last-child) { display: block; margin: 9px 0 3px; color: var(--navy); font-family: var(--serif); font-size: 17px; line-height: 1.5; }
-.personal-injury-demo .contact-detail p:last-child { margin: 2px 0 0; color: #848783; font-size: 9px; }
+.personal-injury-demo .contact-detail p:last-child { margin: 2px 0 0; color: #848783; font-size: 0.875rem; }
 .personal-injury-demo .contact-detail__placeholder { letter-spacing: .05em; }
 .personal-injury-demo .map-placeholder { position: relative; display: flex; height: 310px; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #d9d7d0; background-color: #ecebe6; background-image: linear-gradient(35deg, transparent 48%, #fff 49%, #fff 52%, transparent 53%), linear-gradient(130deg, transparent 45%, #dad9d1 46%, #dad9d1 47%, transparent 48%), linear-gradient(90deg, transparent 49%, rgba(255,255,255,.8) 50%, rgba(255,255,255,.8) 52%, transparent 53%); background-size: 170px 130px, 210px 180px, 125px 90px; }
 .personal-injury-demo .map-placeholder::before, .personal-injury-demo .map-placeholder::after { position: absolute; width: 120%; height: 32px; border: 1px solid rgba(163,174,157,.6); border-right: 0; border-left: 0; content: ""; transform: rotate(-17deg); }
@@ -293,23 +293,23 @@
 .personal-injury-demo .map-placeholder__pin { position: absolute; z-index: 1; top: 35%; left: 54%; display: grid; width: 38px; height: 38px; place-items: center; border: 2px solid white; border-radius: 50% 50% 50% 0; color: var(--navy); background: var(--gold-light); box-shadow: 0 3px 12px rgba(0,0,0,.2); font-family: var(--serif); font-size: 18px; transform: rotate(-45deg); }
 .personal-injury-demo .map-placeholder__pin::first-letter { transform: rotate(45deg); }
 .personal-injury-demo .map-placeholder__label { position: relative; z-index: 1; margin: 55px 0 0 90px; padding: 14px 18px; border: 1px solid rgba(16,29,43,.14); background: rgba(255,255,255,.94); box-shadow: 0 5px 16px rgba(16,29,43,.06); }
-.personal-injury-demo .map-placeholder__label span, .personal-injury-demo .map-placeholder__label p { display: block; margin: 0; color: #878a87; font-size: 7px; letter-spacing: .1em; }
+.personal-injury-demo .map-placeholder__label span, .personal-injury-demo .map-placeholder__label p { display: block; margin: 0; color: #878a87; font-size: 0.8125rem; letter-spacing: .1em; }
 .personal-injury-demo .map-placeholder__label strong { display: block; color: var(--navy); font-family: var(--serif); font-size: 17px; font-weight: 500; letter-spacing: .08em; }
 .personal-injury-demo .map-placeholder__label p { margin-top: 3px; letter-spacing: normal; }
-.personal-injury-demo .map-placeholder__north { position: absolute; top: 18px; right: 20px; color: #6f7776; font-size: 9px; }
+.personal-injury-demo .map-placeholder__north { position: absolute; top: 18px; right: 20px; color: #6f7776; font-size: 0.875rem; }
 
 .personal-injury-demo .site-footer { color: #e2e4e5; background: #0c1722; }
 .personal-injury-demo .footer__main { display: grid; grid-template-columns: 1.3fr .7fr .8fr 1.2fr; gap: 55px; padding-block: 63px; }
 .personal-injury-demo .brand--footer .brand__name { font-size: 15px; }
 .personal-injury-demo .footer__brand > p { margin: 18px 0 22px; color: #aeb7bd; font-family: var(--serif); font-size: 16px; line-height: 1.5; }
-.personal-injury-demo .footer__demo { display: inline-block; padding: 5px 7px; border: 1px solid rgba(223,194,143,.45); color: var(--gold-light); font-size: 7px; font-weight: 700; letter-spacing: .1em; }
-.personal-injury-demo .footer__column h2 { margin: 4px 0 18px; color: white; font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.personal-injury-demo .footer__column a, .personal-injury-demo .footer__column > p { display: block; margin: 0 0 9px; color: #aeb7bd; font-size: 10px; transition: color .2s; }
+.personal-injury-demo .footer__demo { display: inline-block; padding: 5px 7px; border: 1px solid rgba(223,194,143,.45); color: var(--gold-light); font-size: 0.75rem; font-weight: 700; letter-spacing: .1em; }
+.personal-injury-demo .footer__column h2 { margin: 4px 0 18px; color: white; font-family: var(--sans); font-size: 0.9375rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.personal-injury-demo .footer__column a, .personal-injury-demo .footer__column > p { display: block; margin: 0 0 9px; color: #aeb7bd; font-size: 0.875rem; transition: color .2s; }
 .personal-injury-demo .footer__column a:hover { color: var(--gold-light); }
-.personal-injury-demo .footer__disclaimer p { color: #aeb7bd; font-size: 10px; line-height: 1.7; }
+.personal-injury-demo .footer__disclaimer p { color: #aeb7bd; font-size: 0.875rem; line-height: 1.7; }
 .personal-injury-demo .footer__bottom { border-top: 1px solid rgba(255,255,255,.11); }
 .personal-injury-demo .footer__bottom-inner { display: flex; align-items: center; justify-content: space-between; gap: 22px; min-height: 55px; }
-.personal-injury-demo .footer__bottom p, .personal-injury-demo .footer__bottom .personal-injury-demo a { margin: 0; color: #8f989e; font-size: 8px; }
+.personal-injury-demo .footer__bottom p, .personal-injury-demo .footer__bottom .personal-injury-demo a { margin: 0; color: #8f989e; font-size: 0.8125rem; }
 .personal-injury-demo .footer__bottom a:hover { color: var(--gold-light); }
 .personal-injury-demo .mobile-consult-ct.personal-injury-demo a { display: none; }
 
@@ -326,7 +326,7 @@
 @media (max-width: 1000px) {
 .personal-injury-demo .container { width: min(var(--container), calc(100% - 48px)); }
 .personal-injury-demo .primary-nav { gap: 17px; }
-.personal-injury-demo .primary-nav > a:not(.button) { font-size: 10px; }
+.personal-injury-demo .primary-nav > a:not(.button) { font-size: 0.9375rem; }
 .personal-injury-demo .brand__name { font-size: 16px; }
 .personal-injury-demo .services__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .personal-injury-demo .welcome__grid { grid-template-columns: .8fr 2fr .55fr; gap: 30px; }
@@ -344,16 +344,16 @@
   
 .personal-injury-demo .container { width: min(var(--container), calc(100% - 40px)); }
 .personal-injury-demo .section-pad { padding-block: 76px; }
-.personal-injury-demo .demo-banner { min-height: 34px; padding-inline: 8px; font-size: 8px; letter-spacing: .1em; }
+.personal-injury-demo .demo-banner { min-height: 34px; padding-inline: 8px; font-size: 0.8125rem; letter-spacing: .1em; }
 .personal-injury-demo .demo-banner__dash { padding-inline: 2px; }
 .personal-injury-demo .utility-bar__inner { min-height: 31px; justify-content: center; }
 .personal-injury-demo .utility-bar__inner > p { display: none; }
-.personal-injury-demo .utility-bar__contact { gap: 12px; font-size: 9px; }
+.personal-injury-demo .utility-bar__contact { gap: 12px; font-size: 0.875rem; }
 .personal-injury-demo .header__inner { min-height: 72px; }
 .personal-injury-demo .brand { gap: 9px; }
 .personal-injury-demo .brand__monogram { width: 35px; height: 35px; font-size: 21px; }
 .personal-injury-demo .brand__name { font-size: 14px; letter-spacing: .12em; }
-.personal-injury-demo .brand__name span { font-size: 7px; }
+.personal-injury-demo .brand__name span { font-size: 0.75rem; }
 .personal-injury-demo .menu-toggle {
   display: flex;
   width: 42px;
@@ -385,29 +385,29 @@
 .personal-injury-demo .hero__overlay { background: linear-gradient(90deg, rgba(10,20,30,.89), rgba(11,21,31,.57)), linear-gradient(0deg, rgba(8,16,24,.55), transparent 55%); }
 .personal-injury-demo .hero__slide { background-position: 58% center; }
 .personal-injury-demo .hero h1 { font-size: clamp(44px, 11vw, 68px); }
-.personal-injury-demo .hero__intro { max-width: 440px; font-size: 13px; }
+.personal-injury-demo .hero__intro { max-width: 440px; font-size: 1.125rem; }
 .personal-injury-demo .hero__actions { align-items: flex-start; flex-direction: column; gap: 17px; }
 .personal-injury-demo .hero__actions .button { min-height: 50px; }
 .personal-injury-demo .hero__proof { margin-top: 31px; }
-.personal-injury-demo .hero__caption { right: 20px; bottom: 24px; font-size: 8px; }
+.personal-injury-demo .hero__caption { right: 20px; bottom: 24px; font-size: 0.8125rem; }
 .personal-injury-demo .scroll-cue { display: none; }
 .personal-injury-demo .welcome { padding-block: 64px; }
 .personal-injury-demo .welcome__grid { grid-template-columns: 1fr; gap: 15px; }
 .personal-injury-demo .welcome__label { display: flex; align-items: center; justify-content: space-between; }
 .personal-injury-demo .welcome__label .eyebrow { margin-bottom: 0; }
-.personal-injury-demo .welcome__number { margin: 0; font-size: 12px; }
+.personal-injury-demo .welcome__number { margin: 0; font-size: 1rem; }
 .personal-injury-demo .welcome__body h2 { font-size: 39px; }
 .personal-injury-demo .welcome__stamp { position: absolute; right: 22px; width: 95px; height: 95px; margin-top: -1px; opacity: .9; }
-.personal-injury-demo .welcome__stamp > span { font-size: 5px; }
-.personal-injury-demo .welcome__stamp b { margin-block: 4px; font-size: 10px; }
+.personal-injury-demo .welcome__stamp > span { font-size: 0.75rem; }
+.personal-injury-demo .welcome__stamp b { margin-block: 4px; font-size: 1rem; }
   .welcome__
 .personal-injury-demo .welcome__body > p, .personal-injury-demo .welcome__body > .text-link { max-width: calc(100% - 3px); }
 .personal-injury-demo .welcome__body > h2 { max-width: 82%; }
 .personal-injury-demo .welcome__lead { font-size: 15px; }
 .personal-injury-demo .trust-strip { padding: 21px 0 10px; }
 .personal-injury-demo .trust-strip__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.personal-injury-demo .trust-strip__inner > div { gap: 7px; font-size: 9px; }
-.personal-injury-demo .trust-strip__note { padding-inline: 18px; font-size: 8px; }
+.personal-injury-demo .trust-strip__inner > div { gap: 7px; font-size: 0.875rem; }
+.personal-injury-demo .trust-strip__note { padding-inline: 18px; font-size: 0.8125rem; }
 .personal-injury-demo .about__grid { grid-template-columns: 1fr; gap: 40px; }
 .personal-injury-demo .about__portrait-wrap { width: min(84%, 430px); margin-inline: auto; }
 .personal-injury-demo .about__experience { right: -22px; bottom: 43px; width: 116px; height: 116px; }
@@ -418,10 +418,10 @@
 .personal-injury-demo .section-heading h2 { font-size: 39px; }
 .personal-injury-demo .services__grid { grid-template-columns: 1fr; gap: 24px; }
 .personal-injury-demo .service-card__image { height: 210px; }
-.personal-injury-demo .service-card p { min-height: 0; font-size: 11px; line-height: 1.6; }
+.personal-injury-demo .service-card p { min-height: 0; font-size: 0.95rem; line-height: 1.65; }
   .service-card__
 .personal-injury-demo .service-card h3 { font-size: 15px; }
-.personal-injury-demo .service-card p { min-height: 75px; font-size: 9px; }
+.personal-injury-demo .service-card p { min-height: 75px; font-size: 0.95rem; }
 .personal-injury-demo .difference { grid-template-columns: 1fr; }
 .personal-injury-demo .difference__image { min-height: 320px; background-position: center 45%; }
 .personal-injury-demo .difference__content { width: 100%; max-width: none; padding: 64px 24px 70px; }
@@ -439,7 +439,7 @@
 .personal-injury-demo .result-card { min-height: 155px; padding: 15px; }
 .personal-injury-demo .result-card:first-child { min-height: 145px; }
 .personal-injury-demo .result-card strong { font-size: 31px; }
-.personal-injury-demo .result-card > span { font-size: 6px; }
+.personal-injury-demo .result-card > span { font-size: 0.75rem; }
 .personal-injury-demo .testimonials__inner { grid-template-columns: 1fr; gap: 26px; }
 .personal-injury-demo .testimonials__aside h2 { font-size: 39px; }
 .personal-injury-demo .testimonials__aside > p:not(.eyebrow) { max-width: 100%; margin-bottom: 17px; }
@@ -470,13 +470,13 @@
 .personal-injury-demo .footer__bottom-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding-block: 15px; }
 .personal-injury-demo .mobile-consult-ct.personal-injury-demo a { position: fixed; z-index: 20; right: 0; bottom: 0; left: 0; display: block; padding: 9px 14px calc(9px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(255,255,255,.12); background: rgba(12,23,34,.97); transition: opacity .25s ease, transform .25s ease; }
 .personal-injury-demo .mobile-consult-cta.is-hidden { opacity: 0; pointer-events: none; transform: translateY(100%); }
-.personal-injury-demo .mobile-consult-cta .personal-injury-demo a { display: flex; min-height: 42px; align-items: center; justify-content: center; gap: 12px; color: var(--navy); background: var(--gold-light); font-size: 11px; font-weight: 700; }
+.personal-injury-demo .mobile-consult-cta .personal-injury-demo a { display: flex; min-height: 42px; align-items: center; justify-content: center; gap: 12px; color: var(--navy); background: var(--gold-light); font-size: 0.95rem; font-weight: 700; }
 }
 
 @media (max-width: 380px) {
 .personal-injury-demo .container { width: calc(100% - 32px); }
-.personal-injury-demo .brand__name { font-size: 12px; }
-.personal-injury-demo .brand__name span { font-size: 6px; }
+.personal-injury-demo .brand__name { font-size: 1.125rem; }
+.personal-injury-demo .brand__name span { font-size: 0.75rem; }
 .personal-injury-demo .hero h1 { font-size: 42px; }
 .personal-injury-demo .hero__caption { display: none; }
 .personal-injury-demo .welcome__body > h2 { max-width: 100%; }

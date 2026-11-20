@@ -710,3 +710,258 @@ textarea:focus {
   }
 }
 
+
+
+/* ==========================================================================
+   PAINTING-STANDARDIZED ACCESSIBLE TYPOGRAPHY SYSTEM
+   Applied to /dental-care, /personal-injury, /contractor, and /auto-repair
+   Aligns font sizes, line heights, button scales, forms, and headings to /painting
+   ========================================================================== */
+
+/* 1. Base Typography & Body Sizing */
+.auto-repair-demo,
+.dental-care-demo,
+.contractor-demo,
+.personal-injury-demo {
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+.auto-repair-demo p,
+.dental-care-demo p,
+.contractor-demo p,
+.personal-injury-demo p {
+  line-height: 1.65;
+}
+
+/* 2. Desktop Navigation & Header Links */
+.auto-repair-demo .nav-links a,
+.dental-care-demo .nav-links > a:not(.button),
+.contractor-demo .nav-links a,
+.personal-injury-demo .primary-nav > a:not(.button) {
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5;
+}
+
+.auto-repair-demo .header-top__right,
+.auto-repair-demo .header-phone,
+.personal-injury-demo .utility-bar {
+  font-size: 0.9375rem !important;
+}
+
+/* 3. Primary & Secondary Buttons / CTAs */
+.auto-repair-demo .button,
+.dental-care-demo .button,
+.contractor-demo .button,
+.personal-injury-demo .button {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  min-height: 48px;
+  letter-spacing: 0.02em;
+}
+
+.auto-repair-demo .button--nav,
+.dental-care-demo .button-small,
+.contractor-demo .nav-cta,
+.personal-injury-demo .button--small {
+  font-size: 0.875rem !important;
+  min-height: 40px;
+}
+
+/* 4. Eyebrows, Badges, Section Kickers & Tags */
+.auto-repair-demo .eyebrow,
+.dental-care-demo .eyebrow,
+.dental-care-demo .section-kicker,
+.contractor-demo .eyebrow,
+.personal-injury-demo .eyebrow,
+.auto-repair-demo .demo-banner,
+.dental-care-demo .demo-banner,
+.contractor-demo .demo-banner,
+.personal-injury-demo .demo-banner {
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+/* 5. Section Lead & Subtitle Paragraphs */
+.auto-repair-demo .hero__content > p,
+.dental-care-demo .hero-copy,
+.contractor-demo .hero-copy,
+.personal-injury-demo .hero__intro,
+.personal-injury-demo .welcome__lead {
+  font-size: clamp(1.0625rem, 1.8vw, 1.2rem) !important;
+  line-height: 1.7 !important;
+}
+
+.auto-repair-demo .section-heading--split > p,
+.auto-repair-demo .section-heading--center > p,
+.auto-repair-demo .about-copy > p:not(.about-lead),
+.dental-care-demo .section-heading > p,
+.dental-care-demo .about-copy > p,
+.dental-care-demo .tech-content > p,
+.contractor-demo .section-heading > p,
+.contractor-demo .about-copy p:not(.lead),
+.contractor-demo .why-heading > p,
+.personal-injury-demo .section-heading--split > p,
+.personal-injury-demo .section-heading--center > p,
+.personal-injury-demo .welcome__body > p:not(.welcome__lead),
+.personal-injury-demo .about__copy > p:not(.about__lead):not(.eyebrow),
+.personal-injury-demo .difference__content > p:not(.eyebrow),
+.personal-injury-demo .results__copy > p:not(.eyebrow) {
+  font-size: 1.0625rem !important;
+  line-height: 1.7 !important;
+}
+
+/* 6. Card Headings (H3) & Body Text */
+.auto-repair-demo .service-card h3,
+.auto-repair-demo .difference-card h3,
+.auto-repair-demo .team-card__details h3,
+.dental-care-demo .service-body h3,
+.dental-care-demo .tech-feature-item h3,
+.contractor-demo .service-body h3,
+.contractor-demo .belief-grid h3,
+.contractor-demo .why-item h3,
+.contractor-demo .process-step h3,
+.personal-injury-demo .service-card h3,
+.personal-injury-demo .process-step h3,
+.personal-injury-demo .resource-card h3 {
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+.auto-repair-demo .service-card p,
+.auto-repair-demo .difference-card p,
+.auto-repair-demo .team-card__details p,
+.dental-care-demo .service-body p,
+.dental-care-demo .tech-feature-item p,
+.contractor-demo .service-body p,
+.contractor-demo .belief-grid p,
+.contractor-demo .why-item p,
+.contractor-demo .process-step p,
+.personal-injury-demo .service-card p,
+.personal-injury-demo .process-step p,
+.personal-injury-demo .resource-card__body > p {
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+}
+
+/* 7. Text Links ("Learn more ↗") */
+.auto-repair-demo .text-link,
+.dental-care-demo .text-link,
+.dental-care-demo .service-body > a,
+.contractor-demo .text-link,
+.contractor-demo .service-body a,
+.personal-injury-demo .text-link,
+.personal-injury-demo .service-card__body a {
+  font-size: 0.9375rem !important;
+  font-weight: 700 !important;
+}
+
+/* 8. Testimonials & Client Feedback */
+.auto-repair-demo .review-slide > p,
+.dental-care-demo .review-card blockquote,
+.contractor-demo .testimonial-slide blockquote,
+.personal-injury-demo .testimonial-slide blockquote {
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem) !important;
+  line-height: 1.6 !important;
+}
+
+.auto-repair-demo .review-slide footer b,
+.dental-care-demo .reviewer strong,
+.contractor-demo .client-profile strong,
+.personal-injury-demo .testimonial-slide__name {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+}
+
+.auto-repair-demo .review-slide footer small,
+.dental-care-demo .reviewer small,
+.contractor-demo .client-profile > div:nth-child(2) span,
+.personal-injury-demo .testimonial-slide__name span {
+  font-size: 0.875rem !important;
+}
+
+/* 9. Form Labels, Inputs, Selects, & Textareas */
+.auto-repair-demo .field,
+.auto-repair-demo .form-heading > span,
+.dental-care-demo .form-group label,
+.contractor-demo .inquiry-form label,
+.personal-injury-demo .consultation-form label:not(.form-consent) {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+}
+
+.auto-repair-demo .field input,
+.auto-repair-demo .field textarea,
+.auto-repair-demo .field select,
+.dental-care-demo .form-group input,
+.dental-care-demo .form-group select,
+.contractor-demo .inquiry-form input,
+.contractor-demo .inquiry-form select,
+.contractor-demo .inquiry-form textarea,
+.personal-injury-demo .consultation-form input:not([type="checkbox"]),
+.personal-injury-demo .consultation-form select,
+.personal-injury-demo .consultation-form textarea {
+  font-size: 0.95rem !important;
+  min-height: 46px;
+}
+
+.auto-repair-demo .form-privacy,
+.dental-care-demo .form-disclaimer,
+.contractor-demo .form-footer p,
+.personal-injury-demo .form-consent,
+.personal-injury-demo .form-legal,
+.personal-injury-demo .results__disclaimer {
+  font-size: 0.8125rem !important;
+  line-height: 1.55 !important;
+}
+
+/* 10. FAQ Summaries & Answers */
+.auto-repair-demo .faq-list summary,
+.personal-injury-demo .faq-item summary {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+}
+
+.auto-repair-demo .faq-list details p,
+.personal-injury-demo .faq-item__answer p {
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
+}
+
+/* 11. Footer Elements */
+.auto-repair-demo .site-footer,
+.dental-care-demo .site-footer,
+.contractor-demo .site-footer,
+.personal-injury-demo .footer__column {
+  font-size: 0.9375rem !important;
+}
+
+.auto-repair-demo .footer-links a,
+.auto-repair-demo .footer-main > p,
+.auto-repair-demo .footer-contact,
+.dental-care-demo .footer-brand > p,
+.dental-care-demo .footer-col a,
+.dental-care-demo .footer-col span,
+.contractor-demo .footer-brand > p,
+.contractor-demo .footer-column > a,
+.contractor-demo .footer-column > span,
+.personal-injury-demo .footer__column a,
+.personal-injury-demo .footer__column > p,
+.personal-injury-demo .footer__disclaimer p {
+  font-size: 0.875rem !important;
+  line-height: 1.65 !important;
+}
+
+.auto-repair-demo .footer-legal,
+.dental-care-demo .footer-bottom p,
+.dental-care-demo .footer-bottom a,
+.contractor-demo .footer-bottom-inner,
+.personal-injury-demo .footer__bottom p,
+.personal-injury-demo .footer__bottom a {
+  font-size: 0.8125rem !important;
+}
