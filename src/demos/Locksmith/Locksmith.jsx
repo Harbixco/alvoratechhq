@@ -1126,7 +1126,7 @@ const runInit = () => {
                 </div>
               </div>
 
-              {/* Location (Strictly *) */}
+              {/* Location  */}
               <div className="contact-channel-item">
                 <div className="channel-icon-box">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -1136,7 +1136,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>Location</h4>
-                  <span className="channel-link">*</span>
+                  <span className="channel-link">Pittsburgh, PA &amp; Surrounding Areas</span>
                 </div>
               </div>
             </div>
@@ -2021,7 +2021,7 @@ const runInit = () => {
                 </div>
               </div>
 
-              {/* Location (Strictly *) */}
+              {/* Location  */}
               <div className="contact-channel-item">
                 <div className="channel-icon-box">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -2031,7 +2031,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>Location</h4>
-                  <span className="channel-link">*</span>
+                  <span className="channel-link">Pittsburgh, PA &amp; Surrounding Areas</span>
                 </div>
               </div>
             </div>
@@ -2310,7 +2310,7 @@ const runInit = () => {
           © 2026 Alvoratech Locksmith & Security Services. All rights reserved.
         </div>
         <div>
-          Demonstration Website • Location: * • Designed for Excellence
+          Alvoratech Demo • Pittsburgh, PA & Surrounding Areas
         </div>
       </div>
     </div>
