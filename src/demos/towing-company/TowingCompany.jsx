@@ -297,7 +297,7 @@ export default function TowingCompany() {
           </a>
 
           <button
-            className={`nav-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
+            className={`nav-toggle mobile-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
             aria-expanded={mobileMenuOpen}
             aria-controls="primary-navigation"
             aria-label="Toggle navigation menu"

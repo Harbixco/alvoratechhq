@@ -157,18 +157,23 @@
 .plumbing-demo .pf-hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   cursor: pointer;
-  padding: 4px;
-  background: none;
-  border: none;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  border-radius: 8px;
 }
 
 .plumbing-demo .pf-hamburger span {
   display: block;
   width: 24px;
-  height: 2px;
-  background: var(--white);
+  height: 2.5px;
+  background: #f59e0b;
   border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.2s ease;
 }

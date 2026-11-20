@@ -173,7 +173,7 @@ export default function PlumbingServices() {
  </nav>
 
  <button
- className={`pf-hamburger ${mobileNavOpen ? 'is-open' : ''}`}
+ className={`pf-hamburger mobile-toggle ${mobileNavOpen ? 'is-open' : ''}`}
  onClick={() => setMobileNavOpen(!mobileNavOpen)}
  aria-label="Toggle navigation menu"
  aria-expanded={mobileNavOpen}

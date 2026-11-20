@@ -178,7 +178,7 @@ export default function Contractor() {
           </a>
 
           <button
-            className={`menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
+            className={`menu-toggle mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}
             type="button"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}

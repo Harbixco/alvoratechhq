@@ -333,7 +333,7 @@
   .contractor-demo .container { width: min(var(--container), calc(100% - 44px)); }
   .contractor-demo .section-pad { padding: 70px 0; }
   .contractor-demo .nav-shell { min-height: 70px; }
-  .contractor-demo .menu-toggle { display: flex; width: 43px; height: 43px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid rgba(255,255,255,.4); background: transparent; cursor: pointer; }
+  .contractor-demo .menu-toggle { display: flex; width: 43px; height: 43px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid rgba(197, 160, 89, 0.45); background: rgba(197, 160, 89, 0.1); border-radius: 8px; cursor: pointer; }
   .contractor-demo .menu-toggle span { display: block; width: 18px; height: 1px; background: currentColor; transition: transform .25s; }
   .contractor-demo .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
   .contractor-demo .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
@@ -441,7 +441,7 @@
     display: block !important;
     width: 24px !important;
     height: 2px !important;
-    background: #ffffff !important;
+    background: #c5a059 !important;
     border-radius: 2px !important;
     transition: transform 0.25s ease, opacity 0.2s ease !important;
   }

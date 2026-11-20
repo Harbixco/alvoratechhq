@@ -177,7 +177,7 @@ export default function PersonalInjury() {
 
           {/* Mobile Menu Hamburger Button */}
           <button
-            className={`menu-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
+            className={`menu-toggle mobile-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
             type="button"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-drawer"
