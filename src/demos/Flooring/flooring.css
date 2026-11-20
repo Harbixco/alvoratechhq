@@ -2689,3 +2689,147 @@
     display: block !important;
   }
 }
+
+
+/* ==========================================================================
+   PLUMBING-STYLE DARK MOBILE DRAWER (STANDARDIZED)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .flooring-demo .mobile-drawer,
+  .mobile-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    right: -320px !important;
+    width: min(300px, 86vw) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: #0A192F !important;
+    color: #ffffff !important;
+    z-index: 99999 !important;
+    padding: 1.25rem 1.25rem 2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .flooring-demo .mobile-drawer.active,
+  .mobile-drawer.active {
+    right: 0 !important;
+  }
+
+  .flooring-demo .mobile-drawer-header,
+  .mobile-drawer-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-bottom: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    width: 100% !important;
+  }
+
+  .flooring-demo .mobile-drawer-title,
+  .mobile-drawer-title {
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: #ffffff !important;
+  }
+
+  .flooring-demo .mobile-drawer-close,
+  .mobile-drawer-close {
+    background: transparent !important;
+    border: none !important;
+    font-size: 1.75rem !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    padding: 0.2rem 0.5rem !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.2s ease !important;
+  }
+
+  .flooring-demo .mobile-drawer-close:hover,
+  .mobile-drawer-close:hover {
+    transform: scale(1.1) !important;
+    color: #C5A059 !important;
+  }
+
+  .flooring-demo .mobile-drawer .nav-link,
+  .mobile-drawer .nav-link {
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    padding: 12px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    display: block !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease, padding-left 0.2s ease !important;
+  }
+
+  .flooring-demo .mobile-drawer .nav-link:hover,
+  .flooring-demo .mobile-drawer .nav-link.active,
+  .mobile-drawer .nav-link:hover,
+  .mobile-drawer .nav-link.active {
+    color: #C5A059 !important;
+    padding-left: 4px !important;
+  }
+
+  .flooring-demo .mobile-drawer .btn,
+  .mobile-drawer .btn {
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    padding: 12px 16px !important;
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    border-radius: 6px !important;
+    margin-top: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Animated Hamburger toggle button */
+  .flooring-demo .mobile-toggle,
+  .mobile-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    cursor: pointer !important;
+    padding: 6px !important;
+    background: none !important;
+    border: none !important;
+    z-index: 100 !important;
+  }
+
+  .flooring-demo .mobile-toggle span,
+  .mobile-toggle span {
+    display: block !important;
+    width: 24px !important;
+    height: 2px !important;
+    background: #ffffff !important;
+    border-radius: 2px !important;
+    transition: transform 0.25s ease, opacity 0.2s ease !important;
+  }
+
+  .flooring-demo .mobile-toggle.active span:first-child,
+  .mobile-toggle.active span:first-child {
+    transform: translateY(7px) rotate(45deg) !important;
+  }
+
+  .flooring-demo .mobile-toggle.active span:nth-child(2),
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0 !important;
+  }
+
+  .flooring-demo .mobile-toggle.active span:last-child,
+  .mobile-toggle.active span:last-child {
+    transform: translateY(-7px) rotate(-45deg) !important;
+  }
+}

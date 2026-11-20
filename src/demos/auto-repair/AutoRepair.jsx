@@ -178,12 +178,19 @@ export default function AutoRepair() {
           >
             <span></span>
             <span></span>
+            <span></span>
           </button>
         </div>
 
         {/* Main Navigation */}
         <nav className={`main-nav ${mobileMenuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
           <div className="main-nav__inner">
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Auto Care Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
             <div className="nav-links">
               <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
               <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>Our story</a>

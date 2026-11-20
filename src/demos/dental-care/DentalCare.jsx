@@ -89,9 +89,16 @@ export default function DentalCare() {
           >
             <span></span>
             <span></span>
+            <span></span>
           </button>
 
           <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Dental Care Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
             <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }}>Home</a>
             <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>
             <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>

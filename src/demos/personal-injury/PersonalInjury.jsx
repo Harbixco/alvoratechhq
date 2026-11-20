@@ -173,9 +173,16 @@ export default function PersonalInjury() {
           >
             <span></span>
             <span></span>
+            <span></span>
           </button>
 
           <nav className={`primary-nav ${mobileMenuOpen ? 'is-open' : ''}`} id="primary-navigation" aria-label="Main navigation">
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Practice Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
             <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>The Attorney</a>
             <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>How I Help</a>
             <a href="#process" onClick={() => setMobileMenuOpen(false)}>Your Case</a>

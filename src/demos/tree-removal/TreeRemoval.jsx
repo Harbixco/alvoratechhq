@@ -287,6 +287,12 @@ export default function TreeRemoval() {
           </button>
 
           <div className={`nav-menu-wrap ${navOpen ? 'open' : ''}`}>
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Tree Service Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setNavOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
             <ul className="nav-menu">
               <li><a href="#home" onClick={(e) => { setNavOpen(false); navigateTo('home', e); }}>Home</a></li>
               <li><a href="#about" onClick={(e) => { setNavOpen(false); navigateTo('about', e); }}>About Us</a></li>

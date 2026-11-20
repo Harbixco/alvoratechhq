@@ -186,9 +186,16 @@ export default function Contractor() {
           >
             <span></span>
             <span></span>
+            <span></span>
           </button>
 
           <div className={`nav-panel ${mobileMenuOpen ? 'is-open' : ''}`}>
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Contractor Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
             <div className="nav-links">
               <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }}>Home</a>
               <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>

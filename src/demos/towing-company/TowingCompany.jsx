@@ -309,6 +309,12 @@ export default function TowingCompany() {
           </button>
 
           <nav className="site-nav" id="primary-navigation" aria-label="Main navigation">
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Towing Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
             <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} className="nav-link active">Home</a>
             <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }} className="nav-link">About Us</a>
             <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} className="nav-link">Services</a>

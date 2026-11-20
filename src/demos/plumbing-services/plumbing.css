@@ -116,10 +116,10 @@
 }
 
 .plumbing-demo .pf-nav a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--amber, #f59e0b) !important;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.2s;
   position: relative;
 }
@@ -221,24 +221,6 @@
   border-radius: 6px;
   text-align: center;
   font-weight: 700;
-}
-
-/* ── DEMO RIBBON ── */
-.plumbing-demo .pf-demo-ribbon {
-  position: fixed;
-  top: 112px;
-  right: -32px;
-  z-index: 2000;
-  background: #DC2626;
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 6px 44px;
-  transform: rotate(45deg);
-  pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* ── HERO ── */
@@ -1259,10 +1241,7 @@
   .plumbing-demo .pf-trust-item span {
     font-size: 0.78rem;
   }
-  .plumbing-demo .pf-demo-ribbon {
-    top: 108px;
   }
-}
 
 @media (max-width: 520px) {
   .plumbing-demo .pf-stats-row {
