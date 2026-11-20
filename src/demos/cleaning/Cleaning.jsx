@@ -1267,7 +1267,7 @@ const runInit = () => {
             {/* Location */}
             <div className="contact-location-box">
               <div className="contact-location-label">Location</div>
-              <div className="contact-location-value">*</div>
+              <div className="contact-location-value">Pittsburgh, PA & Surrounding Areas</div>
             </div>
 
           </div>
@@ -2308,7 +2308,7 @@ const runInit = () => {
             {/* Location */}
             <div className="contact-location-box">
               <div className="contact-location-label">Location</div>
-              <div className="contact-location-value">*</div>
+              <div className="contact-location-value">Pittsburgh, PA & Surrounding Areas</div>
             </div>
 
           </div>
@@ -2453,7 +2453,7 @@ const runInit = () => {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            <span>*</span>
+            <span>Pittsburgh, PA & Surrounding Areas</span>
           </div>
         </div>
           <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>

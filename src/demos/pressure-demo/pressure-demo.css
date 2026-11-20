@@ -1725,6 +1725,9 @@
 .pressure-demo-demo .contact-info-card h3 {
   margin-bottom: 1.5rem;
   font-size: 1.45rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-navy);
 }
 
 .pressure-demo-demo .contact-channels {
@@ -1758,17 +1761,19 @@
 }
 
 .pressure-demo-demo .channel-info h4 {
-  font-size: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
   margin-bottom: 0.25rem;
 }
 
 .pressure-demo-demo .channel-link {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--color-navy);
   transition: color var(--transition-fast);
 }
@@ -1783,18 +1788,20 @@
 }
 
 .pressure-demo-demo .contact-location-label {
-  font-size: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
   margin-bottom: 0.25rem;
 }
 
 .pressure-demo-demo .contact-location-value {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-navy);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 /* Contact Form */

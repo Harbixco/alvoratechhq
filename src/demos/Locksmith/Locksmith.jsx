@@ -2172,7 +2172,7 @@ const runInit = () => {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            <span>*</span>
+            <span>Pittsburgh, PA & Surrounding Areas</span>
           </div>
           <div style={{"marginTop":"1.25rem"}}>
             <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
