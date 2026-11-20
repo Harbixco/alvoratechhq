@@ -27,3 +27,23 @@
   background: #94a3b8;
 }
 
+/* Footer social links styling & interactive hover */
+.footer-social-links .social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-social-links .social-icon-link:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
