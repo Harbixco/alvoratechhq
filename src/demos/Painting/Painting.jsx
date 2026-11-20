@@ -252,7 +252,7 @@ export default function Painting() {
         }
 
         /* ==========================================================================
-           6. 5-SCENARIO INTERACTIVE BEFORE & AFTER SLIDER
+           6. 5-SCENARIO INTERACTIVE BEFORE & AFTER SHOWCASE
            ========================================================================== */
         const baScenarios = {
           cabinets: {
@@ -699,7 +699,7 @@ export default function Painting() {
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Painting Services & Capabilities'}
               {currentView === 'portfolio' && 'Project Portfolio & Transformations'}
-              {currentView === 'why-us' && 'About Alvoratech & Why Homeowners Choose Us'}
+              {currentView === 'why-us' && 'Why Homeowners Choose Us'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Request Your Free Estimate'}
             </h1>
@@ -930,7 +930,7 @@ export default function Painting() {
         <section className="section-padding testimonials-section">
           <div className="container">
             <div className="section-header reveal">
-              <h2>What Property Owners Say About Alvoratech</h2>
+              <h2>What Property Owners Say About Us</h2>
               <div style={{ "marginTop": "0.5rem", "fontSize": "0.75rem", "textTransform": "uppercase", "letterSpacing": "0.08em", "color": "var(--color-coral)", "fontWeight": "700" }}>
                 Demonstration Testimonials • Verified Client Feedback Examples
               </div>
@@ -1581,7 +1581,7 @@ export default function Painting() {
         </div>
 
         {/* ==========================================================================
-         11. ABOUT ALVORATECH
+         11. ABOUT US
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
@@ -1860,7 +1860,7 @@ export default function Painting() {
         <section className="section-padding testimonials-section">
           <div className="container">
             <div className="section-header reveal">
-              <h2>What Property Owners Say About Alvoratech</h2>
+              <h2>What Property Owners Say About Us</h2>
               <div style={{ "marginTop": "0.5rem", "fontSize": "0.75rem", "textTransform": "uppercase", "letterSpacing": "0.08em", "color": "var(--color-coral)", "fontWeight": "700" }}>
                 Demonstration Testimonials • Verified Client Feedback Examples
               </div>

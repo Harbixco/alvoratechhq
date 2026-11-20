@@ -119,7 +119,7 @@ export default function DentalCare() {
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Alvoratech'}
+              {currentView === 'about' && 'About Us'}
               {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
               {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
               {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
@@ -209,7 +209,6 @@ export default function DentalCare() {
         <section className="services section-wrap section-tint" id="services">
           <div className="section-heading">
             <div>
-              <span className="section-kicker">Care for every smile</span>
               <h2>Expert care, made personal.</h2>
             </div>
             <p>Whether it’s your twice-a-year visit or the smile you’ve been dreaming of, we make the next step feel simple.</p>
@@ -284,7 +283,6 @@ export default function DentalCare() {
           <div className="section-wrap">
             <div className="section-heading reviews-heading">
               <div>
-                <span className="section-kicker">A little love from our patients</span>
                 <h2>Smiles say it best.</h2>
               </div>
               <div className="reviews-rating">
@@ -340,7 +338,6 @@ export default function DentalCare() {
         <section className="contact-section section-wrap" id="contact">
           <div className="contact-panel">
             <div className="contact-info">
-              <span className="section-kicker">Your next chapter starts here</span>
               <h2>Let’s make room for a brighter smile.</h2>
               <p>Tell us a little about what you need. Our friendly team will be in touch to find a time that works for you.</p>
               <p className="contact-phone">
@@ -375,7 +372,6 @@ export default function DentalCare() {
 
             <form id="bookingForm" className="booking-form" onSubmit={handleBookingSubmit}>
               <div className="form-heading">
-                <span className="section-kicker">We’ll take it from here</span>
                 <h3>Request an appointment</h3>
                 <p>Share a few details and we’ll be in touch soon.</p>
               </div>
@@ -436,7 +432,6 @@ export default function DentalCare() {
         <section className="services section-wrap section-tint" id="services">
           <div className="section-heading">
             <div>
-              <span className="section-kicker">Care for every smile</span>
               <h2>Expert care, made personal.</h2>
             </div>
             <p>Whether it’s your twice-a-year visit or the smile you’ve been dreaming of, we make the next step feel simple.</p>
@@ -530,7 +525,6 @@ export default function DentalCare() {
             </div>
           </div>
           <div className="about-copy">
-            <span className="section-kicker">A practice built around you</span>
             <h2>Because going to the dentist should feel <em>good.</em></h2>
             <p>
               We believe great dentistry starts with listening. Our dedicated team pairs thoughtful, personal care with the latest technology—so every visit feels clear, calm, and entirely on your terms.
@@ -558,7 +552,6 @@ export default function DentalCare() {
             </div>
           </div>
           <div className="tech-content">
-            <span className="section-kicker">A calmer kind of care</span>
             <h2>Modern technology.<br /><em>More peace of mind.</em></h2>
             <p>
               Innovative tools help us make your care more precise, more comfortable, and easier to understand at every step.
@@ -620,7 +613,6 @@ export default function DentalCare() {
             </div>
           </div>
           <div className="tech-content">
-            <span className="section-kicker">A calmer kind of care</span>
             <h2>Modern technology.<br /><em>More peace of mind.</em></h2>
             <p>
               Innovative tools help us make your care more precise, more comfortable, and easier to understand at every step.
@@ -673,7 +665,6 @@ export default function DentalCare() {
         <section className="services section-wrap section-tint" id="services">
           <div className="section-heading">
             <div>
-              <span className="section-kicker">Care for every smile</span>
               <h2>Expert care, made personal.</h2>
             </div>
             <p>Whether it’s your twice-a-year visit or the smile you’ve been dreaming of, we make the next step feel simple.</p>
@@ -759,7 +750,6 @@ export default function DentalCare() {
           <div className="section-wrap">
             <div className="section-heading reviews-heading">
               <div>
-                <span className="section-kicker">A little love from our patients</span>
                 <h2>Smiles say it best.</h2>
               </div>
               <div className="reviews-rating">
@@ -826,7 +816,6 @@ export default function DentalCare() {
         <section className="contact-section section-wrap" id="contact">
           <div className="contact-panel">
             <div className="contact-info">
-              <span className="section-kicker">Your next chapter starts here</span>
               <h2>Let’s make room for a brighter smile.</h2>
               <p>Tell us a little about what you need. Our friendly team will be in touch to find a time that works for you.</p>
               <p className="contact-phone">
@@ -861,7 +850,6 @@ export default function DentalCare() {
 
             <form id="bookingForm" className="booking-form" onSubmit={handleBookingSubmit}>
               <div className="form-heading">
-                <span className="section-kicker">We’ll take it from here</span>
                 <h3>Request an appointment</h3>
                 <p>Share a few details and we’ll be in touch soon.</p>
               </div>
@@ -927,7 +915,6 @@ export default function DentalCare() {
         <section className="contact-section section-wrap" id="contact">
           <div className="contact-panel">
             <div className="contact-info">
-              <span className="section-kicker">Your next chapter starts here</span>
               <h2>Let’s make room for a brighter smile.</h2>
               <p>Tell us a little about what you need. Our friendly team will be in touch to find a time that works for you.</p>
               <p className="contact-phone">
@@ -962,7 +949,6 @@ export default function DentalCare() {
 
             <form id="bookingForm" className="booking-form" onSubmit={handleBookingSubmit}>
               <div className="form-heading">
-                <span className="section-kicker">We’ll take it from here</span>
                 <h3>Request an appointment</h3>
                 <p>Share a few details and we’ll be in touch soon.</p>
               </div>

@@ -219,7 +219,7 @@ export default function Contractor() {
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Alvoratech'}
+              {currentView === 'about' && 'About Us'}
               {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
               {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
               {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
@@ -1241,7 +1241,7 @@ export default function Contractor() {
               <img src={selectedProject.image} alt={selectedProject.title} />
             </div>
             <div className="dialog-content">
-              <span className="eyebrow">{selectedProject.category}</span>
+              
               <h2>{selectedProject.title}</h2>
               <p>{selectedProject.description}</p>
               <a

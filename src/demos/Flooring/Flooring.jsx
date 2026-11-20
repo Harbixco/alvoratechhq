@@ -776,7 +776,7 @@ const runInit = () => {
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Alvoratech'}
+              {currentView === 'about' && 'About Us'}
               {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
               {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
@@ -905,7 +905,7 @@ const runInit = () => {
     </section>
 
     {/* ==========================================================================
-         5. ABOUT ALVORATECH SECTION
+         5. ABOUT US SECTION
          ========================================================================== */}
     <section className="section-padding bg-sand" id="about">
       <div className="container">
@@ -985,7 +985,7 @@ const runInit = () => {
     <section className="section-padding bg-white testimonials-section" id="testimonials">
       <div className="container">
         <div className="section-header reveal">
-          <h2>What Homeowners Say About Alvoratech</h2>
+          <h2>What Homeowners Say About Us</h2>
         </div>
 
         <div className="testimonials-carousel-wrapper reveal stagger-1">
@@ -1637,7 +1637,7 @@ const runInit = () => {
     </section>
 
     {/* ==========================================================================
-         9. FLOORING MATERIAL COMPARISON GUIDE
+         9. FLOORING MATERIAL COMPARISON
          ========================================================================== */}
     <section className="section-padding bg-white" id="guide">
       <div className="container">

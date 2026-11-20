@@ -245,7 +245,7 @@ const runInit = () => {
   }
 
   /* ==========================================================================
-     6. 5-SCENARIO INTERACTIVE BEFORE & AFTER SLIDER
+     6. 5-SCENARIO INTERACTIVE BEFORE & AFTER SHOWCASE
      ========================================================================== */
   const baScenarios = {
     panel: {
@@ -615,7 +615,7 @@ const runInit = () => {
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Electrical Services & Capabilities'}
               {currentView === 'portfolio' && 'Project Portfolio & Panel Transformations'}
-              {currentView === 'why-us' && 'About Alvoratech & Why Property Owners Choose Us'}
+              {currentView === 'why-us' && 'Why Property Owners Choose Us'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Schedule Service & Emergency Dispatch'}
             </h1>
@@ -1433,7 +1433,7 @@ const runInit = () => {
     </div>
 
     {/* ==========================================================================
-         11. ABOUT ALVORATECH
+         11. ABOUT US
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>

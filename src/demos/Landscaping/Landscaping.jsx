@@ -740,11 +740,9 @@ const runInit = () => {
         {/* Desktop Navigation Links */}
         <nav className="nav-links" role="navigation" aria-label="Main Navigation">
           <a href="#services" onClick={(e) => navigateTo('services', e)} className="nav-link">Services</a>
-          <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Before & After</a>
           <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">About Us</a>
-          <a href="#why-us" onClick={(e) => navigateTo('why-us', e)} className="nav-link">Why Us</a>
           <a href="#portfolio" onClick={(e) => navigateTo('portfolio', e)} className="nav-link">Portfolio</a>
-          <a href="#testimonials" className="nav-link">Testimonials</a>
+          <a href="#testimonials" onClick={(e) => navigateTo('reviews', e)} className="nav-link">Reviews</a>
           <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="nav-link">FAQ</a>
           <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="nav-link">Contact</a>
         </nav>
@@ -798,7 +796,7 @@ const runInit = () => {
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Alvoratech'}
+              {currentView === 'about' && 'About Us'}
               {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
               {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
@@ -927,7 +925,7 @@ const runInit = () => {
     </section>
 
     {/* ==========================================================================
-         5. ABOUT ALVORATECH SECTION
+         5. ABOUT US SECTION
          ========================================================================== */}
     <section className="section-padding bg-light" id="about">
       <div className="container">
@@ -1005,7 +1003,7 @@ const runInit = () => {
     <section className="section-padding bg-light testimonials-section" id="testimonials">
       <div className="container">
         <div className="section-header reveal">
-          <h2>What Property Owners Say About Alvoratech</h2>
+          <h2>What Property Owners Say About Us</h2>
         </div>
 
         <div className="testimonials-carousel-wrapper reveal stagger-1">

@@ -206,6 +206,11 @@ button {
   position: sticky;
   top: 0;
   z-index: 30;
+  background: #111820 !important;
+  background: rgba(17, 24, 32, 0.96) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
@@ -1521,4 +1526,10 @@ textarea:focus {
     opacity: 1;
     transform: none;
   }
+}
+
+
+.testimonials h2,
+.testimonials .section-heading h2 {
+  color: #ffffff !important;
 }

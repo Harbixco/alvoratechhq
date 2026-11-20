@@ -325,7 +325,7 @@ export default function TreeRemoval() {
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Alvoratech'}
+              {currentView === 'about' && 'About Us'}
               {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
               {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
               {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
@@ -377,7 +377,6 @@ export default function TreeRemoval() {
         <section id="services" className="services section">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Our Tree Services</p>
               <h2>Complete Tree Care for Residential and Commercial Properties</h2>
             </div>
             <div className="service-grid">
@@ -405,7 +404,6 @@ export default function TreeRemoval() {
         <section id="testimonials" className="testimonials section">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Customer Testimonials</p>
               <h2>Client feedback from property owners</h2>
             </div>
             <div className="testimonial-carousel reveal is-visible" aria-live="polite">
@@ -452,7 +450,7 @@ export default function TreeRemoval() {
               <h2>Your Tree Service Business Deserves a Professional Online Presence.</h2>
               <p>
                 Want a modern website like this for your business? Alvoratech creates professional websites that help you
-                showcase your services and connect with customers.
+                Dedicated to safe tree removal, storm cleanup, and expert tree trimming.
               </p>
             </div>
             <div className="banner-buttons">
@@ -472,7 +470,6 @@ export default function TreeRemoval() {
         <section id="contact" className="contact section">
           <div className="container contact-grid">
             <div className="contact-copy reveal is-visible">
-              <p className="section-tag">Contact Us</p>
               <h2>Let's Talk About Your Tree Service Needs.</h2>
               <ul className="contact-list">
                 <li>
@@ -581,7 +578,6 @@ export default function TreeRemoval() {
         <section id="services" className="services section">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Our Tree Services</p>
               <h2>Complete Tree Care for Residential and Commercial Properties</h2>
             </div>
             <div className="service-grid">
@@ -628,7 +624,6 @@ export default function TreeRemoval() {
               />
             </div>
             <div className="about-content reveal is-visible">
-              <p className="section-tag">About Alvoratech</p>
               <h2>We Build Professional Websites That Help You Attract More Clients.</h2>
               <p>
                 Alvoratech creates polished, professional websites that help businesses showcase their services, build
@@ -666,7 +661,6 @@ export default function TreeRemoval() {
         <section className="reasons section alt-bg">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Why Choose Alvoratech?</p>
               <h2>Reliable service, thoughtful communication, and dependable results.</h2>
             </div>
             <div className="feature-grid">
@@ -713,7 +707,6 @@ export default function TreeRemoval() {
         <section className="reasons section alt-bg">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Why Choose Alvoratech?</p>
               <h2>Reliable service, thoughtful communication, and dependable results.</h2>
             </div>
             <div className="feature-grid">
@@ -760,7 +753,6 @@ export default function TreeRemoval() {
         <section id="projects" className="projects section">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Our Work</p>
               <h2>Tree Service Work in Action</h2>
               <p className="gallery-note">Illustrative photographs showcasing tree service operations.</p>
             </div>
@@ -836,7 +828,6 @@ export default function TreeRemoval() {
         <section id="testimonials" className="testimonials section">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Customer Testimonials</p>
               <h2>Client feedback from property owners</h2>
             </div>
             <div className="testimonial-carousel reveal is-visible" aria-live="polite">
@@ -883,7 +874,7 @@ export default function TreeRemoval() {
               <h2>Your Tree Service Business Deserves a Professional Online Presence.</h2>
               <p>
                 Want a modern website like this for your business? Alvoratech creates professional websites that help you
-                showcase your services and connect with customers.
+                Dedicated to safe tree removal, storm cleanup, and expert tree trimming.
               </p>
             </div>
             <div className="banner-buttons">
@@ -914,7 +905,6 @@ export default function TreeRemoval() {
         <section className="faq section">
           <div className="container faq-wrap">
             <div className="section-heading reveal is-visible">
-              <p className="section-tag">Frequently Asked Questions</p>
               <h2>Answers to common tree service questions.</h2>
             </div>
 
@@ -956,7 +946,6 @@ export default function TreeRemoval() {
         <section id="contact" className="contact section">
           <div className="container contact-grid">
             <div className="contact-copy reveal is-visible">
-              <p className="section-tag">Contact Us</p>
               <h2>Let's Talk About Your Tree Service Needs.</h2>
               <ul className="contact-list">
                 <li>

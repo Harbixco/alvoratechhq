@@ -761,7 +761,7 @@ const runInit = () => {
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Alvoratech'}
+              {currentView === 'about' && 'About Us'}
               {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
               {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
@@ -911,7 +911,7 @@ const runInit = () => {
     </section>
 
     {/* ========================================================================
-         ABOUT ALVORATECH SECTION
+         ABOUT US SECTION
          ======================================================================== */}
     <section className="section-padding bg-light" id="about">
       <div className="container about-grid">
@@ -1551,7 +1551,7 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="why-content">
-          <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
+          <h2 className="reveal stagger-1">Why Choose Us?</h2>
           <p className="reveal stagger-2">We combine high-performance commercial equipment with surface-appropriate cleaning solutions to restore exterior beauty safely and effectively.</p>
 
           <div className="why-benefits-grid">

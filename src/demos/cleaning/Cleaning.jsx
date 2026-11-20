@@ -641,7 +641,7 @@ const runInit = () => {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'about' && 'About Alvoratech Cleaning Services'}
+              {currentView === 'about' && 'About Our Cleaning Services'}
               {currentView === 'services' && 'Professional Cleaning Services'}
               {currentView === 'why-choose' && 'Why Homeowners Choose Alvoratech'}
               {currentView === 'gallery' && 'Recent Work & Transformation Gallery'}
@@ -1144,7 +1144,7 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="why-content">
-          <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
+          <h2 className="reveal stagger-1">Why Choose Us?</h2>
           <p className="reveal stagger-2">We blend modern cleaning methods with a customer-first mindset, giving you reliable solutions designed around your lifestyle.</p>
 
           <div className="why-benefits-grid">
@@ -1518,7 +1518,7 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="why-content">
-          <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
+          <h2 className="reveal stagger-1">Why Choose Us?</h2>
           <p className="reveal stagger-2">We blend modern cleaning methods with a customer-first mindset, giving you reliable solutions designed around your lifestyle.</p>
 
           <div className="why-benefits-grid">

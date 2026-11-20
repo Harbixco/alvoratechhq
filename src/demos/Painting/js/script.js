@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     6. 5-SCENARIO INTERACTIVE BEFORE & AFTER SLIDER
+     6. 5-SCENARIO INTERACTIVE BEFORE & AFTER SHOWCASE
      ========================================================================== */
   const baScenarios = {
     cabinets: {
