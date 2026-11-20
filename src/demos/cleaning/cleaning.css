@@ -12,8 +12,8 @@
   --color-navy: #102A43;
   --color-navy-dark: #0A1C2E;
   --color-navy-light: #243B53;
-  --color-blue: #1976D2;
-  --color-blue-hover: #1565C0;
+  --color-blue: #2563EB;
+  --color-blue-hover: #1D4ED8;
   --color-blue-light: #EBF3FC;
   --color-blue-soft: #F0F6FD;
   --color-green: #42B883;
@@ -24,8 +24,8 @@
   
   /* Neutral Palette */
   --color-white: #FFFFFF;
-  --color-bg-light: #F5F9FC;
-  --color-bg-alt: #F0F4F8;
+  --color-bg-light: #F8FAFC;
+  --color-bg-alt: #F1F5F9;
   --color-text-dark: #172B4D;
   --color-text-muted: #64748B;
   --color-border: rgba(16, 42, 67, 0.08);
@@ -205,8 +205,8 @@
 }
 
 .cleaning-demo .section-padding {
-  padding-top: clamp(4.5rem, 8vw, 7rem);
-  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  padding-top: clamp(3.25rem, 5.5vw, 4.75rem);
+  padding-bottom: clamp(3.25rem, 5.5vw, 4.75rem);
 }
 
 .cleaning-demo .bg-light {
@@ -489,39 +489,45 @@
 }
 
 .cleaning-demo .logo-icon-box {
-  width: 40px;
-  height: 40px;
+  width: 2.65rem;
+  height: 2.65rem;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-green) 100%);
+  background: #2563EB;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
-  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.25);
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+  flex-shrink: 0;
 }
 
 .cleaning-demo .logo-text {
+  font-family: var(--font-heading);
   font-weight: 800;
-  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-blue) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  line-height: 1.1;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: initial;
 }
 
 /* Navigation Links */
 .cleaning-demo .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.75rem;
 }
 
 .cleaning-demo .nav-link {
   font-family: var(--font-heading);
-  font-size: 0.925rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--color-text-dark);
+  color: #1E293B;
   position: relative;
   padding: 6px 0;
-  transition: color var(--transition-fast);
+  transition: color 0.2s ease;
 }
 
 .cleaning-demo .nav-link::after {
@@ -2201,10 +2207,14 @@
   }
   
   .cleaning-demo .logo-tagline {
-    font-size: 0.65rem !important;
-    letter-spacing: 0.04em !important;
-    display: block !important;
-  }
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #D97706;
+  font-weight: 700;
+  display: block;
+  margin-top: -3px;
+}
 
   /* Hamburger Menu Toggle Button: ALWAYS visible, right-aligned, 44x44px touch area */
   .cleaning-demo .mobile-toggle {
@@ -2671,4 +2681,107 @@
   .mobile-toggle.active span:last-child {
     transform: translateY(-7px) rotate(-45deg) !important;
   }
+}
+
+/* ── ALTERNATING SECTION BACKGROUNDS FOR CONTRAST & RHYTHM ── */
+.cleaning-demo .trust-section {
+  padding: 2.5rem 0 !important;
+  background-color: #F1F5F9 !important;
+  border-top: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.cleaning-demo .trust-item {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 1.15rem 1.35rem !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
+.cleaning-demo #services.section-padding {
+  background-color: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.cleaning-demo #services .service-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+  transition: all 0.25s ease !important;
+}
+
+.cleaning-demo #services .service-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08) !important;
+  border-color: #93C5FD !important;
+}
+
+.cleaning-demo #why-choose.section-padding {
+  background-color: #FFFFFF !important;
+}
+
+.cleaning-demo #how-it-works.section-padding {
+  background: linear-gradient(180deg, #F0F6FD 0%, #EEF4FC 100%) !important;
+  border-top: 1px solid #D6E6F9 !important;
+  border-bottom: 1px solid #D6E6F9 !important;
+}
+
+.cleaning-demo #how-it-works .step-item {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+.cleaning-demo .special-cta-section {
+  background: linear-gradient(135deg, #0A1C2E 0%, #102A43 60%, #1976D2 100%) !important;
+  color: #FFFFFF !important;
+  padding: clamp(3.75rem, 6vw, 5.5rem) 1.5rem !important;
+  text-align: center !important;
+}
+
+.cleaning-demo .special-cta-section h2 {
+  color: #FFFFFF !important;
+  font-size: clamp(1.75rem, 4vw, 2.5rem) !important;
+  font-weight: 800 !important;
+  margin-bottom: 1rem !important;
+}
+
+.cleaning-demo .special-cta-section p {
+  color: #CBD5E1 !important;
+  font-size: 1.1rem !important;
+  max-width: 650px !important;
+  margin: 0 auto 2rem auto !important;
+}
+
+.cleaning-demo #testimonials.section-padding {
+  background-color: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.cleaning-demo #testimonials .testimonial-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+.cleaning-demo #faq.section-padding {
+  background-color: #FFFFFF !important;
+}
+
+.cleaning-demo #contact.section-padding {
+  background: linear-gradient(180deg, #F1F5F9 0%, #E8EEF5 100%) !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+.cleaning-demo #contact .contact-form-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06) !important;
 }

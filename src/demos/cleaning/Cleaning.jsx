@@ -578,10 +578,14 @@ const runInit = () => {
       <header className="site-header" role="banner">
         <div className="container-wide">
           <div className="nav-container">
-            <a href="#home" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Cleaning">
+            {/* Logo */}
+            <a href="#hero" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Cleaning">
               <div className="logo-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                  <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 11V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h4" />
+                  <path d="M14 8h5a2 2 0 0 1 2 2v1" />
+                  <rect x="10" y="14" width="12" height="8" rx="2" />
+                  <path d="M14 18h4" />
                 </svg>
               </div>
               <div>
@@ -590,18 +594,27 @@ const runInit = () => {
               </div>
             </a>
 
+            {/* Desktop Navigation Links */}
             <nav className="nav-links" role="navigation" aria-label="Primary navigation">
               <a href="#home" onClick={(e) => navigateTo('home', e)} className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
-              <a href="#about" onClick={(e) => navigateTo('about', e)} className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>About Us</a>
               <a href="#services" onClick={(e) => navigateTo('services', e)} className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Services</a>
-              <a href="#why-choose" onClick={(e) => navigateTo('why-choose', e)} className={`nav-link ${currentView === 'why-choose' ? 'active' : ''}`}>Why Choose Us</a>
-              <a href="#gallery" onClick={(e) => navigateTo('gallery', e)} className={`nav-link ${currentView === 'gallery' ? 'active' : ''}`}>Gallery</a>
+              <a href="#gallery" onClick={(e) => navigateTo('gallery', e)} className={`nav-link ${currentView === 'gallery' ? 'active' : ''}`}>Portfolio</a>
+              <a href="#why-choose" onClick={(e) => navigateTo('why-choose', e)} className={`nav-link ${currentView === 'why-choose' ? 'active' : ''}`}>Why Us</a>
               <a href="#faq" onClick={(e) => navigateTo('faq', e)} className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
               <a href="#contact" onClick={(e) => navigateTo('contact', e)} className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
             </nav>
 
+            {/* Nav CTA Actions */}
             <div className="nav-actions">
-              <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">Get Free Quote</a>
+              <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">
+                <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                Get Free Estimate
+              </a>
               <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
                 <span></span><span></span><span></span>
               </button>
@@ -620,12 +633,20 @@ const runInit = () => {
           </button>
         </div>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} href="#home" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }} href="#about" className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>About Us</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Cleaning Services</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('gallery', e); }} href="#gallery" className={`nav-link ${currentView === 'gallery' ? 'active' : ''}`}>Gallery</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Services</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('gallery', e); }} href="#gallery" className={`nav-link ${currentView === 'gallery' ? 'active' : ''}`}>Portfolio</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-choose', e); }} href="#why-choose" className={`nav-link ${currentView === 'why-choose' ? 'active' : ''}`}>Why Us</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary" style={{ marginTop: '1rem' }}>Get Free Quote</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary" style={{ marginTop: '1rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+          <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '16px', height: '16px' }}>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          Get Free Estimate
+        </a>
         <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ marginTop: '0.5rem' }}>Call: +1 (412) 796-3968</a>
         <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ marginTop: '0.5rem' }}>Chat on WhatsApp</a>
       </aside>
@@ -834,7 +855,288 @@ const runInit = () => {
     </section>
 
     {/* ========================================================================
-         CLEANING SERVICES SECTION
+         SERVICES SECTION
+         ======================================================================== */}
+    <section className="section-padding bg-light" id="services">
+      <div className="container">
+        
+        <div className="section-header">
+          <h2 className="reveal stagger-1">Cleaning Solutions for Every Space</h2>
+          <p className="reveal stagger-2">From everyday home cleaning to detailed commercial cleaning, discover services designed around your space and needs.</p>
+        </div>
+
+        <div className="services-grid">
+          
+          {/* SERVICE 1 */}
+          <article className="service-card reveal">
+            <div className="service-image-box">
+              <img src="/cleaning/assets/images/service-residential.jpg" alt="Residential living room and home cleaning" className="service-image" width="400" height="220" loading="lazy" />
+              <span className="service-badge">Residential</span>
+            </div>
+            <div className="service-content">
+              <h3>Residential Cleaning</h3>
+              <p>Professional cleaning solutions for houses, apartments, and everyday living spaces.</p>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Alvoratech,%20I'm%20interested%20in%20Residential%20Cleaning" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+                <span>Request This Service</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          {/* SERVICE 2 */}
+          <article className="service-card reveal stagger-1">
+            <div className="service-image-box">
+              <img src="/cleaning/assets/images/service-deep.jpg" alt="Intensive deep cleaning services" className="service-image" width="400" height="220" loading="lazy" />
+              <span className="service-badge">Deep Clean</span>
+            </div>
+            <div className="service-content">
+              <h3>Deep Cleaning</h3>
+              <p>Detailed cleaning designed to address hard-to-reach areas and accumulated dirt.</p>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Alvoratech,%20I'm%20interested%20in%20Deep%20Cleaning" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+                <span>Request This Service</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          {/* SERVICE 3 */}
+          <article className="service-card reveal stagger-2">
+            <div className="service-image-box">
+              <img src="/cleaning/assets/images/service-commercial.jpg" alt="Commercial office and workspace cleaning" className="service-image" width="400" height="220" loading="lazy" />
+              <span className="service-badge">Commercial</span>
+            </div>
+            <div className="service-content">
+              <h3>Commercial Cleaning</h3>
+              <p>Cleaning solutions for offices, business premises, and professional environments.</p>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Alvoratech,%20I'm%20interested%20in%20Commercial%20Cleaning" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+                <span>Request This Service</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          {/* SERVICE 4 */}
+          <article className="service-card reveal">
+            <div className="service-image-box">
+              <img src="/cleaning/assets/images/service-move.jpg" alt="Move-in and move-out property cleaning" className="service-image" width="400" height="220" loading="lazy" />
+              <span className="service-badge">Transitions</span>
+            </div>
+            <div className="service-content">
+              <h3>Move-In / Move-Out Cleaning</h3>
+              <p>Detailed cleaning to prepare properties for new occupants or after moving out.</p>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Alvoratech,%20I'm%20interested%20in%20Move-In%20Move-Out%20Cleaning" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+                <span>Request This Service</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          {/* SERVICE 5 */}
+          <article className="service-card reveal stagger-1">
+            <div className="service-image-box">
+              <img src="/cleaning/assets/images/service-kitchen.jpg" alt="Kitchen and bathroom sanitization and deep cleaning" className="service-image" width="400" height="220" loading="lazy" />
+              <span className="service-badge">Targeted</span>
+            </div>
+            <div className="service-content">
+              <h3>Kitchen & Bathroom Cleaning</h3>
+              <p>Focused cleaning for essential spaces that require extra attention.</p>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Alvoratech,%20I'm%20interested%20in%20Kitchen%20Bathroom%20Cleaning" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+                <span>Request This Service</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          {/* SERVICE 6 */}
+          <article className="service-card reveal stagger-2">
+            <div className="service-image-box">
+              <img src="/cleaning/assets/images/service-maintenance.jpg" alt="General routine maintenance cleaning" className="service-image" width="400" height="220" loading="lazy" />
+              <span className="service-badge">Maintenance</span>
+            </div>
+            <div className="service-content">
+              <h3>General Maintenance Cleaning</h3>
+              <p>Regular cleaning support to help maintain a fresh and organized environment.</p>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Alvoratech,%20I'm%20interested%20in%20General%20Maintenance%20Cleaning" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+                <span>Request This Service</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         WHY CHOOSE ALVORATECH SECTION
+         ======================================================================== */}
+    <section className="section-padding bg-white" id="why-choose">
+      <div className="container why-grid">
+        
+        {/* Left Image */}
+        <div className="why-image-wrapper reveal">
+          <img src="/cleaning/assets/images/why-choose.jpg" alt="Cleaner using modern cleaning equipment" className="why-image" width="540" height="520" loading="lazy" />
+        </div>
+
+        {/* Right Content */}
+        <div className="why-content">
+          <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
+          <p className="reveal stagger-2">We blend modern cleaning methods with a customer-first mindset, giving you reliable solutions designed around your lifestyle.</p>
+
+          <div className="why-benefits-grid">
+            
+            <div className="why-benefit-card reveal stagger-1">
+              <div className="why-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h4>Professional Approach</h4>
+              <p>Trained professionals dedicated to consistent, high-standard cleaning results.</p>
+            </div>
+
+            <div className="why-benefit-card reveal stagger-2">
+              <div className="why-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h4>Attention to Detail</h4>
+              <p>Meticulous care applied to every corner, surface, and high-frequency touchpoint.</p>
+            </div>
+
+            <div className="why-benefit-card reveal stagger-3">
+              <div className="why-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <h4>Flexible Cleaning Solutions</h4>
+              <p>Customizable options suited for one-time deep cleaning or regular maintenance.</p>
+            </div>
+
+            <div className="why-benefit-card reveal stagger-4">
+              <div className="why-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
+              <h4>Customer Satisfaction Focus</h4>
+              <p>Every service is carried out with genuine care for your comfort and satisfaction.</p>
+            </div>
+
+            <div className="why-benefit-card reveal stagger-1">
+              <div className="why-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <h4>Residential & Commercial</h4>
+              <p>Specialized capabilities for both private residences and business workspaces.</p>
+            </div>
+
+            <div className="why-benefit-card reveal stagger-2">
+              <div className="why-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </div>
+              <h4>Convenient Communication</h4>
+              <p>Fast, direct communication via WhatsApp and direct contact options.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         HOW IT WORKS SECTION
+         ======================================================================== */}
+    <section className="section-padding bg-alt" id="how-it-works">
+      <div className="container">
+        
+        <div className="section-header">
+          <h2 className="reveal stagger-1">How It Works</h2>
+          <p className="reveal stagger-2">Enjoying a pristine, refreshed environment is straightforward and hassle-free.</p>
+        </div>
+
+        <div className="steps-timeline">
+          
+          <div className="step-item reveal">
+            <div className="step-number-box">01</div>
+            <h3>Contact Us</h3>
+            <p>Tell us about your cleaning needs and space preferences.</p>
+          </div>
+
+          <div className="step-item reveal stagger-1">
+            <div className="step-number-box">02</div>
+            <h3>Discuss Requirements</h3>
+            <p>We understand your property and preferred cleaning service.</p>
+          </div>
+
+          <div className="step-item reveal stagger-2">
+            <div className="step-number-box">03</div>
+            <h3>Get Your Quote</h3>
+            <p>Receive information about your requested cleaning service.</p>
+          </div>
+
+          <div className="step-item reveal stagger-3">
+            <div className="step-number-box">04</div>
+            <h3>Enjoy a Cleaner Space</h3>
+            <p>Get ready to experience a fresher, more comfortable environment.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================
+         SPECIAL CALL-TO-ACTION SECTION
+         ======================================================================== */}
+    <section className="special-cta-section" aria-label="Call to Action">
+      <div className="special-cta-content reveal">
+        <h2>Your Space Deserves a Fresh Start.</h2>
+        <p>Let Alvoratech help you create a cleaner, fresher, and more welcoming environment.</p>
+        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+          <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
+          </svg>
+          <span>Get Started on WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    {/* ========================================================================
+         CUSTOMER TESTIMONIALS SECTION
          ======================================================================== */}
     <section className="section-padding bg-light testimonials-section" id="testimonials">
       <div className="container">

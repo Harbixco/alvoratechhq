@@ -12,8 +12,8 @@
   --color-navy: #102A43;
   --color-navy-dark: #0A1C2E;
   --color-navy-light: #243B53;
-  --color-blue: #1976D2;
-  --color-blue-hover: #1565C0;
+  --color-blue: #2563EB;
+  --color-blue-hover: #1D4ED8;
   --color-blue-light: #EBF3FC;
   --color-blue-soft: #F0F6FD;
   --color-green: #42B883;
@@ -24,8 +24,8 @@
   
   /* Neutral Palette */
   --color-white: #FFFFFF;
-  --color-bg-light: #F5F9FC;
-  --color-bg-alt: #F0F4F8;
+  --color-bg-light: #F8FAFC;
+  --color-bg-alt: #F1F5F9;
   --color-text-dark: #172B4D;
   --color-text-muted: #64748B;
   --color-border: rgba(16, 42, 67, 0.08);
@@ -205,8 +205,8 @@ p {
 }
 
 .section-padding {
-  padding-top: clamp(4.5rem, 8vw, 7rem);
-  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  padding-top: clamp(3.25rem, 5.5vw, 4.75rem);
+  padding-bottom: clamp(3.25rem, 5.5vw, 4.75rem);
 }
 
 .bg-light {
@@ -2300,4 +2300,117 @@ p {
   .mobile-toggle.active span:last-child {
     transform: translateY(-7px) rotate(-45deg) !important;
   }
+}
+
+.logo-tagline {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #D97706;
+  font-weight: 700;
+  display: block;
+  margin-top: -3px;
+}
+
+/* ── ALTERNATING SECTION BACKGROUNDS FOR CONTRAST & RHYTHM ── */
+.trust-section {
+  padding: 2.5rem 0 !important;
+  background-color: #F1F5F9 !important;
+  border-top: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.trust-item {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 1.15rem 1.35rem !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
+#services.section-padding {
+  background-color: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+#services .service-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+  transition: all 0.25s ease !important;
+}
+
+#services .service-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08) !important;
+  border-color: #93C5FD !important;
+}
+
+#why-choose.section-padding {
+  background-color: #FFFFFF !important;
+}
+
+#how-it-works.section-padding {
+  background: linear-gradient(180deg, #F0F6FD 0%, #EEF4FC 100%) !important;
+  border-top: 1px solid #D6E6F9 !important;
+  border-bottom: 1px solid #D6E6F9 !important;
+}
+
+#how-it-works .step-item {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+.special-cta-section {
+  background: linear-gradient(135deg, #0A1C2E 0%, #102A43 60%, #1976D2 100%) !important;
+  color: #FFFFFF !important;
+  padding: clamp(3.75rem, 6vw, 5.5rem) 1.5rem !important;
+  text-align: center !important;
+}
+
+.special-cta-section h2 {
+  color: #FFFFFF !important;
+  font-size: clamp(1.75rem, 4vw, 2.5rem) !important;
+  font-weight: 800 !important;
+  margin-bottom: 1rem !important;
+}
+
+.special-cta-section p {
+  color: #CBD5E1 !important;
+  font-size: 1.1rem !important;
+  max-width: 650px !important;
+  margin: 0 auto 2rem auto !important;
+}
+
+#testimonials.section-padding {
+  background-color: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+#testimonials .testimonial-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+#faq.section-padding {
+  background-color: #FFFFFF !important;
+}
+
+#contact.section-padding {
+  background: linear-gradient(180deg, #F1F5F9 0%, #E8EEF5 100%) !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+#contact .contact-form-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06) !important;
 }
