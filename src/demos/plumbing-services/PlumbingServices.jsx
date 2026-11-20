@@ -197,29 +197,17 @@ export default function PlumbingServices() {
  </div>
  </header>
 
- {/* Section Breadcrumb & Hero Banner */}
- {currentView !== 'home' && (
+ {/* Section Header Banner */}
+      {currentView !== 'home' && (
  <section className="pf-view-banner" style={{
  background: 'linear-gradient(135deg, #0A192F 0%, #172A45 100%)',
- padding: '3.5rem 1.5rem',
+ padding: '2.25rem 1.5rem',
  color: '#ffffff',
  textAlign: 'center',
  borderBottom: '2px solid rgba(255,255,255,0.08)'
  }}>
  <div style={{ maxWidth: '850px', margin: '0 auto' }}>
- <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#8892B0' }} aria-label="Breadcrumb">
- <a href="#top" onClick={(e) => navigateTo('home', e)} style={{ color: '#CCD6F6', textDecoration: 'none' }}>Home</a>
- <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
- <span style={{ color: '#64FFDA', fontWeight: 600 }}>
- {currentView === 'residential' && 'Residential Plumbing'}
- {currentView === 'commercial' && 'Commercial Plumbing'}
- {currentView === 'drain' && 'Drain & Sewer Services'}
- {currentView === 'water-damage' && 'Water Damage Mitigation'}
- {currentView === 'about' && 'About ProFlow'}
- {currentView === 'contact' && 'Contact & Free Estimate'}
- </span>
- </nav>
- <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+ <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
  {currentView === 'residential' && 'Residential Plumbing Services'}
  {currentView === 'commercial' && 'Commercial Plumbing & Facility Maintenance'}
  {currentView === 'drain' && 'Emergency Drain Cleaning & Sewer Line Repairs'}
@@ -227,14 +215,6 @@ export default function PlumbingServices() {
  {currentView === 'about' && 'About ProFlow Plumbing'}
  {currentView === 'contact' && 'Request Your Free Estimate & Dispatch'}
  </h1>
- <p style={{ fontSize: '1.125rem', color: '#8892B0', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
- {currentView === 'residential' && 'Licensed master plumbers for leak repairs, water heater replacements, repiping, and bathroom fixtures.'}
- {currentView === 'commercial' && 'Code compliance, commercial water heaters, backflow testing, and industrial grease trap servicing.'}
- {currentView === 'drain' && 'HD camera line inspections, high-pressure hydro jetting, and trenchless pipe restoration.'}
- {currentView === 'water-damage' && '24/7 moisture extraction, structural thermal drying, and burst pipe flood mitigation.'}
- {currentView === 'about' && 'Over 15 years of master plumbing craftsmanship with transparent flat-rate pricing and 100% satisfaction guarantees.'}
- {currentView === 'contact' && 'Direct 24/7 emergency hotline, fast response times, and upfront written estimates.'}
- </p>
  </div>
  </section>
  )}

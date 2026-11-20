@@ -686,42 +686,24 @@ export default function Painting() {
         </a>
       </aside>
       <main id="main-content">
-      {/* Section Breadcrumb & Hero Banner */}
+      {/* Section Header Banner */}
       {currentView !== 'home' && (
         <section className="view-page-banner" style={{
           background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          padding: '3.5rem 1.5rem',
+          padding: '2.25rem 1.5rem',
           color: '#ffffff',
           textAlign: 'center',
           borderBottom: '1px solid rgba(255,255,255,0.08)'
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
-            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
-              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
-              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
-              <span style={{ color: '#f59e0b', fontWeight: 600 }}>
-                {currentView === 'services' && 'Services'}
-                {currentView === 'portfolio' && 'Portfolio'}
-                {currentView === 'why-us' && 'Why Choose Us'}
-                {currentView === 'faq' && 'Frequently Asked Questions'}
-                {currentView === 'contact' && 'Contact & Free Estimate'}
-              </span>
-            </nav>
-            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Painting Services & Capabilities'}
               {currentView === 'portfolio' && 'Project Portfolio & Transformations'}
               {currentView === 'why-us' && 'About Alvoratech & Why Homeowners Choose Us'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Request Your Free Estimate'}
             </h1>
-            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
-              {currentView === 'services' && 'From fine interior finishes and clean cabinet spray booths to durable commercial weatherproofing coatings.'}
-              {currentView === 'portfolio' && 'Explore authentic residential, commercial, and cabinetry transformations across the greater region.'}
-              {currentView === 'why-us' && 'Our trade standards, licensed master painters, and zero-shortcut architectural philosophy.'}
-              {currentView === 'faq' && 'Transparent answers regarding preparation, materials, pricing, project timelines, and our 10-year warranty.'}
-              {currentView === 'contact' && 'Get in touch with our master painting team for an upfront, transparent consultation and detailed project estimate.'}
-            </p>
-          </div>
+            </div>
         </section>
       )}
 

@@ -749,22 +749,17 @@ const runInit = () => {
   </aside>
 
       <main id="main-content">
-      {/* Section Breadcrumb & Banner */}
+      {/* Section Header Banner */}
       {currentView !== 'home' && (
         <section className="view-page-banner" style={{
           background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          padding: '3.5rem 1.5rem',
+          padding: '2.25rem 1.5rem',
           color: '#ffffff',
           textAlign: 'center',
           borderBottom: '1px solid rgba(255,255,255,0.08)'
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
-            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
-              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
-              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
-              <span style={{ color: '#f59e0b', fontWeight: 600, textTransform: 'capitalize' }}>{currentView.replace('-', ' ')}</span>
-            </nav>
-            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
               {currentView === 'about' && 'About Alvoratech'}
               {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
@@ -772,10 +767,7 @@ const runInit = () => {
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Contact & Request Free Quote'}
             </h1>
-            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
-              Commercial surface restoration, soft-wash exterior cleaning, oil stain extraction, and roof maintenance.
-            </p>
-          </div>
+            </div>
         </section>
       )}
 

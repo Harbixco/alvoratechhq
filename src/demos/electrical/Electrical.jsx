@@ -602,42 +602,24 @@ const runInit = () => {
         </a>
       </aside>
       <main id="main-content">
-      {/* Section Breadcrumb & Hero Banner */}
+      {/* Section Header Banner */}
       {currentView !== 'home' && (
         <section className="view-page-banner" style={{
           background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          padding: '3.5rem 1.5rem',
+          padding: '2.25rem 1.5rem',
           color: '#ffffff',
           textAlign: 'center',
           borderBottom: '1px solid rgba(255,255,255,0.08)'
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
-            <nav style={{ fontSize: '0.875rem', marginBottom: '0.75rem', color: '#94a3b8' }} aria-label="Breadcrumb">
-              <a href="#hero" onClick={(e) => navigateTo('home', e)} style={{ color: '#e2e8f0', textDecoration: 'none' }}>Home</a>
-              <span style={{ margin: '0 0.5rem', opacity: 0.6 }}>/</span>
-              <span style={{ color: '#f59e0b', fontWeight: 600 }}>
-                {currentView === 'services' && 'Services'}
-                {currentView === 'portfolio' && 'Portfolio'}
-                {currentView === 'why-us' && 'Why Choose Us'}
-                {currentView === 'faq' && 'Frequently Asked Questions'}
-                {currentView === 'contact' && 'Contact & Emergency Dispatch'}
-              </span>
-            </nav>
-            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0 0 0.75rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Electrical Services & Capabilities'}
               {currentView === 'portfolio' && 'Project Portfolio & Panel Transformations'}
               {currentView === 'why-us' && 'About Alvoratech & Why Property Owners Choose Us'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Schedule Service & Emergency Dispatch'}
             </h1>
-            <p style={{ fontSize: '1.125rem', color: '#cbd5e1', margin: 0, maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
-              {currentView === 'services' && 'Master-certified electrical panel upgrades, EV infrastructure, whole-home rewiring, and emergency dispatch.'}
-              {currentView === 'portfolio' && 'Browse clean electrical upgrades, commercial subpanels, and residential lighting installations.'}
-              {currentView === 'why-us' && '100% NEC code compliance, licensed electricians, and transparent flat-rate pricing with zero hidden fees.'}
-              {currentView === 'faq' && 'Direct answers regarding panel capacities, EV charging requirements, permits, and safety warranties.'}
-              {currentView === 'contact' && 'Speak directly with our on-call master electricians for immediate emergency dispatch or schedule an upcoming inspection.'}
-            </p>
-          </div>
+            </div>
         </section>
       )}
 
