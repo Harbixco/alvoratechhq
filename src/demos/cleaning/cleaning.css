@@ -2478,6 +2478,7 @@
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
+    margin-top: 4rem !important; /* Clears top bar with breathing room */
   padding-bottom: 0.75rem !important;
   margin-bottom: 1rem !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
@@ -2578,6 +2579,7 @@
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    margin-top: 4rem !important; /* Clears top bar with breathing room */
     padding-bottom: 0.85rem !important;
     margin-bottom: 0.5rem !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -2664,8 +2666,8 @@
   .mobile-toggle span {
     display: block !important;
     width: 24px !important;
-    height: 2px !important;
-    background: #ffffff !important;
+    height: 2.5px !important;
+    background: #0f172a !important;
     border-radius: 2px !important;
     transition: transform 0.25s ease, opacity 0.2s ease !important;
   }

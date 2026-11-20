@@ -384,6 +384,7 @@
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    margin-top: 4rem !important; /* Clears top bar with breathing room */
     padding-bottom: 0.85rem !important;
     margin-bottom: 0.75rem !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
