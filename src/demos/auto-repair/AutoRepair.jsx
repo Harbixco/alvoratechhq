@@ -328,7 +328,7 @@ export default function AutoRepair() {
 
         <section className="section services-section" id="services">
           <div className="container">
-            <div className="section-heading section-heading--split">
+            <div className="section-heading section-heading--split reveal">
               <div>
                 <h2>
                   Complete auto care.<br /><em>Every turn.</em>
@@ -435,7 +435,7 @@ export default function AutoRepair() {
               ].map((service) => (
                 <div
                   key={service.id}
-                  className="service-card"
+                  className="service-card reveal"
                   onClick={(e) => {
                     setSelectedService(service.title);
                     scrollToSection(e, 'appointment');
@@ -621,7 +621,7 @@ export default function AutoRepair() {
         <>
         <section className="section services-section" id="services">
           <div className="container">
-            <div className="section-heading section-heading--split">
+            <div className="section-heading section-heading--split reveal">
               <div>
                 <h2>
                   Complete auto care.<br /><em>Every turn.</em>
@@ -728,7 +728,7 @@ export default function AutoRepair() {
               ].map((service) => (
                 <div
                   key={service.id}
-                  className="service-card"
+                  className="service-card reveal"
                   onClick={(e) => {
                     setSelectedService(service.title);
                     scrollToSection(e, 'appointment');
@@ -832,7 +832,7 @@ export default function AutoRepair() {
         {/* ── DIFFERENCE SECTION ── */}
         <section className="difference-section section" id="difference">
           <div className="container">
-            <div className="section-heading section-heading--center">
+            <div className="section-heading section-heading--center reveal">
               <h2>
                 Car care, without<br /><em>the guesswork.</em>
               </h2>
@@ -840,25 +840,25 @@ export default function AutoRepair() {
             </div>
 
             <div className="difference-grid">
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">01 / HONESTY</span>
                 <div className="difference-icon" aria-hidden="true">◉</div>
                 <h3>Clear, upfront guidance</h3>
                 <p>We explain what we find and talk through your options before work begins.</p>
               </article>
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">02 / CRAFT</span>
                 <div className="difference-icon" aria-hidden="true">✳</div>
                 <h3>Work with intention</h3>
                 <p>Experienced technicians, modern diagnostic equipment and attention to detail.</p>
               </article>
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">03 / RESPECT</span>
                 <div className="difference-icon" aria-hidden="true">↗</div>
                 <h3>Your time matters</h3>
                 <p>Thoughtful scheduling and helpful updates keep you in the loop at every step.</p>
               </article>
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">04 / CARE</span>
                 <div className="difference-icon" aria-hidden="true">♡</div>
                 <h3>People come first</h3>
@@ -886,7 +886,7 @@ export default function AutoRepair() {
         <>
         <section className="difference-section section" id="difference">
           <div className="container">
-            <div className="section-heading section-heading--center">
+            <div className="section-heading section-heading--center reveal">
               <h2>
                 Car care, without<br /><em>the guesswork.</em>
               </h2>
@@ -894,25 +894,25 @@ export default function AutoRepair() {
             </div>
 
             <div className="difference-grid">
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">01 / HONESTY</span>
                 <div className="difference-icon" aria-hidden="true">◉</div>
                 <h3>Clear, upfront guidance</h3>
                 <p>We explain what we find and talk through your options before work begins.</p>
               </article>
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">02 / CRAFT</span>
                 <div className="difference-icon" aria-hidden="true">✳</div>
                 <h3>Work with intention</h3>
                 <p>Experienced technicians, modern diagnostic equipment and attention to detail.</p>
               </article>
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">03 / RESPECT</span>
                 <div className="difference-icon" aria-hidden="true">↗</div>
                 <h3>Your time matters</h3>
                 <p>Thoughtful scheduling and helpful updates keep you in the loop at every step.</p>
               </article>
-              <article className="difference-card">
+              <article className="difference-card reveal">
                 <span className="difference-card__num">04 / CARE</span>
                 <div className="difference-icon" aria-hidden="true">♡</div>
                 <h3>People come first</h3>

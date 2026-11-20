@@ -68,14 +68,19 @@ export default function App() {
       });
     }, {
       root: null,
-      threshold: 0.08,
-      rootMargin: '0px 0px -30px 0px'
+      threshold: 0.04,
+      rootMargin: '0px 0px 50px 0px'
     });
 
     const scanAndObserve = () => {
       document.querySelectorAll(targetSelectors).forEach(el => {
         if (!el.classList.contains('active') && !el.classList.contains('is-visible')) {
-          observer.observe(el);
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            activate(el);
+          } else {
+            observer.observe(el);
+          }
         }
       });
     };

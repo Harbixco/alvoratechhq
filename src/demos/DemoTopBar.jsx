@@ -63,21 +63,29 @@ export default function DemoTopBar({ demoName = 'Client Template Demo' }) {
       });
     }, {
       root: null,
-      threshold: 0.08,
-      rootMargin: '0px 0px -30px 0px'
+      threshold: 0.04,
+      rootMargin: '0px 0px 50px 0px'
     });
 
     const scanAndObserve = () => {
       const elements = document.querySelectorAll(targetSelectors);
       elements.forEach(el => {
         if (!el.classList.contains('active') && !el.classList.contains('is-visible')) {
-          observer.observe(el);
+          const rect = el.getBoundingClientRect();
+          // Elements already within view animate in immediately
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            activate(el);
+          } else {
+            observer.observe(el);
+          }
         }
       });
     };
 
-    // Initial scan
+    // Initial scans
     scanAndObserve();
+    const frameId = requestAnimationFrame(scanAndObserve);
+    const initialTimer = setTimeout(scanAndObserve, 250);
 
     // Re-scan when tab switching, dynamic content, or modal changes occur
     const mutationObserver = new MutationObserver(() => {
@@ -89,9 +97,19 @@ export default function DemoTopBar({ demoName = 'Client Template Demo' }) {
       mutationObserver.observe(rootEl, { childList: true, subtree: true });
     }
 
+    const handleHashOrScroll = () => {
+      scanAndObserve();
+    };
+    window.addEventListener('hashchange', handleHashOrScroll);
+    window.addEventListener('scroll', handleHashOrScroll, { passive: true });
+
     return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(initialTimer);
       observer.disconnect();
       mutationObserver.disconnect();
+      window.removeEventListener('hashchange', handleHashOrScroll);
+      window.removeEventListener('scroll', handleHashOrScroll);
     };
   }, []);
 

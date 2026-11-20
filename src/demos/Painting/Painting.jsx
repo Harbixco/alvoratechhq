@@ -157,13 +157,15 @@ export default function Painting() {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                entry.target.classList.add('is-visible');
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
               }
             });
           }, {
             root: null,
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px 50px 0px'
           });
 
           revealElements.forEach(el => revealObserver.observe(el));

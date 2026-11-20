@@ -326,7 +326,7 @@ export default function PersonalInjury() {
         {/* ── TRUST STRIP ── */}
         <section className="services section-pad" id="services">
           <div className="container">
-            <div className="section-heading section-heading--split">
+            <div className="section-heading section-heading--split reveal">
               <div>
                 <h2>Focused guidance for<br /><em>life after an injury.</em></h2>
               </div>
@@ -348,7 +348,7 @@ export default function PersonalInjury() {
                 { title: 'Dog Bite Injuries', desc: 'Practical guidance regarding veterinary documentation, medical expenses, and premises liability.', img: 'dog.jpg', num: '11' },
                 { title: 'Product Liability', desc: 'Hold manufacturers accountable for defective design, failure to warn, or faulty components.', img: 'product.jpg', num: '12' },
               ].map((item, idx) => (
-                <article key={idx} className="service-card">
+                <article key={idx} className="service-card reveal">
                   <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')} className="service-card__image">
                     <img src={`/demos/personal-injury/images/${item.img}`} alt={item.title} loading="lazy" width="720" height="480" />
                     <span className="service-card__number">{item.num}</span>
@@ -460,7 +460,7 @@ export default function PersonalInjury() {
         <>
         <section className="services section-pad" id="services">
           <div className="container">
-            <div className="section-heading section-heading--split">
+            <div className="section-heading section-heading--split reveal">
               <div>
                 <h2>Focused guidance for<br /><em>life after an injury.</em></h2>
               </div>
@@ -482,7 +482,7 @@ export default function PersonalInjury() {
                 { title: 'Dog Bite Injuries', desc: 'Practical guidance regarding veterinary documentation, medical expenses, and premises liability.', img: 'dog.jpg', num: '11' },
                 { title: 'Product Liability', desc: 'Hold manufacturers accountable for defective design, failure to warn, or faulty components.', img: 'product.jpg', num: '12' },
               ].map((item, idx) => (
-                <article key={idx} className="service-card">
+                <article key={idx} className="service-card reveal">
                   <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')} className="service-card__image">
                     <img src={`/demos/personal-injury/images/${item.img}`} alt={item.title} loading="lazy" width="720" height="480" />
                     <span className="service-card__number">{item.num}</span>
@@ -632,7 +632,7 @@ export default function PersonalInjury() {
               <p>We work tirelessly to ensure every client receives attentive, dedicated legal support tailored to their long-term health and financial stability.</p>
             </div>
             <div className="results__cards">
-              <article className="result-card">
+              <article className="result-card reveal">
                 <span>AVERAGE CLAIM RECOVERY</span>
                 <strong className="text-3xl sm:text-4xl font-extrabold text-[#dfc28f]">
                   $<CountUpNumber end={425000} duration={2000} />
@@ -640,7 +640,7 @@ export default function PersonalInjury() {
                 <p>Severe motor vehicle injury settlements</p>
                 <i>Demonstrated recovery track record</i>
               </article>
-              <article className="result-card">
+              <article className="result-card reveal">
                 <span>PRACTICE EXPERIENCE</span>
                 <strong className="text-3xl sm:text-4xl font-extrabold text-[#dfc28f]">
                   <CountUpNumber end={15} duration={1600} suffix="+ yrs" />
@@ -648,7 +648,7 @@ export default function PersonalInjury() {
                 <p>Trial and tort litigation experience</p>
                 <i>Dedicated to personal injury advocacy</i>
               </article>
-              <article className="result-card">
+              <article className="result-card reveal">
                 <span>CLIENT SATISFACTION</span>
                 <strong className="text-3xl sm:text-4xl font-extrabold text-[#dfc28f]">
                   <CountUpNumber end={100} duration={1800} suffix="%" />

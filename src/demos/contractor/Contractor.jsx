@@ -312,7 +312,7 @@ export default function Contractor() {
         {/* ── ABOUT SECTION ── */}
         <section className="services-section section-pad section-dark" id="services">
           <div className="container">
-            <div className="section-heading heading-light">
+            <div className="section-heading heading-light reveal">
               <div>
                 <h2>Built around your <span>ambition.</span></h2>
               </div>
@@ -392,7 +392,7 @@ export default function Contractor() {
                   svg: <path d="m3 16 13-10 13 10M6 14v14h20V14M12 28v-9h8v9M4 28h24" />,
                 },
               ].map((serv) => (
-                <article key={serv.id} className="service-card">
+                <article key={serv.id} className="service-card reveal">
                   <div className="service-image">
                     <img src={serv.image} alt={serv.title} loading="lazy" />
                     <span className="service-number">{serv.id}</span>
@@ -570,7 +570,7 @@ export default function Contractor() {
         <>
         <section className="services-section section-pad section-dark" id="services">
           <div className="container">
-            <div className="section-heading heading-light">
+            <div className="section-heading heading-light reveal">
               <div>
                 <h2>Built around your <span>ambition.</span></h2>
               </div>
@@ -650,7 +650,7 @@ export default function Contractor() {
                   svg: <path d="m3 16 13-10 13 10M6 14v14h20V14M12 28v-9h8v9M4 28h24" />,
                 },
               ].map((serv) => (
-                <article key={serv.id} className="service-card">
+                <article key={serv.id} className="service-card reveal">
                   <div className="service-image">
                     <img src={serv.image} alt={serv.title} loading="lazy" />
                     <span className="service-number">{serv.id}</span>
@@ -852,7 +852,7 @@ export default function Contractor() {
         <>
         <section className="projects-section section-pad" id="projects">
           <div className="container">
-            <div className="section-heading">
+            <div className="section-heading reveal">
               <div>
                 <h2>Spaces made to <span>move us.</span></h2>
               </div>
@@ -881,7 +881,7 @@ export default function Contractor() {
               {filteredProjects.map((proj) => (
                 <article
                   key={proj.id}
-                  className={`project-card ${proj.isFeature && activeFilter === 'all' ? 'project-feature' : ''}`}
+                  className={`project-card reveal ${proj.isFeature && activeFilter === 'all' ? 'project-feature' : ''}`}
                 >
                   <button
                     className="project-open"

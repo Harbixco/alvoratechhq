@@ -400,7 +400,7 @@ export default function PlumbingServices() {
 
  <section className="pf-section pf-section-alt" id="services">
  <div className="pf-container">
- <div className="pf-section-head">
+ <div className="pf-section-head reveal">
  <h2 className="pf-section-title">Complete Plumbing Solutions</h2>
  <p className="pf-section-sub">
  From minor leaks to major installations, our certified plumbers handle every job with precision and care.
@@ -408,7 +408,7 @@ export default function PlumbingServices() {
  </div>
 
  <div className="pf-services-grid">
- <div className="pf-service-card">
+ <div className="pf-service-card reveal">
  <div className="pf-svc-icon">
  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
  <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
@@ -418,7 +418,7 @@ export default function PlumbingServices() {
  <p>Burst pipes, major leaks, or no water — we respond fast, 24 hours a day, 7 days a week. Same-day service guaranteed.</p>
  </div>
 
- <div className="pf-service-card">
+ <div className="pf-service-card reveal">
  <div className="pf-svc-icon">
  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
  <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 6v4m0 4h.01" />
@@ -428,7 +428,7 @@ export default function PlumbingServices() {
  <p>Slow or blocked drains cleared using professional-grade hydro-jetting and snake equipment — no mess, no damage.</p>
  </div>
 
- <div className="pf-service-card">
+ <div className="pf-service-card reveal">
  <div className="pf-svc-icon">
  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
  <path d="M18 8h1a4 4 0 010 8h-1" />
@@ -442,7 +442,7 @@ export default function PlumbingServices() {
  <p>Installation, repair, and replacement of all water heater types including tankless systems. Hot water restored fast.</p>
  </div>
 
- <div className="pf-service-card">
+ <div className="pf-service-card reveal">
  <div className="pf-svc-icon">
  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
  <rect x="2" y="7" width="20" height="14" rx="2" />
@@ -453,7 +453,7 @@ export default function PlumbingServices() {
  <p>New construction, remodeling, or pipe replacement. We install copper, PVC, and PEX piping to code — every time.</p>
  </div>
 
- <div className="pf-service-card">
+ <div className="pf-service-card reveal">
  <div className="pf-svc-icon">
  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
  <circle cx="11" cy="11" r="8" />
@@ -464,7 +464,7 @@ export default function PlumbingServices() {
  <p>Advanced non-invasive technology to locate hidden leaks behind walls and under slabs before they cause serious damage.</p>
  </div>
 
- <div className="pf-service-card">
+ <div className="pf-service-card reveal">
  <div className="pf-svc-icon">
  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
@@ -505,7 +505,7 @@ export default function PlumbingServices() {
  </section>
  <section className="pf-section" style={{ background: 'var(--navy)' }} id="about">
  <div className="pf-container">
- <div className="pf-section-head center">
+ <div className="pf-section-head center reveal">
  <h2 className="pf-section-title" style={{ color: 'var(--white)' }}>Why Homeowners Choose Us</h2>
  <p className="pf-section-sub" style={{ color: 'rgba(255,255,255,.6)' }}>
  We built our reputation one job at a time — by showing up on time, being honest about pricing, and doing work we're proud to put our name on.
@@ -513,37 +513,37 @@ export default function PlumbingServices() {
  </div>
 
  <div className="pf-why-grid">
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
  <h3>Fast Response Time</h3>
  <p>We average under 60 minutes to reach your location for emergencies — because we know time is critical when it comes to water damage.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
  <h3>Licensed &amp; Fully Insured</h3>
  <p>Every technician on our team is state-licensed and fully insured. You're protected — and so is your home — on every single job.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></svg>
  <h3>Upfront, Flat Pricing</h3>
  <p>We give you a clear price before any work begins. No hidden fees, no surprise charges on the final bill — ever.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
  <h3>Workmanship Guarantee</h3>
  <p>All repairs and installations come with a 1-year labor guarantee. If something isn't right, we come back and fix it — no charge.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>
  <h3>Experienced Local Team</h3>
  <p>Our plumbers average 12 years of hands-on experience. We've seen every plumbing problem imaginable and know exactly how to fix it.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
  <h3>Clear Communication</h3>
  <p>We explain what we find, what needs to be done, and why — in plain language, not plumber jargon. You're always in control.</p>
@@ -554,7 +554,7 @@ export default function PlumbingServices() {
 
  <section className="pf-section pf-section-alt">
  <div className="pf-container">
- <div className="pf-section-head center">
+ <div className="pf-section-head center reveal">
  <h2 className="pf-section-title">What Our Clients Say</h2>
  <p className="pf-section-sub">
  Don't just take our word for it — here's what real customers have to say about ProFlow Plumbing.
@@ -562,7 +562,7 @@ export default function PlumbingServices() {
  </div>
 
  <div className="pf-testi-grid">
- <div className="pf-testi-card">
+ <div className="pf-testi-card reveal">
  <div className="pf-stars">
  {[...Array(5)].map((_, i) => (
  <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
@@ -580,7 +580,7 @@ export default function PlumbingServices() {
  </div>
  </div>
 
- <div className="pf-testi-card">
+ <div className="pf-testi-card reveal">
  <div className="pf-stars">
  {[...Array(5)].map((_, i) => (
  <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
@@ -598,7 +598,7 @@ export default function PlumbingServices() {
  </div>
  </div>
 
- <div className="pf-testi-card">
+ <div className="pf-testi-card reveal">
  <div className="pf-stars">
  {[...Array(5)].map((_, i) => (
  <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
@@ -620,7 +620,7 @@ export default function PlumbingServices() {
  </section>
  <section className="pf-section" id="contact">
  <div className="pf-container">
- <div className="pf-section-head">
+ <div className="pf-section-head reveal">
  <h2 className="pf-section-title">Request a Free Quote</h2>
  <p className="pf-section-sub">
  Fill out the form and we'll get back to you within 30 minutes during business hours — or message us directly on WhatsApp for immediate assistance.
@@ -1212,7 +1212,7 @@ export default function PlumbingServices() {
  <>
  <section className="pf-section" style={{ background: 'var(--navy)' }} id="about">
  <div className="pf-container">
- <div className="pf-section-head center">
+ <div className="pf-section-head center reveal">
  <h2 className="pf-section-title" style={{ color: 'var(--white)' }}>Why Homeowners Choose Us</h2>
  <p className="pf-section-sub" style={{ color: 'rgba(255,255,255,.6)' }}>
  We built our reputation one job at a time — by showing up on time, being honest about pricing, and doing work we're proud to put our name on.
@@ -1220,37 +1220,37 @@ export default function PlumbingServices() {
  </div>
 
  <div className="pf-why-grid">
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
  <h3>Fast Response Time</h3>
  <p>We average under 60 minutes to reach your location for emergencies — because we know time is critical when it comes to water damage.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
  <h3>Licensed &amp; Fully Insured</h3>
  <p>Every technician on our team is state-licensed and fully insured. You're protected — and so is your home — on every single job.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></svg>
  <h3>Upfront, Flat Pricing</h3>
  <p>We give you a clear price before any work begins. No hidden fees, no surprise charges on the final bill — ever.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
  <h3>Workmanship Guarantee</h3>
  <p>All repairs and installations come with a 1-year labor guarantee. If something isn't right, we come back and fix it — no charge.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>
  <h3>Experienced Local Team</h3>
  <p>Our plumbers average 12 years of hands-on experience. We've seen every plumbing problem imaginable and know exactly how to fix it.</p>
  </div>
 
- <div className="pf-why-card">
+ <div className="pf-why-card reveal">
  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
  <h3>Clear Communication</h3>
  <p>We explain what we find, what needs to be done, and why — in plain language, not plumber jargon. You're always in control.</p>
@@ -1261,7 +1261,7 @@ export default function PlumbingServices() {
 
  <section className="pf-section pf-section-alt">
  <div className="pf-container">
- <div className="pf-section-head center">
+ <div className="pf-section-head center reveal">
  <h2 className="pf-section-title">What Our Clients Say</h2>
  <p className="pf-section-sub">
  Don't just take our word for it — here's what real customers have to say about ProFlow Plumbing.
@@ -1269,7 +1269,7 @@ export default function PlumbingServices() {
  </div>
 
  <div className="pf-testi-grid">
- <div className="pf-testi-card">
+ <div className="pf-testi-card reveal">
  <div className="pf-stars">
  {[...Array(5)].map((_, i) => (
  <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
@@ -1287,7 +1287,7 @@ export default function PlumbingServices() {
  </div>
  </div>
 
- <div className="pf-testi-card">
+ <div className="pf-testi-card reveal">
  <div className="pf-stars">
  {[...Array(5)].map((_, i) => (
  <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
@@ -1305,7 +1305,7 @@ export default function PlumbingServices() {
  </div>
  </div>
 
- <div className="pf-testi-card">
+ <div className="pf-testi-card reveal">
  <div className="pf-stars">
  {[...Array(5)].map((_, i) => (
  <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
@@ -1343,7 +1343,7 @@ export default function PlumbingServices() {
  <>
  <section className="pf-section" id="contact">
  <div className="pf-container">
- <div className="pf-section-head">
+ <div className="pf-section-head reveal">
  <h2 className="pf-section-title">Request a Free Quote</h2>
  <p className="pf-section-sub">
  Fill out the form and we'll get back to you within 30 minutes during business hours — or message us directly on WhatsApp for immediate assistance.

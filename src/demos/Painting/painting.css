@@ -2159,11 +2159,14 @@
   }
 }
 
-/* Guarantee visibility for revealed elements in React SPA */
-.painting-demo .reveal,
-.painting-demo [data-reveal] {
+/* Smooth visibility transition for revealed elements */
+.painting-demo .reveal.active,
+.painting-demo .reveal.is-visible,
+.painting-demo .reveal.visible,
+.painting-demo [data-reveal].active,
+.painting-demo [data-reveal].is-visible {
   opacity: 1 !important;
-  transform: none !important;
+  transform: translateY(0) !important;
   visibility: visible !important;
 }
 

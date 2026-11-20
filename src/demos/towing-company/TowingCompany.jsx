@@ -367,7 +367,7 @@ export default function TowingCompany() {
         <section className="hero">
           <div className="hero-backdrop" aria-hidden="true"></div>
           <div className="container hero-inner">
-            <div className="hero-content reveal is-visible">
+            <div className="hero-content reveal">
               
               <h1>FAST, RELIABLE &amp; PROFESSIONAL TOWING SERVICES</h1>
               <p>
@@ -393,7 +393,7 @@ export default function TowingCompany() {
                 <li>Upfront Rates, Zero Hidden Fees</li>
               </ul>
             </div>
-            <div className="hero-visual reveal is-visible" aria-label="Tow truck on highway">
+            <div className="hero-visual reveal" aria-label="Tow truck on highway">
               <div className="hero-card">
                 <img
                   src="/towing-company/images/hero-tow-truck.webp"
@@ -411,7 +411,7 @@ export default function TowingCompany() {
 
         <section className="services section" id="services">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>COMPLETE TOWING &amp; ROADSIDE ASSISTANCE SOLUTIONS</h2>
               <p>Professional vehicle transportation and roadside assistance tailored for any situation.</p>
             </div>
@@ -420,7 +420,7 @@ export default function TowingCompany() {
               {services.map((svc, idx) => {
                 const Icon = svc.icon;
                 return (
-                  <article className="service-card reveal is-visible" key={idx}>
+                  <article className="service-card reveal" key={idx}>
                     <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
                     <div className="service-card__content">
                       <div className="service-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -447,11 +447,11 @@ export default function TowingCompany() {
         {/* Mid-Page Promo Banner */}
         <section className="testimonials section" id="testimonials">
           <div className="container">
-            <div className="section-heading section-heading--light reveal is-visible">
+            <div className="section-heading section-heading--light reveal">
               <h2 style={{ color: '#ffffff' }}>WHAT DRIVERS SAY ABOUT US</h2>
             </div>
 
-            <div className="testimonial-slider reveal is-visible">
+            <div className="testimonial-slider reveal">
               <button
                 className="slider-btn slider-btn--prev"
                 type="button"
@@ -491,7 +491,7 @@ export default function TowingCompany() {
         {/* FAQ Section */}
         <section className="contact section" id="contact">
           <div className="container contact-grid">
-            <div className="contact-details reveal is-visible">
+            <div className="contact-details reveal">
               <h2>GET IN TOUCH WITH ALVORATECH</h2>
               <ul className="contact-list">
                 <li>
@@ -511,7 +511,7 @@ export default function TowingCompany() {
               </ul>
             </div>
 
-            <div className="contact-form-wrap reveal is-visible">
+            <div className="contact-form-wrap reveal">
               <form id="contactForm" onSubmit={handleFormSubmit} noValidate>
                 <div className="form-row">
                   <label>
@@ -620,7 +620,7 @@ export default function TowingCompany() {
         <>
         <section className="services section" id="services">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>COMPLETE TOWING &amp; ROADSIDE ASSISTANCE SOLUTIONS</h2>
               <p>Professional vehicle transportation and roadside assistance tailored for any situation.</p>
             </div>
@@ -629,7 +629,7 @@ export default function TowingCompany() {
               {services.map((svc, idx) => {
                 const Icon = svc.icon;
                 return (
-                  <article className="service-card reveal is-visible" key={idx}>
+                  <article className="service-card reveal" key={idx}>
                     <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
                     <div className="service-card__content">
                       <div className="service-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -671,7 +671,7 @@ export default function TowingCompany() {
         <>
         <section className="about section" id="about">
           <div className="container about-grid">
-            <div className="about-media reveal is-visible">
+            <div className="about-media reveal">
               <div className="about-image-wrap">
                 <img
                   src="/towing-company/images/heavy-duty-towing.webp"
@@ -682,7 +682,7 @@ export default function TowingCompany() {
               </div>
             </div>
 
-            <div className="about-content reveal is-visible">
+            <div className="about-content reveal">
               <h2>DEPENDABLE TOWING SOLUTIONS WHEN YOU NEED THEM</h2>
               <p>
                 Alvoratech is dedicated to providing professional towing, vehicle transportation, and
@@ -709,37 +709,37 @@ export default function TowingCompany() {
         {/* Why Choose Us */}
         <section className="why-us section" id="why-us">
           <div className="container">
-            <div className="section-heading reveal is-visible section-heading--light">
+            <div className="section-heading reveal section-heading--light">
               <h2>WHY CHOOSE ALVORATECH?</h2>
             </div>
 
             <div className="benefits-grid">
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiCheckCircle /></div>
                 <h3>Professional Service</h3>
                 <p>A structured, safety-first approach to every recovery.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiPhoneCall /></div>
                 <h3>Customer-Focused</h3>
                 <p>Direct communication and prompt arrival time estimates.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiTruck /></div>
                 <h3>Multiple Towing Solutions</h3>
                 <p>Services for light cars, heavy trucks, and motorcycles.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FaWhatsapp /></div>
                 <h3>Convenient Communication</h3>
                 <p>Fast dispatch updates and location sharing via WhatsApp.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiShield /></div>
                 <h3>Reliable Assistance</h3>
                 <p>Licensed, insured, and verified equipment on every job.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiClock /></div>
                 <h3>Fast Turnaround</h3>
                 <p>Immediate coordination to reduce roadside waiting time.</p>
@@ -766,37 +766,37 @@ export default function TowingCompany() {
         <>
         <section className="why-us section" id="why-us">
           <div className="container">
-            <div className="section-heading reveal is-visible section-heading--light">
+            <div className="section-heading reveal section-heading--light">
               <h2>WHY CHOOSE ALVORATECH?</h2>
             </div>
 
             <div className="benefits-grid">
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiCheckCircle /></div>
                 <h3>Professional Service</h3>
                 <p>A structured, safety-first approach to every recovery.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiPhoneCall /></div>
                 <h3>Customer-Focused</h3>
                 <p>Direct communication and prompt arrival time estimates.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiTruck /></div>
                 <h3>Multiple Towing Solutions</h3>
                 <p>Services for light cars, heavy trucks, and motorcycles.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FaWhatsapp /></div>
                 <h3>Convenient Communication</h3>
                 <p>Fast dispatch updates and location sharing via WhatsApp.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiShield /></div>
                 <h3>Reliable Assistance</h3>
                 <p>Licensed, insured, and verified equipment on every job.</p>
               </article>
-              <article className="benefit-card reveal is-visible">
+              <article className="benefit-card reveal">
                 <div className="benefit-icon"><FiClock /></div>
                 <h3>Fast Turnaround</h3>
                 <p>Immediate coordination to reduce roadside waiting time.</p>
@@ -823,14 +823,14 @@ export default function TowingCompany() {
         <>
         <section className="gallery section" id="gallery">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>OUR TOWING &amp; RECOVERY GALLERY</h2>
             </div>
 
             <div className="gallery-grid">
               {galleryImages.map((img, idx) => (
                 <button
-                  className="gallery-item reveal is-visible"
+                  className="gallery-item reveal"
                   type="button"
                   key={idx}
                   onClick={() => {
@@ -865,11 +865,11 @@ export default function TowingCompany() {
         <>
         <section className="testimonials section" id="testimonials">
           <div className="container">
-            <div className="section-heading section-heading--light reveal is-visible">
+            <div className="section-heading section-heading--light reveal">
               <h2 style={{ color: '#ffffff' }}>WHAT DRIVERS SAY ABOUT US</h2>
             </div>
 
-            <div className="testimonial-slider reveal is-visible">
+            <div className="testimonial-slider reveal">
               <button
                 className="slider-btn slider-btn--prev"
                 type="button"
@@ -923,7 +923,7 @@ export default function TowingCompany() {
       {currentView === 'faq' && (
         <>
         <section className="faq section" id="faq">
-          <div className="container faq-shell reveal is-visible">
+          <div className="container faq-shell reveal">
             <div className="section-heading section-heading--left">
               <h2>DISPATCH & ROADSIDE FAQS</h2>
             </div>
@@ -973,7 +973,7 @@ export default function TowingCompany() {
         <>
         <section className="contact section" id="contact">
           <div className="container contact-grid">
-            <div className="contact-details reveal is-visible">
+            <div className="contact-details reveal">
               <h2>GET IN TOUCH WITH ALVORATECH</h2>
               <ul className="contact-list">
                 <li>
@@ -993,7 +993,7 @@ export default function TowingCompany() {
               </ul>
             </div>
 
-            <div className="contact-form-wrap reveal is-visible">
+            <div className="contact-form-wrap reveal">
               <form id="contactForm" onSubmit={handleFormSubmit} noValidate>
                 <div className="form-row">
                   <label>

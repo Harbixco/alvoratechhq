@@ -215,7 +215,7 @@ export default function DentalCare() {
 
         {/* ── ABOUT ── */}
         <section className="services section-wrap section-tint" id="services">
-          <div className="section-heading">
+          <div className="section-heading reveal">
             <div>
               <h2>Expert care, made personal.</h2>
             </div>
@@ -260,7 +260,7 @@ export default function DentalCare() {
                 image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=720&q=80',
               },
             ].map((srv) => (
-              <article key={srv.id} className="service-card">
+              <article key={srv.id} className="service-card reveal">
                 <div className="service-photo">
                   <img src={srv.image} alt={srv.title} loading="lazy" />
                   <span className="service-number">{srv.id}</span>
@@ -289,7 +289,7 @@ export default function DentalCare() {
         {/* ── TECHNOLOGY ── */}
         <section className="reviews-section section-tint" id="reviews">
           <div className="section-wrap">
-            <div className="section-heading reviews-heading">
+            <div className="section-heading reviews-heading reveal">
               <div>
                 <h2>Smiles say it best.</h2>
               </div>
@@ -300,7 +300,7 @@ export default function DentalCare() {
               </div>
             </div>
             <div className="reviews-grid">
-              <article className="review-card">
+              <article className="review-card reveal">
                 <div className="review-top">
                   <span className="rating-stars">★★★★★</span>
                   <i className="fa-brands fa-google" aria-hidden="true"></i>
@@ -313,7 +313,7 @@ export default function DentalCare() {
                 </div>
               </article>
 
-              <article className="review-card">
+              <article className="review-card reveal">
                 <div className="review-top">
                   <span className="rating-stars">★★★★★</span>
                   <i className="fa-brands fa-google" aria-hidden="true"></i>
@@ -326,7 +326,7 @@ export default function DentalCare() {
                 </div>
               </article>
 
-              <article className="review-card">
+              <article className="review-card reveal">
                 <div className="review-top">
                   <span className="rating-stars">★★★★★</span>
                   <i className="fa-brands fa-google" aria-hidden="true"></i>
@@ -438,7 +438,7 @@ export default function DentalCare() {
       {currentView === 'services' && (
         <>
         <section className="services section-wrap section-tint" id="services">
-          <div className="section-heading">
+          <div className="section-heading reveal">
             <div>
               <h2>Expert care, made personal.</h2>
             </div>
@@ -483,7 +483,7 @@ export default function DentalCare() {
                 image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=720&q=80',
               },
             ].map((srv) => (
-              <article key={srv.id} className="service-card">
+              <article key={srv.id} className="service-card reveal">
                 <div className="service-photo">
                   <img src={srv.image} alt={srv.title} loading="lazy" />
                   <span className="service-number">{srv.id}</span>
@@ -683,7 +683,7 @@ export default function DentalCare() {
       {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && (
         <>
         <section className="services section-wrap section-tint" id="services">
-          <div className="section-heading">
+          <div className="section-heading reveal">
             <div>
               <h2>Expert care, made personal.</h2>
             </div>
@@ -728,7 +728,7 @@ export default function DentalCare() {
                 image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=720&q=80',
               },
             ].map((srv) => (
-              <article key={srv.id} className="service-card">
+              <article key={srv.id} className="service-card reveal">
                 <div className="service-photo">
                   <img src={srv.image} alt={srv.title} loading="lazy" />
                   <span className="service-number">{srv.id}</span>
@@ -772,7 +772,7 @@ export default function DentalCare() {
         <>
         <section className="reviews-section section-tint" id="reviews">
           <div className="section-wrap">
-            <div className="section-heading reviews-heading">
+            <div className="section-heading reviews-heading reveal">
               <div>
                 <h2>Smiles say it best.</h2>
               </div>
@@ -783,7 +783,7 @@ export default function DentalCare() {
               </div>
             </div>
             <div className="reviews-grid">
-              <article className="review-card">
+              <article className="review-card reveal">
                 <div className="review-top">
                   <span className="rating-stars">★★★★★</span>
                   <i className="fa-brands fa-google" aria-hidden="true"></i>
@@ -796,7 +796,7 @@ export default function DentalCare() {
                 </div>
               </article>
 
-              <article className="review-card">
+              <article className="review-card reveal">
                 <div className="review-top">
                   <span className="rating-stars">★★★★★</span>
                   <i className="fa-brands fa-google" aria-hidden="true"></i>
@@ -809,7 +809,7 @@ export default function DentalCare() {
                 </div>
               </article>
 
-              <article className="review-card">
+              <article className="review-card reveal">
                 <div className="review-top">
                   <span className="rating-stars">★★★★★</span>
                   <i className="fa-brands fa-google" aria-hidden="true"></i>

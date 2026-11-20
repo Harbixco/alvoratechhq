@@ -2012,11 +2012,14 @@
   }
 }
 
-/* Guarantee visibility for revealed elements in React SPA */
-.electrical-demo .reveal,
-.electrical-demo [data-reveal] {
+/* Smooth visibility transition for revealed elements */
+.electrical-demo .reveal.active,
+.electrical-demo .reveal.is-visible,
+.electrical-demo .reveal.visible,
+.electrical-demo [data-reveal].active,
+.electrical-demo [data-reveal].is-visible {
   opacity: 1 !important;
-  transform: none !important;
+  transform: translateY(0) !important;
   visibility: visible !important;
 }
 

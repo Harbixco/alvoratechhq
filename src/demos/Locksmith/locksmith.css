@@ -2330,11 +2330,14 @@
   }
 }
 
-/* Guarantee visibility for revealed elements in React SPA */
-.locksmith-demo .reveal,
-.locksmith-demo [data-reveal] {
+/* Smooth visibility transition for revealed elements */
+.locksmith-demo .reveal.active,
+.locksmith-demo .reveal.is-visible,
+.locksmith-demo .reveal.visible,
+.locksmith-demo [data-reveal].active,
+.locksmith-demo [data-reveal].is-visible {
   opacity: 1 !important;
-  transform: none !important;
+  transform: translateY(0) !important;
   visibility: visible !important;
 }
 

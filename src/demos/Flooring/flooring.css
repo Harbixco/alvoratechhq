@@ -2298,11 +2298,14 @@
   }
 }
 
-/* Guarantee visibility for revealed elements in React SPA */
-.flooring-demo .reveal,
-.flooring-demo [data-reveal] {
+/* Smooth visibility transition for revealed elements */
+.flooring-demo .reveal.active,
+.flooring-demo .reveal.is-visible,
+.flooring-demo .reveal.visible,
+.flooring-demo [data-reveal].active,
+.flooring-demo [data-reveal].is-visible {
   opacity: 1 !important;
-  transform: none !important;
+  transform: translateY(0) !important;
   visibility: visible !important;
 }
 

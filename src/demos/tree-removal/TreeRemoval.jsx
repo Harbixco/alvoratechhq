@@ -351,7 +351,7 @@ export default function TreeRemoval() {
           <div className="hero-overlay"></div>
 
           <div className="container hero-inner">
-            <div className="hero-copy reveal is-visible">
+            <div className="hero-copy reveal">
               <h1>Professional Tree Removal &amp; Tree Care Services You Can Trust</h1>
               <p className="lead">
                 From difficult tree removals to routine maintenance, Alvoratech helps property owners maintain safer,
@@ -383,12 +383,12 @@ export default function TreeRemoval() {
 
         <section id="services" className="services section">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Complete Tree Care for Residential and Commercial Properties</h2>
             </div>
             <div className="service-grid">
               {services.map((svc, idx) => (
-                <article className="service-card reveal is-visible" key={idx}>
+                <article className="service-card reveal" key={idx}>
                   <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
                   <div className="card-content">
                     <h3>{svc.title}</h3>
@@ -410,10 +410,10 @@ export default function TreeRemoval() {
         {/* Why Choose Us */}
         <section id="testimonials" className="testimonials section">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Client feedback from property owners</h2>
             </div>
-            <div className="testimonial-carousel reveal is-visible" aria-live="polite">
+            <div className="testimonial-carousel reveal" aria-live="polite">
               <button
                 className="carousel-btn prev"
                 type="button"
@@ -452,7 +452,7 @@ export default function TreeRemoval() {
 
         {/* Promo Banner */}
         <div className="promo-banner middle-banner">
-          <div className="container promo-inner reveal is-visible">
+          <div className="container promo-inner reveal">
             <div>
               <h2>Your Tree Service Business Deserves a Professional Online Presence.</h2>
               <p>
@@ -476,7 +476,7 @@ export default function TreeRemoval() {
         {/* FAQ Section */}
         <section id="contact" className="contact section">
           <div className="container contact-grid">
-            <div className="contact-copy reveal is-visible">
+            <div className="contact-copy reveal">
               <h2>Let's Talk About Your Tree Service Needs.</h2>
               <ul className="contact-list">
                 <li>
@@ -501,7 +501,7 @@ export default function TreeRemoval() {
               </a>
             </div>
 
-            <div className="contact-form-wrap reveal is-visible">
+            <div className="contact-form-wrap reveal">
               <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
                 <div className="form-grid">
                   <label>
@@ -584,12 +584,12 @@ export default function TreeRemoval() {
         <>
         <section id="services" className="services section">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Complete Tree Care for Residential and Commercial Properties</h2>
             </div>
             <div className="service-grid">
               {services.map((svc, idx) => (
-                <article className="service-card reveal is-visible" key={idx}>
+                <article className="service-card reveal" key={idx}>
                   <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
                   <div className="card-content">
                     <h3>{svc.title}</h3>
@@ -626,7 +626,7 @@ export default function TreeRemoval() {
         <>
         <section id="about" className="about section">
           <div className="container about-grid">
-            <div className="about-image reveal is-visible">
+            <div className="about-image reveal">
               <img
                 src="/tree-removal/images/arborist-tree-cutting.webp"
                 alt="Arborist using a chainsaw to remove a tree in sections"
@@ -634,7 +634,7 @@ export default function TreeRemoval() {
                 decoding="async"
               />
             </div>
-            <div className="about-content reveal is-visible">
+            <div className="about-content reveal">
               <h2>We Build Professional Websites That Help You Attract More Clients.</h2>
               <p>
                 Alvoratech creates polished, professional websites that help businesses showcase their services, build
@@ -671,31 +671,31 @@ export default function TreeRemoval() {
         {/* Services Section */}
         <section className="reasons section alt-bg">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Reliable service, thoughtful communication, and dependable results.</h2>
             </div>
             <div className="feature-grid">
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Experienced Team</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Safety First Approach</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Proper Equipment</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Customer Satisfaction</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiPhoneCall /></div>
                 <h3>Reliable Communication</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Comprehensive Services</h3>
               </article>
@@ -721,31 +721,31 @@ export default function TreeRemoval() {
         <>
         <section className="reasons section alt-bg">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Reliable service, thoughtful communication, and dependable results.</h2>
             </div>
             <div className="feature-grid">
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Experienced Team</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Safety First Approach</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Proper Equipment</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Customer Satisfaction</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiPhoneCall /></div>
                 <h3>Reliable Communication</h3>
               </article>
-              <article className="feature-card reveal is-visible">
+              <article className="feature-card reveal">
                 <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
                 <h3>Comprehensive Services</h3>
               </article>
@@ -771,12 +771,12 @@ export default function TreeRemoval() {
         <>
         <section id="projects" className="projects section">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Tree Service Work in Action</h2>
               <p className="gallery-note">Illustrative photographs showcasing tree service operations.</p>
             </div>
 
-            <div className="gallery-filters reveal is-visible" aria-label="Project filters">
+            <div className="gallery-filters reveal" aria-label="Project filters">
               <button
                 className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
                 type="button"
@@ -814,7 +814,7 @@ export default function TreeRemoval() {
               </button>
             </div>
 
-            <div className="gallery-grid reveal is-visible">
+            <div className="gallery-grid reveal">
               {filteredProjects.map((p, idx) => (
                 <figure
                   className="gallery-item cursor-pointer"
@@ -850,10 +850,10 @@ export default function TreeRemoval() {
         <>
         <section id="testimonials" className="testimonials section">
           <div className="container">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Client feedback from property owners</h2>
             </div>
-            <div className="testimonial-carousel reveal is-visible" aria-live="polite">
+            <div className="testimonial-carousel reveal" aria-live="polite">
               <button
                 className="carousel-btn prev"
                 type="button"
@@ -892,7 +892,7 @@ export default function TreeRemoval() {
 
         {/* Promo Banner */}
         <div className="promo-banner middle-banner">
-          <div className="container promo-inner reveal is-visible">
+          <div className="container promo-inner reveal">
             <div>
               <h2>Your Tree Service Business Deserves a Professional Online Presence.</h2>
               <p>
@@ -931,11 +931,11 @@ export default function TreeRemoval() {
         <>
         <section className="faq section">
           <div className="container faq-wrap">
-            <div className="section-heading reveal is-visible">
+            <div className="section-heading reveal">
               <h2>Answers to common tree service questions.</h2>
             </div>
 
-            <div className="faq-list reveal is-visible">
+            <div className="faq-list reveal">
               {faqs.map((faq, idx) => (
                 <article className={`faq-item ${activeFaq === idx ? 'active' : ''}`} key={idx}>
                   <button
@@ -961,7 +961,7 @@ export default function TreeRemoval() {
         {/* Contact Section (Homepage) */}
         <section id="contact" className="contact section">
           <div className="container contact-grid">
-            <div className="contact-copy reveal is-visible">
+            <div className="contact-copy reveal">
               <h2>Let's Talk About Your Tree Service Needs.</h2>
               <ul className="contact-list">
                 <li>
@@ -986,7 +986,7 @@ export default function TreeRemoval() {
               </a>
             </div>
 
-            <div className="contact-form-wrap reveal is-visible">
+            <div className="contact-form-wrap reveal">
               <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
                 <div className="form-grid">
                   <label>
@@ -1087,7 +1087,7 @@ export default function TreeRemoval() {
         <>
         <section id="contact" className="contact section">
           <div className="container contact-grid">
-            <div className="contact-copy reveal is-visible">
+            <div className="contact-copy reveal">
               <h2>Let's Talk About Your Tree Service Needs.</h2>
               <ul className="contact-list">
                 <li>
@@ -1112,7 +1112,7 @@ export default function TreeRemoval() {
               </a>
             </div>
 
-            <div className="contact-form-wrap reveal is-visible">
+            <div className="contact-form-wrap reveal">
               <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
                 <div className="form-grid">
                   <label>
