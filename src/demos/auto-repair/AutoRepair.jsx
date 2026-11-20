@@ -13,7 +13,7 @@ export default function AutoRepair() {
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
-      if (["services","about","difference","team","reviews","appointment","faq","contact"].includes(hash)) return hash;
+      if (["services","about","difference","reviews","appointment","faq","contact"].includes(hash)) return hash;
       if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
     }
     return 'home';
@@ -32,7 +32,7 @@ export default function AutoRepair() {
   useEffect(() => {
     const handleHash = () => {
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
-      if (["services","about","difference","team","reviews","appointment","faq","contact"].includes(hash)) {
+      if (["services","about","difference","reviews","appointment","faq","contact"].includes(hash)) {
         setCurrentView(hash);
       } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
         setCurrentView(hash);
@@ -137,75 +137,80 @@ export default function AutoRepair() {
         <span>Concept website only — Alvoratech is not an operating repair business.</span>
       </div>
 
-      {/* Site Header */}
-      <header className="site-header">
-        <div className="header-top">
-          <a href="#home" onClick={(e) => navigateTo('home', e)} className="brand" aria-label="Alvoratech home">
-            <span className="brand__mark" aria-hidden="true">
-              <svg viewBox="0 0 42 42" fill="none">
-                <path d="M5 31.5 18.5 6h5L37 31.5h-8l-2.7-5.3H15.8l-2.7 5.3H5Z" fill="currentColor" />
-                <path d="m18.7 20.8 2.4-4.6 2.4 4.6h-4.8Z" fill="#121312" />
-                <path d="M9 35h24" stroke="currentColor" strokeWidth="2.5" />
-              </svg>
-            </span>
-            <span className="brand__name">
-              ALVORA<span>TECH</span>
-            </span>
-          </a>
-
-          <div className="header-top__right">
-            <span className="header-location">
-              <span className="status-dot"></span> Your neighborhood auto care
-            </span>
-            <span className="header-divider"></span>
-            <a
-              className="header-phone"
-              href="https://wa.me/14127963968"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="WhatsApp Only: +1 (412) 796-3968"
-            >
-              <span className="phone-icon" aria-hidden="true">↗</span> +1 (412) 796-3968 (WhatsApp Only)
+      {/* Site Header - Styled after /painting */}
+      <header className="site-header" role="banner">
+        <div className="container-wide">
+          <div className="nav-container">
+            {/* Logo */}
+            <a href="#home" onClick={(e) => navigateTo('home', e)} className="site-logo" aria-label="Alvoratech Home">
+              <div className="logo-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+              </div>
+              <div>
+                <span className="logo-text">ALVORATECH</span>
+                <span className="logo-tagline">Auto Repair & Care</span>
+              </div>
             </a>
-          </div>
 
-          <button
-            className={`menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileMenuOpen}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+            {/* Desktop Navigation Links */}
+            <nav className="nav-links" role="navigation" aria-label="Main Navigation">
+              <a href="#services" onClick={(e) => navigateTo('services', e)} className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Services</a>
+              <a href="#about" onClick={(e) => navigateTo('about', e)} className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>Our Story</a>
+              <a href="#difference" onClick={(e) => navigateTo('difference', e)} className={`nav-link ${currentView === 'difference' || currentView === 'why-us' ? 'active' : ''}`}>Why Alvoratech</a>
+              <a href="#reviews" onClick={(e) => navigateTo('reviews', e)} className={`nav-link ${currentView === 'reviews' ? 'active' : ''}`}>Reviews</a>
+              <a href="#faq" onClick={(e) => navigateTo('faq', e)} className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQs</a>
+              <a href="#contact" onClick={(e) => navigateTo('contact', e)} className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
+            </nav>
 
-        {/* Main Navigation */}
-        <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
-        <nav className={`main-nav ${mobileMenuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
-          <div className="main-nav__inner">
-            <div className="mobile-drawer-header">
-              <span className="mobile-drawer-title">Auto Care Menu</span>
-              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
-                &times;
+            {/* Nav Actions */}
+            <div className="nav-actions">
+              <a href="#appointment" onClick={(e) => navigateTo('appointment', e)} className="btn btn-primary btn-sm">
+                <svg className="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                Book Appointment
+              </a>
+              <button
+                className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-expanded={mobileMenuOpen}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
               </button>
             </div>
-            <div className="nav-links">
-              <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
-              <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>Our story</a>
-              <a href="#difference" onClick={(e) => { setMobileMenuOpen(false); navigateTo('difference', e); }}>Why Alvoratech</a>
-              <a href="#team" onClick={(e) => { setMobileMenuOpen(false); navigateTo('team', e); }}>Our team</a>
-              <a href="#reviews" onClick={(e) => { setMobileMenuOpen(false); navigateTo('reviews', e); }}>Reviews</a>
-              <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
-            </div>
-            <a className="button button--nav" href="#appointment" onClick={(e) => { setMobileMenuOpen(false); navigateTo('appointment', e); }}>
-              Book a visit <span aria-hidden="true">↗</span>
-            </a>
           </div>
-        </nav>
+        </div>
       </header>
+
+      {/* Mobile Navigation Overlay & Drawer */}
+      <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
+      <aside className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`} role="dialog" aria-label="Mobile Navigation">
+        <div className="mobile-drawer-header">
+          <span className="mobile-drawer-title">Auto Care Menu</span>
+          <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+            &times;
+          </button>
+        </div>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }} href="#home" className={`nav-link ${currentView === 'home' ? 'active' : ''}`}>Home</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }} href="#services" className={`nav-link ${currentView === 'services' ? 'active' : ''}`}>Services</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }} href="#about" className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>Our Story</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('difference', e); }} href="#difference" className={`nav-link ${currentView === 'difference' || currentView === 'why-us' ? 'active' : ''}`}>Why Alvoratech</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('reviews', e); }} href="#reviews" className={`nav-link ${currentView === 'reviews' ? 'active' : ''}`}>Customer Reviews</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>Frequently Asked Questions</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Location</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('appointment', e); }} href="#appointment" className="btn btn-primary nav-cta">
+          Book Appointment
+        </a>
+      </aside>
 
       <main id="main">
 
@@ -326,7 +331,7 @@ export default function AutoRepair() {
             <div className="section-heading section-heading--split">
               <div>
                 <h2>
-                  One trusted team.<br /><em>Every turn.</em>
+                  Complete auto care.<br /><em>Every turn.</em>
                 </h2>
               </div>
               <p>
@@ -619,7 +624,7 @@ export default function AutoRepair() {
             <div className="section-heading section-heading--split">
               <div>
                 <h2>
-                  One trusted team.<br /><em>Every turn.</em>
+                  Complete auto care.<br /><em>Every turn.</em>
                 </h2>
               </div>
               <p>
@@ -859,7 +864,7 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── TEAM SECTION ── */}
+        {/* ── CTA BANNER ── */}
           <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
             <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
               Connect With Our Specialists &rarr;
@@ -909,10 +914,10 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── TEAM SECTION ── */}
+        {/* ── APPOINTMENT CTA BANNER ── */}
           <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Work With Our Team &rarr;
+            <button onClick={(e) => navigateTo('appointment', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
+              Schedule Your Appointment &rarr;
             </button>
           </div>
         </>
@@ -1220,135 +1225,202 @@ export default function AutoRepair() {
 
       </main>
 
-            <footer className="site-footer">
-        <div className="container footer-main">
-          <a className="brand brand--footer" href="#home" onClick={(e) => navigateTo('home', e)}>
-            <span className="brand__mark" aria-hidden="true">
-              <svg viewBox="0 0 42 42" fill="none">
-                <path d="M5 31.5 18.5 6h5L37 31.5h-8l-2.7-5.3H15.8l-2.7 5.3H5Z" fill="currentColor" />
-                <path d="m18.7 20.8 2.4-4.6 2.4 4.6h-4.8Z" fill="#121312" />
-                <path d="M9 35h24" stroke="currentColor" strokeWidth="2.5" />
-              </svg>
-            </span>
-            <span className="brand__name">
-              ALVORA<span>TECH</span>
-            </span>
-          </a>
-          <p>Expert auto care, delivered with a little more heart.</p>
-          <div className="footer-links">
-            <a href="#services" onClick={(e) => navigateTo('services', e)}>Services</a>
-            <a href="#about" onClick={(e) => navigateTo('about', e)}>Our story</a>
-            <a href="#appointment" onClick={(e) => navigateTo('appointment', e)}>Appointments</a>
-            <a href="#faq" onClick={(e) => navigateTo('faq', e)}>FAQs</a>
-            <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
+      {/* Site Footer - Styled after /painting */}
+      <footer className="site-footer" id="contact" role="contentinfo">
+        <div className="container">
+          <div className="footer-grid">
+            {/* Col 1: Brand Info */}
+            <div className="footer-col">
+              <div className="site-logo" style={{ marginBottom: "1.25rem" }}>
+                <div className="logo-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="logo-text" style={{ color: "#ffffff" }}>ALVORATECH</span>
+                  <span className="logo-tagline" style={{ color: "#e55035" }}>Auto Repair & Care</span>
+                </div>
+              </div>
+              <p style={{ fontSize: "0.9375rem", marginBottom: "1.5rem", lineHeight: "1.65", color: "#94A3B8" }}>
+                Premier automotive service facility delivering transparent digital inspections, precision repairs, and manufacturer-certified maintenance for all makes and models.
+              </p>
+              <div style={{ fontSize: "0.8125rem", color: "#64748B" }}>
+                ASE Certified • 24-Month / 24,000-Mile Warranty • Modern Diagnostics
+              </div>
+            </div>
+
+            {/* Col 2: Services Directory */}
+            <div className="footer-col">
+              <h4>Our Services</h4>
+              <div className="footer-links">
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Computer Diagnostics</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Brake Repair & Replacement</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Engine & Transmission Care</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Oil, Lube & Filter Service</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Suspension & Steering</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">A/C & Climate Systems</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">Tire Service & Alignment</a>
+              </div>
+            </div>
+
+            {/* Col 3: Quick Links */}
+            <div className="footer-col">
+              <h4>Quick Links</h4>
+              <div className="footer-links">
+                <a href="#home" onClick={(e) => navigateTo('home', e)} className="footer-link">Home</a>
+                <a href="#services" onClick={(e) => navigateTo('services', e)} className="footer-link">All Services</a>
+                <a href="#about" onClick={(e) => navigateTo('about', e)} className="footer-link">Our Story</a>
+                <a href="#difference" onClick={(e) => navigateTo('difference', e)} className="footer-link">Why Alvoratech</a>
+                <a href="#reviews" onClick={(e) => navigateTo('reviews', e)} className="footer-link">Customer Reviews</a>
+                <a href="#faq" onClick={(e) => navigateTo('faq', e)} className="footer-link">FAQs</a>
+                <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="footer-link">Contact & Directions</a>
+              </div>
+            </div>
+
+            {/* Col 4: Direct Contact & Social Links */}
+            <div className="footer-col">
+              <h4>Direct Contact</h4>
+              <div className="footer-contact-info">
+                <div className="footer-contact-row">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  <div>
+                    <span style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", color: "#64748B" }}>WhatsApp / Phone</span>
+                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontWeight: "600" }}>+1 (412) 796-3968</a>
+                  </div>
+                </div>
+
+                <div className="footer-contact-row">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                  <div>
+                    <span style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", color: "#64748B" }}>Email Inquiry</span>
+                    <a href="mailto:service@alvoratechhq.com" style={{ color: "#ffffff", fontWeight: "600" }}>service@alvoratechhq.com</a>
+                  </div>
+                </div>
+
+                <div className="footer-contact-row">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                  <div>
+                    <span style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", color: "#64748B" }}>Workshop Location</span>
+                    <span style={{ color: "#ffffff", fontWeight: "600", fontSize: "0.9375rem" }}>Pittsburgh, PA & Surrounding</span>
+                  </div>
+                </div>
+
+                <div className="footer-contact-row">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                  <div>
+                    <span style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", color: "#64748B" }}>Operating Hours</span>
+                    <span style={{ color: "#CBD5E1", fontSize: "0.875rem" }}>Mon - Fri: 7:30 AM – 6:00 PM | Sat: 8:00 AM – 2:00 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Media Links */}
+              <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-link"
+                  aria-label="Facebook"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-link"
+                  aria-label="Instagram"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-link"
+                  aria-label="X (formerly Twitter)"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://pinterest.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-link"
+                  aria-label="Pinterest"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.357-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="footer-contact">
-            <span>
-              WHATSAPP ONLY{' '}
-              <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                +1 (412) 796-3968
-              </a>
-            </span>
-            <span>EMAIL <a href="mailto:service@alvoratechhq.com">service@alvoratechhq.com</a></span>
+
+          <div className="footer-bottom">
+            <div>
+              © 2026 Alvoratech Auto Repair. All rights reserved.
+            </div>
+            <div>
+              Demonstration Website • Powered by Alvoratech
+            </div>
           </div>
-          <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon-link"
-              aria-label="Facebook"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '34px',
-                height: '34px',
-                borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.08)',
-                color: '#ffffff',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-              </svg>
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon-link"
-              aria-label="Instagram"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '34px',
-                height: '34px',
-                borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.08)',
-                color: '#ffffff',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
-            <a
-              href="https://x.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon-link"
-              aria-label="X (formerly Twitter)"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '34px',
-                height: '34px',
-                borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.08)',
-                color: '#ffffff',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-            <a
-              href="https://pinterest.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon-link"
-              aria-label="Pinterest"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '34px',
-                height: '34px',
-                borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.08)',
-                color: '#ffffff',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.357-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div className="container footer-legal">
-          <span>© 2026 Alvoratech. Demonstration website — template preview.</span>
-          <a href="#home" onClick={(e) => navigateTo('home', e)}>Back to top ↑</a>
         </div>
       </footer>
     </div>
