@@ -1951,7 +1951,7 @@ export default function Painting() {
         <section className="section-padding faq-section" id="faq">
           <div className="container">
             <div className="section-header reveal">
-              <h2>Frequently Asked Questions</h2>
+              <h2>Clear Answers to Common Inquiries</h2>
               <p>Everything you need to know about our painting timelines, surface preparation, paint grades, and warranties.</p>
             </div>
 

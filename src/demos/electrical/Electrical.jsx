@@ -1794,7 +1794,7 @@ const runInit = () => {
     <section className="section-padding faq-section" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <h2>Frequently Asked Electrical Questions</h2>
+          <h2>Clear Answers from Certified Electricians</h2>
           <p>Get clear, expert answers on 200-Amp panel heavy-ups, EV charging capacity, circuit breaker tripping, and electrical permitting.</p>
         </div>
 

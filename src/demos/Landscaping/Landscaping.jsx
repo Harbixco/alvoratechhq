@@ -1524,7 +1524,7 @@ const runInit = () => {
 
           {/* Right Content */}
           <div className="why-content reveal stagger-1">
-            <h2>Why Discerning Property Owners Choose Alvoratech</h2>
+            <h2>The Alvoratech Standard of Excellence</h2>
             <p>
               We treat outdoor construction with the same discipline, structural engineering, and design nuance typically reserved for interior architectural renovations.
             </p>
@@ -1776,7 +1776,7 @@ const runInit = () => {
     <section className="section-padding bg-white" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <h2>Frequently Asked Questions</h2>
+          <h2>Everything You Need to Know</h2>
           <p>
             Find answers to common questions about our design approach, hardscape warranties, schedules, and estimates.
           </p>

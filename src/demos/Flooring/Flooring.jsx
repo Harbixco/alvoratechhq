@@ -1840,7 +1840,7 @@ const runInit = () => {
     <section className="section-padding bg-sand" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <h2>Frequently Asked Questions</h2>
+          <h2>Everything You Need to Know</h2>
           <p>
             Find clear answers about acclimatization, subfloor leveling, dustless sanding, and our lifetime installation warranty.
           </p>

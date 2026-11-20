@@ -1840,7 +1840,7 @@ const runInit = () => {
     <section className="section-padding bg-light" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <h2>Frequently Asked Questions</h2>
+          <h2>Everything You Need to Know</h2>
           <p>
             Find honest answers regarding emergency arrival times, car key programming, pricing transparency, and lock rekeying.
           </p>

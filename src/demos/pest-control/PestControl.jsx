@@ -1768,7 +1768,7 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <h2 className="reveal stagger-1">Frequently Asked Questions</h2>
+          <h2 className="reveal stagger-1">Everything You Need to Know</h2>
           <p className="reveal stagger-2">Find clear, honest answers regarding our residential and commercial pest defense solutions.</p>
         </div>
 

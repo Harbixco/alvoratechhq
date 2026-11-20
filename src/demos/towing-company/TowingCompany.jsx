@@ -904,7 +904,7 @@ export default function TowingCompany() {
         <section className="faq section" id="faq">
           <div className="container faq-shell reveal is-visible">
             <div className="section-heading section-heading--left">
-              <h2>FREQUENTLY ASKED QUESTIONS</h2>
+              <h2>DISPATCH & ROADSIDE FAQS</h2>
             </div>
 
             <div className="faq-list">
