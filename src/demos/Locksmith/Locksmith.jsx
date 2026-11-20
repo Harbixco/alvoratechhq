@@ -759,11 +759,8 @@ const runInit = () => {
     <a href="#portfolio" onClick={(e) => { setMobileMenuOpen(false); navigateTo('portfolio', e); }} className="nav-link">Portfolio Gallery</a>
     <a href="#faq" onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} className="nav-link">FAQ</a>
     <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="nav-link">Contact & Dispatch</a>
-    <a href="tel:+14127963968" className="btn btn-primary" style={{"marginTop":"1rem"}}>
-      Call: +1 (412) 796-3968
-    </a>
-    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"marginTop":"0.5rem"}}>
-      Chat on WhatsApp
+    <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="btn btn-primary nav-cta">
+      Request Emergency Locksmith
     </a>
   </aside>
 

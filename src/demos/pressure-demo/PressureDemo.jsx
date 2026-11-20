@@ -743,9 +743,9 @@ const runInit = () => {
       <a href="#faq" onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} className="nav-link">FAQ</a>
       <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="nav-link">Contact</a>
     </nav>
-    <div style={{"marginTop":"1.5rem"}}>
-      <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="btn btn-primary" style={{"width":"100%"}}>Get a Free Quote</a>
-    </div>
+    <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="btn btn-primary nav-cta">
+      Get Free Quote
+    </a>
   </aside>
 
       <main id="main-content">

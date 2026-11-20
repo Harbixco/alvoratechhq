@@ -591,14 +591,8 @@ const runInit = () => {
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-us', e); }} href="#why-us" className={`nav-link ${currentView === 'why-us' ? 'active' : ''}`}>Why Choose Us</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Dispatch</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary" style={{ "marginTop": "1rem" }}>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary nav-cta">
           Schedule Service
-        </a>
-        <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ "marginTop": "0.5rem" }}>
-          Call: +1 (412) 796-3968
-        </a>
-        <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ "marginTop": "0.5rem" }}>
-          Chat On WhatsApp
         </a>
       </aside>
       <main id="main-content">

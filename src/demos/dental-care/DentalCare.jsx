@@ -81,7 +81,7 @@ export default function DentalCare() {
           </a>
 
           <button
-            className="menu-toggle"
+            className={`menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
             type="button"
             aria-label="Open navigation menu"
             aria-expanded={mobileMenuOpen}
@@ -92,6 +92,7 @@ export default function DentalCare() {
             <span></span>
           </button>
 
+          <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
           <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
             <div className="mobile-drawer-header">
               <span className="mobile-drawer-title">Dental Care Menu</span>

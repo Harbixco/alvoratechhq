@@ -638,17 +638,9 @@ const runInit = () => {
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('why-choose', e); }} href="#why-choose" className={`nav-link ${currentView === 'why-choose' ? 'active' : ''}`}>Why Us</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary" style={{ marginTop: '1rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-          <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '16px', height: '16px' }}>
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-          </svg>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className="btn btn-primary nav-cta">
           Get Free Estimate
         </a>
-        <a onClick={() => setMobileMenuOpen(false)} href="tel:+14127963968" className="btn btn-secondary" style={{ marginTop: '0.5rem' }}>Call: +1 (412) 796-3968</a>
-        <a onClick={() => setMobileMenuOpen(false)} href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ marginTop: '0.5rem' }}>Chat on WhatsApp</a>
       </aside>
       <main id="main-content">
       {/* Section Header Banner */}

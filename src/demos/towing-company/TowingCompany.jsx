@@ -297,7 +297,7 @@ export default function TowingCompany() {
           </a>
 
           <button
-            className="nav-toggle"
+            className={`nav-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
             aria-expanded={mobileMenuOpen}
             aria-controls="primary-navigation"
             aria-label="Toggle navigation menu"
@@ -308,7 +308,8 @@ export default function TowingCompany() {
             <span></span>
           </button>
 
-          <nav className="site-nav" id="primary-navigation" aria-label="Main navigation">
+          <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
+          <nav className={`site-nav ${mobileMenuOpen ? 'is-open' : ''}`} id="primary-navigation" aria-label="Main navigation">
             <div className="mobile-drawer-header">
               <span className="mobile-drawer-title">Towing Menu</span>
               <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">

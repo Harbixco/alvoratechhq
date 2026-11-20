@@ -196,8 +196,10 @@
 
 .plumbing-demo .pf-mobile-nav.is-open {
   display: block;
-  max-height: 400px;
-  padding: 16px 0 24px;
+  max-height: 85vh;
+  max-height: 85dvh;
+  overflow-y: auto;
+  padding: 12px 0 24px;
 }
 
 .plumbing-demo .pf-mobile-nav a {

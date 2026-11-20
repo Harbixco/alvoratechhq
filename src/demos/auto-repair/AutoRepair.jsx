@@ -170,7 +170,7 @@ export default function AutoRepair() {
           </div>
 
           <button
-            className="menu-toggle"
+            className={`menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
             type="button"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
@@ -183,6 +183,7 @@ export default function AutoRepair() {
         </div>
 
         {/* Main Navigation */}
+        <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
         <nav className={`main-nav ${mobileMenuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
           <div className="main-nav__inner">
             <div className="mobile-drawer-header">

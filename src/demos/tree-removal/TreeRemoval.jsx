@@ -286,6 +286,7 @@ export default function TreeRemoval() {
             <span></span>
           </button>
 
+          <div className={`mobile-nav-overlay ${navOpen ? 'active' : ''}`} onClick={() => setNavOpen(false)} aria-hidden="true"></div>
           <div className={`nav-menu-wrap ${navOpen ? 'open' : ''}`}>
             <div className="mobile-drawer-header">
               <span className="mobile-drawer-title">Tree Service Menu</span>

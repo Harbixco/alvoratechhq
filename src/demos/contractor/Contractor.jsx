@@ -178,7 +178,7 @@ export default function Contractor() {
           </a>
 
           <button
-            className="menu-toggle"
+            className={`menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
             type="button"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
@@ -189,6 +189,7 @@ export default function Contractor() {
             <span></span>
           </button>
 
+          <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
           <div className={`nav-panel ${mobileMenuOpen ? 'is-open' : ''}`}>
             <div className="mobile-drawer-header">
               <span className="mobile-drawer-title">Contractor Menu</span>
