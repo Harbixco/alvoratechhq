@@ -1606,11 +1606,16 @@ const runInit = () => {
     {/* ========================================================================
          SPECIAL CALL-TO-ACTION SECTION
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Ready for a Spotless Home or Office?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Get an instant online estimate or set up a recurring cleaning schedule tailored to your space.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                 Schedule Your Cleaning &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1791,11 +1796,16 @@ const runInit = () => {
     {/* ========================================================================
          GALLERY SECTION
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Custom Cleaning Plans for Any Property</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From one-time deep cleans to scheduled commercial upkeep, we provide flexible, reliable service.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                 Get Custom Quote &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -2130,11 +2140,16 @@ const runInit = () => {
     {/* ========================================================================
          CUSTOMER TESTIMONIALS SECTION
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Book Your Transformation &rarr;
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Love What You See? Experience It Yourself</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our vetted, insured cleaning crew brings hotel-grade care to your residential or commercial space.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Book Your Cleaning Service &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -2249,9 +2264,21 @@ const runInit = () => {
     {/* ========================================================================
          CONTACT SECTION
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+        {/* FAQ Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Still Have Questions About Our Cleaners or Rates?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Call our Pittsburgh service desk directly or submit an estimate request online.</p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="tel:+14127963968" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Call +1 (412) 796-3968
+                </a>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Request Free Estimate &rarr;
+                </button>
+              </div>
             </div>
+          </section>
           </>
         )}
 

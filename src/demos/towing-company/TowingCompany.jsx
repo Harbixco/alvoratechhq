@@ -349,13 +349,13 @@ export default function TowingCompany() {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
-              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
-              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'services' && 'Emergency Towing & Roadside Services'}
+              {currentView === 'about' && 'About Alvoratech Towing'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Drivers & Fleets Depend on Us'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Our Towing Fleet & Recovery Equipment'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Driver Feedback & Roadside Ratings'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
-              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && '24/7 Emergency Dispatch & Inquiries'}
             </h1>
             </div>
         </section>
@@ -388,9 +388,9 @@ export default function TowingCompany() {
                 </a>
               </div>
               <ul className="trust-points" aria-label="Service highlights">
-                <li>Professional Towing Services</li>
-                <li>Reliable Vehicle Transportation</li>
-                <li>Roadside Assistance</li>
+                <li>20–30 Min Average Arrival</li>
+                <li>Damage-Free Wheel Lift &amp; Flatbed</li>
+                <li>Upfront Rates, Zero Hidden Fees</li>
               </ul>
             </div>
             <div className="hero-visual reveal is-visible" aria-label="Tow truck on highway">
@@ -506,7 +506,7 @@ export default function TowingCompany() {
                 </li>
                 <li>
                   <span>Service Area:</span>
-                  <span>United States Metropolitan &amp; Interstate Regions</span>
+                  <span>Greater Pittsburgh, Allegheny County &amp; Highway Corridors</span>
                 </li>
               </ul>
             </div>
@@ -653,12 +653,16 @@ export default function TowingCompany() {
           </div>
         </section>
 
-        {/* Mid-Page Promo Banner */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Schedule Service Consultation &rarr;
-            </button>
-          </div>
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0f172a' }}>Stranded or Need Immediate Roadside Help?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our local dispatch operators track fleet GPS in real time for 20–30 minute arrival. Call directly or message us on WhatsApp.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request 24/7 Dispatch &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -744,12 +748,16 @@ export default function TowingCompany() {
           </div>
         </section>
 
-        {/* Gallery */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Connect With Our Specialists &rarr;
-            </button>
-          </div>
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0f172a' }}>Dependable Towing When Every Minute Counts</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From sudden highway mechanical failures to scheduled long-distance hauls, our licensed drivers handle your vehicle with utmost care.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Contact Roadside Dispatch &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -797,12 +805,16 @@ export default function TowingCompany() {
           </div>
         </section>
 
-        {/* Gallery */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Work With Our Team &rarr;
-            </button>
-          </div>
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0f172a' }}>Trusted by Local Motorists &amp; Commercial Fleets</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Experience upfront pricing with zero surprise drop fees, damage-free strapping, and courteous communication every mile of the way.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Towing Assistance &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -835,12 +847,16 @@ export default function TowingCompany() {
           </div>
         </section>
 
-        {/* How It Works */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Request Project Estimate &rarr;
-            </button>
-          </div>
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0f172a' }}>Modern Rigs Built for Any Vehicle or Equipment</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From low-profile exotic cars to full commercial medium-duty trucks, our fleet is fully rigged and insured for complete protection.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Transport Quote &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -890,12 +906,16 @@ export default function TowingCompany() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Experience Our Certified Quality &rarr;
-            </button>
-          </div>
+        {/* Testimonials Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0f172a' }}>Real Help When Drivers Need It Most</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We treat every vehicle like our own and arrive promptly to turn stressful breakdowns into quick, seamless recoveries.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Contact 24/7 Dispatch &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -930,12 +950,21 @@ export default function TowingCompany() {
           </div>
         </section>
 
-        {/* Contact Form Section */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
-              Direct Line: +1 (412) 796-3968
-            </a>
-          </div>
+        {/* FAQ Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0f172a' }}>Have Questions About Rates or Coverage?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Speak directly with our local dispatch manager or message us on WhatsApp for upfront answers.</p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="tel:+14127963968" className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                  Call Direct: +1 (412) 796-3968
+                </a>
+                <button onClick={(e) => navigateTo('contact', e)} className="button button-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Send Online Message &rarr;
+                </button>
+              </div>
+            </div>
+          </section>
         </>
       )}
 
@@ -959,7 +988,7 @@ export default function TowingCompany() {
                 </li>
                 <li>
                   <span>Service Area:</span>
-                  <span>United States Metropolitan &amp; Interstate Regions</span>
+                  <span>Greater Pittsburgh, Allegheny County &amp; Highway Corridors</span>
                 </li>
               </ul>
             </div>

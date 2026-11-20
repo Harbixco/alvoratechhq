@@ -12,6 +12,7 @@
   --serif: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", Arial, sans-serif;
   --container: 1190px;
+  overflow-x: hidden;
 }
 
 .personal-injury-demo *, .personal-injury-demo *::before, .personal-injury-demo *::after { box-sizing: border-box; }

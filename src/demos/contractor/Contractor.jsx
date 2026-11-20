@@ -225,13 +225,13 @@ export default function Contractor() {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
-              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
-              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'services' && 'General Contracting & Remodeling Services'}
+              {currentView === 'about' && 'About Alvoratech Construction'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Homeowners Choose Alvoratech Construction'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Completed Remodels & Architectural Builds'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Homeowner Reviews & Building Experiences'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
-              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Discuss Your Project & Get an Estimate'}
             </h1>
             </div>
         </section>
@@ -671,12 +671,16 @@ export default function Contractor() {
           </div>
         </section>
 
-        {/* ── PROJECTS SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Schedule Service Consultation &rarr;
-            </button>
-          </div>
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Planning a Renovation or Commercial Build?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From architectural framing to turnkey finishes, our licensed project managers ensure on-time delivery.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request a Project Estimate &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -778,11 +782,16 @@ export default function Contractor() {
           </div>
         </section>
 
-                  <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Connect With Our Specialists &rarr;
-            </button>
-          </div>
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Craftsmanship Built on Trust &amp; Transparency</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We provide transparent line-item estimates, dedicated on-site supervision, and daily milestones.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Consult With Our Builders &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -825,11 +834,16 @@ export default function Contractor() {
           </div>
         </section>
 
-                  <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Work With Our Team &rarr;
-            </button>
-          </div>
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Fixed Timelines, Clean Job Sites, Zero Surprises</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Experience contracting done right with dedicated tradesmen and clear progress reporting.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Start Planning Your Build &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -895,12 +909,16 @@ export default function Contractor() {
           </div>
         </section>
 
-        {/* ── WHY US SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Request Project Estimate &rarr;
-            </button>
-          </div>
+        {/* Projects Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Inspired by What You See?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Let's review your blueprints, sketches, or ideas and provide an accurate cost roadmap.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Get an Architectural Estimate &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -956,12 +974,16 @@ export default function Contractor() {
           </div>
         </section>
 
-        {/* ── CTA SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Experience Our Certified Quality &rarr;
-            </button>
-          </div>
+        {/* Reviews Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Join Property Owners Who Built with Confidence</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Read authentic client stories and discover how we turn complex renovations into smooth builds.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Talk With Our Team &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -1066,11 +1088,6 @@ export default function Contractor() {
             </form>
           </div>
         </section>
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
-              Direct Line: +1 (412) 796-3968
-            </a>
-          </div>
         </>
       )}
 

@@ -729,7 +729,7 @@ const runInit = () => {
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
               {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Homeowners & Businesses Rely on Us'}
               {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Contact & Request Free Quote'}
@@ -1472,11 +1472,16 @@ const runInit = () => {
     {/* ========================================================================
          FIELD WORK & INSPECTION GALLERY SECTION
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Request Service Consultation &rarr;
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Suspect Unwanted Pests or Termites?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Schedule a licensed property inspection and targeted perimeter barrier treatment today.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule Property Inspection &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1648,11 +1653,16 @@ const runInit = () => {
     {/* ========================================================================
          HOW IT WORKS (THE 4-STEP DEFENSE CYCLE)
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Partner With Our Specialists &rarr;
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>EPA-Approved, Child & Pet Friendly Protocols</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We identify entry points, eliminate nests at the source, and guarantee our season-long defense.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Protect Your Property &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1760,11 +1770,16 @@ const runInit = () => {
     {/* ========================================================================
          CUSTOMER TESTIMONIALS SECTION
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Book Your Transformation &rarr;
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Proven Defense for Homes and Businesses</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Don't let pests compromise your structure or peace of mind. Get a rapid evaluation from our local team.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Immediate Inspection &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1894,9 +1909,21 @@ const runInit = () => {
     {/* ========================================================================
          CONTACT & INSPECTION REQUEST SECTION
          ======================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+        {/* FAQ Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Need Urgent Pest Identification or Emergency Dispatch?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Call our extermination specialists directly or message us on WhatsApp for rapid scheduling.</p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="tel:+14127963968" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Call +1 (412) 796-3968
+                </a>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Request Free Quote Online &rarr;
+                </button>
+              </div>
             </div>
+          </section>
           </>
         )}
 

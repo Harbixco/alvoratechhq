@@ -331,13 +331,13 @@ export default function TreeRemoval() {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
-              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
-              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'services' && 'Tree Removal & Arborist Services'}
+              {currentView === 'about' && 'About Alvoratech Tree Care'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Homeowners Trust Our Tree Care'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Tree Removal & Pruning Gallery'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Homeowner Feedback & Reviews'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
-              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Get a Free Tree Service Estimate'}
             </h1>
             </div>
         </section>
@@ -608,12 +608,16 @@ export default function TreeRemoval() {
           </div>
         </section>
 
-        {/* Why Choose Us */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Schedule Service Consultation &rarr;
-            </button>
-          </div>
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Need Tree Removal, Trimming, or Emergency Clearing?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our certified arborists provide upfront written estimates and safe, fully insured property protection.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Free Tree Estimate &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -699,12 +703,16 @@ export default function TreeRemoval() {
           </div>
         </section>
 
-        {/* Projects Gallery */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Connect With Our Specialists &rarr;
-            </button>
-          </div>
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Safety First, Precision Execution Always</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We protect your lawn, structures, and overhead utilities using advanced rigging and zero-impact cranes.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule an Arborist Consultation &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -745,12 +753,16 @@ export default function TreeRemoval() {
           </div>
         </section>
 
-        {/* Projects Gallery */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Work With Our Team &rarr;
-            </button>
-          </div>
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Fully Licensed, Bonded &amp; Insured for Your Protection</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Never risk homeowner liability. We carry full commercial liability and perform immaculate ground cleanups.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Get a Written Estimate &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -820,12 +832,16 @@ export default function TreeRemoval() {
           </div>
         </section>
 
-        {/* Testimonials */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Request Project Estimate &rarr;
-            </button>
-          </div>
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Equipped for the Most Challenging Tree Removals</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>View our crane-assisted felling, tight-quarter limb removals, and precision stump grinding projects.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request an On-Site Assessment &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -897,12 +913,16 @@ export default function TreeRemoval() {
           </div>
         </div>
 
-        {/* FAQ Section */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Experience Our Certified Quality &rarr;
-            </button>
-          </div>
+        {/* Reviews Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Trusted by Homeowners Across the Region</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Read genuine customer reviews on our punctuality, fair pricing, and clean, respectful worksites.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Contact Our Tree Team &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -938,13 +958,128 @@ export default function TreeRemoval() {
           </div>
         </section>
 
-        {/* Contact Section */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
-              Direct Line: +1 (412) 796-3968
-            </a>
+        {/* Contact Section (Homepage) */}
+        <section id="contact" className="contact section">
+          <div className="container contact-grid">
+            <div className="contact-copy reveal is-visible">
+              <h2>Let's Talk About Your Tree Service Needs.</h2>
+              <ul className="contact-list">
+                <li>
+                  <strong>WhatsApp:</strong>{' '}
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+                    +1 (412) 796-3968
+                  </a>
+                </li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:info@Alvoratechhq.com">info@Alvoratechhq.com</a>
+                </li>
+                <li><strong>Service:</strong> Residential &amp; Commercial Tree Care</li>
+              </ul>
+              <a
+                className="btn btn-primary whatsapp-button mt-4"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            <div className="contact-form-wrap reveal is-visible">
+              <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
+                <div className="form-grid">
+                  <label>
+                    <span>Full Name *</span>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Email Address</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="you@example.com"
+                    />
+                  </label>
+                  <label>
+                    <span>Phone Number *</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="(412) 796-3968"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Service Required *</span>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Tree Removal">Tree Removal</option>
+                      <option value="Tree Trimming & Pruning">Tree Trimming &amp; Pruning</option>
+                      <option value="Emergency Tree Services">Emergency Tree Services</option>
+                      <option value="Stump Grinding">Stump Grinding</option>
+                      <option value="Storm Damage Cleanup">Storm Damage Cleanup</option>
+                      <option value="Commercial Tree Services">Commercial Tree Services</option>
+                    </select>
+                  </label>
+                </div>
+                <label className="form-full">
+                  <span>How can we help?</span>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell us about the tree location, hazards, or property access..."
+                  ></textarea>
+                </label>
+                <button className="btn btn-primary submit-btn" type="submit">
+                  Send Your Request on WhatsApp
+                </button>
+                {formSubmitted && (
+                  <p className="form-message mt-3 text-sm font-semibold text-emerald-600">
+                    Your request was opened in WhatsApp.
+                  </p>
+                )}
+              </form>
+            </div>
           </div>
+        </section>
         </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+          <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Need Advice on a Diseased or Dangerous Tree?</h2>
+            <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our local certified arborists can assess branch hazards, storm risks, or municipal permits.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Direct Line: +1 (412) 796-3968
+              </a>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Tree Inspection &rarr;
+              </button>
+            </div>
+          </div>
+        </section>
       )}
 
       {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}

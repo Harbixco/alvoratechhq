@@ -647,7 +647,7 @@ const runInit = () => {
       const notes = detailsInput && detailsInput.value.trim() ? detailsInput.value.trim() : 'None provided';
 
       const waMessage = 
-        `🚨 LOCKSMITH SERVICE REQUEST - ALVORATECH\n` +
+        `LOCKSMITH SERVICE REQUEST - ALVORATECH\n` +
         `• Name: ${customerName}\n` +
         `• Phone: ${customerPhone}\n` +
         `• Email: ${customerEmail}\n` +
@@ -782,12 +782,12 @@ const runInit = () => {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
-              {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
+              {currentView === 'services' && 'Emergency Locksmith & Security Services'}
+              {currentView === 'about' && 'About Alvoratech Master Locksmiths'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Homeowners & Drivers Trust Us'}
+              {(currentView === 'portfolio' || currentView === 'gallery') && 'Completed Work & Lock Installations'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
-              {currentView === 'contact' && 'Contact & Request Free Quote'}
+              {currentView === 'contact' && 'Contact & Request Emergency Dispatch'}
             </h1>
             </div>
         </section>
@@ -812,7 +812,7 @@ const runInit = () => {
               <span className="text-gradient">Fast 24/7 Mobile Locksmith.</span>
             </h1>
             <p className="hero-description">
-              Certified master locksmiths equipped with state-of-the-art mobile workshops dispatched immediately to your home, vehicle, or business. From damage-free emergency lockouts and laser key cutting to high-security deadbolts and master key architecture.
+              Licensed master locksmiths equipped with fully stocked mobile units dispatched immediately to your home, vehicle, or business. From damage-free emergency lockouts and laser key cutting to high-security deadbolts and master key architecture.
             </p>
             <div className="hero-actions">
               <a href="tel:+14127963968" className="btn btn-primary btn-lg">
@@ -1226,7 +1226,7 @@ const runInit = () => {
                 </svg>
               </button>
               <div className="form-notice">
-                🔒 Privacy guaranteed. Your contact information is never shared with third parties.
+                Privacy guaranteed. Your contact information is never shared with third parties.
               </div>
             </form>
           </div>
@@ -1393,7 +1393,7 @@ const runInit = () => {
         <div className="section-header reveal">
           <h2>Our 4-Step Emergency Dispatch Process</h2>
           <p>
-            Experience a seamless, panic-free path from lockout to safety in four simple steps.
+            Locked out? We dispatch a local technician to your door within 20 minutes with zero damage to your vehicle or property.
           </p>
         </div>
 
@@ -1432,11 +1432,16 @@ const runInit = () => {
     {/* ==========================================================================
          12. OUR WORK PORTFOLIO GALLERY & LIGHTBOX
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Request Service Consultation &rarr;
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Locked Out or Need Immediate Security Assistance?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our mobile units are stocked with deadbolts, smart locks, and key duplication cutters for fast roadside or home dispatch.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Emergency Locksmith &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1593,11 +1598,16 @@ const runInit = () => {
     {/* ==========================================================================
          11. HOW IT WORKS (OUR 4-STEP EMERGENCY DISPATCH)
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Partner With Our Specialists &rarr;
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Upfront Rates with Zero Surprise Surcharges</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We quote exact flat rates before our technicians depart. Every service is backed by our 90-day parts and labor warranty.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Contact 24/7 Dispatch &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1829,11 +1839,16 @@ const runInit = () => {
     {/* ==========================================================================
          13. CUSTOMER TESTIMONIALS SECTION & CAROUSEL
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Book Your Transformation &rarr;
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Modern Commercial &amp; Residential Lock Hardware</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We install high-security deadbolts, electronic keyless access, and master key systems for local properties.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Security Consultation &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1947,9 +1962,21 @@ const runInit = () => {
     {/* ==========================================================================
          16. CONTACT & EMERGENCY DISPATCH FORM
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+        {/* FAQ Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Still Have Questions or Need Immediate Service?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Speak directly to a licensed locksmith coordinator for rapid dispatch or clear pricing estimates.</p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="tel:+14127963968" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Call +1 (412) 796-3968
+                </a>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Send Online Request &rarr;
+                </button>
+              </div>
             </div>
+          </section>
           </>
         )}
 
@@ -2094,7 +2121,7 @@ const runInit = () => {
                 </svg>
               </button>
               <div className="form-notice">
-                🔒 Privacy guaranteed. Your contact information is never shared with third parties.
+                Privacy guaranteed. Your contact information is never shared with third parties.
               </div>
             </form>
           </div>

@@ -780,7 +780,7 @@ const runInit = () => {
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
               {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Homeowners & Builders Choose Us'}
               {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Contact & Request Free Quote'}
@@ -1215,7 +1215,7 @@ const runInit = () => {
                 </svg>
               </button>
               <div className="form-notice">
-                🔒 Privacy guaranteed. Your contact details are never shared with external parties.
+                Privacy guaranteed. Your contact details are never shared with external parties.
               </div>
             </form>
           </div>
@@ -1416,11 +1416,16 @@ const runInit = () => {
     {/* ==========================================================================
          12. OUR WORK PORTFOLIO GALLERY & LIGHTBOX
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Request Service Consultation &rarr;
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Ready to Transform Your Floors?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Schedule an in-home sample viewing and receive a precise measurement with upfront material pricing.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule In-Home Flooring Estimate &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1574,11 +1579,16 @@ const runInit = () => {
     {/* ==========================================================================
          11. HOW IT WORKS (OUR 4-STEP CLIENT JOURNEY)
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Partner With Our Specialists &rarr;
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Dedicated Flooring Craftsmen You Can Trust</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We bring decades of subfloor prep, hardwood refinishing, and luxury vinyl installation expertise.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Book Consultation With Our Team &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1829,11 +1839,16 @@ const runInit = () => {
     {/* ==========================================================================
          13. CUSTOMER TESTIMONIALS SECTION & CAROUSEL
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Book Your Transformation &rarr;
+        {/* Portfolio Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Love These Finished Floors?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Let us bring physical hardwood, laminate, and tile samples directly to your doorstep for easy color matching.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Sample Viewing &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1947,9 +1962,21 @@ const runInit = () => {
     {/* ==========================================================================
          16. CONTACT & ESTIMATE REQUEST SECTION
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+        {/* FAQ Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Have Questions About Your Subfloor or Acclimation?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Speak directly with a master flooring technician or submit an inquiry online.</p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="tel:+14127963968" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Call +1 (412) 796-3968
+                </a>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Request Estimate Online &rarr;
+                </button>
+              </div>
             </div>
+          </section>
           </>
         )}
 
@@ -2095,7 +2122,7 @@ const runInit = () => {
                 </svg>
               </button>
               <div className="form-notice">
-                🔒 Privacy guaranteed. Your contact details are never shared with external parties.
+                Privacy guaranteed. Your contact details are never shared with external parties.
               </div>
             </form>
           </div>

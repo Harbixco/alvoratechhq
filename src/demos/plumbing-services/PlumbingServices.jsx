@@ -887,16 +887,21 @@ export default function PlumbingServices() {
  alt="Plumber repairing pipes beneath a sink"
  loading="lazy"
  />
- <div className="pf-img-badge">🏠 Trusted by 2,000+ Homeowners</div>
+ <div className="pf-img-badge">Trusted by 2,000+ Homeowners</div>
  </div>
  </div>
  </div>
  </section>
- <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
- <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
- Schedule Residential Service &rarr;
- </button>
- </div>
+  {/* Residential Bottom CTA */}
+  <section className="pf-section text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+    <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Need a Reliable Home Plumber?</h2>
+      <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From leaky faucets to complete repiping, we offer upfront pricing and tidy, respectful service.</p>
+      <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+        Schedule Residential Service &rarr;
+      </button>
+    </div>
+  </section>
  </>
  )}
 
@@ -973,16 +978,21 @@ export default function PlumbingServices() {
  alt="Commercial plumbing pipes and valves"
  loading="lazy"
  />
- <div className="pf-img-badge">🏢 Serving 500+ Local Businesses</div>
+ <div className="pf-img-badge">Serving 500+ Local Businesses</div>
  </div>
  </div>
  </div>
  </section>
- <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
- <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
- Book Commercial Consultation &rarr;
- </button>
- </div>
+  {/* Commercial Bottom CTA */}
+  <section className="pf-section text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+    <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Commercial Plumbing &amp; Preventative Maintenance</h2>
+      <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Keep your facilities fully compliant and running smoothly with priority commercial accounts.</p>
+      <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+        Book Commercial Consultation &rarr;
+      </button>
+    </div>
+  </section>
  </>
  )}
 
@@ -1059,16 +1069,21 @@ export default function PlumbingServices() {
  alt="Plumber repairing a toilet"
  loading="lazy"
  />
- <div className="pf-img-badge">🔧 Same-Day Drain Clearing</div>
+ <div className="pf-img-badge">Same-Day Drain Clearing</div>
  </div>
  </div>
  </div>
  </section>
- <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
- <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
- Request Emergency Drain Clearing &rarr;
- </button>
- </div>
+  {/* Drain Bottom CTA */}
+  <section className="pf-section text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+    <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Stubborn Clogs or Main Line Backups?</h2>
+      <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We use high-definition video inspection and motorized augers to clear blockages quickly.</p>
+      <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+        Request Emergency Drain Clearing &rarr;
+      </button>
+    </div>
+  </section>
  </>
  )}
 
@@ -1152,7 +1167,7 @@ export default function PlumbingServices() {
  alt="Plumber repairing pipes inside a wall"
  loading="lazy"
  />
- <div className="pf-img-badge">🚨 60-Min Emergency Response</div>
+ <div className="pf-img-badge">60-Min Emergency Response</div>
  </div>
  </div>
  </div>
@@ -1174,11 +1189,21 @@ export default function PlumbingServices() {
  </a>
  </div>
  </div>
- <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
- <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
- Request Immediate Flood Dispatch &rarr;
- </button>
- </div>
+  {/* Water Damage Bottom CTA */}
+  <section className="pf-section text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+    <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Burst Pipe or Flooding Emergency?</h2>
+      <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our dispatch team responds 24/7 to shut down leaks and extract standing water before damage spreads.</p>
+      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <a href="tel:+14127963968" className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+          Call Emergency Dispatch
+        </a>
+        <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+          Request Flood Help Online &rarr;
+        </button>
+      </div>
+    </div>
+  </section>
  </>
  )}
 
@@ -1300,11 +1325,16 @@ export default function PlumbingServices() {
  </div>
  </div>
  </section>
- <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
- <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
- Work With Our Master Plumbers &rarr;
- </button>
- </div>
+  {/* About Bottom CTA */}
+  <section className="pf-section text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+    <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Work With Licensed, Insured Master Plumbers</h2>
+      <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Transparent estimates, clean work areas, and warranties on all parts and labor.</p>
+      <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+        Work With Our Master Plumbers &rarr;
+      </button>
+    </div>
+  </section>
  </>
  )}
 

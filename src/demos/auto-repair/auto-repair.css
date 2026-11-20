@@ -20,6 +20,7 @@
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .auto-repair-demo * { box-sizing: border-box; }

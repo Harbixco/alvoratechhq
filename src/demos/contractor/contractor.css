@@ -20,6 +20,7 @@
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .contractor-demo *, .contractor-demo *::before, .contractor-demo *::after { box-sizing: border-box; }

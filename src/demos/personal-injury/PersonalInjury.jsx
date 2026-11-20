@@ -245,13 +245,13 @@ export default function PersonalInjury() {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
-              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
-              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'services' && 'Practice Areas & Legal Representation'}
+              {currentView === 'about' && 'About The Attorney & Firm'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Injury Victims Trust Our Firm'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Notable Case Results & Settlements'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Reviews & Case Testimonials'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
-              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Request a Free Case Evaluation'}
             </h1>
             </div>
         </section>
@@ -500,12 +500,16 @@ export default function PersonalInjury() {
           </div>
         </section>
 
-        {/* ── THE ALVORATECH DIFFERENCE ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Schedule Service Consultation &rarr;
-            </button>
-          </div>
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0e1626' }}>Injured in an Accident? We Are Ready to Help.</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Schedule a free, confidential case review directly with our counsel. Zero legal fees unless we achieve a recovery.</p>
+              <button onClick={(e) => navigateTo('consultation', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Free Case Evaluation &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -571,12 +575,16 @@ export default function PersonalInjury() {
           </div>
         </section>
 
-        {/* ── CASE PROCESS ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Connect With Our Specialists &rarr;
-            </button>
-          </div>
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0e1626' }}>Direct Attorney Guidance from Day One</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>You will work directly with an experienced advocate who understands the personal disruption of an unexpected injury.</p>
+              <button onClick={(e) => navigateTo('consultation', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Talk With Counsel &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -600,12 +608,16 @@ export default function PersonalInjury() {
           </div>
         </section>
 
-        {/* ── CASE PROCESS ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Work With Our Team &rarr;
-            </button>
-          </div>
+        {/* Difference Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0e1626' }}>No Upfront Retainers. No Hidden Expenses.</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We advance all filing fees, expert witness reviews, and investigations. You owe nothing unless your claim succeeds.</p>
+              <button onClick={(e) => navigateTo('consultation', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Start Your Free Evaluation &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -648,12 +660,16 @@ export default function PersonalInjury() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Request Project Estimate &rarr;
-            </button>
-          </div>
+        {/* Results Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0e1626' }}>Proven Recoveries for Complex Injury Claims</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From commercial carrier collisions to catastrophic losses, we stand up to insurance adjusters to secure full compensation.</p>
+              <button onClick={(e) => navigateTo('consultation', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Discuss Your Claim &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -697,12 +713,16 @@ export default function PersonalInjury() {
           </div>
         </section>
 
-        {/* ── FAQ ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Experience Our Certified Quality &rarr;
-            </button>
-          </div>
+        {/* Reviews Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0e1626' }}>Hear Directly from Former Clients</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Read authentic experiences from families who trusted our firm during their most challenging moments.</p>
+              <button onClick={(e) => navigateTo('consultation', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule Consultation &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -737,13 +757,62 @@ export default function PersonalInjury() {
           </div>
         </section>
 
-        {/* ── RESOURCES & GUIDES ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
-              Direct Line: +1 (412) 796-3968
-            </a>
+        {/* ── CONSULTATION SECTION (HOMEPAGE) ── */}
+        <section className="contact section-pad" id="contact">
+          <div className="container">
+            <div className="contact__top">
+              <div>
+                <h2>Reach out.<br /><em>Start with a conversation.</em></h2>
+              </div>
+              <a className="button button--outline" href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>
+                Request a consultation <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div className="contact__grid">
+              <div className="contact-detail">
+                <span>WHATSAPP ONLY</span>
+                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 796-3968
+                </a>
+                <p>Message on WhatsApp to schedule an evaluation</p>
+              </div>
+              <div className="contact-detail">
+                <span>EMAIL</span>
+                <a href="mailto:counsel@alvoratechhq.com">counsel@alvoratechhq.com</a>
+                <p>Direct attorney inbox access</p>
+              </div>
+              <div className="contact-detail">
+                <span>OFFICE LOCATION</span>
+                <p className="contact-detail__placeholder">Suite 400, Metro Legal Center</p>
+                <p>Pittsburgh, PA &amp; Surrounding Jurisdictions</p>
+              </div>
+              <div className="contact-detail">
+                <span>BUSINESS HOURS</span>
+                <p>Monday–Friday: 8:30 AM – 6:00 PM<br />Emergency consultation available 24/7</p>
+              </div>
+            </div>
           </div>
+        </section>
         </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+          <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0e1626' }}>Have Legal Questions About an Injury Claim?</h2>
+            <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We answer questions with clear, plain language. Contact counsel directly with zero financial obligation.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Direct Line: +1 (412) 796-3968
+              </a>
+              <button onClick={(e) => navigateTo('consultation', e)} className="button button--outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Consultation &rarr;
+              </button>
+            </div>
+          </div>
+        </section>
       )}
 
       {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}

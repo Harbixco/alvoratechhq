@@ -794,7 +794,7 @@ const runInit = () => {
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Services & Capabilities'}
               {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Property Owners Choose Us'}
+              {(currentView === 'why-us' || currentView === 'why-choose') && 'Why Homeowners Choose Alvoratech Landscaping'}
               {(currentView === 'portfolio' || currentView === 'gallery') && 'Project Portfolio & Transformations'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Contact & Request Free Quote'}
@@ -823,7 +823,7 @@ const runInit = () => {
               <span className="text-gradient">Elevating Outdoor Living.</span>
             </h1>
             <p className="hero-description">
-              From custom paver patios, retaining walls, and outdoor living sanctuaries to master 3D design and estate grounds maintenance. Alvoratech brings unparalleled artistry, engineering, and horticultural precision to your property.
+              From custom stone patios, retaining walls, and outdoor living spaces to master 3D landscape design and complete grounds maintenance. Alvoratech designs, builds, and maintains outdoor spaces built to endure every season.
             </p>
             <div className="hero-actions">
               <a href="#contact" className="btn btn-primary btn-lg">Request Free Estimate</a>
@@ -938,7 +938,7 @@ const runInit = () => {
           <div className="about-content reveal stagger-1">
             <h2>Rooted in Craftsmanship. <br />Driven by Precision Outdoor Design.</h2>
             <p>
-              At Alvoratech, we believe your exterior property is an extension of your home's architecture and living space. Founded with a commitment to uncompromised craftsmanship, we merge architectural hardscaping, environmental horticulture, and high-efficiency water management into seamless outdoor sanctuaries.
+              At Alvoratech, we believe your exterior property is an extension of your home's architecture and living space. Founded with a commitment to uncompromised craftsmanship, we combine architectural masonry, custom planting, and efficient irrigation into durable, beautiful outdoor spaces.
             </p>
             <p>
               Whether constructing expansive natural bluestone terraces, stabilizing steep slopes with structural retaining walls, or maintaining premier corporate grounds, our team executes every phase with laser precision and courteous professionalism.
@@ -1069,9 +1069,9 @@ const runInit = () => {
          ========================================================================== */}
     <section className="special-cta-section" aria-label="Call to action">
       <div className="special-cta-content reveal">
-        <h2>Ready to Elevate Your Outdoor Living Space?</h2>
+        <h2>Ready to Transform Your Outdoor Living Space?</h2>
         <p>
-          From concept 3D blueprints to the final stone paver, Alvoratech delivers unmatched landscaping artistry and engineering. Speak with our landscape consultants today for a no-obligation site consultation.
+          From concept 3D plans to the final stone paver, Alvoratech delivers durable craftsmanship and meticulous landscaping. Speak with our team today for a free on-site design consultation.
         </p>
         <div className="hero-actions" style={{"justifyContent":"center"}}>
           <a href="#contact" className="btn btn-primary btn-lg">Request Free Estimate</a>
@@ -1226,7 +1226,7 @@ const runInit = () => {
                 </svg>
               </button>
               <div className="form-notice">
-                🔒 Privacy guaranteed. Your contact information is never shared with third parties.
+                Privacy guaranteed. Your contact information is never shared with third parties.
               </div>
             </form>
           </div>
@@ -1427,11 +1427,16 @@ const runInit = () => {
     {/* ==========================================================================
          11. OUR WORK PORTFOLIO GALLERY & LIGHTBOX
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Request Service Consultation &rarr;
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Ready for a Healthier, Beautiful Yard?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Schedule an on-site design assessment or request a fast seasonal maintenance estimate.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request On-Site Landscape Assessment &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1452,7 +1457,7 @@ const runInit = () => {
           <div className="about-content reveal stagger-1">
             <h2>Rooted in Craftsmanship. <br />Driven by Precision Outdoor Design.</h2>
             <p>
-              At Alvoratech, we believe your exterior property is an extension of your home's architecture and living space. Founded with a commitment to uncompromised craftsmanship, we merge architectural hardscaping, environmental horticulture, and high-efficiency water management into seamless outdoor sanctuaries.
+              At Alvoratech, we believe your exterior property is an extension of your home's architecture and living space. Founded with a commitment to uncompromised craftsmanship, we combine architectural masonry, custom planting, and efficient irrigation into durable, beautiful outdoor spaces.
             </p>
             <p>
               Whether constructing expansive natural bluestone terraces, stabilizing steep slopes with structural retaining walls, or maintaining premier corporate grounds, our team executes every phase with laser precision and courteous professionalism.
@@ -1583,11 +1588,16 @@ const runInit = () => {
     {/* ==========================================================================
          10. HOW IT WORKS (OUR 4-STEP LANDSCAPE PROCESS)
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Partner With Our Specialists &rarr;
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Partner With Dedicated Local Landscapers</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From native planting to retaining walls, we deliver clear timelines and honest craftsmanship.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Start Your Landscape Project &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1759,11 +1769,16 @@ const runInit = () => {
     {/* ==========================================================================
          12. CUSTOMER TESTIMONIALS SECTION & CAROUSEL
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
-                Book Your Transformation &rarr;
+        {/* Portfolio Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Inspired by Our Past Outdoor Projects?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Tell us your property goals and we will create a tailored proposal with clear material options.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Free Landscape Estimate &rarr;
               </button>
             </div>
+          </section>
           </>
         )}
 
@@ -1877,9 +1892,21 @@ const runInit = () => {
     {/* ==========================================================================
          15. CONTACT & ESTIMATE REQUEST SECTION
          ========================================================================== */}
-            <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-              <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
+        {/* FAQ Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Have Questions About Your Yard or Timeline?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Speak directly with our landscape estimators or book a consultation online.</p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="tel:+14127963968" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Call +1 (412) 796-3968
+                </a>
+                <button onClick={(e) => navigateTo('contact', e)} className="btn btn-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Send Estimate Request &rarr;
+                </button>
+              </div>
             </div>
+          </section>
           </>
         )}
 
@@ -2024,7 +2051,7 @@ const runInit = () => {
                 </svg>
               </button>
               <div className="form-notice">
-                🔒 Privacy guaranteed. Your contact information is never shared with third parties.
+                Privacy guaranteed. Your contact information is never shared with third parties.
               </div>
             </form>
           </div>

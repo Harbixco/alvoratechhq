@@ -609,7 +609,7 @@ const runInit = () => {
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
               {currentView === 'services' && 'Our Electrical Services & Capabilities'}
               {currentView === 'portfolio' && 'Project Portfolio & Panel Transformations'}
-              {currentView === 'why-us' && 'Why Property Owners Choose Us'}
+              {currentView === 'why-us' && 'Why Homeowners & Commercial Clients Choose Us'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {currentView === 'contact' && 'Schedule Service & Emergency Dispatch'}
             </h1>

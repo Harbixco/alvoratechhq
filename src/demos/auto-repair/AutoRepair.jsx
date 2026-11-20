@@ -225,13 +225,13 @@ export default function AutoRepair() {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
-              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
-              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'services' && 'Auto Repair Services & Maintenance'}
+              {currentView === 'about' && 'About Our Auto Repair Shop'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Drivers Choose Alvoratech Auto'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Our Shop Facility & Diagnostics'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Driver Feedback & Real Reviews'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
-              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Schedule Service & Contact Us'}
             </h1>
             </div>
         </section>
@@ -754,12 +754,16 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── ABOUT SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Schedule Service Consultation &rarr;
-            </button>
-          </div>
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--ink)' }}>Need Service or Have Questions About a Repair?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Talk directly with an ASE-certified technician or reserve your service appointment online.</p>
+              <button onClick={(e) => navigateTo('appointment', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule an Appointment &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -864,12 +868,16 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── CTA BANNER ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Connect With Our Specialists &rarr;
-            </button>
-          </div>
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--ink)' }}>Experience Honest, Transparent Auto Care</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We walk you through digital inspection photos and never recommend unnecessary repairs.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Contact Our Shop &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -914,12 +922,16 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── APPOINTMENT CTA BANNER ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('appointment', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Schedule Your Appointment &rarr;
-            </button>
-          </div>
+        {/* Difference Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--ink)' }}>Ready to Experience the Alvoratech Difference?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From complimentary loaner vehicles to our 24-month warranty, your peace of mind comes first.</p>
+              <button onClick={(e) => navigateTo('appointment', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Reserve Your Visit &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -972,12 +984,16 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── REVIEWS SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Request Project Estimate &rarr;
-            </button>
-          </div>
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--ink)' }}>Equipped with Modern Diagnostic Bays</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our facility handles everything from brake fluid flushes to engine timing and electrical diagnostics.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Ask a Technician &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -1054,12 +1070,16 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── APPOINTMENT SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Experience Our Certified Quality &rarr;
-            </button>
-          </div>
+        {/* Reviews Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--ink)' }}>Join Families Who Trust Us With Every Mile</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Read genuine customer stories and discover why 98% of first-time drivers become regulars.</p>
+              <button onClick={(e) => navigateTo('appointment', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Book Your Visit Today &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -1128,13 +1148,64 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── CONTACT SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
-              Direct Line: +1 (412) 796-3968
-            </a>
+        {/* ── CONTACT SECTION (HOMEPAGE) ── */}
+        <section className="contact-section" id="contact">
+          <div className="container contact-layout">
+            <div className="contact-copy">
+              <h2>
+                Good people.<br /><em>Good roads ahead.</em>
+              </h2>
+              <p>Questions, a curious noise, or just need a place to start? We’re here for you.</p>
+              <a className="button button--outline-light" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
+                Book a visit <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div className="contact-details">
+              <div className="contact-detail">
+                <span>WHATSAPP ONLY</span>
+                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+                  +1 (412) 796-3968
+                </a>
+              </div>
+              <div className="contact-detail">
+                <span>SEND US A NOTE</span>
+                <a href="mailto:service@alvoratechhq.com">service@alvoratechhq.com</a>
+              </div>
+              <div className="contact-detail">
+                <span>FIND THE SHOP</span>
+                <p>124 Industrial Parkway<br />Metro District, Suite 100</p>
+              </div>
+              <div className="contact-detail">
+                <span>WHEN WE'RE HERE</span>
+                <p>
+                  Monday–Friday <b>8:00 am – 6:00 pm</b><br />
+                  Saturday <b>9:00 am – 2:00 pm</b><br />
+                  Sunday <b>Closed</b>
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
         </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+          <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--ink)' }}>Still Have Questions About Your Vehicle?</h2>
+            <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Call our service desk or message us on WhatsApp for transparent answers and quick estimates.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Call Direct: +1 (412) 796-3968
+              </a>
+              <button onClick={(e) => navigateTo('appointment', e)} className="button button--outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Book an Appointment &rarr;
+              </button>
+            </div>
+          </div>
+        </section>
       )}
 
       {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
@@ -1243,7 +1314,7 @@ export default function AutoRepair() {
                 </div>
               </div>
               <p style={{ fontSize: "0.9375rem", marginBottom: "1.5rem", lineHeight: "1.65", color: "#94A3B8" }}>
-                Premier automotive service facility delivering transparent digital inspections, precision repairs, and manufacturer-certified maintenance for all makes and models.
+                Full-service auto repair shop delivering honest digital inspections, precision diagnostics, and manufacturer-certified maintenance for all makes and models.
               </p>
               <div style={{ fontSize: "0.8125rem", color: "#64748B" }}>
                 ASE Certified • 24-Month / 24,000-Mile Warranty • Modern Diagnostics

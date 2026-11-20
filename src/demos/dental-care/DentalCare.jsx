@@ -126,13 +126,13 @@ export default function DentalCare() {
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
-              {currentView === 'services' && 'Our Services & Capabilities'}
-              {currentView === 'about' && 'About Us'}
-              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Property Owners Choose Us'}
-              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Featured Portfolio & Projects'}
-              {(currentView === 'reviews' || currentView === 'testimonials') && 'Client Testimonials & Ratings'}
+              {currentView === 'services' && 'Family & Cosmetic Dental Services'}
+              {currentView === 'about' && 'About Our Practice & Team'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Patients Choose Alvoratech Dental'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Smile Transformations & Practice Tour'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Patient Stories & Dental Reviews'}
               {currentView === 'faq' && 'Frequently Asked Questions'}
-              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Contact & Book Consultation'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Book Your Dental Appointment'}
             </h1>
             </div>
         </section>
@@ -148,7 +148,7 @@ export default function DentalCare() {
             </h1>
             <p className="hero-location">Modern Family &amp; Cosmetic Dentistry</p>
             <p className="hero-copy">
-              Experience gentle, state-of-the-art dental care tailored for your whole family, from routine cleanings to advanced smile transformations.
+              Experience gentle, modern family and cosmetic dental care tailored for your comfort, from routine cleanings to advanced smile transformations.
             </p>
             <div className="hero-buttons">
               <a href="#contact" className="button" onClick={(e) => scrollTo(e, 'contact')}>
@@ -509,12 +509,16 @@ export default function DentalCare() {
           </div>
         </section>
 
-        {/* ── TECHNOLOGY ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Schedule Service Consultation &rarr;
-            </button>
-          </div>
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', color: '#1e293b' }}>Comprehensive Dental Care for the Whole Family</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From routine preventive cleanings to complete cosmetic restorations, our gentle team prioritizes your comfort.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Book Your Visit &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -597,12 +601,16 @@ export default function DentalCare() {
           </div>
         </section>
 
-        {/* ── REVIEWS ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Connect With Our Specialists &rarr;
-            </button>
-          </div>
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', color: '#1e293b' }}>A Warm, Stress-Free Dental Experience</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our modern practice features comforting amenities, low-radiation imaging, and friendly clinicians.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule Your Appointment &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -658,12 +666,16 @@ export default function DentalCare() {
           </div>
         </section>
 
-        {/* ── REVIEWS ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Work With Our Team &rarr;
-            </button>
-          </div>
+        {/* Tech Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', color: '#1e293b' }}>Thoughtful Technology Tailored for Comfort</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Mess-free 3D digital impressions, single-visit restorations, and clear upfront treatment plans.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Reserve Your Visit &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -742,12 +754,16 @@ export default function DentalCare() {
           </div>
         </section>
 
-        {/* ── TECHNOLOGY ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Request Project Estimate &rarr;
-            </button>
-          </div>
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', color: '#1e293b' }}>Ready for a Healthier, More Confident Smile?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Explore custom teeth whitening, clear aligners, and aesthetic restorations tailored just for you.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule a Consultation &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -809,12 +825,16 @@ export default function DentalCare() {
           </div>
         </section>
 
-        {/* ── CONTACT / BOOKING ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
-              Experience Our Certified Quality &rarr;
-            </button>
-          </div>
+        {/* Reviews Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', color: '#1e293b' }}>Join Happy Patients Across Our Community</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Read why families trust us for routine hygiene, preventive dental wellness, and restorative care.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Book Your Visit Today &rarr;
+              </button>
+            </div>
+          </section>
         </>
       )}
 
@@ -909,11 +929,6 @@ export default function DentalCare() {
             </form>
           </div>
         </section>
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
-            <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', textDecoration: 'none' }}>
-              Direct Line: +1 (412) 796-3968
-            </a>
-          </div>
         </>
       )}
 
