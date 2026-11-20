@@ -276,7 +276,7 @@ export default function TreeRemoval() {
           </a>
 
           <button
-            className={`nav-toggle ${navOpen ? 'is-open' : ''}`}
+            className={`nav-toggle mobile-toggle ${navOpen ? 'is-open' : ''}`}
             aria-label="Toggle navigation"
             aria-expanded={navOpen}
             onClick={() => setNavOpen(!navOpen)}

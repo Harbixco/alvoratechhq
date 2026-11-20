@@ -693,11 +693,22 @@ textarea:focus {
   .plumbing-demo .pf-hamburger span,
   .towing-company-demo .mobile-toggle span,
   .towing-company-demo .nav-toggle span,
-  .towing-company-demo .menu-toggle span,
-  .tree-removal-demo .mobile-toggle span,
-  .tree-removal-demo .nav-toggle span,
-  .tree-removal-demo .menu-toggle span {
+  .towing-company-demo .menu-toggle span {
     background: #ffffff !important;
+  }
+
+  /* Tree Removal: Brand Signature Gold (#d9a441) matching the circular tree emblem */
+  .tree-removal-demo .nav-toggle span,
+  .tree-removal-demo .mobile-toggle span,
+  .tree-removal-demo .menu-toggle span {
+    background: #d9a441 !important;
+  }
+
+  .tree-removal-demo .nav-toggle,
+  .tree-removal-demo .mobile-toggle {
+    border: 1px solid rgba(217, 164, 65, 0.35) !important;
+    background: rgba(217, 164, 65, 0.08) !important;
+    border-radius: 10px !important;
   }
 
   .pf-hamburger.is-open span:first-child,
