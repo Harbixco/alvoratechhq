@@ -163,11 +163,24 @@ export default function PersonalInjury() {
             </span>
           </a>
 
+          {/* Desktop Navigation */}
+          <nav className="primary-nav" id="primary-navigation" aria-label="Main navigation">
+            <a href="#about" onClick={(e) => navigateTo('about', e)}>The Attorney</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>How I Help</a>
+            <a href="#process" onClick={(e) => scrollTo(e, 'process')}>Your Case</a>
+            <a href="#resources" onClick={(e) => scrollTo(e, 'resources')}>Resources</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
+            <a className="button button--small button--gold nav-cta" href="#consultation" onClick={(e) => navigateTo('consultation', e)}>
+              Free Consultation <span aria-hidden="true">↗</span>
+            </a>
+          </nav>
+
+          {/* Mobile Menu Hamburger Button */}
           <button
-            className="menu-toggle"
+            className={`menu-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
             type="button"
             aria-expanded={mobileMenuOpen}
-            aria-controls="primary-navigation"
+            aria-controls="mobile-drawer"
             aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -175,24 +188,48 @@ export default function PersonalInjury() {
             <span></span>
             <span></span>
           </button>
+        </div>
 
-          <nav className={`primary-nav ${mobileMenuOpen ? 'is-open' : ''}`} id="primary-navigation" aria-label="Main navigation">
-            <div className="mobile-drawer-header">
-              <span className="mobile-drawer-title">Practice Menu</span>
-              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
-                &times;
-              </button>
-            </div>
+        {/* Mobile Navigation Backdrop & Drawer */}
+        <div 
+          className={`mobile-drawer-backdrop ${mobileMenuOpen ? 'is-open' : ''}`}
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+        <aside 
+          className={`mobile-drawer ${mobileMenuOpen ? 'is-open' : ''}`}
+          id="mobile-drawer"
+          aria-label="Mobile navigation"
+        >
+          <div className="mobile-drawer-header">
+            <span className="mobile-drawer-title">Practice Menu</span>
+            <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+              &times;
+            </button>
+          </div>
+          <div className="mobile-drawer-body">
+            <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }}>Home</a>
             <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>The Attorney</a>
             <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>How I Help</a>
-            <a href="#process" onClick={() => setMobileMenuOpen(false)}>Your Case</a>
-            <a href="#resources" onClick={() => setMobileMenuOpen(false)}>Resources</a>
+            <a href="#process" onClick={(e) => { setMobileMenuOpen(false); scrollTo(e, 'process'); }}>Your Case</a>
+            <a href="#resources" onClick={(e) => { setMobileMenuOpen(false); scrollTo(e, 'resources'); }}>Resources</a>
             <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
-            <a className="button button--small button--gold nav-cta" href="#consultation" onClick={(e) => { setMobileMenuOpen(false); navigateTo('consultation', e); }}>
-              Free Consultation <span aria-hidden="true">↗</span>
-            </a>
-          </nav>
-        </div>
+            <div className="mobile-drawer-cta">
+              <a className="button button--gold button--block" href="#consultation" onClick={(e) => { setMobileMenuOpen(false); navigateTo('consultation', e); }}>
+                Free Consultation <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div className="mobile-drawer-contact-info">
+              <a href="tel:+14127963968" className="drawer-contact-link">
+                <span>Call Directly:</span>
+                <strong>+1 (412) 796-3968</strong>
+              </a>
+              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="drawer-whatsapp-link">
+                <span>WhatsApp Available 24/7</span>
+              </a>
+            </div>
+          </div>
+        </aside>
       </header>
 
       <main id="main">
