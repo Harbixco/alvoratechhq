@@ -8,7 +8,7 @@ export default function Contractor() {
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
-      if (["services","about","projects","process","testimonials","contact"].includes(hash)) return hash;
+      if (["services","about","projects","testimonials","contact"].includes(hash)) return hash;
       if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
     }
     return 'home';
@@ -27,7 +27,7 @@ export default function Contractor() {
   useEffect(() => {
     const handleHash = () => {
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
-      if (["services","about","projects","process","testimonials","contact"].includes(hash)) {
+      if (["services","about","projects","testimonials","contact"].includes(hash)) {
         setCurrentView(hash);
       } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
         setCurrentView(hash);
@@ -115,7 +115,7 @@ export default function Contractor() {
 
   const testimonials = [
     {
-      quote: '“The process felt collaborative from day one. The team kept communication clear and brought a thoughtful approach to every detail.”',
+      quote: '“Working together felt collaborative from day one. The team kept communication clear and brought a thoughtful approach to every detail.”',
       author: 'Jordan M.',
       role: 'Commercial office · Fictional demo',
       avatar: 'JM',
@@ -201,7 +201,6 @@ export default function Contractor() {
               <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>
               <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
               <a href="#projects" onClick={(e) => { setMobileMenuOpen(false); navigateTo('projects', e); }}>Projects</a>
-              <a href="#process" onClick={(e) => { setMobileMenuOpen(false); navigateTo('process', e); }}>Our Process</a>
               <a href="#testimonials" onClick={(e) => { setMobileMenuOpen(false); navigateTo('testimonials', e); }}>Testimonials</a>
               <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
             </div>
@@ -734,8 +733,8 @@ export default function Contractor() {
                   </div>
                 </article>
               </div>
-              <a className="text-link" href="#process" onClick={(e) => scrollTo(e, 'process')}>
-                Discover how we work <span>↗</span>
+              <a className="text-link" href="#services" onClick={(e) => navigateTo('services', e)}>
+                Discover our services <span>↗</span>
               </a>
             </div>
           </div>
@@ -778,8 +777,7 @@ export default function Contractor() {
           </div>
         </section>
 
-        {/* ── PROCESS SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+                  <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
             <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
               Connect With Our Specialists &rarr;
             </button>
@@ -826,8 +824,7 @@ export default function Contractor() {
           </div>
         </section>
 
-        {/* ── PROCESS SECTION ── */}
-          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
+                  <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc' }}>
             <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem', cursor: 'pointer' }}>
               Work With Our Team &rarr;
             </button>
@@ -1204,7 +1201,6 @@ export default function Contractor() {
             <a href="#about" onClick={(e) => navigateTo('about', e)}>About us</a>
             <a href="#services" onClick={(e) => navigateTo('services', e)}>Our services</a>
             <a href="#projects" onClick={(e) => navigateTo('projects', e)}>Selected work</a>
-            <a href="#process" onClick={(e) => navigateTo('process', e)}>Our process</a>
           </div>
           <div className="footer-column">
             <h3>Our services</h3>
