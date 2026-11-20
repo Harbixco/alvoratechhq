@@ -730,7 +730,13 @@ const runInit = () => {
         {/* Nav CTA Actions */}
         <div className="nav-actions">
           <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="btn btn-primary btn-sm">Schedule In-Home Estimate</a>
-          <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}  aria-expanded={mobileMenuOpen} aria-label="Open navigation menu">
+          <button
+            className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            type="button"
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle navigation menu"
+          >
             <span></span>
             <span></span>
             <span></span>

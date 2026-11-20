@@ -2560,119 +2560,54 @@
 
 /* ENFORCE MOBILE HAMBURGER AND HIDE DESKTOP CTA ON <= 1024px */
 @media (max-width: 1024px) {
-  .pressure-demo .desktop-only-btn,
-  .pressure-demo .nav-actions .desktop-only-btn,
-  .pressure-demo .nav-actions .btn,
-  .pressure-demo .site-header .nav-actions .btn,
-  .pressure-demo .site-header .nav-actions a.btn {
+  .pressure-demo-demo .nav-links {
     display: none !important;
   }
-  .pressure-demo .mobile-toggle {
+  .pressure-demo-demo .desktop-only-btn,
+  .pressure-demo-demo .nav-actions .desktop-only-btn,
+  .pressure-demo-demo .nav-actions .btn,
+  .pressure-demo-demo .site-header .nav-actions .btn,
+  .pressure-demo-demo .site-header .nav-actions a.btn,
+  .pressure-demo-demo .site-header .nav-actions a {
+    display: none !important;
+  }
+  .pressure-demo-demo .mobile-toggle {
     display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-around !important;
-    align-items: center !important;
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    padding: 10px 8px !important;
-    background: transparent !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    flex-shrink: 0 !important;
-    z-index: 1060 !important;
-    position: relative !important;
-    box-sizing: border-box !important;
-  }
-  .pressure-demo .mobile-toggle span {
-    display: block !important;
-    width: 22px !important;
-    height: 2.5px !important;
-    background-color: currentColor !important;
-    border-radius: 2px !important;
-    transition: all 0.25s ease !important;
   }
 }
-
-/* Mobile Drawer Header with Close Button */
-.pressure-demo .mobile-drawer-header {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding-bottom: 0.75rem !important;
-  margin-bottom: 1rem !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-  width: 100% !important;
-}
-.pressure-demo .mobile-drawer-title {
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-}
-.pressure-demo .mobile-drawer-close {
-  background: transparent !important;
-  border: none !important;
-  font-size: 1.75rem !important;
-  line-height: 1 !important;
-  cursor: pointer !important;
-  padding: 0.25rem 0.5rem !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* MOBILE VIEW OPTIMIZATIONS (py, pb, mb, my & drawer typography) */
-@media (max-width: 768px) {
-  .pressure-demo .hero-section {
-    padding-top: 1.25rem !important;
-    padding-bottom: 1.25rem !important;
-  }
-  .pressure-demo .section-padding {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-  }
-  .pressure-demo .site-header {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
-  }
-  .pressure-demo h1,
-  .pressure-demo .hero-title {
-    font-size: 1.65rem !important;
-    line-height: 1.22 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0.75rem !important;
-  }
-  .pressure-demo .hero-subtitle,
-  .pressure-demo .hero-description,
-  .pressure-demo .hero-content p {
-    font-size: 0.92rem !important;
-    line-height: 1.45 !important;
-    margin-bottom: 1.25rem !important;
-  }
-  
-  .pressure-demo .mobile-drawer .nav-link {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    padding: 0.65rem 0 !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-    color: #1e293b !important;
-    display: block !important;
-  }
-}
-
 
 /* ==========================================================================
    PLUMBING-STYLE DARK MOBILE DRAWER (STANDARDIZED)
    ========================================================================== */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .pressure-demo-demo .mobile-nav-overlay,
+  .mobile-nav-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(15, 23, 42, 0.65) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    z-index: 1050 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: all 0.25s ease !important;
+  }
+
+  .pressure-demo-demo .mobile-nav-overlay.active,
+  .pressure-demo-demo .mobile-nav-overlay.is-open,
+  .mobile-nav-overlay.active,
+  .mobile-nav-overlay.is-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
   .pressure-demo-demo .mobile-drawer,
   .mobile-drawer {
     position: fixed !important;
     top: 0 !important;
-    right: -320px !important;
+    right: -340px !important;
     width: min(300px, 86vw) !important;
     height: 100vh !important;
     height: 100dvh !important;
@@ -2690,7 +2625,9 @@
   }
 
   .pressure-demo-demo .mobile-drawer.active,
-  .mobile-drawer.active {
+  .pressure-demo-demo .mobile-drawer.is-open,
+  .mobile-drawer.active,
+  .mobile-drawer.is-open {
     right: 0 !important;
   }
 
@@ -2756,7 +2693,10 @@
   }
 
   .pressure-demo-demo .mobile-drawer .btn,
-  .mobile-drawer .btn {
+  .pressure-demo-demo .mobile-drawer .nav-cta,
+  .mobile-drawer .btn,
+  .mobile-drawer .nav-cta {
+    display: flex !important;
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     padding: 12px 16px !important;
@@ -2768,14 +2708,16 @@
     box-sizing: border-box !important;
   }
 
-  /* Animated Hamburger toggle button */
+  /* Animated Hamburger toggle button - DARK COLOR for clear visibility on white navbar */
   .pressure-demo-demo .mobile-toggle,
   .mobile-toggle {
     display: flex !important;
     flex-direction: column !important;
-    gap: 5px !important;
+    justify-content: space-between !important;
+    width: 1.75rem !important;
+    height: 1.25rem !important;
     cursor: pointer !important;
-    padding: 6px !important;
+    padding: 0 !important;
     background: none !important;
     border: none !important;
     z-index: 100 !important;
@@ -2785,24 +2727,27 @@
   .mobile-toggle span {
     display: block !important;
     width: 24px !important;
-    height: 2px !important;
-    background: #ffffff !important;
+    height: 2.5px !important;
+    background: #0f172a !important; /* Visible dark slate on white header */
     border-radius: 2px !important;
     transition: transform 0.25s ease, opacity 0.2s ease !important;
   }
 
   .pressure-demo-demo .mobile-toggle.active span:first-child,
-  .mobile-toggle.active span:first-child {
+  .mobile-toggle.active span:first-child,
+  .mobile-toggle[aria-expanded="true"] span:first-child {
     transform: translateY(7px) rotate(45deg) !important;
   }
 
   .pressure-demo-demo .mobile-toggle.active span:nth-child(2),
-  .mobile-toggle.active span:nth-child(2) {
+  .mobile-toggle.active span:nth-child(2),
+  .mobile-toggle[aria-expanded="true"] span:nth-child(2) {
     opacity: 0 !important;
   }
 
   .pressure-demo-demo .mobile-toggle.active span:last-child,
-  .mobile-toggle.active span:last-child {
+  .mobile-toggle.active span:last-child,
+  .mobile-toggle[aria-expanded="true"] span:last-child {
     transform: translateY(-7px) rotate(-45deg) !important;
   }
 }

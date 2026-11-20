@@ -716,7 +716,14 @@ const runInit = () => {
         </a>
 
         {/* Mobile Hamburger Toggle */}
-        <button className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}  aria-expanded={mobileMenuOpen} id="mobileToggle" aria-label="Toggle navigation menu">
+        <button
+          className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          type="button"
+          aria-expanded={mobileMenuOpen}
+          id="mobileToggle"
+          aria-label="Toggle navigation menu"
+        >
           <span></span>
           <span></span>
           <span></span>
