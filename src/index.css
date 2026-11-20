@@ -47,3 +47,415 @@
   transform: translateY(-2px);
 }
 
+/* Master UI/UX Animation Suite for All Templates */
+
+/* --------------------------------------------------------------------------
+   1. UNIVERSAL SCROLL-TRIGGERED ENTRANCE TRANSITIONS
+   -------------------------------------------------------------------------- */
+.reveal,
+.reveal-on-scroll,
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active,
+.reveal.is-visible,
+.reveal.visible,
+.reveal-on-scroll.active,
+.reveal-on-scroll.is-visible,
+.animate-on-scroll.active,
+.animate-on-scroll.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Directional entrance variations */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.active,
+.reveal-left.is-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.active,
+.reveal-right.is-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.active,
+.reveal-scale.is-visible {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* Staggered entrance sequencing */
+.stagger-1 { transition-delay: 0.08s !important; }
+.stagger-2 { transition-delay: 0.16s !important; }
+.stagger-3 { transition-delay: 0.24s !important; }
+.stagger-4 { transition-delay: 0.32s !important; }
+.stagger-5 { transition-delay: 0.40s !important; }
+.stagger-6 { transition-delay: 0.48s !important; }
+
+/* Card Scroll Entrances for templates without explicit .reveal classes */
+.auto-repair-demo .service-card,
+.auto-repair-demo .difference-card,
+.contractor-demo .service-card,
+.dental-care-demo .service-card,
+.dental-care-demo .review-card,
+.personal-injury-demo .service-card,
+.personal-injury-demo .result-card,
+.plumbing-demo .pf-service-card,
+.plumbing-demo .pf-why-card,
+.plumbing-demo .pf-testi-card {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease !important;
+  will-change: opacity, transform;
+}
+
+.auto-repair-demo .service-card.active,
+.auto-repair-demo .difference-card.active,
+.contractor-demo .service-card.active,
+.dental-care-demo .service-card.active,
+.dental-care-demo .review-card.active,
+.personal-injury-demo .service-card.active,
+.personal-injury-demo .result-card.active,
+.plumbing-demo .pf-service-card.active,
+.plumbing-demo .pf-why-card.active,
+.plumbing-demo .pf-testi-card.active,
+.auto-repair-demo .service-card.is-visible,
+.auto-repair-demo .difference-card.is-visible,
+.contractor-demo .service-card.is-visible,
+.dental-care-demo .service-card.is-visible,
+.dental-care-demo .review-card.is-visible,
+.personal-injury-demo .service-card.is-visible,
+.personal-injury-demo .result-card.is-visible,
+.plumbing-demo .pf-service-card.is-visible,
+.plumbing-demo .pf-why-card.is-visible,
+.plumbing-demo .pf-testi-card.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. INTERACTIVE CARD PHYSICS & DEPTH ELEVATION (ALL TEMPLATES)
+   -------------------------------------------------------------------------- */
+.service-card,
+.pf-service-card,
+.difference-card,
+.result-card,
+.review-card,
+.pf-testi-card,
+.pf-why-card,
+.pf-hero-card,
+.benefit-card,
+.feature-card,
+.why-benefit-card,
+.gallery-card,
+.prep-step-card,
+.step-item,
+.pest-detail-card,
+.about-feature-card,
+.pricing-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease !important;
+}
+
+.service-card:hover,
+.pf-service-card:hover,
+.difference-card:hover,
+.result-card:hover,
+.review-card:hover,
+.pf-testi-card:hover,
+.pf-why-card:hover,
+.benefit-card:hover,
+.feature-card:hover,
+.why-benefit-card:hover,
+.prep-step-card:hover,
+.about-feature-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.12), 0 4px 14px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Dark mode templates card hover elevation */
+.towing-company-demo .service-card:hover,
+.towing-company-demo .benefit-card:hover,
+.contractor-demo .service-card:hover,
+.auto-repair-demo .service-card:hover,
+.electrical-demo .service-card:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Subtle image scale inside cards */
+.service-image-box,
+.service-image,
+.gallery-card,
+.gallery-item,
+.result-card__image {
+  overflow: hidden;
+}
+
+.service-card:hover .service-image img,
+.service-card:hover .service-image-box img,
+.gallery-card:hover img,
+.gallery-item:hover img,
+.result-card:hover img {
+  transform: scale(1.045);
+}
+
+.service-image img,
+.service-image-box img,
+.gallery-card img,
+.gallery-item img,
+.result-card img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle icon float inside cards */
+.service-card:hover .service-icon,
+.service-card:hover .feature-icon-box,
+.service-card:hover .why-icon-box,
+.service-card:hover .icon-box,
+.pf-service-card:hover .pf-service-icon,
+.benefit-card:hover .why-icon-box {
+  transform: translateY(-3px) scale(1.06);
+}
+
+.service-icon,
+.feature-icon-box,
+.why-icon-box,
+.icon-box,
+.pf-service-icon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   3. TACTILE BUTTON & CTA MICRO-INTERACTIONS
+   -------------------------------------------------------------------------- */
+.btn,
+.button,
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.btn-emergency,
+.btn-whatsapp,
+.pf-btn,
+.pf-btn-primary,
+.pf-btn-outline,
+.button-primary,
+.button-gold,
+.button-secondary,
+.service-cta-link,
+.nav-cta,
+.header-cta,
+.cta-button {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease,
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease !important;
+}
+
+.btn:hover,
+.button:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-outline:hover,
+.btn-emergency:hover,
+.btn-whatsapp:hover,
+.pf-btn:hover,
+.pf-btn-primary:hover,
+.button-primary:hover,
+.button-gold:hover,
+.nav-cta:hover,
+.header-cta:hover,
+.cta-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.18) !important;
+}
+
+.btn:active,
+.button:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-whatsapp:active,
+.pf-btn:active,
+.pf-btn-primary:active,
+.button-primary:active,
+.button-gold:active {
+  transform: translateY(0px) scale(0.98) !important;
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.14) !important;
+}
+
+/* Service card inline link slide arrow */
+.service-cta-link svg,
+.card-arrow,
+.link-arrow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.service-card:hover .service-cta-link svg,
+.service-cta-link:hover svg,
+.service-card:hover .card-arrow {
+  transform: translateX(4px) !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. HIGH-INTENT CONVERSION AMBIENT PULSE
+   -------------------------------------------------------------------------- */
+@keyframes cta-whatsapp-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes cta-emergency-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(249, 115, 22, 0);
+  }
+}
+
+.btn-whatsapp,
+.floating-whatsapp__button,
+.whatsapp-bg {
+  animation: cta-whatsapp-pulse 3.6s ease-in-out infinite;
+}
+
+.btn-emergency,
+.pf-btn-primary,
+.floating-emergency {
+  animation: cta-emergency-pulse 3.6s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO FLOATING BADGES & TRUST ACCENTS
+   -------------------------------------------------------------------------- */
+@keyframes subtle-hero-float-1 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes subtle-hero-float-2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.floating-card-1,
+.floating-pressure-card {
+  animation: subtle-hero-float-1 4.5s ease-in-out infinite;
+}
+
+.floating-card-2 {
+  animation: subtle-hero-float-2 5.2s ease-in-out infinite 1.2s;
+}
+
+/* --------------------------------------------------------------------------
+   6. FORM INPUTS INTERACTIVE FOCUS TRANSITION
+   -------------------------------------------------------------------------- */
+.form-input,
+.form-textarea,
+.form-select,
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              background-color 0.2s ease !important;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. ACCORDION / FAQ DROPDOWN CHEVRON ROTATION
+   -------------------------------------------------------------------------- */
+.faq-button svg,
+.faq-header svg,
+.accordion-toggle svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.faq-button[aria-expanded="true"] svg,
+.faq-item.active .faq-button svg,
+.accordion-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .reveal-on-scroll,
+  .animate-on-scroll,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .floating-card-1,
+  .floating-card-2,
+  .floating-pressure-card,
+  .btn-whatsapp,
+  .btn-emergency,
+  .pf-btn-primary {
+    animation: none !important;
+  }
+}

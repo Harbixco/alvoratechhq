@@ -1,16 +1,99 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FiArrowLeft, FiExternalLink, FiLayers } from 'react-icons/fi';
 
 /**
  * DemoTopBar
  * Pinned at the very top of each live demo template.
  * Provides a prominent button returning to the Alvora Tech index page.
+ * Orchestrates universal scroll-reveal animations across all 15 demo templates.
  */
 export default function DemoTopBar({ demoName = 'Client Template Demo' }) {
   const handleBackToIndex = (e) => {
     // Smoothly route back to the index page
     window.location.href = '/';
   };
+
+  // Universal Senior UI/UX Scroll-Reveal & Entrance Observer
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const targetSelectors = [
+      '.reveal',
+      '.reveal-on-scroll',
+      '.animate-on-scroll',
+      '.service-card',
+      '.pf-service-card',
+      '.pf-why-card',
+      '.pf-testi-card',
+      '.pf-hero-card',
+      '.difference-card',
+      '.result-card',
+      '.review-card',
+      '.feature-card',
+      '.benefit-card',
+      '.why-benefit-card',
+      '.prep-step-card',
+      '.step-item',
+      '.trust-item',
+      '.metric-card',
+      '.gallery-card',
+      '.gallery-item',
+      '.process-step'
+    ].join(', ');
+
+    const activate = (el) => {
+      el.classList.add('active');
+      el.classList.add('is-visible');
+      el.classList.add('visible');
+    };
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      document.querySelectorAll(targetSelectors).forEach(activate);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    const scanAndObserve = () => {
+      const elements = document.querySelectorAll(targetSelectors);
+      elements.forEach(el => {
+        if (!el.classList.contains('active') && !el.classList.contains('is-visible')) {
+          observer.observe(el);
+        }
+      });
+    };
+
+    // Initial scan
+    scanAndObserve();
+
+    // Re-scan when tab switching, dynamic content, or modal changes occur
+    const mutationObserver = new MutationObserver(() => {
+      scanAndObserve();
+    });
+
+    const rootEl = document.getElementById('root') || document.body;
+    if (rootEl) {
+      mutationObserver.observe(rootEl, { childList: true, subtree: true });
+    }
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, []);
 
   return (
     <aside 
@@ -45,4 +128,3 @@ export default function DemoTopBar({ demoName = 'Client Template Demo' }) {
     </aside>
   );
 }
-

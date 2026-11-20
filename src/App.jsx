@@ -41,6 +41,54 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // Universal Scroll-Reveal Observer for Alvoratech Index Page & Global Routes
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetSelectors = '.reveal, .reveal-on-scroll, .animate-on-scroll, .service-card, .pf-service-card, .feature-card, .benefit-card';
+
+    const activate = (el) => {
+      el.classList.add('active');
+      el.classList.add('is-visible');
+      el.classList.add('visible');
+    };
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      document.querySelectorAll(targetSelectors).forEach(activate);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    const scanAndObserve = () => {
+      document.querySelectorAll(targetSelectors).forEach(el => {
+        if (!el.classList.contains('active') && !el.classList.contains('is-visible')) {
+          observer.observe(el);
+        }
+      });
+    };
+
+    scanAndObserve();
+    const timeout = setTimeout(scanAndObserve, 300);
+
+    return () => {
+      clearTimeout(timeout);
+      observer.disconnect();
+    };
+  }, [currentPath]);
+
   // Route to live client demo templates (supports both /<template> and /demos/<template>)
   const normalizedPath = (currentPath || window.location.pathname || '').toLowerCase().replace(/\/$/, '');
   
