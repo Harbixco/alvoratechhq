@@ -405,7 +405,6 @@ export default function TowingCompany() {
         <section className="services section" id="services">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <span className="eyebrow">OUR SERVICES</span>
               <h2>COMPLETE TOWING &amp; ROADSIDE ASSISTANCE SOLUTIONS</h2>
               <p>Professional vehicle transportation and roadside assistance tailored for any situation.</p>
             </div>
@@ -441,9 +440,8 @@ export default function TowingCompany() {
         {/* Mid-Page Promo Banner */}
         <section className="testimonials section" id="testimonials">
           <div className="container">
-            <div className="section-heading reveal is-visible">
-              <span className="eyebrow">CLIENT FEEDBACK</span>
-              <h2>WHAT DRIVERS SAY ABOUT US</h2>
+            <div className="section-heading section-heading--light reveal is-visible">
+              <h2 style={{ color: '#ffffff' }}>WHAT DRIVERS SAY ABOUT US</h2>
             </div>
 
             <div className="testimonial-slider reveal is-visible">
@@ -487,7 +485,6 @@ export default function TowingCompany() {
         <section className="contact section" id="contact">
           <div className="container contact-grid">
             <div className="contact-details reveal is-visible">
-              <span className="eyebrow">CONTACT</span>
               <h2>GET IN TOUCH WITH ALVORATECH</h2>
               <ul className="contact-list">
                 <li>
@@ -617,7 +614,6 @@ export default function TowingCompany() {
         <section className="services section" id="services">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <span className="eyebrow">OUR SERVICES</span>
               <h2>COMPLETE TOWING &amp; ROADSIDE ASSISTANCE SOLUTIONS</h2>
               <p>Professional vehicle transportation and roadside assistance tailored for any situation.</p>
             </div>
@@ -676,7 +672,6 @@ export default function TowingCompany() {
             </div>
 
             <div className="about-content reveal is-visible">
-              <span className="eyebrow eyebrow--dark">ABOUT ALVORATECH</span>
               <h2>DEPENDABLE TOWING SOLUTIONS WHEN YOU NEED THEM</h2>
               <p>
                 Alvoratech is dedicated to providing professional towing, vehicle transportation, and
@@ -704,7 +699,6 @@ export default function TowingCompany() {
         <section className="why-us section" id="why-us">
           <div className="container">
             <div className="section-heading reveal is-visible section-heading--light">
-              <span className="eyebrow">WHY CHOOSE US</span>
               <h2>WHY CHOOSE ALVORATECH?</h2>
             </div>
 
@@ -758,7 +752,6 @@ export default function TowingCompany() {
         <section className="why-us section" id="why-us">
           <div className="container">
             <div className="section-heading reveal is-visible section-heading--light">
-              <span className="eyebrow">WHY CHOOSE US</span>
               <h2>WHY CHOOSE ALVORATECH?</h2>
             </div>
 
@@ -812,7 +805,6 @@ export default function TowingCompany() {
         <section className="gallery section" id="gallery">
           <div className="container">
             <div className="section-heading reveal is-visible">
-              <span className="eyebrow">OUR WORK</span>
               <h2>OUR TOWING &amp; RECOVERY GALLERY</h2>
             </div>
 
@@ -850,9 +842,8 @@ export default function TowingCompany() {
         <>
         <section className="testimonials section" id="testimonials">
           <div className="container">
-            <div className="section-heading reveal is-visible">
-              <span className="eyebrow">CLIENT FEEDBACK</span>
-              <h2>WHAT DRIVERS SAY ABOUT US</h2>
+            <div className="section-heading section-heading--light reveal is-visible">
+              <h2 style={{ color: '#ffffff' }}>WHAT DRIVERS SAY ABOUT US</h2>
             </div>
 
             <div className="testimonial-slider reveal is-visible">
@@ -907,7 +898,6 @@ export default function TowingCompany() {
         <section className="faq section" id="faq">
           <div className="container faq-shell reveal is-visible">
             <div className="section-heading section-heading--left">
-              <span className="eyebrow">FAQ</span>
               <h2>FREQUENTLY ASKED QUESTIONS</h2>
             </div>
 
@@ -948,7 +938,6 @@ export default function TowingCompany() {
         <section className="contact section" id="contact">
           <div className="container contact-grid">
             <div className="contact-details reveal is-visible">
-              <span className="eyebrow">CONTACT</span>
               <h2>GET IN TOUCH WITH ALVORATECH</h2>
               <ul className="contact-list">
                 <li>

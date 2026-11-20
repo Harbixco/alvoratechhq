@@ -924,7 +924,6 @@ const runInit = () => {
 
           {/* Text Column */}
           <div className="about-content reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH SECURITY</span>
             <h2>Integrity in Every Keyway. <br />Protection When You Need It Most.</h2>
             <p>
               In an industry plagued by lead-generation mills and scam operators quoting low call-out fees only to drill out locks, Alvoratech was founded on unshakeable integrity, transparent pricing, and master-level locksmithing skills.
@@ -994,7 +993,6 @@ const runInit = () => {
     <section className="section-padding bg-white testimonials-section" id="testimonials">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">CLIENT REVIEWS</span>
           <h2>What Property Owners & Drivers Say</h2>
           
         </div>
@@ -1092,7 +1090,6 @@ const runInit = () => {
         <div className="contact-grid">
           {/* Left Column: Contact Info Card */}
           <div className="contact-info-card reveal">
-            <span className="section-eyebrow">24/7 RAPID DISPATCH</span>
             <h3>Connect With Alvoratech Dispatch</h3>
             <p>Need urgent mobile assistance or want to schedule a commercial security audit? Reach our certified dispatchers directly via phone, WhatsApp, or email.</p>
 
@@ -1160,7 +1157,6 @@ const runInit = () => {
 
           {/* Right Column: Interactive Dispatch Form */}
           <div className="contact-form-card reveal stagger-1">
-            <span className="section-eyebrow">FAST SERVICE REQUEST</span>
             <h3>Request Immediate Mobile Locksmith</h3>
             <p>Fill out the details below. Submitting will immediately format and route an urgent WhatsApp dispatch ticket to our nearest technician.</p>
 
@@ -1243,7 +1239,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="services">
       <div className="container-wide">
         <div className="section-header reveal">
-          <span className="section-eyebrow">COMPREHENSIVE SECURITY SPECIALTIES</span>
           <h2>Professional Locksmith & Access Control Services</h2>
           <p>
             Whether locked out on the road, upgrading residential deadbolts, or securing a corporate commercial facility, our certified technicians are ready 24/7.
@@ -1393,7 +1388,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="process">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">FAST RAPID RESPONSE</span>
           <h2>Our 4-Step Emergency Dispatch Process</h2>
           <p>
             Experience a seamless, panic-free path from lockout to safety in four simple steps.
@@ -1458,7 +1452,6 @@ const runInit = () => {
 
           {/* Text Column */}
           <div className="about-content reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH SECURITY</span>
             <h2>Integrity in Every Keyway. <br />Protection When You Need It Most.</h2>
             <p>
               In an industry plagued by lead-generation mills and scam operators quoting low call-out fees only to drill out locks, Alvoratech was founded on unshakeable integrity, transparent pricing, and master-level locksmithing skills.
@@ -1535,7 +1528,6 @@ const runInit = () => {
 
           {/* Right Content */}
           <div className="why-content reveal stagger-1">
-            <span className="section-eyebrow">THE ALVORATECH STANDARD</span>
             <h2>Why Stranded Drivers & Facility Managers Trust Us</h2>
             <p>
               When an emergency strikes, you need honest, certified security experts who show up quickly, state the exact price upfront, and resolve your issue without damaging your property.
@@ -1612,7 +1604,6 @@ const runInit = () => {
     <section className="section-padding bg-light ba-section" id="transformations">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">SECURITY UPGRADE PROOF</span>
           <h2>Witness the Power of Certified Locksmithing</h2>
           <p>
             Drag the interactive slider handle left and right to inspect real-world security restorations, smart deadbolt retrofits, and commercial fire exit installations.
@@ -1671,7 +1662,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="grades">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">CONSUMER HARDWARE GUIDE</span>
           <h2>Understanding ANSI/BHMA Security Lock Grades</h2>
           <p>
             Not all locks provide real security. Learn how certified Grade 1 hardware protects your family and assets against kick-ins, bumping, and picking.
@@ -1732,7 +1722,6 @@ const runInit = () => {
     <section className="section-padding bg-light" id="portfolio">
       <div className="container-wide">
         <div className="section-header reveal">
-          <span className="section-eyebrow">PORTFOLIO OF RECENT WORK</span>
           <h2>Real Field Installations & Emergency Unlocks</h2>
           <p>
             Explore our field work across automotive programming, residential smart locks, and commercial access installations.
@@ -1851,7 +1840,6 @@ const runInit = () => {
     <section className="section-padding bg-light" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">COMMON QUESTIONS</span>
           <h2>Frequently Asked Questions</h2>
           <p>
             Find honest answers regarding emergency arrival times, car key programming, pricing transparency, and lock rekeying.
@@ -1970,7 +1958,6 @@ const runInit = () => {
         <div className="contact-grid">
           {/* Left Column: Contact Info Card */}
           <div className="contact-info-card reveal">
-            <span className="section-eyebrow">24/7 RAPID DISPATCH</span>
             <h3>Connect With Alvoratech Dispatch</h3>
             <p>Need urgent mobile assistance or want to schedule a commercial security audit? Reach our certified dispatchers directly via phone, WhatsApp, or email.</p>
 
@@ -2038,7 +2025,6 @@ const runInit = () => {
 
           {/* Right Column: Interactive Dispatch Form */}
           <div className="contact-form-card reveal stagger-1">
-            <span className="section-eyebrow">FAST SERVICE REQUEST</span>
             <h3>Request Immediate Mobile Locksmith</h3>
             <p>Fill out the details below. Submitting will immediately format and route an urgent WhatsApp dispatch ticket to our nearest technician.</p>
 

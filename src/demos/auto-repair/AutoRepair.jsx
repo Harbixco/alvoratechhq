@@ -240,9 +240,6 @@ export default function AutoRepair() {
           <div className="hero__shade"></div>
 
           <div className="hero__content container">
-            <div className="eyebrow eyebrow--light">
-              <span></span> Driven by precision. Built on trust.
-            </div>
             <h1>
               Confidence in<br />every <em>mile.</em>
             </h1>
@@ -320,9 +317,6 @@ export default function AutoRepair() {
           <div className="container">
             <div className="section-heading section-heading--split">
               <div>
-                <div className="eyebrow">
-                  <span></span> Complete auto care
-                </div>
                 <h2>
                   One trusted team.<br /><em>Every turn.</em>
                 </h2>
@@ -458,9 +452,6 @@ export default function AutoRepair() {
         <section className="reviews-section section" id="reviews">
           <div className="container reviews-layout">
             <div className="reviews-intro">
-              <div className="eyebrow">
-                <span></span> Kind words, miles later
-              </div>
               <h2>
                 Trust is earned<br /><em>one visit at a time.</em>
               </h2>
@@ -532,9 +523,6 @@ export default function AutoRepair() {
         <section className="contact-section" id="contact">
           <div className="container contact-layout">
             <div className="contact-copy">
-              <div className="eyebrow eyebrow--light">
-                <span></span> Come say hello
-              </div>
               <h2>
                 Good people.<br /><em>Good roads ahead.</em>
               </h2>
@@ -573,9 +561,6 @@ export default function AutoRepair() {
           <div className="container">
             <form className="contact-form" id="contact-form" onSubmit={handleContactSubmit}>
               <div className="contact-form__heading">
-                <div className="eyebrow eyebrow--light">
-                  <span></span> Send us a note
-                </div>
                 <p>We’d love to hear from you.</p>
               </div>
 
@@ -625,9 +610,6 @@ export default function AutoRepair() {
           <div className="container">
             <div className="section-heading section-heading--split">
               <div>
-                <div className="eyebrow">
-                  <span></span> Complete auto care
-                </div>
                 <h2>
                   One trusted team.<br /><em>Every turn.</em>
                 </h2>
@@ -793,9 +775,6 @@ export default function AutoRepair() {
             </div>
 
             <div className="about-copy">
-              <div className="eyebrow eyebrow--light">
-                <span></span> The Alvoratech difference
-              </div>
               <h2>
                 Good service<br />is a <em>feeling.</em>
               </h2>
@@ -837,9 +816,6 @@ export default function AutoRepair() {
         <section className="difference-section section" id="difference">
           <div className="container">
             <div className="section-heading section-heading--center">
-              <div className="eyebrow">
-                <span></span> What matters most
-              </div>
               <h2>
                 Car care, without<br /><em>the guesswork.</em>
               </h2>
@@ -890,9 +866,6 @@ export default function AutoRepair() {
         <section className="difference-section section" id="difference">
           <div className="container">
             <div className="section-heading section-heading--center">
-              <div className="eyebrow">
-                <span></span> What matters most
-              </div>
               <h2>
                 Car care, without<br /><em>the guesswork.</em>
               </h2>
@@ -943,9 +916,6 @@ export default function AutoRepair() {
         <section className="gallery-section">
           <div className="container gallery-heading">
             <div>
-              <div className="eyebrow eyebrow--light">
-                <span></span> A closer look
-              </div>
               <h2>
                 Our work.<br /><em>Our workshop.</em>
               </h2>
@@ -1004,9 +974,6 @@ export default function AutoRepair() {
         <section className="reviews-section section" id="reviews">
           <div className="container reviews-layout">
             <div className="reviews-intro">
-              <div className="eyebrow">
-                <span></span> Kind words, miles later
-              </div>
               <h2>
                 Trust is earned<br /><em>one visit at a time.</em>
               </h2>
@@ -1089,9 +1056,6 @@ export default function AutoRepair() {
         <section className="faq-section section" id="faq">
           <div className="container faq-layout">
             <div className="faq-intro">
-              <div className="eyebrow">
-                <span></span> Good to know
-              </div>
               <h2>
                 A few things<br />you might <em>wonder.</em>
               </h2>
@@ -1166,9 +1130,6 @@ export default function AutoRepair() {
         <section className="contact-section" id="contact">
           <div className="container contact-layout">
             <div className="contact-copy">
-              <div className="eyebrow eyebrow--light">
-                <span></span> Come say hello
-              </div>
               <h2>
                 Good people.<br /><em>Good roads ahead.</em>
               </h2>
@@ -1207,9 +1168,6 @@ export default function AutoRepair() {
           <div className="container">
             <form className="contact-form" id="contact-form" onSubmit={handleContactSubmit}>
               <div className="contact-form__heading">
-                <div className="eyebrow eyebrow--light">
-                  <span></span> Send us a note
-                </div>
                 <p>We’d love to hear from you.</p>
               </div>
 

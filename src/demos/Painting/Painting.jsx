@@ -826,7 +826,6 @@ export default function Painting() {
         <section className="section-padding services-section" id="services">
           <div className="container">
             <div className="section-header text-center reveal">
-              <span className="section-eyebrow">OUR SPECIALTIES</span>
               <h2>Architectural Painting Services</h2>
               <p className="section-subtitle">
                 Engineered for maximum longevity, flawless aesthetics, and zero disruption to your daily routine.
@@ -909,7 +908,6 @@ export default function Painting() {
                 <img src="/painting/assets/images/about-painter-wall.jpg?v=10" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
               </div>
               <div className="reveal stagger-1">
-                <span className="section-eyebrow">ABOUT ALVORATECH</span>
                 <h2>Raising the Standard of Residential & Commercial Painting</h2>
                 <p style={{ "fontSize": "1.0625rem", "marginBottom": "1.25rem" }}>
                   At Alvoratech, painting isn’t just a trade—it’s an architectural discipline. We believe homeowners deserve a contractor who arrives on time, treats their property like a museum, communicates transparently, and leaves behind immaculate, enduring beauty.
@@ -932,7 +930,6 @@ export default function Painting() {
         <section className="section-padding testimonials-section">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow blue">CLIENT VOICES</span>
               <h2>What Property Owners Say About Alvoratech</h2>
               <div style={{ "marginTop": "0.5rem", "fontSize": "0.75rem", "textTransform": "uppercase", "letterSpacing": "0.08em", "color": "var(--color-coral)", "fontWeight": "700" }}>
                 Demonstration Testimonials • Verified Client Feedback Examples
@@ -1009,7 +1006,6 @@ export default function Painting() {
         <section className="section-padding estimate-form-section" id="estimate">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">FAST ESTIMATE DISPATCH</span>
               <h2>Request Your Free On-Site Consultation</h2>
               <p>Fill out the simple form below. Our estimators will review your project details and follow up promptly with scheduling options.</p>
             </div>
@@ -1077,7 +1073,6 @@ export default function Painting() {
         <section className="section-padding services-section" id="services">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">COMPREHENSIVE PAINTING SPECIALTIES</span>
               <h2>Exceptional Finishing for Every Architectural Surface</h2>
               <p>From fine interior woodwork and custom cabinetry to complete exterior weatherproof transformations, our master crews deliver enduring perfection.</p>
             </div>
@@ -1308,7 +1303,6 @@ export default function Painting() {
         <section className="section-padding visualizer-section" id="visualizer">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow blue">LIVE COLOR VISUALIZER</span>
               <h2>Explore America’s Most Beloved Designer Palettes</h2>
               <p>Click any trending architectural shade below to inspect its live room ambience, hex balance, and recommended sheen.</p>
             </div>
@@ -1416,7 +1410,6 @@ export default function Painting() {
         <section className="section-padding calculator-section" id="estimator">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">INSTANT TRANSPARENCY</span>
               <h2>Interactive Painting Project Cost Estimator</h2>
               <p>Select your scope and adjust the estimated square footage to receive an instant preliminary investment estimate.</p>
             </div>
@@ -1502,7 +1495,6 @@ export default function Painting() {
         <section className="section-padding prep-section" id="prep">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">WHY OUR COATINGS OUTLAST OTHERS</span>
               <h2>Our 5-Step Meticulous Preparation Process</h2>
               <p>90% of paint failures stem from rushed preparation. At Alvoratech, we spend twice as much time prepping surfaces as we do applying paint.</p>
             </div>
@@ -1593,7 +1585,6 @@ export default function Painting() {
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
-                <span className="section-eyebrow">READY TO TRANSFORM YOUR SPACE?</span>
                 <h2>Get a Custom Quote For Your Project</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Schedule a complimentary in-home or on-site estimate with our certified architectural coating specialists.</p>
                 <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
@@ -1610,7 +1601,6 @@ export default function Painting() {
         <section className="section-padding ba-section" id="transformations">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">DRAMATIC TRANSFORMATIONS</span>
               <h2>Witness the Power of Professional Prep & Spray</h2>
               <p>Drag the interactive handle left and right to inspect real-world finish restorations across cabinets, exteriors, living spaces, and outdoor decks.</p>
             </div>
@@ -1660,7 +1650,6 @@ export default function Painting() {
         <section className="section-padding gallery-section" id="portfolio">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow blue">PORTFOLIO OF CRAFTSMANSHIP</span>
               <h2>Real Projects. Pristine Finishes.</h2>
               <p>Browse our recent residential and commercial transformations. Click any project to open full-resolution inspection photography.</p>
             </div>
@@ -1765,7 +1754,6 @@ export default function Painting() {
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
-                <span className="section-eyebrow">YOUR HOME COULD BE NEXT</span>
                 <h2>Love The Way Your Space Looks</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Every project includes meticulous surface preparation, dustless sanding, and a comprehensive 10-year warranty.</p>
                 <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
@@ -1786,7 +1774,6 @@ export default function Painting() {
                 <img src="/painting/assets/images/about-painter-wall.jpg?v=10" alt="Alvoratech master painting contractor cutting pristine trim lines" className="why-image" loading="lazy" />
               </div>
               <div className="reveal stagger-1">
-                <span className="section-eyebrow">ABOUT ALVORATECH</span>
                 <h2>Raising the Standard of Residential & Commercial Painting</h2>
                 <p style={{ "fontSize": "1.0625rem", "marginBottom": "1.25rem" }}>
                   At Alvoratech, painting isn’t just a trade—it’s an architectural discipline. We believe homeowners deserve a contractor who arrives on time, treats their property like a museum, communicates transparently, and leaves behind immaculate, enduring beauty.
@@ -1811,7 +1798,6 @@ export default function Painting() {
             <div className="why-grid">
               {/* Text Pillars */}
               <div className="reveal">
-                <span className="section-eyebrow">THE ALVORATECH DIFFERENCE</span>
                 <h2>Why Homeowners & Property Managers Choose Alvoratech</h2>
                 <p style={{ "marginBottom": "2.5rem" }}>
                   We eliminate the common frustrations of working with trade contractors—unreturned calls, messy living rooms, and unexpected price hikes.
@@ -1874,7 +1860,6 @@ export default function Painting() {
         <section className="section-padding testimonials-section">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow blue">CLIENT VOICES</span>
               <h2>What Property Owners Say About Alvoratech</h2>
               <div style={{ "marginTop": "0.5rem", "fontSize": "0.75rem", "textTransform": "uppercase", "letterSpacing": "0.08em", "color": "var(--color-coral)", "fontWeight": "700" }}>
                 Demonstration Testimonials • Verified Client Feedback Examples
@@ -1950,7 +1935,6 @@ export default function Painting() {
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
-                <span className="section-eyebrow">STANDARDS YOU CAN TRUST</span>
                 <h2>Work With Master-Certified Painters</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Fully licensed, insured, and background-checked technicians who treat your property like a museum.</p>
                 <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
@@ -1967,7 +1951,6 @@ export default function Painting() {
         <section className="section-padding faq-section" id="faq">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">COMMON QUESTIONS</span>
               <h2>Frequently Asked Questions</h2>
               <p>Everything you need to know about our painting timelines, surface preparation, paint grades, and warranties.</p>
             </div>
@@ -2059,7 +2042,6 @@ export default function Painting() {
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
-                <span className="section-eyebrow">STILL HAVE QUESTIONS?</span>
                 <h2>We're Here to Help</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Speak directly with our master contractor today or send us a message for immediate assistance.</p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -2077,7 +2059,6 @@ export default function Painting() {
         <section className="section-padding estimate-form-section" id="estimate">
           <div className="container">
             <div className="section-header reveal">
-              <span className="section-eyebrow">FAST ESTIMATE DISPATCH</span>
               <h2>Request Your Free On-Site Consultation</h2>
               <p>Fill out the simple form below. Our estimators will review your project details and follow up promptly with scheduling options.</p>
             </div>

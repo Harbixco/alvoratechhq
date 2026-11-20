@@ -876,8 +876,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="about-content">
-          <span className="section-eyebrow reveal">About Alvoratech</span>
-          
           <h2 className="reveal stagger-1">Defending Homes and Businesses with Precision and Care.</h2>
           
           <p className="reveal stagger-2">
@@ -947,7 +945,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Customer Feedback</span>
           <h2 className="reveal stagger-1">What Clients Value About Our Service</h2>
           
         </div>
@@ -1043,7 +1040,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Inspection Request</span>
           <h2 className="reveal stagger-1">Schedule Your Property Inspection</h2>
           <p className="reveal stagger-2">Tell us about the pests you've observed, and our team will coordinate the next steps.</p>
         </div>
@@ -1193,7 +1189,6 @@ const runInit = () => {
       <div className="container-wide">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Targeted Treatments</span>
           <h2 className="reveal stagger-1">Comprehensive Pest Defense Solutions</h2>
           <p className="reveal stagger-2">Targeted extermination and prevention services engineered for specific pests and property environments.</p>
         </div>
@@ -1369,7 +1364,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Field Diagnostics</span>
           <h2 className="reveal stagger-1">Identify the Threat. Protect Your Space.</h2>
           <p className="reveal stagger-2">Select a pest type to learn about common signs of infestation, nesting zones, and recommended action.</p>
         </div>
@@ -1433,7 +1427,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Systematic Protection</span>
           <h2 className="reveal stagger-1">Our 4-Step Pest Defense Cycle</h2>
           <p className="reveal stagger-2">A systematic approach to diagnosing, eliminating, and preventing pest infestations.</p>
         </div>
@@ -1495,8 +1488,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="about-content">
-          <span className="section-eyebrow reveal">About Alvoratech</span>
-          
           <h2 className="reveal stagger-1">Defending Homes and Businesses with Precision and Care.</h2>
           
           <p className="reveal stagger-2">
@@ -1572,7 +1563,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="why-content">
-          <span className="section-eyebrow reveal">The Alvoratech Advantage</span>
           <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
           <p className="reveal stagger-2">We blend comprehensive property diagnostics with targeted, family-conscious formulations to eradicate pests and maintain long-term peace of mind.</p>
 
@@ -1667,7 +1657,6 @@ const runInit = () => {
       <div className="container-wide">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Field Operations</span>
           <h2 className="reveal stagger-1">Precision in the Field. Real Protection.</h2>
           <p className="reveal stagger-2">Explore photographs of technician inspections, perimeter treatments, and specialized commercial defense.</p>
         </div>
@@ -1779,7 +1768,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">FAQ</span>
           <h2 className="reveal stagger-1">Frequently Asked Questions</h2>
           <p className="reveal stagger-2">Find clear, honest answers regarding our residential and commercial pest defense solutions.</p>
         </div>
@@ -1912,7 +1900,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Inspection Request</span>
           <h2 className="reveal stagger-1">Schedule Your Property Inspection</h2>
           <p className="reveal stagger-2">Tell us about the pests you've observed, and our team will coordinate the next steps.</p>
         </div>

@@ -941,7 +941,6 @@ const runInit = () => {
 
           {/* Text Column */}
           <div className="about-content reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH</span>
             <h2>Rooted in Craftsmanship. <br />Driven by Precision Outdoor Design.</h2>
             <p>
               At Alvoratech, we believe your exterior property is an extension of your home's architecture and living space. Founded with a commitment to uncompromised craftsmanship, we merge architectural hardscaping, environmental horticulture, and high-efficiency water management into seamless outdoor sanctuaries.
@@ -1006,7 +1005,6 @@ const runInit = () => {
     <section className="section-padding bg-light testimonials-section" id="testimonials">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">CLIENT TESTIMONIALS</span>
           <h2>What Property Owners Say About Alvoratech</h2>
         </div>
 
@@ -1100,7 +1098,6 @@ const runInit = () => {
         <div className="contact-grid">
           {/* Left Column: Contact Information Card */}
           <div className="contact-info-card reveal">
-            <span className="section-eyebrow">GET IN TOUCH</span>
             <h3>Connect With Alvoratech</h3>
             <p>Ready to start your landscape journey? Reach out to our design and estimating team directly via phone, WhatsApp, or email.</p>
 
@@ -1168,7 +1165,6 @@ const runInit = () => {
 
           {/* Right Column: Interactive Estimate Request Form */}
           <div className="contact-form-card reveal stagger-1">
-            <span className="section-eyebrow">ESTIMATE CALCULATOR</span>
             <h3>Request Your Free Property Estimate</h3>
             <p>Fill out the details below. Submitting will immediately generate a customized WhatsApp summary for our landscape estimators.</p>
 
@@ -1251,7 +1247,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="services">
       <div className="container-wide">
         <div className="section-header reveal">
-          <span className="section-eyebrow">COMPREHENSIVE SERVICES</span>
           <h2>Master Landscaping & Outdoor Living Solutions</h2>
           <p>
             From bespoke concept design and heavy structural masonry to manicured lawn health and automated nightscapes. Discover how Alvoratech transforms properties.
@@ -1396,7 +1391,6 @@ const runInit = () => {
     <section className="section-padding bg-light" id="process">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">SEAMLESS CLIENT JOURNEY</span>
           <h2>Our 4-Step Landscape Process</h2>
           <p>
             Experience a structured, stress-free path from conceptual vision to complete outdoor living reality.
@@ -1461,7 +1455,6 @@ const runInit = () => {
 
           {/* Text Column */}
           <div className="about-content reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH</span>
             <h2>Rooted in Craftsmanship. <br />Driven by Precision Outdoor Design.</h2>
             <p>
               At Alvoratech, we believe your exterior property is an extension of your home's architecture and living space. Founded with a commitment to uncompromised craftsmanship, we merge architectural hardscaping, environmental horticulture, and high-efficiency water management into seamless outdoor sanctuaries.
@@ -1533,7 +1526,6 @@ const runInit = () => {
 
           {/* Right Content */}
           <div className="why-content reveal stagger-1">
-            <span className="section-eyebrow">THE ALVORATECH DIFFERENCE</span>
             <h2>Why Discerning Property Owners Choose Alvoratech</h2>
             <p>
               We treat outdoor construction with the same discipline, structural engineering, and design nuance typically reserved for interior architectural renovations.
@@ -1610,7 +1602,6 @@ const runInit = () => {
     <section className="section-padding bg-light ba-section" id="transformations">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">VISUAL PROOF & TRANSFORMATIONS</span>
           <h2>Witness the Power of Professional Landscaping</h2>
           <p>
             Drag the interactive slider handle left and right to reveal the dramatic real-world property transformations executed by Alvoratech's specialized crews.
@@ -1669,7 +1660,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="portfolio">
       <div className="container-wide">
         <div className="section-header reveal">
-          <span className="section-eyebrow">PORTFOLIO OF EXCELLENCE</span>
           <h2>Recent Landscape & Hardscape Projects</h2>
           <p>
             Browse our handpicked collection of residential estates, custom stone patios, lush gardens, and commercial spaces.
@@ -1788,7 +1778,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">COMMON QUESTIONS</span>
           <h2>Frequently Asked Questions</h2>
           <p>
             Find answers to common questions about our design approach, hardscape warranties, schedules, and estimates.
@@ -1907,7 +1896,6 @@ const runInit = () => {
         <div className="contact-grid">
           {/* Left Column: Contact Information Card */}
           <div className="contact-info-card reveal">
-            <span className="section-eyebrow">GET IN TOUCH</span>
             <h3>Connect With Alvoratech</h3>
             <p>Ready to start your landscape journey? Reach out to our design and estimating team directly via phone, WhatsApp, or email.</p>
 
@@ -1975,7 +1963,6 @@ const runInit = () => {
 
           {/* Right Column: Interactive Estimate Request Form */}
           <div className="contact-form-card reveal stagger-1">
-            <span className="section-eyebrow">ESTIMATE CALCULATOR</span>
             <h3>Request Your Free Property Estimate</h3>
             <p>Fill out the details below. Submitting will immediately generate a customized WhatsApp summary for our landscape estimators.</p>
 

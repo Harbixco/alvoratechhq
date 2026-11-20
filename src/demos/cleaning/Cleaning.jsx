@@ -770,8 +770,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="about-content">
-          <span className="section-eyebrow reveal">About Alvoratech</span>
-          
           <h2 className="reveal stagger-1">More Than Cleaning.<br />A Better Experience.</h2>
           
           <p className="reveal stagger-2">
@@ -842,7 +840,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Client Feedback</span>
           <h2 className="reveal stagger-1">What Our Customers Say</h2>
         </div>
 
@@ -930,7 +927,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Get in Touch</span>
           <h2 className="reveal stagger-1">Let's Make Your Space Shine</h2>
           <p className="reveal stagger-2">Reach out to request a personalized cleaning quote or inquire about our specialized services.</p>
         </div>
@@ -1072,8 +1068,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="about-content">
-          <span className="section-eyebrow reveal">About Alvoratech</span>
-          
           <h2 className="reveal stagger-1">More Than Cleaning.<br />A Better Experience.</h2>
           
           <p className="reveal stagger-2">
@@ -1150,7 +1144,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="why-content">
-          <span className="section-eyebrow reveal">The Alvoratech Advantage</span>
           <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
           <p className="reveal stagger-2">We blend modern cleaning methods with a customer-first mindset, giving you reliable solutions designed around your lifestyle.</p>
 
@@ -1236,7 +1229,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Client Feedback</span>
           <h2 className="reveal stagger-1">What Our Customers Say</h2>
         </div>
 
@@ -1335,7 +1327,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Our Solutions</span>
           <h2 className="reveal stagger-1">Cleaning Solutions for Every Space</h2>
           <p className="reveal stagger-2">From everyday home cleaning to detailed commercial cleaning, discover services designed around your space and needs.</p>
         </div>
@@ -1468,7 +1459,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Seamless Process</span>
           <h2 className="reveal stagger-1">How It Works</h2>
           <p className="reveal stagger-2">Enjoying a pristine, refreshed environment is straightforward and hassle-free.</p>
         </div>
@@ -1528,7 +1518,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="why-content">
-          <span className="section-eyebrow reveal">The Alvoratech Advantage</span>
           <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
           <p className="reveal stagger-2">We blend modern cleaning methods with a customer-first mindset, giving you reliable solutions designed around your lifestyle.</p>
 
@@ -1668,7 +1657,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Client Feedback</span>
           <h2 className="reveal stagger-1">What Our Customers Say</h2>
         </div>
 
@@ -1762,7 +1750,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Visual Showcase</span>
           <h2 className="reveal stagger-1">See the Difference a Clean Space Makes</h2>
           <p className="reveal stagger-2">Explore photos of pristine transformations across residential, commercial, and detailed spaces.</p>
         </div>
@@ -1864,7 +1851,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Got Questions?</span>
           <h2 className="reveal stagger-1">Frequently Asked Questions</h2>
           <p className="reveal stagger-2">Find clear, helpful answers regarding our professional cleaning services.</p>
         </div>
@@ -1982,7 +1968,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Get in Touch</span>
           <h2 className="reveal stagger-1">Let's Make Your Space Shine</h2>
           <p className="reveal stagger-2">Reach out to request a personalized cleaning quote or inquire about our specialized services.</p>
         </div>

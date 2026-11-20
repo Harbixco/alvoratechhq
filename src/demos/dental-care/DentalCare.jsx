@@ -135,9 +135,6 @@ export default function DentalCare() {
         <>
         <section className="hero section-wrap" id="home">
           <div className="hero-content">
-            <div className="eyebrow">
-              <span className="eyebrow-dot"></span> A better kind of dental visit
-            </div>
             <h1>
               Your Comfort,<br />Our <span>Priority.</span>
             </h1>

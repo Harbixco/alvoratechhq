@@ -743,7 +743,6 @@ const runInit = () => {
         <section className="section-padding services-section" id="services">
           <div className="container">
             <div className="section-header text-center reveal">
-              <span className="section-eyebrow">OUR SPECIALTIES</span>
               <h2>Licensed Electrical Solutions</h2>
               <p className="section-subtitle">
                 Master-certified electrical engineering, 200A panel upgrades, EV infrastructure, and 24/7 emergency response.
@@ -822,7 +821,6 @@ const runInit = () => {
             <img src="/electrical/assets/images/elec-about.jpg" alt="Alvoratech certified electrical technician checking voltage diagnostics" className="why-image" loading="lazy" />
           </div>
           <div className="reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH</span>
             <h2>Setting the Standard in American Electrical Contracting</h2>
             <p style={{"fontSize":"1.0625rem","marginBottom":"1.25rem"}}>
               Electricity powers modern life, but unsafe installations threaten lives and property. At Alvoratech, our licensed master electricians operate on a foundational promise: strict National Electrical Code (NEC) compliance, zero shortcut wiring, and uncompromising craftsmanship.
@@ -845,7 +843,6 @@ const runInit = () => {
     <section className="section-padding testimonials-section">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow blue">CLIENT REVIEWS</span>
           <h2>Trusted by Homeowners, Builders & Facility Managers</h2>
           <div style={{"marginTop":"0.5rem","fontSize":"0.75rem","textTransform":"uppercase","letterSpacing":"0.08em","color":"var(--color-amber)","fontWeight":"700"}}>
             Demonstration Testimonials • Sample Verified Client Feedback
@@ -922,7 +919,6 @@ const runInit = () => {
     <section className="section-padding estimate-form-section" id="dispatch">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">FAST DISPATCH REQUEST</span>
           <h2>Schedule Electrical Service or Emergency Dispatch</h2>
           <p>Fill out the service form below. Our licensed master dispatchers will immediately review your project details and follow up.</p>
         </div>
@@ -1011,7 +1007,6 @@ const runInit = () => {
     <section className="section-padding services-section" id="services">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">LICENSED ELECTRICAL SPECIALTIES</span>
           <h2>Precision Electrical Engineering for Every Demand</h2>
           <p>From complex 200A service heavy-ups and Tesla EV chargers to critical industrial three-phase power, our certified crews deliver lasting safety.</p>
         </div>
@@ -1242,7 +1237,6 @@ const runInit = () => {
     <section className="section-padding calculator-section" id="load-calculator">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow blue">ENGINEERING LOAD CALCULATOR</span>
           <h2>Can Your Service Panel Handle Modern Electric Demand?</h2>
           <p>Toggle your planned electrical additions below. Our engineering logic calculates your estimated continuous draw and safety headroom.</p>
         </div>
@@ -1358,7 +1352,6 @@ const runInit = () => {
     <section className="section-padding panels-matrix-section">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow danger">FIRE SAFETY WARNING GUIDE</span>
           <h2>Do You Have an Obsolete or Recalled Electrical Panel?</h2>
           <p>Millions of older American homes still operate on obsolete breaker panels that fail to trip during short circuits, leading directly to structure fires and insurance cancellations.</p>
         </div>
@@ -1444,7 +1437,6 @@ const runInit = () => {
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
-                <span className="section-eyebrow">READY TO UPGRADE YOUR ELECTRICAL?</span>
                 <h2>Get a Comprehensive On-Site Inspection</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Schedule a consultation with our master electricians for panel evaluations, load calculations, and code upgrades.</p>
                 <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
@@ -1461,7 +1453,6 @@ const runInit = () => {
     <section className="section-padding ba-section" id="transformations">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">DRAMATIC TRANSFORMATIONS</span>
           <h2>Inspecting the Quality of Certified Electrical Work</h2>
           <p>Drag the interactive slider handle left and right to inspect real-world service panel upgrades, commercial EMT conduit, and Generac backup systems.</p>
         </div>
@@ -1511,7 +1502,6 @@ const runInit = () => {
     <section className="section-padding gallery-section" id="portfolio">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow blue">PORTFOLIO OF FIELDWORK</span>
           <h2>Real Installations. Real Electrical Precision.</h2>
           <p>Explore our recent fieldwork across residential panel upgrades, EV charging stations, and commercial three-phase installations. Click any project for high-resolution inspection.</p>
         </div>
@@ -1616,7 +1606,6 @@ const runInit = () => {
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
-                <span className="section-eyebrow">PRECISION CRAFTSMANSHIP</span>
                 <h2>Flawless Wiring, Clean Breaker Panels</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Every installation is executed to the highest architectural standards with lifetime workmanship warranties.</p>
                 <button onClick={(e) => navigateTo('contact', e)} className="btn btn-primary" style={{ padding: '0.9rem 2.25rem', fontSize: '1rem' }}>
@@ -1637,7 +1626,6 @@ const runInit = () => {
             <img src="/electrical/assets/images/elec-about.jpg" alt="Alvoratech certified electrical technician checking voltage diagnostics" className="why-image" loading="lazy" />
           </div>
           <div className="reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH</span>
             <h2>Setting the Standard in American Electrical Contracting</h2>
             <p style={{"fontSize":"1.0625rem","marginBottom":"1.25rem"}}>
               Electricity powers modern life, but unsafe installations threaten lives and property. At Alvoratech, our licensed master electricians operate on a foundational promise: strict National Electrical Code (NEC) compliance, zero shortcut wiring, and uncompromising craftsmanship.
@@ -1662,7 +1650,6 @@ const runInit = () => {
         <div className="why-grid">
           {/* Text Pillars */}
           <div className="reveal">
-            <span className="section-eyebrow">THE ALVORATECH ADVANTAGE</span>
             <h2>Why Homeowners & General Contractors Rely on Alvoratech</h2>
             <p style={{"marginBottom":"2.5rem"}}>
               We eliminate the common risks of hiring electrical contractors. With Alvoratech, you receive master-level engineering, full code compliance, and clean workmanship.
@@ -1725,7 +1712,6 @@ const runInit = () => {
     <section className="section-padding testimonials-section">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow blue">CLIENT REVIEWS</span>
           <h2>Trusted by Homeowners, Builders & Facility Managers</h2>
           <div style={{"marginTop":"0.5rem","fontSize":"0.75rem","textTransform":"uppercase","letterSpacing":"0.08em","color":"var(--color-amber)","fontWeight":"700"}}>
             Demonstration Testimonials • Sample Verified Client Feedback
@@ -1808,7 +1794,6 @@ const runInit = () => {
     <section className="section-padding faq-section" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">COMMON QUESTIONS</span>
           <h2>Frequently Asked Electrical Questions</h2>
           <p>Get clear, expert answers on 200-Amp panel heavy-ups, EV charging capacity, circuit breaker tripping, and electrical permitting.</p>
         </div>
@@ -1900,7 +1885,6 @@ const runInit = () => {
          ========================================================================== */}
             <section className="section-padding text-center" style={{ backgroundColor: 'var(--color-surface, #ffffff)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="container" style={{ maxWidth: '700px' }}>
-                <span className="section-eyebrow">NEED IMMEDIATE ASSISTANCE?</span>
                 <h2>24/7 On-Call Emergency Electricians</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Electrical emergencies cannot wait. Our licensed technicians are on-call 24 hours a day, 7 days a week.</p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -1918,7 +1902,6 @@ const runInit = () => {
     <section className="section-padding estimate-form-section" id="dispatch">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">FAST DISPATCH REQUEST</span>
           <h2>Schedule Electrical Service or Emergency Dispatch</h2>
           <p>Fill out the service form below. Our licensed master dispatchers will immediately review your project details and follow up.</p>
         </div>

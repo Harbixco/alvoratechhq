@@ -206,13 +206,19 @@
   position: sticky;
   top: 0;
   z-index: 30;
+  background: #111820 !important;
+  background: rgba(17, 24, 32, 0.96) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
 .towing-company-demo .site-header.scrolled {
-  background: rgba(17, 24, 32, 0.92);
-  box-shadow: 0 15px 30px rgba(17, 24, 32, 0.14);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: #111820 !important;
+  background: rgba(17, 24, 32, 0.98) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 .towing-company-demo .nav-shell {
@@ -1530,4 +1536,11 @@
   .nav-actions .btn {
     display: none !important;
   }
+}
+
+/* Force Testimonials Heading to Crisp White */
+.towing-company-demo .testimonials h2,
+.towing-company-demo .testimonials .section-heading h2,
+.towing-company-demo .testimonials .section-heading--light h2 {
+  color: #ffffff !important;
 }

@@ -919,7 +919,6 @@ const runInit = () => {
 
           {/* Text Column */}
           <div className="about-content reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH</span>
             <h2>Architectural Precision. <br />Crafted From The Foundation Up.</h2>
             <p>
               At Alvoratech, we know that breathtaking floors begin beneath the surface. While typical contractors rush to lay planks over irregular subfloors, our master installers conduct comprehensive digital moisture profiling, laser grade leveling, and acoustic decoupling to ensure your floors remain dead flat, quiet, and stunning for decades.
@@ -986,7 +985,6 @@ const runInit = () => {
     <section className="section-padding bg-white testimonials-section" id="testimonials">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">CLIENT TESTIMONIALS</span>
           <h2>What Homeowners Say About Alvoratech</h2>
         </div>
 
@@ -1080,7 +1078,6 @@ const runInit = () => {
         <div className="contact-grid">
           {/* Left Column: Contact Info Card */}
           <div className="contact-info-card reveal">
-            <span className="section-eyebrow">GET IN TOUCH</span>
             <h3>Connect With Alvoratech</h3>
             <p>Ready to select your dream floors? Contact our master estimating and installation team directly via phone, WhatsApp, or email.</p>
 
@@ -1148,7 +1145,6 @@ const runInit = () => {
 
           {/* Right Column: Interactive Estimate Form */}
           <div className="contact-form-card reveal stagger-1">
-            <span className="section-eyebrow">MOBILE SHOWROOM APPOINTMENT</span>
             <h3>Schedule Your In-Home Flooring Estimate</h3>
             <p>Tell us about your space. Submitting instantly generates a customized WhatsApp request with our scheduling manager.</p>
 
@@ -1232,7 +1228,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="services">
       <div className="container-wide">
         <div className="section-header reveal">
-          <span className="section-eyebrow">COMPREHENSIVE FLOORING SERVICES</span>
           <h2>Artisan Flooring Solutions for Every Room</h2>
           <p>
             Whether creating seamless open-concept hardwoods, pet-proof waterproof vinyl, or spa-inspired porcelain tile, explore our certified installation specialties.
@@ -1377,7 +1372,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="process">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">SEAMLESS CLIENT JOURNEY</span>
           <h2>Our 4-Step Flooring Process</h2>
           <p>
             Experience a stress-free path from sample selection to your finished, hand-wiped new floors.
@@ -1442,7 +1436,6 @@ const runInit = () => {
 
           {/* Text Column */}
           <div className="about-content reveal stagger-1">
-            <span className="section-eyebrow">ABOUT ALVORATECH</span>
             <h2>Architectural Precision. <br />Crafted From The Foundation Up.</h2>
             <p>
               At Alvoratech, we know that breathtaking floors begin beneath the surface. While typical contractors rush to lay planks over irregular subfloors, our master installers conduct comprehensive digital moisture profiling, laser grade leveling, and acoustic decoupling to ensure your floors remain dead flat, quiet, and stunning for decades.
@@ -1516,7 +1509,6 @@ const runInit = () => {
 
           {/* Right Content */}
           <div className="why-content reveal stagger-1">
-            <span className="section-eyebrow">THE ALVORATECH ADVANTAGE</span>
             <h2>Why Homeowners and Designers Trust Alvoratech</h2>
             <p>
               We treat floor installation with architectural discipline. From our in-home mobile showroom to our certified dustless containment, your satisfaction is guaranteed.
@@ -1593,7 +1585,6 @@ const runInit = () => {
     <section className="section-padding bg-sand ba-section" id="transformations">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">VISUAL PROOF & TRANSFORMATIONS</span>
           <h2>Witness the Power of Professional Flooring</h2>
           <p>
             Drag the interactive slider handle left and right to inspect real-world floor replacements and dustless refinishing transformations completed by Alvoratech crews.
@@ -1651,7 +1642,6 @@ const runInit = () => {
     <section className="section-padding bg-white" id="guide">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">FLOORING BUYER’S GUIDE</span>
           <h2>Which Flooring is Right for Your Lifestyle?</h2>
           <p>
             Compare durability, water resistance, pet friendliness, and room recommendations across our most popular residential flooring types.
@@ -1732,7 +1722,6 @@ const runInit = () => {
     <section className="section-padding bg-sand" id="portfolio">
       <div className="container-wide">
         <div className="section-header reveal">
-          <span className="section-eyebrow">PORTFOLIO OF EXCELLENCE</span>
           <h2>Recent Flooring & Refinishing Projects</h2>
           <p>
             Browse our handpicked portfolio of residential homes, custom staircases, luxury master suites, and commercial spaces.
@@ -1851,7 +1840,6 @@ const runInit = () => {
     <section className="section-padding bg-sand" id="faq">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-eyebrow">COMMON QUESTIONS</span>
           <h2>Frequently Asked Questions</h2>
           <p>
             Find clear answers about acclimatization, subfloor leveling, dustless sanding, and our lifetime installation warranty.
@@ -1970,7 +1958,6 @@ const runInit = () => {
         <div className="contact-grid">
           {/* Left Column: Contact Info Card */}
           <div className="contact-info-card reveal">
-            <span className="section-eyebrow">GET IN TOUCH</span>
             <h3>Connect With Alvoratech</h3>
             <p>Ready to select your dream floors? Contact our master estimating and installation team directly via phone, WhatsApp, or email.</p>
 
@@ -2038,7 +2025,6 @@ const runInit = () => {
 
           {/* Right Column: Interactive Estimate Form */}
           <div className="contact-form-card reveal stagger-1">
-            <span className="section-eyebrow">MOBILE SHOWROOM APPOINTMENT</span>
             <h3>Schedule Your In-Home Flooring Estimate</h3>
             <p>Tell us about your space. Submitting instantly generates a customized WhatsApp request with our scheduling manager.</p>
 

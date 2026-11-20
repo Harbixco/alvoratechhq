@@ -238,9 +238,6 @@ export default function Contractor() {
           <div className="hero-shade"></div>
           <div className="hero-grid container">
             <div className="hero-content">
-              <p className="eyebrow eyebrow-light">
-                <span className="eyebrow-line"></span> GENERAL CONTRACTING · BUILT AROUND YOU
-              </p>
               <h1>
                 Building your vision.<br />
                 <span>Delivering excellence.</span>
@@ -275,7 +272,6 @@ export default function Contractor() {
         <section className="stats-section" aria-label="Alvoratech at a glance">
           <div className="stats-grid container">
             <div className="stats-intro">
-              <span className="eyebrow">OUR TRACK RECORD</span>
               <p>Experience that<br />builds confidence.</p>
             </div>
             <div className="stat-item">
@@ -311,9 +307,6 @@ export default function Contractor() {
           <div className="container">
             <div className="section-heading heading-light">
               <div>
-                <span className="eyebrow eyebrow-light">
-                  <span className="eyebrow-line"></span> WHAT WE DO
-                </span>
                 <h2>Built around your <span>ambition.</span></h2>
               </div>
               <p>
@@ -417,9 +410,6 @@ export default function Contractor() {
         <section className="testimonials-section section-pad" id="testimonials">
           <div className="container testimonial-layout">
             <div className="testimonial-intro">
-              <span className="eyebrow">
-                <span className="eyebrow-line"></span> PARTNERS IN THE PROCESS
-              </span>
               <h2>Good work is<br /><span>built together.</span></h2>
               <p>Every successful project begins with listening and grows through trust.</p>
               <div className="slider-controls">
@@ -470,9 +460,6 @@ export default function Contractor() {
         <section className="contact-section section-pad" id="contact">
           <div className="container contact-grid">
             <div className="contact-copy">
-              <span className="eyebrow">
-                <span className="eyebrow-line"></span> LET'S MAKE IT HAPPEN
-              </span>
               <h2>Tell us what<br />you're <span>building.</span></h2>
               <p>Share a little about your project and we'll be in touch to talk through what's possible.</p>
               <div className="contact-details">
@@ -578,9 +565,6 @@ export default function Contractor() {
           <div className="container">
             <div className="section-heading heading-light">
               <div>
-                <span className="eyebrow eyebrow-light">
-                  <span className="eyebrow-line"></span> WHAT WE DO
-                </span>
                 <h2>Built around your <span>ambition.</span></h2>
               </div>
               <p>
@@ -713,9 +697,6 @@ export default function Contractor() {
             </div>
 
             <div className="about-copy">
-              <span className="eyebrow">
-                <span className="eyebrow-line"></span> WHO WE ARE
-              </span>
               <h2>Building trust through <span>quality construction.</span></h2>
               <p className="lead">
                 Great buildings start with great partnerships. We bring people, expertise, and practical thinking together to make every project work harder.
@@ -757,9 +738,6 @@ export default function Contractor() {
         <section className="why-section section-pad">
           <div className="container why-grid">
             <div className="why-heading">
-              <span className="eyebrow eyebrow-light">
-                <span className="eyebrow-line"></span> THE ALVORATECH DIFFERENCE
-              </span>
               <h2>Good people.<br /><span>Good building.</span></h2>
               <p>We make the complex feel clear, and the important things stay important.</p>
               <a className="button button-outline-light" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
@@ -808,9 +786,6 @@ export default function Contractor() {
         <section className="why-section section-pad">
           <div className="container why-grid">
             <div className="why-heading">
-              <span className="eyebrow eyebrow-light">
-                <span className="eyebrow-line"></span> THE ALVORATECH DIFFERENCE
-              </span>
               <h2>Good people.<br /><span>Good building.</span></h2>
               <p>We make the complex feel clear, and the important things stay important.</p>
               <a className="button button-outline-light" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
@@ -860,9 +835,6 @@ export default function Contractor() {
           <div className="container">
             <div className="section-heading">
               <div>
-                <span className="eyebrow">
-                  <span className="eyebrow-line"></span> SELECTED WORK
-                </span>
                 <h2>Spaces made to <span>move us.</span></h2>
               </div>
               <p>A few examples of the places and possibilities we're proud to help bring to life.</p>
@@ -933,9 +905,6 @@ export default function Contractor() {
         <section className="testimonials-section section-pad" id="testimonials">
           <div className="container testimonial-layout">
             <div className="testimonial-intro">
-              <span className="eyebrow">
-                <span className="eyebrow-line"></span> PARTNERS IN THE PROCESS
-              </span>
               <h2>Good work is<br /><span>built together.</span></h2>
               <p>Every successful project begins with listening and grows through trust.</p>
               <div className="slider-controls">
@@ -997,9 +966,6 @@ export default function Contractor() {
         <section className="contact-section section-pad" id="contact">
           <div className="container contact-grid">
             <div className="contact-copy">
-              <span className="eyebrow">
-                <span className="eyebrow-line"></span> LET'S MAKE IT HAPPEN
-              </span>
               <h2>Tell us what<br />you're <span>building.</span></h2>
               <p>Share a little about your project and we'll be in touch to talk through what's possible.</p>
               <div className="contact-details">
@@ -1109,9 +1075,6 @@ export default function Contractor() {
         <section className="contact-section section-pad" id="contact">
           <div className="container contact-grid">
             <div className="contact-copy">
-              <span className="eyebrow">
-                <span className="eyebrow-line"></span> LET'S MAKE IT HAPPEN
-              </span>
               <h2>Tell us what<br />you're <span>building.</span></h2>
               <p>Share a little about your project and we'll be in touch to talk through what's possible.</p>
               <div className="contact-details">

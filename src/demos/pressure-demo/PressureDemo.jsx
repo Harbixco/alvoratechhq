@@ -925,8 +925,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="about-content">
-          <span className="section-eyebrow reveal">About Alvoratech</span>
-          
           <h2 className="reveal stagger-1">Bringing Back the Beauty of Every Surface.</h2>
           
           <p className="reveal stagger-2">
@@ -997,7 +995,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Customer Feedback</span>
           <h2 className="reveal stagger-1">What Customers Appreciate About Our Service</h2>
           
         </div>
@@ -1093,7 +1090,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Get in Touch</span>
           <h2 className="reveal stagger-1">Let's Give Your Property a Fresh Look.</h2>
           <p className="reveal stagger-2">Tell us what needs cleaning and our team will help you discuss the next steps.</p>
         </div>
@@ -1243,7 +1239,6 @@ const runInit = () => {
       <div className="container-wide">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Expert Solutions</span>
           <h2 className="reveal stagger-1">Professional Pressure Washing Services</h2>
           <p className="reveal stagger-2">Give your property's exterior a fresh appearance with cleaning solutions designed for different surfaces and environments.</p>
         </div>
@@ -1419,7 +1414,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Simple Process</span>
           <h2 className="reveal stagger-1">How It Works</h2>
           <p className="reveal stagger-2">Getting your property pressure-washed is clean, prompt, and hassle-free.</p>
         </div>
@@ -1481,8 +1475,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="about-content">
-          <span className="section-eyebrow reveal">About Alvoratech</span>
-          
           <h2 className="reveal stagger-1">Bringing Back the Beauty of Every Surface.</h2>
           
           <p className="reveal stagger-2">
@@ -1559,7 +1551,6 @@ const runInit = () => {
 
         {/* Right Content */}
         <div className="why-content">
-          <span className="section-eyebrow reveal">The Alvoratech Advantage</span>
           <h2 className="reveal stagger-1">Why Choose Alvoratech?</h2>
           <p className="reveal stagger-2">We combine high-performance commercial equipment with surface-appropriate cleaning solutions to restore exterior beauty safely and effectively.</p>
 
@@ -1655,7 +1646,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Real Results</span>
           <h2 className="reveal stagger-1">See the Difference a Professional Clean Makes.</h2>
           
         </div>
@@ -1710,7 +1700,6 @@ const runInit = () => {
       <div className="container-wide">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Photo Gallery</span>
           <h2 className="reveal stagger-1">Every Surface Has a Story. Let's Make It Shine.</h2>
           <p className="reveal stagger-2">Explore photographs showcasing professional exterior washing across varied architectural spaces.</p>
         </div>
@@ -1831,7 +1820,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">FAQ</span>
           <h2 className="reveal stagger-1">Frequently Asked Questions</h2>
           <p className="reveal stagger-2">Find direct, honest answers regarding our exterior surface pressure washing and soft washing solutions.</p>
         </div>
@@ -1964,7 +1952,6 @@ const runInit = () => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-eyebrow reveal">Get in Touch</span>
           <h2 className="reveal stagger-1">Let's Give Your Property a Fresh Look.</h2>
           <p className="reveal stagger-2">Tell us what needs cleaning and our team will help you discuss the next steps.</p>
         </div>

@@ -396,7 +396,6 @@ export default function PlumbingServices() {
  <section className="pf-section pf-section-alt" id="services">
  <div className="pf-container">
  <div className="pf-section-head">
- <div className="pf-section-label">What We Do</div>
  <h2 className="pf-section-title">Complete Plumbing Solutions</h2>
  <p className="pf-section-sub">
  From minor leaks to major installations, our certified plumbers handle every job with precision and care.
@@ -502,7 +501,6 @@ export default function PlumbingServices() {
  <section className="pf-section" style={{ background: 'var(--navy)' }} id="about">
  <div className="pf-container">
  <div className="pf-section-head center">
- <div className="pf-section-label" style={{ color: 'var(--amber)' }}>Why ProFlow</div>
  <h2 className="pf-section-title" style={{ color: 'var(--white)' }}>Why Homeowners Choose Us</h2>
  <p className="pf-section-sub" style={{ color: 'rgba(255,255,255,.6)' }}>
  We built our reputation one job at a time — by showing up on time, being honest about pricing, and doing work we're proud to put our name on.
@@ -552,7 +550,6 @@ export default function PlumbingServices() {
  <section className="pf-section pf-section-alt">
  <div className="pf-container">
  <div className="pf-section-head center">
- <div className="pf-section-label">Customer Reviews</div>
  <h2 className="pf-section-title">What Our Clients Say</h2>
  <p className="pf-section-sub">
  Don't just take our word for it — here's what real customers have to say about ProFlow Plumbing.
@@ -619,7 +616,6 @@ export default function PlumbingServices() {
  <section className="pf-section" id="contact">
  <div className="pf-container">
  <div className="pf-section-head">
- <div className="pf-section-label">Get In Touch</div>
  <h2 className="pf-section-title">Request a Free Quote</h2>
  <p className="pf-section-sub">
  Fill out the form and we'll get back to you within 30 minutes during business hours — or message us directly on WhatsApp for immediate assistance.
@@ -820,7 +816,6 @@ export default function PlumbingServices() {
  <div className="pf-container">
  <div className="pf-two-col">
  <div className="pf-col-text">
- <div className="pf-section-label">For Homeowners</div>
  <h2 className="pf-section-title">Residential Plumbing</h2>
  <p className="pf-section-sub">
  Your home deserves plumbing that works perfectly. We handle everything from routine maintenance to urgent repairs — with care, respect for your property, and zero surprises on the bill.
@@ -907,7 +902,6 @@ export default function PlumbingServices() {
  <div className="pf-container">
  <div className="pf-two-col reverse">
  <div className="pf-col-text">
- <div className="pf-section-label">For Businesses</div>
  <h2 className="pf-section-title">Commercial Plumbing</h2>
  <p className="pf-section-sub">
  Downtime costs money. Our commercial team responds fast, works efficiently, and minimizes disruption to your business operations — whether it's a restaurant, office building, or retail space.
@@ -994,7 +988,6 @@ export default function PlumbingServices() {
  <div className="pf-container">
  <div className="pf-two-col">
  <div className="pf-col-text">
- <div className="pf-section-label">Drain Solutions</div>
  <h2 className="pf-section-title">Drain Cleaning &amp; Repair</h2>
  <p className="pf-section-sub">
  Blocked, slow, or foul-smelling drains are more than an inconvenience — they can signal serious pipe damage. We use professional equipment to clear and inspect every drain thoroughly.
@@ -1081,7 +1074,6 @@ export default function PlumbingServices() {
  <div className="pf-container">
  <div className="pf-two-col reverse">
  <div className="pf-col-text">
- <div className="pf-section-label">Emergency Response</div>
  <h2 className="pf-section-title">Water Damage &amp; Flood Response</h2>
  <p className="pf-section-sub">
  A burst pipe or sudden flood can cause thousands in damage within hours. Our emergency team responds in 60 minutes or less to stop the source and protect your property.
@@ -1191,7 +1183,6 @@ export default function PlumbingServices() {
  <section className="pf-section" style={{ background: 'var(--navy)' }} id="about">
  <div className="pf-container">
  <div className="pf-section-head center">
- <div className="pf-section-label" style={{ color: 'var(--amber)' }}>Why ProFlow</div>
  <h2 className="pf-section-title" style={{ color: 'var(--white)' }}>Why Homeowners Choose Us</h2>
  <p className="pf-section-sub" style={{ color: 'rgba(255,255,255,.6)' }}>
  We built our reputation one job at a time — by showing up on time, being honest about pricing, and doing work we're proud to put our name on.
@@ -1241,7 +1232,6 @@ export default function PlumbingServices() {
  <section className="pf-section pf-section-alt">
  <div className="pf-container">
  <div className="pf-section-head center">
- <div className="pf-section-label">Customer Reviews</div>
  <h2 className="pf-section-title">What Our Clients Say</h2>
  <p className="pf-section-sub">
  Don't just take our word for it — here's what real customers have to say about ProFlow Plumbing.
@@ -1319,7 +1309,6 @@ export default function PlumbingServices() {
  <section className="pf-section" id="contact">
  <div className="pf-container">
  <div className="pf-section-head">
- <div className="pf-section-label">Get In Touch</div>
  <h2 className="pf-section-title">Request a Free Quote</h2>
  <p className="pf-section-sub">
  Fill out the form and we'll get back to you within 30 minutes during business hours — or message us directly on WhatsApp for immediate assistance.

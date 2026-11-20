@@ -345,7 +345,6 @@ export default function TreeRemoval() {
 
           <div className="container hero-inner">
             <div className="hero-copy reveal is-visible">
-              <p className="eyebrow">Reliable Tree Solutions</p>
               <h1>Professional Tree Removal &amp; Tree Care Services You Can Trust</h1>
               <p className="lead">
                 From difficult tree removals to routine maintenance, Alvoratech helps property owners maintain safer,
