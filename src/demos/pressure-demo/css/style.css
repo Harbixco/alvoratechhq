@@ -2373,8 +2373,7 @@ p {
   }
 
   /* Animated Hamburger toggle button */
-  .pressure-demo-demo .mobile-toggle,
-  .mobile-toggle {
+  .pressure-demo-demo .mobile-toggle {
     display: flex !important;
     flex-direction: column !important;
     gap: 5px !important;
@@ -2385,8 +2384,7 @@ p {
     z-index: 100 !important;
   }
 
-  .pressure-demo-demo .mobile-toggle span,
-  .mobile-toggle span {
+  .pressure-demo-demo .mobile-toggle span {
     display: block !important;
     width: 24px !important;
     height: 2.5px !important;
@@ -2395,18 +2393,15 @@ p {
     transition: transform 0.25s ease, opacity 0.2s ease !important;
   }
 
-  .pressure-demo-demo .mobile-toggle.active span:first-child,
-  .mobile-toggle.active span:first-child {
+  .pressure-demo-demo .mobile-toggle.active span:first-child.active span:first-child {
     transform: translateY(7px) rotate(45deg) !important;
   }
 
-  .pressure-demo-demo .mobile-toggle.active span:nth-child(2),
-  .mobile-toggle.active span:nth-child(2) {
+  .pressure-demo-demo .mobile-toggle.active span:nth-child(2).active span:nth-child(2) {
     opacity: 0 !important;
   }
 
-  .pressure-demo-demo .mobile-toggle.active span:last-child,
-  .mobile-toggle.active span:last-child {
+  .pressure-demo-demo .mobile-toggle.active span:last-child.active span:last-child {
     transform: translateY(-7px) rotate(-45deg) !important;
   }
 }

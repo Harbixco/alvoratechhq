@@ -297,15 +297,15 @@ export default function TowingCompany() {
           </a>
 
           <button
-            className={`nav-toggle mobile-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
+            className={`nav-toggle ${mobileMenuOpen ? 'is-open' : ''}`}
             aria-expanded={mobileMenuOpen}
             aria-controls="primary-navigation"
             aria-label="Toggle navigation menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            <span style={{ backgroundColor: '#ff6b22', display: 'block', width: '22px', height: '2.5px', borderRadius: '3px' }}></span>
+            <span style={{ backgroundColor: '#ff6b22', display: 'block', width: '22px', height: '2.5px', borderRadius: '3px' }}></span>
+            <span style={{ backgroundColor: '#ff6b22', display: 'block', width: '22px', height: '2.5px', borderRadius: '3px' }}></span>
           </button>
 
           <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
