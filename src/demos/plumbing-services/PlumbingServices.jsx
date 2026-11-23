@@ -167,8 +167,8 @@ export default function PlumbingServices() {
  <a href="#drain" onClick={(e) => navigateTo('drain', e)} style={{ fontWeight: currentView === 'drain' ? '700' : 'normal', color: '#f59e0b' }}>Drain Cleaning</a>
  <a href="#water-damage" onClick={(e) => navigateTo('water-damage', e)} style={{ fontWeight: currentView === 'water-damage' ? '700' : 'normal', color: '#f59e0b' }}>Water Damage</a>
  <a href="#about" onClick={(e) => navigateTo('about', e)} style={{ fontWeight: currentView === 'about' ? '700' : 'normal', color: '#f59e0b' }}>About</a>
- <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="pf-nav-cta" style={{ color: "#ffffff" }}>
- Get Free Quote
+ <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="pf-nav-cta" style={{ color: "#ffffff", background: "#f59e0b" }}>
+ <span style={{ color: "#ffffff", fontWeight: "700" }}>Get Free Quote</span>
  </a>
  </nav>
 
@@ -196,8 +196,8 @@ export default function PlumbingServices() {
  <a href="#drain" onClick={(e) => { setMobileNavOpen(false); navigateTo('drain', e); }}>Drain & Sewer Cleaning</a>
  <a href="#water-damage" onClick={(e) => { setMobileNavOpen(false); navigateTo('water-damage', e); }}>Water Damage Mitigation</a>
  <a href="#about" onClick={(e) => { setMobileNavOpen(false); navigateTo('about', e); }}>About ProFlow</a>
- <a href="#contact" onClick={(e) => { setMobileNavOpen(false); navigateTo('contact', e); }} className="pf-mobile-cta" style={{ color: "#ffffff" }}>
- Get Free Quote
+ <a href="#contact" onClick={(e) => { setMobileNavOpen(false); navigateTo('contact', e); }} className="pf-mobile-cta" style={{ color: "#ffffff", background: "#f59e0b" }}>
+ <span style={{ color: "#ffffff", fontWeight: "700" }}>Get Free Quote</span>
  </a>
  </div>
  </header>

@@ -115,7 +115,7 @@
   gap: 32px;
 }
 
-.plumbing-demo .pf-nav a {
+.plumbing-demo .pf-nav a:not(.pf-nav-cta) {
   color: var(--amber, #f59e0b) !important;
   text-decoration: none;
   font-size: 0.9rem;
@@ -124,7 +124,7 @@
   position: relative;
 }
 
-.plumbing-demo .pf-nav a:hover {
+.plumbing-demo .pf-nav a:not(.pf-nav-cta):hover {
   color: var(--amber);
 }
 
@@ -138,8 +138,12 @@
   background: var(--amber);
 }
 
-.plumbing-demo .pf-nav-cta {
-  background: var(--amber);
+.plumbing-demo .pf-nav-cta,
+.plumbing-demo .pf-nav a.pf-nav-cta,
+.plumbing-demo a.pf-nav-cta,
+.plumbing-demo .pf-nav-cta *,
+.plumbing-demo a.pf-nav-cta * {
+  background: var(--amber) !important;
   color: #ffffff !important;
   padding: 10px 22px;
   border-radius: 6px;
@@ -147,10 +151,14 @@
   font-size: 0.85rem !important;
   transition: background 0.2s, transform 0.1s !important;
   white-space: nowrap;
+  text-decoration: none !important;
 }
 
-.plumbing-demo .pf-nav-cta:hover {
+.plumbing-demo .pf-nav-cta:hover,
+.plumbing-demo .pf-nav a.pf-nav-cta:hover,
+.plumbing-demo a.pf-nav-cta:hover {
   background: var(--amber-dark) !important;
+  color: #ffffff !important;
   transform: translateY(-1px);
 }
 
@@ -221,13 +229,16 @@
   border-bottom: none;
 }
 
-.plumbing-demo .pf-mobile-nav .pf-mobile-cta {
+.plumbing-demo .pf-mobile-nav .pf-mobile-cta,
+.plumbing-demo .pf-mobile-nav a.pf-mobile-cta,
+.plumbing-demo .pf-mobile-nav .pf-mobile-cta * {
   margin: 12px 24px 0;
-  background: var(--amber);
-  color: var(--navy);
+  background: var(--amber) !important;
+  color: #ffffff !important;
   border-radius: 6px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 700 !important;
+  text-decoration: none !important;
 }
 
 /* ── HERO ── */
