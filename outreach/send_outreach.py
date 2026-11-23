@@ -9,15 +9,17 @@ import argparse
 import urllib.parse
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate, make_msgid
 from datetime import datetime
 
 import config
 
-def build_email_content(lead, sender):
+def build_email_content(lead, sender, direct_mode=False):
     """
     Constructs high-conversion outreach pitch for US local business owners.
-    Embeds individual 1x1 open tracking pixel and tracked demonstration click links.
     Zero emojis and zero hashtags used throughout.
+    In direct_mode, uses direct demonstration URL without tracking redirect or hidden pixel
+    to ensure maximum deliverability during new domain warm-up.
     """
     business_name = lead.get("business_name", "your business").strip()
     contact_name = lead.get("contact_name", "").strip()
@@ -45,10 +47,11 @@ def build_email_content(lead, sender):
     encoded_biz = urllib.parse.quote(business_name)
     encoded_demo = urllib.parse.quote(demo_url)
 
-    # 1x1 Invisible Tracking Pixel (records email opens)
-    tracking_pixel_url = f"https://www.alvoratechhq.com/api/track?email={encoded_email}&biz={encoded_biz}&agency=alvoratech&action=open"
-    # Tracked Click Link (records demo visits and instantly redirects to live demo)
-    tracked_demo_url = f"https://www.alvoratechhq.com/api/track?email={encoded_email}&biz={encoded_biz}&agency=alvoratech&url={encoded_demo}&action=click"
+    # Tracking parameters (use canonical domain without www)
+    tracking_pixel_url = f"https://alvoratechhq.com/api/track?email={encoded_email}&biz={encoded_biz}&agency=alvoratech&action=open"
+    tracked_demo_url = f"https://alvoratechhq.com/api/track?email={encoded_email}&biz={encoded_biz}&agency=alvoratech&url={encoded_demo}&action=click"
+
+    link_target = demo_url if direct_mode else tracked_demo_url
 
     plain_text = f"""{greeting}
 
@@ -75,6 +78,8 @@ Phone / SMS: {config.ALVORA_PHONE}
 Website: {config.ALVORA_WEBSITE}
 Email: {config.ALVORA_INBOUND_EMAIL}
 """
+
+    tracking_pixel_html = "" if direct_mode else f'\n  <!-- Real-Time Open Tracking Pixel -->\n  <img src="{tracking_pixel_url}" width="1" height="1" style="display:none; width:1px; height:1px; border:0;" alt="" />'
 
     html_content = f"""<!DOCTYPE html>
 <html>
@@ -107,9 +112,9 @@ Email: {config.ALVORA_INBOUND_EMAIL}
       <p style="margin: 0 0 8px 0; font-weight: 600; color: #1e40af; font-size: 14px;">
         We built a live demonstration platform specifically for your industry:
       </p>
-      <a href="{tracked_demo_url}" class="button" target="_blank">View Live Demonstration</a>
+      <a href="{link_target}" class="button" target="_blank">View Live Demonstration</a>
       <p style="margin: 8px 0 0 0; font-size: 12px; color: #64748b;">
-        Or copy link: <span style="font-family: monospace;">{demo_url}</span>
+        Or visit directly: <a href="{demo_url}" style="color: #2563eb; font-family: monospace;">{demo_url}</a>
       </p>
     </div>
 
@@ -136,10 +141,7 @@ Email: {config.ALVORA_INBOUND_EMAIL}
         If you prefer not to receive website optimization updates, reply with "Unsubscribe" and we will remove your address immediately.
       </p>
     </div>
-  </div>
-
-  <!-- Real-Time Open Tracking Pixel -->
-  <img src="{tracking_pixel_url}" width="1" height="1" style="display:none; width:1px; height:1px; border:0;" alt="" />
+  </div>{tracking_pixel_html}
 </body>
 </html>
 """
@@ -147,13 +149,15 @@ Email: {config.ALVORA_INBOUND_EMAIL}
 
 def send_via_smtp(sender, to_email, subject, plain_text, html_content):
     """
-    Connects to Zoho SSL SMTP server and dispatches email.
+    Connects to Zoho SSL SMTP server and dispatches email with RFC-compliant headers.
     """
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"{sender['name']} <{sender['email']}>"
     msg["To"] = to_email
     msg["Reply-To"] = sender["email"]
+    msg["Date"] = formatdate(localtime=True)
+    msg["Message-ID"] = make_msgid(domain="alvoratechhq.com")
 
     msg.attach(MIMEText(plain_text, "plain", "utf-8"))
     msg.attach(MIMEText(html_content, "html", "utf-8"))
@@ -163,13 +167,15 @@ def send_via_smtp(sender, to_email, subject, plain_text, html_content):
         server.login(sender["email"], sender["password"])
         server.sendmail(sender["email"], [to_email], msg.as_string())
 
-def run_outreach(dry_run=False, test_recipient=None):
+def run_outreach(dry_run=False, test_recipient=None, direct_mode=False):
     """
     Executes outreach rotation across 3 Zoho sender mailboxes (Lucas, James, Oliver).
     """
     print("=" * 70)
     print("ALVORA TECH OUTREACH ENGINE (USA) - " + ("DRY RUN MODE" if dry_run else "LIVE DISPATCH MODE"))
     print(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    if direct_mode:
+        print("Deliverability Mode: DIRECT LINKS ENABLED (warm-up / anti-spam optimization)")
     print("=" * 70)
 
     if not os.path.exists(config.LEADS_CSV_PATH):
@@ -200,7 +206,7 @@ def run_outreach(dry_run=False, test_recipient=None):
             }
             lead_for_send = dict(sample_lead)
             lead_for_send["email"] = test_recipient
-            subject, plain, html = build_email_content(lead_for_send, sender)
+            subject, plain, html = build_email_content(lead_for_send, sender, direct_mode=direct_mode)
             print(f"\n[{idx+1}/{len(config.SENDERS)}] Testing sender: {sender['email']} ({sender['name']})")
             print(f"Subject: {subject}")
             print(f"Live Demo URL in email: {lead_for_send.get('demo_url')}")
@@ -244,7 +250,7 @@ def run_outreach(dry_run=False, test_recipient=None):
         if not to_email or "@" not in to_email:
             continue
 
-        subject, plain, html = build_email_content(lead, sender)
+        subject, plain, html = build_email_content(lead, sender, direct_mode=direct_mode)
 
         if dry_run:
             print(f"\n[DRY RUN {sent_this_session + 1}] SENDER: {sender['email']} -> {to_email}")
@@ -296,13 +302,14 @@ if __name__ == "__main__":
     parser.add_argument("--send", action="store_true", help="Execute live email sending")
     parser.add_argument("--dry-run", action="store_true", help="Simulate email generation without sending")
     parser.add_argument("--test", type=str, help="Send a single test email to the specified address")
+    parser.add_argument("--direct", action="store_true", help="Use direct links without tracking redirect for warm-up deliverability")
     args = parser.parse_args()
 
     if args.test:
-        run_outreach(test_recipient=args.test)
+        run_outreach(test_recipient=args.test, direct_mode=args.direct)
     elif args.send:
-        run_outreach(dry_run=False)
+        run_outreach(dry_run=False, direct_mode=args.direct)
     elif args.dry_run:
-        run_outreach(dry_run=True)
+        run_outreach(dry_run=True, direct_mode=args.direct)
     else:
-        print("Please provide an argument: --dry-run, --send, or --test <email>")
+        print("Please provide an argument: --dry-run, --send, or --test <email> (optionally add --direct)")
