@@ -204,6 +204,14 @@ const SENDERS = [
   }
 ];
 
+export const getDemoUrl = (lead) => {
+  if (lead && typeof lead.demo_url === "string" && (lead.demo_url.startsWith("http://") || lead.demo_url.startsWith("https://"))) {
+    return lead.demo_url.trim();
+  }
+  const cleanNiche = (lead?.niche || "painting").trim().toLowerCase();
+  return `https://alvoratechhq.com/${cleanNiche}`;
+};
+
 export default function OutreachDashboard() {
   const [leads, setLeads] = useState(INITIAL_LEADS);
   const [isLoadingLeads, setIsLoadingLeads] = useState(false);
@@ -254,7 +262,11 @@ export default function OutreachDashboard() {
       if (res.ok) {
         const data = await res.json();
         if (data.success && Array.isArray(data.leads) && data.leads.length > 0) {
-          setLeads(data.leads);
+          const sanitized = data.leads.map((l) => ({
+            ...l,
+            demo_url: getDemoUrl(l),
+          }));
+          setLeads(sanitized);
         }
       }
     } catch (err) {
@@ -893,12 +905,12 @@ export default function OutreachDashboard() {
                       </td>
                       <td className="py-3 px-3">
                         <a
-                          href={lead.demo_url}
+                          href={getDemoUrl(lead)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-400 hover:underline font-mono text-[11px] inline-flex items-center gap-1"
                         >
-                          {(lead.demo_url || "").replace("https://alvoratechhq.com", "")}
+                          {getDemoUrl(lead).replace("https://alvoratechhq.com", "")}
                           <ExternalLink className="w-2.5 h-2.5" />
                         </a>
                       </td>
@@ -968,8 +980,8 @@ export default function OutreachDashboard() {
               </p>
               <div className="p-3 rounded bg-blue-950/30 border border-blue-900/40 text-blue-200 text-[11px]">
                 <p className="font-semibold mb-1">Live demonstration website for your industry:</p>
-                <a href={previewLead.demo_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline font-mono">
-                  {previewLead.demo_url}
+                <a href={getDemoUrl(previewLead)} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline font-mono">
+                  {getDemoUrl(previewLead)}
                 </a>
               </div>
               <p>

@@ -21,9 +21,15 @@ def build_email_content(lead, sender):
     """
     business_name = lead.get("business_name", "your business").strip()
     contact_name = lead.get("contact_name", "").strip()
-    niche = lead.get("niche", "services").strip().replace("-", " ")
+    raw_niche = lead.get("niche", "services").strip()
+    niche = raw_niche.replace("-", " ")
     city = lead.get("city", "your area").strip()
-    demo_url = lead.get("demo_url", config.ALVORA_WEBSITE).strip()
+    
+    # Ensure valid demonstration website URL
+    demo_url = lead.get("demo_url", "").strip()
+    if not (demo_url.startswith("http://") or demo_url.startswith("https://")):
+        demo_url = f"{config.ALVORA_WEBSITE}/{raw_niche or 'painting'}"
+    
     recipient_email = lead.get("email", "").strip()
 
     greeting = f"Hello {contact_name}," if contact_name and contact_name.lower() != "the managing director" else f"Hello {business_name} Team,"

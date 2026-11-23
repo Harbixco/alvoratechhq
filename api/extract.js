@@ -94,6 +94,39 @@ const LOCATIONS = [
   { state: "IL", city: "Chicago", districts: ["Naperville", "Schaumburg", "Evanston"] },
 ];
 
+function parseCSVLine(text) {
+  const result = [];
+  let cur = "";
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') {
+      if (inQuotes && text[i + 1] === '"') {
+        cur += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (c === ',' && !inQuotes) {
+      result.push(cur.trim());
+      cur = "";
+    } else {
+      cur += c;
+    }
+  }
+  result.push(cur.trim());
+  return result;
+}
+
+function getValidDemoUrl(rawUrl, nicheKey, agency = "alvoratech") {
+  if (rawUrl && typeof rawUrl === "string" && (rawUrl.startsWith("http://") || rawUrl.startsWith("https://"))) {
+    return rawUrl.trim();
+  }
+  const cleanNiche = (nicheKey || "painting").toLowerCase().trim();
+  const baseDomain = agency === "veltrixhub" ? "https://veltrixhub.ng" : "https://alvoratechhq.com";
+  return `${baseDomain}/${cleanNiche}`;
+}
+
 let cachedClient = null;
 async function getDb() {
   if (!cachedClient) {
@@ -185,21 +218,29 @@ export default async function handler(req, res) {
           const csvContent = fs.readFileSync(CSV_PATH, "utf-8");
           const lines = csvContent.split("\n").map((l) => l.trim()).filter(Boolean);
           for (let i = 1; i < lines.length; i++) {
-            const parts = lines[i].split(",");
-            if (parts.length >= 6) {
-              const email = parts[2]?.replace(/"/g, "").trim();
-              if (email) {
+            const parts = parseCSVLine(lines[i]);
+            if (parts.length >= 3) {
+              const email = parts[2]?.replace(/^"|"$/g, "").trim();
+              if (email && email.includes("@")) {
+                const niche = parts[3]?.replace(/^"|"$/g, "").trim() || "painting";
+                const urlInParts = parts.find((p) => p.startsWith("http://") || p.startsWith("https://"));
+                const demoUrl = getValidDemoUrl(urlInParts || parts[5], niche, "alvoratech");
+                let city = parts[4]?.replace(/^"|"$/g, "").trim() || "Houston, TX";
+                if (city.startsWith("http")) {
+                  city = "Houston, TX";
+                }
+
                 leadsMap.set(email.toLowerCase(), {
                   id: `csv-${i}`,
-                  business_name: parts[0]?.replace(/"/g, "").trim(),
-                  contact_name: parts[1]?.replace(/"/g, "").trim() || "Operations Lead",
+                  business_name: parts[0]?.replace(/^"|"$/g, "").trim(),
+                  contact_name: parts[1]?.replace(/^"|"$/g, "").trim() || "Operations Lead",
                   email: email,
-                  niche: parts[3]?.replace(/"/g, "").trim() || "painting",
-                  city: parts[4]?.replace(/"/g, "").trim() || "Houston, TX",
-                  demo_url: parts[5]?.replace(/"/g, "").trim() || "https://alvoratechhq.com/painting",
-                  status: parts[6]?.replace(/"/g, "").trim() || "pending",
-                  sent_at: parts[7]?.replace(/"/g, "").trim() || "",
-                  sent_by: parts[8]?.replace(/"/g, "").trim() || "",
+                  niche: niche,
+                  city: city,
+                  demo_url: demoUrl,
+                  status: parts[6]?.replace(/^"|"$/g, "").trim() || "pending",
+                  sent_at: parts[7]?.replace(/^"|"$/g, "").trim() || "",
+                  sent_by: parts[8]?.replace(/^"|"$/g, "").trim() || "",
                   source: "CSV Storage",
                 });
               }
@@ -223,19 +264,23 @@ export default async function handler(req, res) {
         for (const doc of mongoLeads) {
           if (doc.email) {
             const lowEmail = doc.email.toLowerCase().trim();
+            const existing = leadsMap.get(lowEmail);
+            const niche = doc.niche || existing?.niche || "painting";
+            const demoUrl = getValidDemoUrl(doc.demo_url || existing?.demo_url, niche, "alvoratech");
+
             leadsMap.set(lowEmail, {
-              ...leadsMap.get(lowEmail),
+              ...existing,
               id: doc._id?.toString() || doc.id || lowEmail,
-              business_name: doc.business_name || leadsMap.get(lowEmail)?.business_name,
-              contact_name: doc.contact_name || leadsMap.get(lowEmail)?.contact_name || "Operations Lead",
+              business_name: doc.business_name || existing?.business_name,
+              contact_name: doc.contact_name || existing?.contact_name || "Operations Lead",
               email: doc.email,
               phone: doc.phone || "",
-              niche: doc.niche || leadsMap.get(lowEmail)?.niche || "painting",
-              city: doc.city || leadsMap.get(lowEmail)?.city || "Houston, TX",
-              demo_url: doc.demo_url || leadsMap.get(lowEmail)?.demo_url || "https://alvoratechhq.com/painting",
-              status: doc.status || leadsMap.get(lowEmail)?.status || "pending",
-              sent_at: doc.sent_at || leadsMap.get(lowEmail)?.sent_at || "",
-              sent_by: doc.sent_by || leadsMap.get(lowEmail)?.sent_by || "",
+              niche: niche,
+              city: doc.city || existing?.city || "Houston, TX",
+              demo_url: demoUrl,
+              status: doc.status || existing?.status || "pending",
+              sent_at: doc.sent_at || existing?.sent_at || "",
+              sent_by: doc.sent_by || existing?.sent_by || "",
               source: doc.source || "MongoDB Atlas",
               createdAt: doc.createdAt,
             });
@@ -275,11 +320,11 @@ export default async function handler(req, res) {
     if (fs.existsSync(CSV_PATH)) {
       try {
         const csvContent = fs.readFileSync(CSV_PATH, "utf-8");
-        const lines = csvContent.split("\n");
+        const lines = csvContent.split("\n").filter(Boolean);
         for (let i = 1; i < lines.length; i++) {
-          const parts = lines[i].split(",");
-          if (parts[2]) {
-            existingEmails.add(parts[2].replace(/"/g, "").trim().toLowerCase());
+          const parts = parseCSVLine(lines[i]);
+          if (parts[2] && parts[2].includes("@")) {
+            existingEmails.add(parts[2].replace(/^"|"$/g, "").trim().toLowerCase());
           }
         }
       } catch (e) {
