@@ -14,72 +14,82 @@ GOOGLE_PLACES_KEY = os.environ.get("GOOGLE_PLACES_API_KEY", "AIzaSyB0pWJjUV6yBFu
 
 NICHES = {
     "cleaning": {
-        "keywords": ["cleaning company", "cleaning services", "janitorial services", "fumigation and cleaning"],
+        "keywords": ["commercial cleaning services", "office janitorial company", "cleaning service contractors"],
         "demo_url": "https://alvoratechhq.com/cleaning"
     },
     "painting": {
-        "keywords": ["painting company", "house painters", "painting contractor", "commercial painters"],
+        "keywords": ["painting contractors", "residential house painters", "commercial painting company"],
         "demo_url": "https://alvoratechhq.com/painting"
     },
     "plumbing-services": {
-        "keywords": ["plumbing services", "emergency plumber", "plumbing contractor", "borehole installation"],
+        "keywords": ["commercial plumbing contractor", "emergency plumbing repair", "plumbing and drain specialists"],
         "demo_url": "https://alvoratechhq.com/plumbing-services"
     },
     "auto-repair": {
-        "keywords": ["auto repair workshop", "car mechanic", "auto diagnosis lagos", "car servicing workshop"],
+        "keywords": ["auto repair shop", "collision repair center", "transmission and brake repair"],
         "demo_url": "https://alvoratechhq.com/auto-repair"
     },
     "contractor": {
-        "keywords": ["building contractor", "construction company", "renovation contractor", "civil engineering"],
+        "keywords": ["general contractor", "home remodeling company", "commercial building construction"],
         "demo_url": "https://alvoratechhq.com/contractor"
     },
     "dental-care": {
-        "keywords": ["dental clinic", "dentist practice", "dental hospital", "orthodontic clinic"],
+        "keywords": ["family dental clinic", "cosmetic dentist practice", "dental care center"],
         "demo_url": "https://alvoratechhq.com/dental-care"
     },
     "personal-injury": {
-        "keywords": ["law firm", "legal practitioners", "barristers solicitors", "commercial lawyers"],
+        "keywords": ["personal injury law firm", "accident and injury attorneys", "injury lawyer practice"],
         "demo_url": "https://alvoratechhq.com/personal-injury"
     },
     "towing-company": {
-        "keywords": ["towing service", "vehicle recovery", "breakdown service lagos", "car towing company"],
+        "keywords": ["towing and recovery service", "emergency roadside assistance", "flatbed towing company"],
         "demo_url": "https://alvoratechhq.com/towing-company"
     },
     "tree-removal": {
-        "keywords": ["tree pruning service", "tree cutting company", "arborist nigeria", "tree removal service"],
+        "keywords": ["tree removal service", "certified arborist tree care", "tree trimming and pruning company"],
         "demo_url": "https://alvoratechhq.com/tree-removal"
     },
     "electrical": {
-        "keywords": ["electrical services", "electrical contractor", "solar inverter installation", "industrial electrician"],
+        "keywords": ["licensed electrical contractors", "commercial electrician services", "residential electrical repair"],
         "demo_url": "https://alvoratechhq.com/electrical"
     },
     "flooring": {
-        "keywords": ["flooring company", "epoxy flooring", "marble tiles installation", "hardwood flooring lagos"],
+        "keywords": ["flooring installation contractors", "epoxy flooring specialists", "hardwood and tile flooring"],
         "demo_url": "https://alvoratechhq.com/flooring"
     },
     "landscaping": {
-        "keywords": ["landscaping services", "interlocking and paving", "garden design lagos", "horticulture nigeria"],
+        "keywords": ["landscape design and maintenance", "commercial landscaping contractors", "hardscaping and lawn care"],
         "demo_url": "https://alvoratechhq.com/landscaping"
     },
     "locksmith": {
-        "keywords": ["locksmith services", "car key programming", "security doors installation", "lock repair lagos"],
+        "keywords": ["commercial locksmith services", "mobile emergency locksmith", "lock and key specialists"],
         "demo_url": "https://alvoratechhq.com/locksmith"
     },
     "pest-control": {
-        "keywords": ["pest control services", "fumigation company", "termite treatment", "bed bug extermination"],
+        "keywords": ["pest control exterminators", "termite inspection and treatment", "commercial pest management"],
         "demo_url": "https://alvoratechhq.com/pest-control"
     },
     "pressure-demo": {
-        "keywords": ["pressure washing", "power washing", "exterior building cleaning", "roof cleaning service"],
+        "keywords": ["pressure washing company", "commercial power washing", "exterior building and roof wash"],
         "demo_url": "https://alvoratechhq.com/pressure-demo"
     }
 }
 
 LOCATIONS = [
-    {"city": "Lagos", "districts": ["Lekki", "Ikeja", "Victoria Island", "Yaba", "Surulere", "Ajah", "Maryland"]},
-    {"city": "Abuja", "districts": ["Wuse", "Garki", "Maitama", "Jabi", "Gwarinpa", "Asokoro"]},
-    {"city": "Port Harcourt", "districts": ["GRA", "Trans Amadi", "Peter Odili"]},
-    {"city": "Ibadan", "districts": ["Bodija", "Ring Road", "Oluyole"]}
+    {"state": "TX", "city": "Houston", "districts": ["Downtown", "Heights", "Katy", "Sugar Land"]},
+    {"state": "TX", "city": "Dallas", "districts": ["North Dallas", "Plano", "Frisco", "Fort Worth"]},
+    {"state": "TX", "city": "Austin", "districts": ["Downtown", "Round Rock", "Cedar Park"]},
+    {"state": "FL", "city": "Miami", "districts": ["Brickell", "Coral Gables", "Doral", "Kendall"]},
+    {"state": "FL", "city": "Orlando", "districts": ["Downtown", "Winter Park", "Kissimmee"]},
+    {"state": "FL", "city": "Tampa", "districts": ["Downtown", "St. Petersburg", "Clearwater"]},
+    {"state": "CA", "city": "Los Angeles", "districts": ["Pasadena", "Glendale", "Long Beach", "Torrance"]},
+    {"state": "CA", "city": "San Diego", "districts": ["Downtown", "La Jolla", "Chula Vista"]},
+    {"state": "GA", "city": "Atlanta", "districts": ["Buckhead", "Alpharetta", "Marietta", "Decatur"]},
+    {"state": "AZ", "city": "Phoenix", "districts": ["Scottsdale", "Mesa", "Chandler", "Tempe"]},
+    {"state": "CO", "city": "Denver", "districts": ["Downtown", "Aurora", "Lakewood", "Boulder"]},
+    {"state": "NC", "city": "Charlotte", "districts": ["Uptown", "South End", "Ballantyne", "Matthews"]},
+    {"state": "WA", "city": "Seattle", "districts": ["Bellevue", "Kirkland", "Renton", "Redmond"]},
+    {"state": "IL", "city": "Chicago", "districts": ["Naperville", "Schaumburg", "Evanston"]}
 ]
 
 def clean_email(email_str):
@@ -141,8 +151,8 @@ def scrape_email_from_website(website_url):
 
 def extract_leads(target_count=25, target_niche=None):
     print("=" * 70)
-    print("ALVORA TECH AUTOMATED LEAD EXTRACTION (GOOGLE PLACES API NEW)")
-    print(f"Target count: {target_count} verified prospects")
+    print("ALVORA TECH USA AUTOMATED LEAD EXTRACTION (GOOGLE PLACES API NEW)")
+    print(f"Target count: {target_count} verified US business prospects")
     print("=" * 70)
 
     existing_emails = set()
@@ -165,7 +175,7 @@ def extract_leads(target_count=25, target_niche=None):
         for loc in LOCATIONS:
             if len(newly_added) >= target_count:
                 break
-            city = loc["city"]
+            city = f"{loc['city']}, {loc['state']}"
 
             for district in loc["districts"]:
                 if len(newly_added) >= target_count:
@@ -175,7 +185,7 @@ def extract_leads(target_count=25, target_niche=None):
                     if len(newly_added) >= target_count:
                         break
 
-                    query = f"{keyword} in {district} {city} Nigeria"
+                    query = f"{keyword} in {district} {loc['city']} {loc['state']} USA"
                     print(f"Querying Places API: {query}...")
 
                     try:
@@ -216,7 +226,7 @@ def extract_leads(target_count=25, target_niche=None):
 
                                     record = {
                                         "business_name": biz_name,
-                                        "contact_name": "The Managing Director",
+                                        "contact_name": "Operations Lead",
                                         "email": primary_email,
                                         "niche": niche_key,
                                         "city": city,
@@ -226,7 +236,7 @@ def extract_leads(target_count=25, target_niche=None):
                                         "sent_by": ""
                                     }
                                     newly_added.append(record)
-                                    print(f"  + Added: {biz_name} ({primary_email}) -> {niche_info['demo_url']}")
+                                    print(f"  + Added: {biz_name} ({primary_email}) in {city} -> {niche_info['demo_url']}")
 
                                     # Append directly to CSV
                                     file_exists = os.path.exists(config.LEADS_CSV_PATH)
@@ -239,7 +249,7 @@ def extract_leads(target_count=25, target_niche=None):
                         print(f"Error querying {query}: {err}")
                     time.sleep(1)
 
-    print(f"\nExtraction completed. Added {len(newly_added)} fresh verified prospects to {config.LEADS_CSV_PATH}.")
+    print(f"\nExtraction completed. Added {len(newly_added)} fresh verified US prospects to {config.LEADS_CSV_PATH}.")
 
 if __name__ == "__main__":
     count = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 25

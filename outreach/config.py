@@ -1,7 +1,7 @@
 import os
 
 # ==============================================================================
-# Alvora Tech Automated Outreach Configuration
+# Alvora Tech Automated Outreach Configuration (USA Focus)
 # ==============================================================================
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -36,7 +36,7 @@ SENDERS = [
         "email": "lucas@alvoratechhq.com",
         "name": "Lucas | Alvora Tech",
         "first_name": "Lucas",
-        "role": "Senior Sales Partner",
+        "role": "Senior Growth Partner",
         "daily_limit": 25,
         "password": os.environ.get("ZOHO_PASS_LUCAS") or DEFAULT_PASS,
     },
@@ -45,7 +45,7 @@ SENDERS = [
         "email": "james@alvoratechhq.com",
         "name": "James | Alvora Tech",
         "first_name": "James",
-        "role": "Client Outreach Strategist",
+        "role": "Client Solutions Strategist",
         "daily_limit": 25,
         "password": os.environ.get("ZOHO_PASS_JAMES") or DEFAULT_PASS,
     },
@@ -71,8 +71,8 @@ MAX_DELAY_SECONDS = 300
 LEADS_CSV_PATH = os.path.join(BASE_DIR, "leads_alvoratech.csv")
 LOG_PATH = os.path.join(BASE_DIR, "outreach.log")
 
-# Alvora Tech Direct Business Contact Details
-ALVORA_PHONE = "+234 808 709 8270"
-ALVORA_WHATSAPP = "https://wa.me/2348087098270"
+# Alvora Tech Direct Business Contact Details (United States)
+ALVORA_PHONE = "+1 (412) 796-3968"
+ALVORA_WHATSAPP = "https://wa.me/14127963968"
 ALVORA_WEBSITE = "https://alvoratechhq.com"
 ALVORA_INBOUND_EMAIL = "info@alvoratechhq.com"

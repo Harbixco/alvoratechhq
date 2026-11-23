@@ -15,14 +15,14 @@ import config
 
 def build_email_content(lead, sender):
     """
-    Constructs high-conversion outreach pitch for Nigerian business owners.
+    Constructs high-conversion outreach pitch for US local business owners.
     Embeds individual 1x1 open tracking pixel and tracked demonstration click links.
     Zero emojis and zero hashtags used throughout.
     """
     business_name = lead.get("business_name", "your business").strip()
     contact_name = lead.get("contact_name", "").strip()
-    niche = lead.get("niche", "services").strip()
-    city = lead.get("city", "Nigeria").strip()
+    niche = lead.get("niche", "services").strip().replace("-", " ")
+    city = lead.get("city", "your area").strip()
     demo_url = lead.get("demo_url", config.ALVORA_WEBSITE).strip()
     recipient_email = lead.get("email", "").strip()
 
@@ -31,7 +31,7 @@ def build_email_content(lead, sender):
     subject_templates = [
         f"Quick question regarding {business_name}'s website",
         f"A modern customer website ready for {business_name}",
-        f"Helping customers in {city} find {business_name} on WhatsApp and Google"
+        f"Helping local customers in {city} find {business_name} on Google Maps and Mobile"
     ]
     subject = random.choice(subject_templates)
 
@@ -46,25 +46,26 @@ def build_email_content(lead, sender):
 
     plain_text = f"""{greeting}
 
-I came across {business_name} while researching top {niche} businesses in {city}.
+I came across {business_name} while researching top {niche} companies in {city}.
 
-In today's market, most clients in {city} search for {niche} services on their phones before deciding who to trust. Without a fast, mobile-friendly website that connects directly to your WhatsApp, potential customers often end up booking with competitors.
+When potential clients in {city} search for {niche} services on Google Maps or their smartphones, they want fast answers and instant credibility. Without a modern website featuring click-to-call, instant online quote requests, and verified reviews, high-value jobs often go to competitors ranking above you.
 
-We have built a live demonstration website tailored specifically for your industry:
+We have built a live demonstration platform tailored specifically for your industry:
 Demo: {demo_url}
 
 What this brings to {business_name}:
-1. Direct WhatsApp Ordering: Customers click one button and chat directly with your sales team.
-2. Verified Credibility: Prominent CAC registration and customer trust badges that reassure first-time buyers.
-3. Fast Turnaround: Completely custom-branded and live for your business within 48 to 72 hours.
+1. Direct Call & Online Booking: High-intent local leads request quotes directly on your phone or schedule online.
+2. Google Business Profile & Map-Pack Synergy: Structured local schema built specifically to help you dominate your service radius.
+3. Verified Trust & Credibility: Prominent licensing, insurance verification, and 5-star customer review showcases.
+4. Turnkey Delivery: 100% custom-branded and launched for your business within 3 to 5 business days.
 
-Would you be open to a brief 5-minute chat on WhatsApp or a quick call this week to see how this can drive more paying clients to {business_name}?
+Would you be open to a brief 5-minute call or quick walkthrough this week to see how this can generate more qualified inbound leads for {business_name}?
 
 Best regards,
 
 {sender['name']}
 Digital Growth Partner | Alvora Tech
-WhatsApp/Phone: {config.ALVORA_PHONE}
+Phone / SMS: {config.ALVORA_PHONE}
 Website: {config.ALVORA_WEBSITE}
 Email: {config.ALVORA_INBOUND_EMAIL}
 """
@@ -93,7 +94,7 @@ Email: {config.ALVORA_INBOUND_EMAIL}
     </p>
 
     <p style="font-size: 14px; color: #334155;">
-      In today's digital landscape, customers in {city} search for {niche} services on their smartphones before making a decision. Without a modern website linked directly to your business WhatsApp, potential clients frequently move on to competitors.
+      When potential clients in {city} search for {niche} services on Google Maps or their smartphones, they want fast answers and instant credibility. Without a modern website featuring click-to-call, instant online quote requests, and verified reviews, high-value jobs often go to competitors ranking above you.
     </p>
 
     <div class="highlight-box">
@@ -110,19 +111,20 @@ Email: {config.ALVORA_INBOUND_EMAIL}
       What this brings to {business_name}:
     </p>
     <ul class="benefits-list">
-      <li><strong>Direct WhatsApp Conversion:</strong> High-intent visitors reach your sales team in one click.</li>
-      <li><strong>Verified Trust:</strong> Prominent CAC and customer verification badges.</li>
-      <li><strong>Fast Turnaround:</strong> Custom branded and ready for your business within 48 to 72 hours.</li>
+      <li><strong>Direct Call & Quote Booking:</strong> High-intent local leads request quotes directly on your phone or schedule online.</li>
+      <li><strong>Google Business Profile & Map-Pack Synergy:</strong> Structured local schema built specifically to help you dominate your service radius.</li>
+      <li><strong>Verified Trust & Credibility:</strong> Prominent licensing, insurance verification, and 5-star customer review showcases.</li>
+      <li><strong>Turnkey Delivery:</strong> 100% custom-branded and launched for your business within 3 to 5 business days.</li>
     </ul>
 
     <p style="font-size: 14px; color: #334155;">
-      Would you be open to a quick 5-minute WhatsApp conversation or call this week to see how this can be branded for {business_name}?
+      Would you be open to a brief 5-minute call or quick walkthrough this week to see how this can generate more qualified inbound leads for {business_name}?
     </p>
 
     <div class="footer">
       <p style="margin: 0 0 4px 0; font-weight: 600; color: #0f172a;">{sender['name']}</p>
       <p style="margin: 0 0 4px 0;">{sender.get('role', 'Digital Growth Partner')} | Alvora Tech</p>
-      <p style="margin: 0 0 4px 0;">Direct WhatsApp: <a href="{config.ALVORA_WHATSAPP}" style="color: #2563eb; text-decoration: none;">{config.ALVORA_PHONE}</a></p>
+      <p style="margin: 0 0 4px 0;">Phone / SMS: <a href="tel:+14127963968" style="color: #2563eb; text-decoration: none;">{config.ALVORA_PHONE}</a></p>
       <p style="margin: 0 0 4px 0;">Website: <a href="{config.ALVORA_WEBSITE}" style="color: #2563eb; text-decoration: none;">{config.ALVORA_WEBSITE}</a></p>
       <p style="margin: 12px 0 0 0; font-size: 11px; color: #94a3b8;">
         If you prefer not to receive website optimization updates, reply with "Unsubscribe" and we will remove your address immediately.
@@ -160,7 +162,7 @@ def run_outreach(dry_run=False, test_recipient=None):
     Executes outreach rotation across 3 Zoho sender mailboxes (Lucas, James, Oliver).
     """
     print("=" * 70)
-    print("ALVORA TECH OUTREACH ENGINE - " + ("DRY RUN MODE" if dry_run else "LIVE DISPATCH MODE"))
+    print("ALVORA TECH OUTREACH ENGINE (USA) - " + ("DRY RUN MODE" if dry_run else "LIVE DISPATCH MODE"))
     print(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
 
@@ -181,12 +183,12 @@ def run_outreach(dry_run=False, test_recipient=None):
     if test_recipient:
         print(f"Running single-recipient test send to: {test_recipient}")
         test_lead = pending_leads[0] if pending_leads else {
-            "business_name": "Alvora Tech Demo Enterprise",
+            "business_name": "Lone Star Plumbing Specialists",
             "contact_name": "Operations Lead",
             "email": test_recipient,
-            "niche": "cleaning",
-            "city": "Lagos",
-            "demo_url": "https://alvoratechhq.com/cleaning"
+            "niche": "plumbing-services",
+            "city": "Dallas, TX",
+            "demo_url": "https://alvoratechhq.com/plumbing-services"
         }
         sender = config.SENDERS[0]
         subject, plain, html = build_email_content(test_lead, sender)
@@ -211,7 +213,6 @@ def run_outreach(dry_run=False, test_recipient=None):
         if lead.get("status", "").strip().lower() == "sent":
             continue
 
-        # Find next sender with available quota
         attempts = 0
         sender = None
         while attempts < len(config.SENDERS):
@@ -235,7 +236,7 @@ def run_outreach(dry_run=False, test_recipient=None):
         if dry_run:
             print(f"\n[DRY RUN {sent_this_session + 1}] SENDER: {sender['email']} -> {to_email}")
             print(f"Subject: {subject}")
-            print(f"Business: {lead.get('business_name')} | Demo: {lead.get('demo_url')}")
+            print(f"Business: {lead.get('business_name')} | Location: {lead.get('city')} | Demo: {lead.get('demo_url')}")
             lead["status"] = "dry-run"
             lead["sent_at"] = datetime.now().isoformat()
             lead["sent_by"] = sender["email"]
@@ -257,13 +258,11 @@ def run_outreach(dry_run=False, test_recipient=None):
             sent_this_session += 1
             print(f"SUCCESS: Sent to {to_email}")
 
-            # Persist status to CSV immediately
             with open(config.LEADS_CSV_PATH, "w", encoding="utf-8", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=leads[0].keys())
                 writer.writeheader()
                 writer.writerows(leads)
 
-            # Human-like delay between emails
             if sent_this_session < config.TOTAL_DAILY_LIMIT:
                 delay = random.randint(config.MIN_DELAY_SECONDS, config.MAX_DELAY_SECONDS)
                 print(f"Waiting {delay} seconds before next pitch...")
@@ -280,7 +279,7 @@ def run_outreach(dry_run=False, test_recipient=None):
     print("=" * 70)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Alvora Tech Cold Outreach Pitching Engine")
+    parser = argparse.ArgumentParser(description="Alvora Tech USA Cold Outreach Pitching Engine")
     parser.add_argument("--send", action="store_true", help="Execute live email sending")
     parser.add_argument("--dry-run", action="store_true", help="Simulate email generation without sending")
     parser.add_argument("--test", type=str, help="Send a single test email to the specified address")

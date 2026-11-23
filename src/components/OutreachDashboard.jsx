@@ -30,151 +30,151 @@ import {
 const INITIAL_LEADS = [
   {
     id: 1,
-    business_name: "Apex Painting Services",
-    contact_name: "Mr. Adebayo",
-    email: "adebayo@apexpaint.ng",
+    business_name: "Apex Painting Contractors",
+    contact_name: "Mr. David Miller",
+    email: "david@apexpaintingtx.com",
     niche: "painting",
-    city: "Lagos",
+    city: "Houston, TX",
     demo_url: "https://alvoratechhq.com/painting",
     status: "pending"
   },
   {
     id: 2,
-    business_name: "Sparkle Cleaning Pro",
-    contact_name: "Mrs. Fatima",
-    email: "fatima@sparklepro.ng",
+    business_name: "Sparkle Commercial Cleaning",
+    contact_name: "Mrs. Sarah Jenkins",
+    email: "sarah@sparklecleanfl.com",
     niche: "cleaning",
-    city: "Abuja",
+    city: "Miami, FL",
     demo_url: "https://alvoratechhq.com/cleaning",
     status: "pending"
   },
   {
     id: 3,
-    business_name: "Prime Flow Plumbers",
-    contact_name: "Mr. Emeka",
-    email: "emeka@primeflow.ng",
+    business_name: "Prime Flow Plumbing & Drain",
+    contact_name: "Mr. Michael Ross",
+    email: "michael@primeflowplumbing.com",
     niche: "plumbing-services",
-    city: "Port Harcourt",
+    city: "Dallas, TX",
     demo_url: "https://alvoratechhq.com/plumbing-services",
     status: "pending"
   },
   {
     id: 4,
-    business_name: "Crown Auto Specialists",
-    contact_name: "Mr. Tunde",
-    email: "tunde@crownauto.ng",
+    business_name: "Crown Auto Care & Transmission",
+    contact_name: "Mr. Robert Chen",
+    email: "robert@crownautoca.com",
     niche: "auto-repair",
-    city: "Lagos",
+    city: "Los Angeles, CA",
     demo_url: "https://alvoratechhq.com/auto-repair",
     status: "pending"
   },
   {
     id: 5,
-    business_name: "Solid Rock Construction",
-    contact_name: "Engr. Kola",
-    email: "kola@solidrockconst.ng",
+    business_name: "Summit Ridge General Contractors",
+    contact_name: "Mr. James Taylor",
+    email: "james@summitridgebuilders.com",
     niche: "contractor",
-    city: "Ibadan",
+    city: "Denver, CO",
     demo_url: "https://alvoratechhq.com/contractor",
     status: "pending"
   },
   {
     id: 6,
-    business_name: "Pearl Smiles Dental",
-    contact_name: "Dr. Funke",
-    email: "funke@pearlsmiles.ng",
+    business_name: "Pearl Smiles Family Dental",
+    contact_name: "Dr. Emily Carter",
+    email: "emily@pearlsmilesdental.com",
     niche: "dental-care",
-    city: "Abuja",
+    city: "Phoenix, AZ",
     demo_url: "https://alvoratechhq.com/dental-care",
     status: "pending"
   },
   {
     id: 7,
-    business_name: "Heritage Legal Partners",
-    contact_name: "Barr. Nnamdi",
-    email: "nnamdi@heritagelegal.ng",
+    business_name: "Heritage Legal Group",
+    contact_name: "Mr. Brian Vance",
+    email: "brian@heritagelegalgroup.com",
     niche: "personal-injury",
-    city: "Lagos",
+    city: "Atlanta, GA",
     demo_url: "https://alvoratechhq.com/personal-injury",
     status: "pending"
   },
   {
     id: 8,
-    business_name: "Swift Rescue Towing",
-    contact_name: "Mr. Musa",
-    email: "musa@swiftrescuetow.ng",
+    business_name: "Swift Towing & Recovery",
+    contact_name: "Mr. Marcus Washington",
+    email: "marcus@swifttowingcharlotte.com",
     niche: "towing-company",
-    city: "Kano",
+    city: "Charlotte, NC",
     demo_url: "https://alvoratechhq.com/towing-company",
     status: "pending"
   },
   {
     id: 9,
-    business_name: "Green Canopy Tree Care",
-    contact_name: "Mr. Biodun",
-    email: "biodun@greencanopy.ng",
+    business_name: "Green Canopy Tree Service",
+    contact_name: "Mr. Daniel Foster",
+    email: "daniel@greencanopytrees.com",
     niche: "tree-removal",
-    city: "Lagos",
+    city: "Seattle, WA",
     demo_url: "https://alvoratechhq.com/tree-removal",
     status: "pending"
   },
   {
     id: 10,
-    business_name: "Volt Electrical Solutions",
-    contact_name: "Engr. Uche",
-    email: "uche@voltelectrical.ng",
+    business_name: "Volt Pro Electrical Contractors",
+    contact_name: "Mr. Kevin Adams",
+    email: "kevin@voltproelectric.com",
     niche: "electrical",
-    city: "Port Harcourt",
+    city: "Austin, TX",
     demo_url: "https://alvoratechhq.com/electrical",
     status: "pending"
   },
   {
     id: 11,
-    business_name: "Prestige Floorings",
-    contact_name: "Mr. Segun",
-    email: "segun@prestigefloor.ng",
+    business_name: "Prestige Hardwood & Epoxy Flooring",
+    contact_name: "Mr. Eric Scott",
+    email: "eric@prestigeflooringfl.com",
     niche: "flooring",
-    city: "Lagos",
+    city: "Tampa, FL",
     demo_url: "https://alvoratechhq.com/flooring",
     status: "pending"
   },
   {
     id: 12,
-    business_name: "Verdant Landscapes",
-    contact_name: "Mrs. Halima",
-    email: "halima@verdantland.ng",
+    business_name: "Verdant Landscape Design",
+    contact_name: "Mrs. Laura Mitchell",
+    email: "laura@verdantlandscapesaz.com",
     niche: "landscaping",
-    city: "Abuja",
+    city: "Scottsdale, AZ",
     demo_url: "https://alvoratechhq.com/landscaping",
     status: "pending"
   },
   {
     id: 13,
-    business_name: "KeyMaster Locksmiths",
-    contact_name: "Mr. Jide",
-    email: "jide@keymaster.ng",
+    business_name: "KeyMaster Mobile Locksmith",
+    contact_name: "Mr. Jason Reed",
+    email: "jason@keymasterlocksmiths.com",
     niche: "locksmith",
-    city: "Lagos",
+    city: "Chicago, IL",
     demo_url: "https://alvoratechhq.com/locksmith",
     status: "pending"
   },
   {
     id: 14,
-    business_name: "Shield Pest Control",
-    contact_name: "Mr. Hassan",
-    email: "hassan@shieldpest.ng",
+    business_name: "Shield Pro Pest Solutions",
+    contact_name: "Mr. Thomas Wright",
+    email: "thomas@shieldpesttx.com",
     niche: "pest-control",
-    city: "Abuja",
+    city: "San Antonio, TX",
     demo_url: "https://alvoratechhq.com/pest-control",
     status: "pending"
   },
   {
     id: 15,
-    business_name: "Crystal Pressure Washing",
-    contact_name: "Mr. Femi",
-    email: "femi@crystalpressure.ng",
+    business_name: "Crystal Clear Pressure Washing",
+    contact_name: "Mr. Anthony Diaz",
+    email: "anthony@crystalpressurefl.com",
     niche: "pressure-demo",
-    city: "Lagos",
+    city: "Orlando, FL",
     demo_url: "https://alvoratechhq.com/pressure-demo",
     status: "pending"
   }
@@ -185,14 +185,14 @@ const SENDERS = [
     id: "lucas",
     name: "Lucas | Alvora Tech",
     email: "lucas@alvoratechhq.com",
-    role: "Senior Sales Partner",
+    role: "Senior Growth Partner",
     limit: 25
   },
   {
     id: "james",
     name: "James | Alvora Tech",
     email: "james@alvoratechhq.com",
-    role: "Client Outreach Strategist",
+    role: "Client Solutions Strategist",
     limit: 25
   },
   {
@@ -212,7 +212,6 @@ export default function OutreachDashboard() {
   const [previewLead, setPreviewLead] = useState(null);
   const [copiedCmd, setCopiedCmd] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
-  const [showManualCommands, setShowManualCommands] = useState(false);
 
   // Tracking metrics
   const [trackingSummary, setTrackingSummary] = useState({
@@ -244,7 +243,7 @@ export default function OutreachDashboard() {
     contact_name: "",
     email: "",
     niche: "painting",
-    city: "Lagos",
+    city: "Houston, TX",
     demo_url: "https://alvoratechhq.com/painting"
   });
 
@@ -329,11 +328,11 @@ export default function OutreachDashboard() {
     if (isExtracting) return;
     setIsExtracting(true);
     setExtractAlert(null);
-    setExtractStatus("Querying Google Places in Lagos and Abuja...");
+    setExtractStatus("Connecting to Google Places API (New) for US Metro Areas...");
 
     try {
       setTimeout(() => {
-        setExtractStatus("Crawling company domains for verified direct emails...");
+        setExtractStatus("Crawling company websites for verified business emails...");
       }, 2000);
 
       const payload = {
@@ -352,7 +351,7 @@ export default function OutreachDashboard() {
       if (data.success) {
         setExtractAlert({
           type: "success",
-          message: `Extracted ${data.added_count} verified prospects. Saved to database and CSV.`,
+          message: `Extracted ${data.added_count} verified US prospects. Saved to database and CSV.`,
         });
         await fetchLeads();
       } else {
@@ -428,12 +427,6 @@ export default function OutreachDashboard() {
     return matchesSearch && matchesNiche;
   });
 
-  const handleCopy = (text, id) => {
-    navigator.clipboard.writeText(text);
-    setCopiedCmd(id);
-    setTimeout(() => setCopiedCmd(""), 2000);
-  };
-
   const handleAddLead = (e) => {
     e.preventDefault();
     if (!newLead.business_name || !newLead.email) return;
@@ -451,7 +444,7 @@ export default function OutreachDashboard() {
       contact_name: "",
       email: "",
       niche: "painting",
-      city: "Lagos",
+      city: "Houston, TX",
       demo_url: "https://alvoratechhq.com/painting"
     });
   };
@@ -502,7 +495,7 @@ export default function OutreachDashboard() {
           </a>
           <span className="hidden sm:inline text-slate-700">|</span>
           <span className="hidden sm:inline text-xs font-semibold text-slate-400 uppercase tracking-wider">
-            Cold Outreach Operations
+            USA Cold Outreach Operations
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -533,10 +526,10 @@ export default function OutreachDashboard() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4 border-b border-slate-800">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Alvora Tech Outreach Engine
+              Alvora Tech US Outreach Command
             </h1>
             <p className="text-xs text-slate-400 mt-1">
-              75 daily pitches rotating across Lucas, James, and Oliver with verified open and click tracking.
+              75 daily pitches rotating across Lucas, James, and Oliver targeting high-value US service contractors and professional practices.
             </p>
           </div>
 
@@ -561,7 +554,7 @@ export default function OutreachDashboard() {
         {/* 4 Key Metric Tiles */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           <div className="bg-slate-900 border border-slate-800 rounded-lg p-4">
-            <span className="text-[11px] font-semibold uppercase text-slate-400">Prospects Queue</span>
+            <span className="text-[11px] font-semibold uppercase text-slate-400">US Prospects Queue</span>
             <div className="text-xl font-bold text-white mt-1">{leads.length} Leads</div>
             <p className="text-[10px] text-slate-400 mt-0.5">Database & CSV pool</p>
           </div>
@@ -598,9 +591,9 @@ export default function OutreachDashboard() {
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-base font-bold text-white">Lead Extraction Engine</h2>
+                <h2 className="text-base font-bold text-white">US Lead Extraction Engine</h2>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  Queries Google Places API (New) in Lagos and Abuja, extracting verified emails and mapping to Alvora Tech demos.
+                  Queries Google Places API (New) across Texas, Florida, California, Georgia, Arizona, Colorado, North Carolina, and Washington.
                 </p>
               </div>
             </div>
@@ -630,20 +623,20 @@ export default function OutreachDashboard() {
                   className="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 capitalize"
                 >
                   <option value="all">All 15 Industries</option>
-                  <option value="cleaning">Cleaning</option>
-                  <option value="painting">Painting</option>
-                  <option value="plumbing-services">Plumbing</option>
+                  <option value="cleaning">Cleaning Services</option>
+                  <option value="painting">Painting Contractors</option>
+                  <option value="plumbing-services">Plumbing & Drain</option>
                   <option value="auto-repair">Auto Repair</option>
-                  <option value="contractor">Contractor</option>
-                  <option value="dental-care">Dental</option>
-                  <option value="personal-injury">Legal</option>
-                  <option value="towing-company">Towing</option>
+                  <option value="contractor">General Contractors</option>
+                  <option value="dental-care">Dental Practices</option>
+                  <option value="personal-injury">Legal / Injury</option>
+                  <option value="towing-company">Towing & Roadside</option>
                   <option value="tree-removal">Tree Removal</option>
-                  <option value="electrical">Electrical</option>
-                  <option value="flooring">Flooring</option>
+                  <option value="electrical">Electrical Contractors</option>
+                  <option value="flooring">Flooring Specialists</option>
                   <option value="landscaping">Landscaping</option>
-                  <option value="locksmith">Locksmith</option>
-                  <option value="pest-control">Pest Control</option>
+                  <option value="locksmith">Locksmith Services</option>
+                  <option value="pest-control">Pest Exterminators</option>
                   <option value="pressure-demo">Pressure Washing</option>
                 </select>
               </div>
@@ -659,12 +652,12 @@ export default function OutreachDashboard() {
               {isExtracting ? (
                 <>
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  <span>Extracting Leads...</span>
+                  <span>Extracting US Leads...</span>
                 </>
               ) : (
                 <>
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Extract Fresh Leads Now</span>
+                  <span>Extract Fresh US Leads Now</span>
                 </>
               )}
             </button>
@@ -823,7 +816,7 @@ export default function OutreachDashboard() {
           <div className="p-4 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-bold text-white uppercase tracking-wider">
-                Prospects Pipeline ({filteredLeads.length})
+                US Prospects Pipeline ({filteredLeads.length})
               </h3>
               {isLoadingLeads && <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-400" />}
             </div>
@@ -842,10 +835,10 @@ export default function OutreachDashboard() {
                 <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Search prospects..."
+                  placeholder="Search US businesses, cities..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-8 pr-3 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 w-48"
+                  className="pl-8 pr-3 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 w-52"
                 />
               </div>
 
@@ -868,9 +861,9 @@ export default function OutreachDashboard() {
               <thead className="bg-slate-950/80 text-slate-400 uppercase tracking-wider border-b border-slate-800 text-[11px]">
                 <tr>
                   <th className="py-2.5 px-3 font-semibold">Business & Contact</th>
-                  <th className="py-2.5 px-3 font-semibold">Location</th>
+                  <th className="py-2.5 px-3 font-semibold">Location (State/Metro)</th>
                   <th className="py-2.5 px-3 font-semibold">Industry</th>
-                  <th className="py-2.5 px-3 font-semibold">Demo URL</th>
+                  <th className="py-2.5 px-3 font-semibold">Live Demo Link</th>
                   <th className="py-2.5 px-3 font-semibold">Status</th>
                   <th className="py-2.5 px-3 font-semibold text-right">Actions</th>
                 </tr>
@@ -951,7 +944,7 @@ export default function OutreachDashboard() {
           <div className="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div>
-                <span className="text-[10px] uppercase font-semibold text-blue-400">Pitch Preview</span>
+                <span className="text-[10px] uppercase font-semibold text-blue-400">US Pitch Preview</span>
                 <h3 className="text-base font-bold text-white">{previewLead.business_name}</h3>
               </div>
               <button onClick={() => setPreviewLead(null)} className="text-slate-400 hover:text-white p-1">
@@ -968,23 +961,23 @@ export default function OutreachDashboard() {
             <div className="text-xs text-slate-300 space-y-3 leading-relaxed p-4 bg-slate-950/60 rounded-lg border border-slate-800">
               <p>Hello {previewLead.contact_name || "Team"},</p>
               <p>
-                I came across <strong>{previewLead.business_name}</strong> while researching top {(previewLead.niche || "services").replace("-", " ")} businesses in {previewLead.city}.
+                I came across <strong>{previewLead.business_name}</strong> while researching top {(previewLead.niche || "services").replace("-", " ")} companies in {previewLead.city}.
               </p>
               <p>
-                In today's market, most clients search on their phones before deciding who to trust. Without a fast website connecting directly to your WhatsApp, potential customers often book with competitors.
+                When potential clients in {previewLead.city} search for {(previewLead.niche || "services").replace("-", " ")} services on Google Maps or their smartphones, they want fast answers and instant credibility. Without a modern website featuring click-to-call, instant online quote requests, and verified reviews, high-value jobs often go to competitors ranking above you.
               </p>
               <div className="p-3 rounded bg-blue-950/30 border border-blue-900/40 text-blue-200 text-[11px]">
-                <p className="font-semibold mb-1">Tailored demonstration website:</p>
+                <p className="font-semibold mb-1">Live demonstration website for your industry:</p>
                 <a href={previewLead.demo_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline font-mono">
                   {previewLead.demo_url}
                 </a>
               </div>
               <p>
-                Would you be open to a quick 5-minute chat on WhatsApp to see how we can customize this for {previewLead.business_name}?
+                Would you be open to a brief 5-minute call or quick walkthrough this week to see how this can generate more qualified inbound leads for {previewLead.business_name}?
               </p>
               <div className="pt-2 border-t border-slate-800 text-[11px] text-slate-400">
                 <p className="font-semibold text-slate-200">Lucas | Alvora Tech</p>
-                <p>Website: https://alvoratechhq.com &bull; WhatsApp: +234 808 709 8270</p>
+                <p>Website: https://alvoratechhq.com &bull; Phone/SMS: +1 (412) 796-3968 &bull; Email: info@alvoratechhq.com</p>
               </div>
             </div>
 
@@ -1005,7 +998,7 @@ export default function OutreachDashboard() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-md p-6 space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-white">Add Outreach Prospect</h3>
+              <h3 className="text-sm font-bold text-white">Add US Outreach Prospect</h3>
               <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white p-1">
                 <X className="w-4 h-4" />
               </button>
@@ -1017,7 +1010,7 @@ export default function OutreachDashboard() {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Apex Painting Ltd"
+                  placeholder="e.g. Lone Star Plumbing"
                   value={newLead.business_name}
                   onChange={(e) => setNewLead({ ...newLead, business_name: e.target.value })}
                   className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-blue-500"
@@ -1029,17 +1022,17 @@ export default function OutreachDashboard() {
                   <label className="block uppercase font-semibold text-slate-400 mb-1">Contact Person</label>
                   <input
                     type="text"
-                    placeholder="e.g. Mr. Ade"
+                    placeholder="e.g. Mike Ross"
                     value={newLead.contact_name}
                     onChange={(e) => setNewLead({ ...newLead, contact_name: e.target.value })}
                     className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block uppercase font-semibold text-slate-400 mb-1">City</label>
+                  <label className="block uppercase font-semibold text-slate-400 mb-1">City, State</label>
                   <input
                     type="text"
-                    placeholder="e.g. Lagos"
+                    placeholder="e.g. Dallas, TX"
                     value={newLead.city}
                     onChange={(e) => setNewLead({ ...newLead, city: e.target.value })}
                     className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-blue-500"
@@ -1052,7 +1045,7 @@ export default function OutreachDashboard() {
                 <input
                   type="email"
                   required
-                  placeholder="e.g. info@business.ng"
+                  placeholder="e.g. info@business.com"
                   value={newLead.email}
                   onChange={(e) => setNewLead({ ...newLead, email: e.target.value })}
                   className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-blue-500"

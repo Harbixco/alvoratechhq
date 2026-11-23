@@ -1,4 +1,4 @@
-// Vercel Serverless Function & Node Handler: Automated Lead Extraction for Alvora Tech
+// Vercel Serverless Function & Node Handler: Automated US Lead Extraction for Alvora Tech
 import { MongoClient } from "mongodb";
 import fs from "fs";
 import path from "path";
@@ -16,72 +16,82 @@ const CSV_PATH = path.join(process.cwd(), "outreach", "leads_alvoratech.csv");
 
 const NICHES = {
   cleaning: {
-    keywords: ["cleaning company", "cleaning services", "janitorial services"],
+    keywords: ["commercial cleaning services", "office janitorial company", "cleaning service contractors"],
     demo_url: "https://alvoratechhq.com/cleaning",
   },
   painting: {
-    keywords: ["painting company", "house painters", "painting contractor"],
+    keywords: ["painting contractors", "residential house painters", "commercial painting company"],
     demo_url: "https://alvoratechhq.com/painting",
   },
   "plumbing-services": {
-    keywords: ["plumbing services", "emergency plumber", "plumbing contractor"],
+    keywords: ["commercial plumbing contractor", "emergency plumbing repair", "plumbing and drain specialists"],
     demo_url: "https://alvoratechhq.com/plumbing-services",
   },
   "auto-repair": {
-    keywords: ["auto repair workshop", "car mechanic", "auto diagnosis"],
+    keywords: ["auto repair shop", "collision repair center", "transmission and brake repair"],
     demo_url: "https://alvoratechhq.com/auto-repair",
   },
   contractor: {
-    keywords: ["building contractor", "construction company", "renovation contractor"],
+    keywords: ["general contractor", "home remodeling company", "commercial building construction"],
     demo_url: "https://alvoratechhq.com/contractor",
   },
   "dental-care": {
-    keywords: ["dental clinic", "dentist practice", "dental hospital"],
+    keywords: ["family dental clinic", "cosmetic dentist practice", "dental care center"],
     demo_url: "https://alvoratechhq.com/dental-care",
   },
   "personal-injury": {
-    keywords: ["law firm", "legal practitioners", "barristers solicitors"],
+    keywords: ["personal injury law firm", "accident and injury attorneys", "injury lawyer practice"],
     demo_url: "https://alvoratechhq.com/personal-injury",
   },
   "towing-company": {
-    keywords: ["towing service", "vehicle recovery", "breakdown service"],
+    keywords: ["towing and recovery service", "emergency roadside assistance", "flatbed towing company"],
     demo_url: "https://alvoratechhq.com/towing-company",
   },
   "tree-removal": {
-    keywords: ["tree pruning service", "tree cutting company", "tree removal"],
+    keywords: ["tree removal service", "certified arborist tree care", "tree trimming and pruning company"],
     demo_url: "https://alvoratechhq.com/tree-removal",
   },
   electrical: {
-    keywords: ["electrical services", "electrical contractor", "solar inverter installation"],
+    keywords: ["licensed electrical contractors", "commercial electrician services", "residential electrical repair"],
     demo_url: "https://alvoratechhq.com/electrical",
   },
   flooring: {
-    keywords: ["flooring company", "epoxy flooring", "marble tiles installation"],
+    keywords: ["flooring installation contractors", "epoxy flooring specialists", "hardwood and tile flooring"],
     demo_url: "https://alvoratechhq.com/flooring",
   },
   landscaping: {
-    keywords: ["landscaping services", "interlocking and paving", "garden design"],
+    keywords: ["landscape design and maintenance", "commercial landscaping contractors", "hardscaping and lawn care"],
     demo_url: "https://alvoratechhq.com/landscaping",
   },
   locksmith: {
-    keywords: ["locksmith services", "car key programming", "lock repair"],
+    keywords: ["commercial locksmith services", "mobile emergency locksmith", "lock and key specialists"],
     demo_url: "https://alvoratechhq.com/locksmith",
   },
   "pest-control": {
-    keywords: ["pest control services", "fumigation company", "termite treatment"],
+    keywords: ["pest control exterminators", "termite inspection and treatment", "commercial pest management"],
     demo_url: "https://alvoratechhq.com/pest-control",
   },
   "pressure-demo": {
-    keywords: ["pressure washing", "power washing", "exterior building cleaning"],
+    keywords: ["pressure washing company", "commercial power washing", "exterior building and roof wash"],
     demo_url: "https://alvoratechhq.com/pressure-demo",
   },
 };
 
 const LOCATIONS = [
-  { city: "Lagos", districts: ["Lekki", "Ikeja", "Victoria Island", "Yaba", "Surulere", "Ajah"] },
-  { city: "Abuja", districts: ["Wuse", "Garki", "Maitama", "Jabi", "Gwarinpa"] },
-  { city: "Port Harcourt", districts: ["GRA", "Trans Amadi"] },
-  { city: "Ibadan", districts: ["Bodija", "Ring Road"] },
+  { state: "TX", city: "Houston", districts: ["Downtown", "Heights", "Katy", "Sugar Land"] },
+  { state: "TX", city: "Dallas", districts: ["North Dallas", "Plano", "Frisco", "Fort Worth"] },
+  { state: "TX", city: "Austin", districts: ["Downtown", "Round Rock", "Cedar Park"] },
+  { state: "FL", city: "Miami", districts: ["Brickell", "Coral Gables", "Doral", "Kendall"] },
+  { state: "FL", city: "Orlando", districts: ["Downtown", "Winter Park", "Kissimmee"] },
+  { state: "FL", city: "Tampa", districts: ["Downtown", "St. Petersburg", "Clearwater"] },
+  { state: "CA", city: "Los Angeles", districts: ["Pasadena", "Glendale", "Long Beach", "Torrance"] },
+  { state: "CA", city: "San Diego", districts: ["Downtown", "La Jolla", "Chula Vista"] },
+  { state: "GA", city: "Atlanta", districts: ["Buckhead", "Alpharetta", "Marietta", "Decatur"] },
+  { state: "AZ", city: "Phoenix", districts: ["Scottsdale", "Mesa", "Chandler", "Tempe"] },
+  { state: "CO", city: "Denver", districts: ["Downtown", "Aurora", "Lakewood", "Boulder"] },
+  { state: "NC", city: "Charlotte", districts: ["Uptown", "South End", "Ballantyne", "Matthews"] },
+  { state: "WA", city: "Seattle", districts: ["Bellevue", "Kirkland", "Renton", "Redmond"] },
+  { state: "IL", city: "Chicago", districts: ["Naperville", "Schaumburg", "Evanston"] },
 ];
 
 let cachedClient = null;
@@ -182,10 +192,10 @@ export default async function handler(req, res) {
                 leadsMap.set(email.toLowerCase(), {
                   id: `csv-${i}`,
                   business_name: parts[0]?.replace(/"/g, "").trim(),
-                  contact_name: parts[1]?.replace(/"/g, "").trim() || "The Managing Director",
+                  contact_name: parts[1]?.replace(/"/g, "").trim() || "Operations Lead",
                   email: email,
                   niche: parts[3]?.replace(/"/g, "").trim() || "painting",
-                  city: parts[4]?.replace(/"/g, "").trim() || "Lagos",
+                  city: parts[4]?.replace(/"/g, "").trim() || "Houston, TX",
                   demo_url: parts[5]?.replace(/"/g, "").trim() || "https://alvoratechhq.com/painting",
                   status: parts[6]?.replace(/"/g, "").trim() || "pending",
                   sent_at: parts[7]?.replace(/"/g, "").trim() || "",
@@ -196,7 +206,7 @@ export default async function handler(req, res) {
             }
           }
         } catch (csvErr) {
-          console.warn("CSV read notice:", csvErr.message);
+          console.warn("Notice reading CSV leads:", csvErr.message);
         }
       }
 
@@ -217,11 +227,11 @@ export default async function handler(req, res) {
               ...leadsMap.get(lowEmail),
               id: doc._id?.toString() || doc.id || lowEmail,
               business_name: doc.business_name || leadsMap.get(lowEmail)?.business_name,
-              contact_name: doc.contact_name || leadsMap.get(lowEmail)?.contact_name || "The Managing Director",
+              contact_name: doc.contact_name || leadsMap.get(lowEmail)?.contact_name || "Operations Lead",
               email: doc.email,
               phone: doc.phone || "",
               niche: doc.niche || leadsMap.get(lowEmail)?.niche || "painting",
-              city: doc.city || leadsMap.get(lowEmail)?.city || "Lagos",
+              city: doc.city || leadsMap.get(lowEmail)?.city || "Houston, TX",
               demo_url: doc.demo_url || leadsMap.get(lowEmail)?.demo_url || "https://alvoratechhq.com/painting",
               status: doc.status || leadsMap.get(lowEmail)?.status || "pending",
               sent_at: doc.sent_at || leadsMap.get(lowEmail)?.sent_at || "",
@@ -289,7 +299,7 @@ export default async function handler(req, res) {
 
       for (const loc of locationPool) {
         if (newlyExtracted.length >= targetCount) break;
-        const city = loc.city;
+        const city = `${loc.city}, ${loc.state}`;
 
         for (const district of loc.districts) {
           if (newlyExtracted.length >= targetCount) break;
@@ -297,7 +307,7 @@ export default async function handler(req, res) {
           for (const keyword of nicheInfo.keywords.slice(0, 2)) {
             if (newlyExtracted.length >= targetCount) break;
 
-            const queryText = `${keyword} in ${district} ${city} Nigeria`;
+            const queryText = `${keyword} in ${district} ${loc.city} ${loc.state} USA`;
             try {
               const placesUrl = "https://places.googleapis.com/v1/places:searchText";
               const placesResp = await fetch(placesUrl, {
@@ -332,7 +342,7 @@ export default async function handler(req, res) {
 
                   const leadRecord = {
                     business_name: bizName,
-                    contact_name: "The Managing Director",
+                    contact_name: "Operations Lead",
                     email: primaryEmail,
                     phone: phone,
                     niche: nicheKey,
@@ -340,7 +350,7 @@ export default async function handler(req, res) {
                     demo_url: nicheInfo.demo_url,
                     status: "pending",
                     agency: "alvoratech",
-                    source: "Google Places Extraction",
+                    source: "Google Places USA Extraction",
                     createdAt: new Date(),
                   };
 
@@ -354,7 +364,7 @@ export default async function handler(req, res) {
 
                   try {
                     if (fs.existsSync(CSV_PATH)) {
-                      const csvRow = `"${bizName.replace(/"/g, '""')}","The Managing Director","${primaryEmail}","${nicheKey}","${city}","${nicheInfo.demo_url}","pending","",""\n`;
+                      const csvRow = `"${bizName.replace(/"/g, '""')}","Operations Lead","${primaryEmail}","${nicheKey}","${city}","${nicheInfo.demo_url}","pending","",""\n`;
                       fs.appendFileSync(CSV_PATH, csvRow, "utf-8");
                     }
                   } catch (csvErr) {
@@ -374,7 +384,7 @@ export default async function handler(req, res) {
       success: true,
       added_count: newlyExtracted.length,
       leads: newlyExtracted,
-      message: `Successfully extracted and verified ${newlyExtracted.length} fresh prospects for Alvora Tech.`,
+      message: `Successfully extracted and verified ${newlyExtracted.length} fresh US prospects for Alvora Tech.`,
     });
   } catch (err) {
     console.error("Extraction error:", err);
