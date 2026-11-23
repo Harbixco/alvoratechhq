@@ -42,6 +42,7 @@ if (fs.existsSync(indexHtmlPath)) {
     'demos/pest-control',
     'pressure-demo',
     'demos/pressure-demo',
+    'outreach',
   ];
 
   // 1. Ensure static index.html exists for every demo route so Vercel CDN immediately serves them with 200 OK

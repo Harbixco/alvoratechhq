@@ -23,3 +23,8 @@ plumb/
 *.njsproj
 *.sln
 *.sw?
+
+.env
+outreach/.env
+*.env
+__pycache__/

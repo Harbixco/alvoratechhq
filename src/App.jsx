@@ -26,6 +26,7 @@ import Locksmith from './demos/Locksmith/Locksmith';
 import Painting from './demos/Painting/Painting';
 import PestControl from './demos/pest-control/PestControl';
 import PressureDemo from './demos/pressure-demo/PressureDemo';
+import OutreachDashboard from './components/OutreachDashboard';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -96,6 +97,10 @@ export default function App() {
 
   // Route to live client demo templates (supports both /<template> and /demos/<template>)
   const normalizedPath = (currentPath || window.location.pathname || '').toLowerCase().replace(/\/$/, '');
+  
+  if (normalizedPath === '/outreach' || normalizedPath.includes('outreach')) {
+    return <OutreachDashboard />;
+  }
   
   if (normalizedPath.includes('plumbing-services')) {
     return <PlumbingServices />;

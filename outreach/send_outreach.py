@@ -1,36 +1,49 @@
 import csv
-import datetime
-import os
-import random
 import smtplib
-import sys
+import ssl
 import time
+import random
+import os
+import sys
+import argparse
+import urllib.parse
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from datetime import datetime
 
 import config
 
-# ==============================================================================
-# Email Copy Generator tailored for Nigerian Local Businesses
-# ==============================================================================
-
-def generate_email_content(lead, sender):
-    business_name = lead.get("business_name", "Your Business").strip()
+def build_email_content(lead, sender):
+    """
+    Constructs high-conversion outreach pitch for Nigerian business owners.
+    Embeds individual 1x1 open tracking pixel and tracked demonstration click links.
+    Zero emojis and zero hashtags used throughout.
+    """
+    business_name = lead.get("business_name", "your business").strip()
     contact_name = lead.get("contact_name", "").strip()
+    niche = lead.get("niche", "services").strip()
     city = lead.get("city", "Nigeria").strip()
-    niche = lead.get("niche", "business").strip()
-    demo_url = lead.get("demo_url", config.VELTRIX_WEBSITE).strip()
+    demo_url = lead.get("demo_url", config.ALVORA_WEBSITE).strip()
+    recipient_email = lead.get("email", "").strip()
 
-    greeting = f"Hello {contact_name}," if contact_name else f"Hello {business_name} Team,"
+    greeting = f"Hello {contact_name}," if contact_name and contact_name.lower() != "the managing director" else f"Hello {business_name} Team,"
 
     subject_templates = [
-        f"Helping customers in {city} find {business_name} on WhatsApp & Google",
         f"Quick question regarding {business_name}'s website",
         f"A modern customer website ready for {business_name}",
+        f"Helping customers in {city} find {business_name} on WhatsApp and Google"
     ]
     subject = random.choice(subject_templates)
 
-    # Clean plain-text version (superior deliverability, zero spam flags)
+    encoded_email = urllib.parse.quote(recipient_email)
+    encoded_biz = urllib.parse.quote(business_name)
+    encoded_demo = urllib.parse.quote(demo_url)
+
+    # 1x1 Invisible Tracking Pixel (records email opens)
+    tracking_pixel_url = f"https://www.alvoratechhq.com/api/track?email={encoded_email}&biz={encoded_biz}&agency=alvoratech&action=open"
+    # Tracked Click Link (records demo visits and instantly redirects to live demo)
+    tracked_demo_url = f"https://www.alvoratechhq.com/api/track?email={encoded_email}&biz={encoded_biz}&agency=alvoratech&url={encoded_demo}&action=click"
+
     plain_text = f"""{greeting}
 
 I came across {business_name} while researching top {niche} businesses in {city}.
@@ -38,294 +51,246 @@ I came across {business_name} while researching top {niche} businesses in {city}
 In today's market, most clients in {city} search for {niche} services on their phones before deciding who to trust. Without a fast, mobile-friendly website that connects directly to your WhatsApp, potential customers often end up booking with competitors.
 
 We have built a live demonstration website tailored specifically for your industry:
-👉 {demo_url}
+Demo: {demo_url}
 
 What this brings to {business_name}:
 1. Direct WhatsApp Ordering: Customers click one button and chat directly with your sales team.
 2. Verified Credibility: Prominent CAC registration and customer trust badges that reassure first-time buyers.
-3. Fast Turnaround: Completely custom-branded and live for your business within 3 to 5 business days.
+3. Fast Turnaround: Completely custom-branded and live for your business within 48 to 72 hours.
 
 Would you be open to a brief 5-minute chat on WhatsApp or a quick call this week to see how this can drive more paying clients to {business_name}?
 
 Best regards,
 
 {sender['name']}
-Digital Growth Partner | Veltrix Hub
-WhatsApp/Phone: {config.VELTRIX_PHONE}
-Website: {config.VELTRIX_WEBSITE}
-Email: {config.VELTRIX_INBOUND_EMAIL}
+Digital Growth Partner | Alvora Tech
+WhatsApp/Phone: {config.ALVORA_PHONE}
+Website: {config.ALVORA_WEBSITE}
+Email: {config.ALVORA_INBOUND_EMAIL}
 """
 
-    # Optional HTML version formatted cleanly with high deliverability
-    html_text = f"""<!DOCTYPE html>
+    html_content = f"""<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; background-color: #f8fafc; margin: 0; padding: 20px; }}
+    .container {{ max-width: 580px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }}
+    .highlight-box {{ background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px; margin: 20px 0; border-radius: 4px; }}
+    .button {{ display: inline-block; background: #2563eb; color: #ffffff !important; text-decoration: none; padding: 12px 24px; font-weight: 600; border-radius: 6px; margin: 12px 0; font-size: 14px; text-align: center; }}
+    .benefits-list {{ padding-left: 20px; margin: 16px 0; }}
+    .benefits-list li {{ margin-bottom: 8px; font-size: 14px; color: #334155; }}
+    .footer {{ margin-top: 32px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b; line-height: 1.5; }}
+  </style>
 </head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <p>{greeting}</p>
-  
-  <p>I came across <strong>{business_name}</strong> while researching established {niche} services in {city}.</p>
-  
-  <p>In today's market, most clients in {city} search for {niche} services on their phones before deciding who to patronize. Without a fast, mobile-friendly website that links straight to your WhatsApp, potential customers often book with competitors.</p>
-  
-  <p>We built a live demonstration website tailored specifically for your industry:</p>
-  
-  <p style="margin: 24px 0;">
-    <a href="{demo_url}" style="display: inline-block; background-color: #050f2c; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">View Live Demonstration &rarr;</a>
-  </p>
-  
-  <p><strong>What this brings to {business_name}:</strong></p>
-  <ul>
-    <li><strong>Direct WhatsApp Conversion:</strong> Customers click one button and message your team directly.</li>
-    <li><strong>Verified Credibility:</strong> Clear trust indicators and CAC registration signals that give new clients full confidence.</li>
-    <li><strong>Fast Delivery:</strong> Custom-tailored and live for your business within 3 to 5 business days.</li>
-  </ul>
-  
-  <p>Would you be open to a brief 5-minute chat on WhatsApp or a short phone call this week to see how this can bring more paying customers to {business_name}?</p>
-  
-  <p style="margin-top: 32px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
-    <strong>{sender['name']}</strong><br>
-    Growth Team | Veltrix Hub<br>
-    WhatsApp / Phone: <a href="{config.VELTRIX_WHATSAPP}" style="color: #2563eb;">{config.VELTRIX_PHONE}</a><br>
-    Website: <a href="{config.VELTRIX_WEBSITE}" style="color: #2563eb;">{config.VELTRIX_WEBSITE}</a>
-  </p>
+<body>
+  <div class="container">
+    <p style="font-size: 15px; margin-top: 0;">{greeting}</p>
+    
+    <p style="font-size: 14px; color: #334155;">
+      I came across <strong>{business_name}</strong> while researching top {niche} providers in {city}.
+    </p>
+
+    <p style="font-size: 14px; color: #334155;">
+      In today's digital landscape, customers in {city} search for {niche} services on their smartphones before making a decision. Without a modern website linked directly to your business WhatsApp, potential clients frequently move on to competitors.
+    </p>
+
+    <div class="highlight-box">
+      <p style="margin: 0 0 8px 0; font-weight: 600; color: #1e40af; font-size: 14px;">
+        We built a live demonstration platform specifically for your industry:
+      </p>
+      <a href="{tracked_demo_url}" class="button" target="_blank">View Live Demonstration</a>
+      <p style="margin: 8px 0 0 0; font-size: 12px; color: #64748b;">
+        Or copy link: <span style="font-family: monospace;">{demo_url}</span>
+      </p>
+    </div>
+
+    <p style="font-size: 14px; font-weight: 600; color: #0f172a; margin-bottom: 8px;">
+      What this brings to {business_name}:
+    </p>
+    <ul class="benefits-list">
+      <li><strong>Direct WhatsApp Conversion:</strong> High-intent visitors reach your sales team in one click.</li>
+      <li><strong>Verified Trust:</strong> Prominent CAC and customer verification badges.</li>
+      <li><strong>Fast Turnaround:</strong> Custom branded and ready for your business within 48 to 72 hours.</li>
+    </ul>
+
+    <p style="font-size: 14px; color: #334155;">
+      Would you be open to a quick 5-minute WhatsApp conversation or call this week to see how this can be branded for {business_name}?
+    </p>
+
+    <div class="footer">
+      <p style="margin: 0 0 4px 0; font-weight: 600; color: #0f172a;">{sender['name']}</p>
+      <p style="margin: 0 0 4px 0;">{sender.get('role', 'Digital Growth Partner')} | Alvora Tech</p>
+      <p style="margin: 0 0 4px 0;">Direct WhatsApp: <a href="{config.ALVORA_WHATSAPP}" style="color: #2563eb; text-decoration: none;">{config.ALVORA_PHONE}</a></p>
+      <p style="margin: 0 0 4px 0;">Website: <a href="{config.ALVORA_WEBSITE}" style="color: #2563eb; text-decoration: none;">{config.ALVORA_WEBSITE}</a></p>
+      <p style="margin: 12px 0 0 0; font-size: 11px; color: #94a3b8;">
+        If you prefer not to receive website optimization updates, reply with "Unsubscribe" and we will remove your address immediately.
+      </p>
+    </div>
+  </div>
+
+  <!-- Real-Time Open Tracking Pixel -->
+  <img src="{tracking_pixel_url}" width="1" height="1" style="display:none; width:1px; height:1px; border:0;" alt="" />
 </body>
 </html>
 """
+    return subject, plain_text, html_content
 
-    return subject, plain_text, html_text
-
-
-# ==============================================================================
-# Lead Database Utilities
-# ==============================================================================
-
-def load_leads():
-    leads = []
-    if not os.path.exists(config.LEADS_CSV_PATH):
-        print(f"Error: Leads file not found at {config.LEADS_CSV_PATH}")
-        return leads
-
-    with open(config.LEADS_CSV_PATH, mode="r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            leads.append(row)
-    return leads
-
-
-def save_leads(leads):
-    fieldnames = [
-        "business_name",
-        "contact_name",
-        "email",
-        "niche",
-        "city",
-        "demo_url",
-        "status",
-        "sent_at",
-        "sent_by",
-    ]
-    with open(config.LEADS_CSV_PATH, mode="w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(leads)
-
-
-# ==============================================================================
-# SMTP Mailer Engine
-# ==============================================================================
-
-def send_email_smtp(sender, recipient_email, subject, plain_text, html_text):
-    if not sender["password"]:
-        raise ValueError(
-            f"Missing SMTP password for sender {sender['email']}. Set environment variable ZOHO_PASS_{sender['id'].upper()}."
-        )
-
+def send_via_smtp(sender, to_email, subject, plain_text, html_content):
+    """
+    Connects to Zoho SSL SMTP server and dispatches email.
+    """
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"{sender['name']} <{sender['email']}>"
-    msg["To"] = recipient_email
-    msg["Reply-To"] = f"{sender['name']} <{sender['email']}>"
+    msg["To"] = to_email
+    msg["Reply-To"] = sender["email"]
 
-    part1 = MIMEText(plain_text, "plain", "utf-8")
-    part2 = MIMEText(html_text, "html", "utf-8")
-    msg.attach(part1)
-    msg.attach(part2)
+    msg.attach(MIMEText(plain_text, "plain", "utf-8"))
+    msg.attach(MIMEText(html_content, "html", "utf-8"))
 
-    with smtplib.SMTP_SSL(config.SMTP_HOST, config.SMTP_PORT, timeout=30) as server:
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(config.SMTP_HOST, config.SMTP_PORT, context=context, timeout=30) as server:
         server.login(sender["email"], sender["password"])
-        server.sendmail(sender["email"], [recipient_email], msg.as_string())
+        server.sendmail(sender["email"], [to_email], msg.as_string())
 
-
-# ==============================================================================
-# Execution Modes
-# ==============================================================================
-
-def run_dry_run():
-    leads = load_leads()
-    pending = [l for l in leads if l.get("status", "").lower() == "pending"]
-
+def run_outreach(dry_run=False, test_recipient=None):
+    """
+    Executes outreach rotation across 3 Zoho sender mailboxes (Lucas, James, Oliver).
+    """
     print("=" * 70)
-    print("VELTRIX HUB OUTREACH ENGINE - DRY RUN MODE")
-    print(f"Total Leads in CSV: {len(leads)}")
-    print(f"Pending Leads: {len(pending)}")
-    print(f"Daily Rotation Senders: {len(config.SENDERS)} accounts (25 each = 75 total)")
+    print("ALVORA TECH OUTREACH ENGINE - " + ("DRY RUN MODE" if dry_run else "LIVE DISPATCH MODE"))
+    print(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
 
-    if not pending:
-        print("No pending leads found to send.")
-        return
+    if not os.path.exists(config.LEADS_CSV_PATH):
+        print(f"ERROR: Leads CSV file not found at {config.LEADS_CSV_PATH}")
+        sys.exit(1)
 
-    sender_index = 0
-    sample_to_show = min(len(pending), 3)
+    leads = []
+    with open(config.LEADS_CSV_PATH, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            leads.append(row)
 
-    for i in range(sample_to_show):
-        lead = pending[i]
-        sender = config.SENDERS[sender_index % len(config.SENDERS)]
-        sender_index += 1
+    total_leads = len(leads)
+    pending_leads = [l for l in leads if l.get("status", "").strip().lower() != "sent"]
+    print(f"Total Leads: {total_leads} | Pending Leads: {len(pending_leads)}")
 
-        subject, plain, _ = generate_email_content(lead, sender)
-        print(f"\n--- [SAMPLE {i+1}] SENDER: {sender['name']} <{sender['email']}> ---")
-        print(f"TO: {lead['email']} ({lead['business_name']}, {lead['city']})")
-        print(f"SUBJECT: {subject}")
-        print("CONTENT PREVIEW:")
-        for line in plain.splitlines()[:12]:
-            print("  " + line)
-        print("  ...")
-
-    print("\n" + "=" * 70)
-    print("Dry run completed. To send real emails, run: python send_outreach.py --send")
-    print("=" * 70)
-
-
-def run_test_email(test_recipient):
-    print(f"Sending 1 test email from each of the 3 accounts to: {test_recipient}")
-    test_lead = {
-        "business_name": "Test Client Services",
-        "contact_name": "Valued Prospect",
-        "email": test_recipient,
-        "niche": "painting",
-        "city": "Lagos",
-        "demo_url": "https://veltrixhub.ng/painting",
-    }
-
-    for sender in config.SENDERS:
-        print(f"\nTesting sender: {sender['email']} ({sender['name']})...")
-        subject, plain, html = generate_email_content(test_lead, sender)
+    if test_recipient:
+        print(f"Running single-recipient test send to: {test_recipient}")
+        test_lead = pending_leads[0] if pending_leads else {
+            "business_name": "Alvora Tech Demo Enterprise",
+            "contact_name": "Operations Lead",
+            "email": test_recipient,
+            "niche": "cleaning",
+            "city": "Lagos",
+            "demo_url": "https://alvoratechhq.com/cleaning"
+        }
+        sender = config.SENDERS[0]
+        subject, plain, html = build_email_content(test_lead, sender)
+        print(f"Testing sender: {sender['email']}")
         try:
-            send_email_smtp(sender, test_recipient, f"[TEST] {subject}", plain, html)
-            print(f"✓ Successfully sent test email from {sender['email']}")
+            send_via_smtp(sender, test_recipient, subject, plain, html)
+            print(f"SUCCESS: Test email successfully sent to {test_recipient} via {sender['email']}")
         except Exception as e:
-            print(f"✗ Failed to send from {sender['email']}: {e}")
-
-
-def run_live_send():
-    leads = load_leads()
-    pending_indices = [i for i, l in enumerate(leads) if l.get("status", "").lower() == "pending"]
-
-    if not pending_indices:
-        print("No pending leads left to send in leads_veltrixhub.csv.")
+            print(f"ERROR: Test send failed via {sender['email']}: {e}")
         return
 
-    print("=" * 70)
-    print("VELTRIX HUB OUTREACH ENGINE - LIVE SENDING")
-    print(f"Pending Leads Available: {len(pending_indices)}")
-    print(f"Targeting Maximum: {config.TOTAL_DAILY_LIMIT} emails today across 3 accounts.")
-    print("=" * 70)
-
-    # Track count sent today per sender
     sender_counts = {s["id"]: 0 for s in config.SENDERS}
-    total_sent = 0
-    sender_idx = 0
+    sender_index = 0
 
-    for idx in pending_indices:
-        if total_sent >= config.TOTAL_DAILY_LIMIT:
-            print(f"\nReached total daily limit of {config.TOTAL_DAILY_LIMIT} emails. Stopping.")
+    sent_this_session = 0
+
+    for i, lead in enumerate(leads):
+        if sent_this_session >= config.TOTAL_DAILY_LIMIT:
+            print(f"Daily capacity of {config.TOTAL_DAILY_LIMIT} emails reached. Stopping.")
             break
 
-        # Pick next sender that has not exceeded their 25 daily limit
+        if lead.get("status", "").strip().lower() == "sent":
+            continue
+
+        # Find next sender with available quota
         attempts = 0
-        current_sender = None
+        sender = None
         while attempts < len(config.SENDERS):
-            candidate = config.SENDERS[sender_idx % len(config.SENDERS)]
-            sender_idx += 1
+            candidate = config.SENDERS[sender_index % len(config.SENDERS)]
+            sender_index += 1
             if sender_counts[candidate["id"]] < candidate["daily_limit"]:
-                current_sender = candidate
+                sender = candidate
                 break
             attempts += 1
 
-        if not current_sender:
-            print("\nAll sender mailboxes have reached their daily limit (25 each). Stopping.")
+        if not sender:
+            print("All 3 sender mailboxes have reached their daily 25 email allocation.")
             break
 
-        lead = leads[idx]
-        recipient = lead["email"].strip()
-        subject, plain, html = generate_email_content(lead, current_sender)
+        to_email = lead.get("email", "").strip()
+        if not to_email or "@" not in to_email:
+            continue
 
-        print(
-            f"[{total_sent + 1}/{config.TOTAL_DAILY_LIMIT}] Sending via {current_sender['first_name']} to {recipient} ({lead['business_name']})..."
-        )
+        subject, plain, html = build_email_content(lead, sender)
 
+        if dry_run:
+            print(f"\n[DRY RUN {sent_this_session + 1}] SENDER: {sender['email']} -> {to_email}")
+            print(f"Subject: {subject}")
+            print(f"Business: {lead.get('business_name')} | Demo: {lead.get('demo_url')}")
+            lead["status"] = "dry-run"
+            lead["sent_at"] = datetime.now().isoformat()
+            lead["sent_by"] = sender["email"]
+            sender_counts[sender["id"]] += 1
+            sent_this_session += 1
+            if sent_this_session >= 3:
+                print("\n[Dry run preview of first 3 sample dispatches completed]")
+                break
+            continue
+
+        # Live dispatch
         try:
-            send_email_smtp(current_sender, recipient, subject, plain, html)
-            now_iso = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            leads[idx]["status"] = "sent"
-            leads[idx]["sent_at"] = now_iso
-            leads[idx]["sent_by"] = current_sender["email"]
-            save_leads(leads)
+            print(f"[{sent_this_session + 1}/{config.TOTAL_DAILY_LIMIT}] Sending pitch to {to_email} via {sender['email']}...")
+            send_via_smtp(sender, to_email, subject, plain, html)
+            lead["status"] = "sent"
+            lead["sent_at"] = datetime.now().isoformat()
+            lead["sent_by"] = sender["email"]
+            sender_counts[sender["id"]] += 1
+            sent_this_session += 1
+            print(f"SUCCESS: Sent to {to_email}")
 
-            sender_counts[current_sender["id"]] += 1
-            total_sent += 1
-            print(f"  ✓ Delivered. (Sender count today: {sender_counts[current_sender['id']]}/25)")
+            # Persist status to CSV immediately
+            with open(config.LEADS_CSV_PATH, "w", encoding="utf-8", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=leads[0].keys())
+                writer.writeheader()
+                writer.writerows(leads)
 
-            # Natural delay between sends to protect sender reputation
-            if total_sent < config.TOTAL_DAILY_LIMIT and total_sent < len(pending_indices):
-                pause = random.randint(config.MIN_DELAY_SECONDS, config.MAX_DELAY_SECONDS)
-                print(f"  Sleeping {pause} seconds to maintain human sending rhythm...")
-                time.sleep(pause)
+            # Human-like delay between emails
+            if sent_this_session < config.TOTAL_DAILY_LIMIT:
+                delay = random.randint(config.MIN_DELAY_SECONDS, config.MAX_DELAY_SECONDS)
+                print(f"Waiting {delay} seconds before next pitch...")
+                time.sleep(delay)
 
         except Exception as e:
-            print(f"  ✗ Error sending to {recipient}: {e}")
-            leads[idx]["status"] = "failed"
-            save_leads(leads)
+            print(f"ERROR sending to {to_email} via {sender['email']}: {e}")
+            time.sleep(10)
 
     print("\n" + "=" * 70)
-    print(f"Sending batch finished. Total emails sent: {total_sent}")
+    print(f"Outreach batch completed. Total dispatched: {sent_this_session}")
     for s in config.SENDERS:
-        print(f"  - {s['email']}: {sender_counts[s['id']]}/25 sent")
+        print(f"  - {s['name']}: {sender_counts[s['id']]}/{s['daily_limit']} sent")
     print("=" * 70)
 
-
-def show_stats():
-    leads = load_leads()
-    total = len(leads)
-    sent = len([l for l in leads if l.get("status", "").lower() == "sent"])
-    pending = len([l for l in leads if l.get("status", "").lower() == "pending"])
-    failed = len([l for l in leads if l.get("status", "").lower() == "failed"])
-
-    print("=" * 60)
-    print("VELTRIX HUB OUTREACH DATABASE STATUS")
-    print(f"Total Leads:   {total}")
-    print(f"Sent:          {sent}")
-    print(f"Pending:       {pending}")
-    print(f"Failed:        {failed}")
-    print("=" * 60)
-
-
 if __name__ == "__main__":
-    if len(sys.argv) < 2 or sys.argv[1] == "--dry-run":
-        run_dry_run()
-    elif sys.argv[1] == "--send":
-        run_live_send()
-    elif sys.argv[1] == "--test":
-        recipient = sys.argv[2] if len(sys.argv) > 2 else "info@veltrixhub.ng"
-        run_test_email(recipient)
-    elif sys.argv[1] == "--stats":
-        show_stats()
+    parser = argparse.ArgumentParser(description="Alvora Tech Cold Outreach Pitching Engine")
+    parser.add_argument("--send", action="store_true", help="Execute live email sending")
+    parser.add_argument("--dry-run", action="store_true", help="Simulate email generation without sending")
+    parser.add_argument("--test", type=str, help="Send a single test email to the specified address")
+    args = parser.parse_args()
+
+    if args.test:
+        run_outreach(test_recipient=args.test)
+    elif args.send:
+        run_outreach(dry_run=False)
+    elif args.dry_run:
+        run_outreach(dry_run=True)
     else:
-        print("Usage:")
-        print("  python send_outreach.py --dry-run")
-        print("  python send_outreach.py --send")
-        print("  python send_outreach.py --test <email>")
-        print("  python send_outreach.py --stats")
+        print("Please provide an argument: --dry-run, --send, or --test <email>")
