@@ -244,6 +244,19 @@ export default function OutreachDashboard() {
   const [dispatchRunning, setDispatchRunning] = useState(false);
   const [dispatchLogs, setDispatchLogs] = useState([]);
   const [dispatchAlert, setDispatchAlert] = useState(null);
+  const [dispatchProgress, setDispatchProgress] = useState({
+    sent: 0,
+    total: 0,
+    pending: 0,
+    percent: 0,
+    currentStep: "",
+    currentSender: "",
+    currentRecipient: "",
+    statusDetail: "Engine Standby: 3 Zoho Mailboxes Ready (Lucas, James, Oliver)",
+    isDelaying: false,
+    delaySeconds: 0,
+    isCompleted: false,
+  });
   const logTerminalRef = useRef(null);
 
   const [newLead, setNewLead] = useState({
@@ -301,8 +314,18 @@ export default function OutreachDashboard() {
         const data = await res.json();
         if (data.success) {
           setDispatchRunning(Boolean(data.isRunning));
+          if (data.progress) {
+            setDispatchProgress((prev) => ({
+              ...prev,
+              ...data.progress,
+              isCompleted: Boolean(data.isCompleted),
+            }));
+          }
           if (Array.isArray(data.lastLogs) && data.lastLogs.length > 0) {
             setDispatchLogs(data.lastLogs);
+          }
+          if (data.isRunning) {
+            fetchLeads();
           }
         }
       }
@@ -737,6 +760,62 @@ export default function OutreachDashboard() {
                   </>
                 )}
               </button>
+            </div>
+
+            {/* REAL-TIME BATCH DISPATCH PROGRESS BAR */}
+            <div className="p-3.5 rounded-lg bg-slate-950/80 border border-slate-800 space-y-2.5 shadow-inner">
+              <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`w-2 h-2 rounded-full ${
+                      dispatchRunning
+                        ? "bg-emerald-400 animate-pulse"
+                        : dispatchProgress.isCompleted
+                        ? "bg-blue-400"
+                        : "bg-slate-500"
+                    }`}
+                  />
+                  <span className="font-semibold text-white uppercase text-[10px] tracking-wider">
+                    {dispatchRunning ? "Dispatch In Progress" : dispatchProgress.isCompleted ? "Batch Completed" : "Dispatch Standby"}
+                  </span>
+                </div>
+                <div className="font-mono text-[11px] text-slate-300">
+                  <span className="text-white font-bold">{dispatchProgress.sent || 0}</span>
+                  <span className="text-slate-500"> / {dispatchProgress.total || leads.length} sent</span>
+                  <span className="text-emerald-400 font-bold ml-1.5">
+                    ({dispatchProgress.percent || (dispatchProgress.total > 0 ? Math.round((dispatchProgress.sent / dispatchProgress.total) * 100) : 0)}%)
+                  </span>
+                </div>
+              </div>
+
+              {/* Progress Track */}
+              <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800 relative">
+                <div
+                  className={`h-full rounded-full transition-all duration-700 ease-out relative ${
+                    dispatchRunning
+                      ? "bg-gradient-to-r from-emerald-500 to-teal-400 shadow-sm shadow-emerald-500/30"
+                      : dispatchProgress.isCompleted
+                      ? "bg-gradient-to-r from-blue-500 to-indigo-500"
+                      : "bg-slate-700"
+                  }`}
+                  style={{
+                    width: `${Math.max(
+                      dispatchProgress.percent || (dispatchProgress.total > 0 ? Math.round((dispatchProgress.sent / dispatchProgress.total) * 100) : 0),
+                      dispatchRunning ? 5 : 0
+                    )}%`,
+                  }}
+                />
+              </div>
+
+              {/* Quick Status Subtext */}
+              <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1">
+                <span className="truncate max-w-[240px]">
+                  {dispatchProgress.statusDetail || "Ready to dispatch queue"}
+                </span>
+                <span className="font-mono text-slate-500">
+                  {dispatchProgress.isDelaying ? `${dispatchProgress.delaySeconds}s delay` : "Paced"}
+                </span>
+              </div>
             </div>
 
             {/* Embedded Monospace Terminal */}
