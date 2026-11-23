@@ -187,23 +187,30 @@ def run_outreach(dry_run=False, test_recipient=None):
     print(f"Total Leads: {total_leads} | Pending Leads: {len(pending_leads)}")
 
     if test_recipient:
-        print(f"Running single-recipient test send to: {test_recipient}")
-        test_lead = pending_leads[0] if pending_leads else {
-            "business_name": "Lone Star Plumbing Specialists",
-            "contact_name": "Operations Lead",
-            "email": test_recipient,
-            "niche": "plumbing-services",
-            "city": "Dallas, TX",
-            "demo_url": "https://alvoratechhq.com/plumbing-services"
-        }
-        sender = config.SENDERS[0]
-        subject, plain, html = build_email_content(test_lead, sender)
-        print(f"Testing sender: {sender['email']}")
-        try:
-            send_via_smtp(sender, test_recipient, subject, plain, html)
-            print(f"SUCCESS: Test email successfully sent to {test_recipient} via {sender['email']}")
-        except Exception as e:
-            print(f"ERROR: Test send failed via {sender['email']}: {e}")
+        print(f"Running multi-sender test dispatch to: {test_recipient}")
+        test_leads = pending_leads[:3] if len(pending_leads) >= 3 else leads[:3]
+        for idx, sender in enumerate(config.SENDERS):
+            sample_lead = test_leads[idx % len(test_leads)] if test_leads else {
+                "business_name": "Apex Painting Contractors",
+                "contact_name": "Mr. David Miller",
+                "email": test_recipient,
+                "niche": "painting",
+                "city": "Houston TX",
+                "demo_url": "https://alvoratechhq.com/painting"
+            }
+            lead_for_send = dict(sample_lead)
+            lead_for_send["email"] = test_recipient
+            subject, plain, html = build_email_content(lead_for_send, sender)
+            print(f"\n[{idx+1}/{len(config.SENDERS)}] Testing sender: {sender['email']} ({sender['name']})")
+            print(f"Subject: {subject}")
+            print(f"Live Demo URL in email: {lead_for_send.get('demo_url')}")
+            try:
+                send_via_smtp(sender, test_recipient, subject, plain, html)
+                print(f"SUCCESS: Test email successfully dispatched via {sender['email']}")
+            except Exception as e:
+                print(f"ERROR: Dispatch failed via {sender['email']}: {e}")
+            if idx < len(config.SENDERS) - 1:
+                time.sleep(3)
         return
 
     sender_counts = {s["id"]: 0 for s in config.SENDERS}
