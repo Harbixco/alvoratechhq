@@ -130,7 +130,7 @@ function getValidDemoUrl(rawUrl, nicheKey, agency = "alvoratech") {
 let cachedClient = null;
 async function getDb() {
   if (!cachedClient) {
-    cachedClient = new MongoClient(MONGODB_URI, { maxPoolSize: 10, serverSelectionTimeoutMS: 5000 });
+    cachedClient = new MongoClient(MONGODB_URI, { maxPoolSize: 10, serverSelectionTimeoutMS: 3000 });
     await cachedClient.connect();
   }
   return cachedClient.db(DB_NAME);
@@ -139,20 +139,20 @@ async function getDb() {
 async function scrapeEmailsFromWebsite(websiteUrl) {
   if (!websiteUrl) return [];
   const emails = new Set();
-  const testUrls = [websiteUrl];
-
+  let parsed;
   try {
-    const parsed = new URL(websiteUrl);
-    const base = `${parsed.protocol}//${parsed.host}`;
-    testUrls.push(`${base}/contact`, `${base}/contact-us`, `${base}/about`);
+    parsed = new URL(websiteUrl);
   } catch {
     return [];
   }
 
+  const base = `${parsed.protocol}//${parsed.host}`;
+  const testUrls = [websiteUrl, `${base}/contact`, `${base}/contact-us`];
+
   for (const u of testUrls) {
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 4000);
+      const timeout = setTimeout(() => controller.abort(), 2000);
       const resp = await fetch(u, {
         headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AlvoraScraper/1.0" },
         signal: controller.signal,
@@ -304,18 +304,32 @@ export default async function handler(req, res) {
   }
 
   // 2. EXTRACTION ENDPOINT
-  const targetCount = parseInt(req.query.count || req.body?.count || "10", 10);
+  const requestedCount = parseInt(req.query.count || req.body?.count || "10", 10);
+  const targetCount = Math.min(requestedCount, 10); // Cap per-request batch to 10 for fast response within HTTP timeout
   const targetNiche = req.query.niche || req.body?.niche || null;
   const targetCity = req.query.city || req.body?.city || null;
 
   try {
-    const db = await getDb();
-    const leadsCol = db.collection(COLLECTION_NAME);
+    let db = null;
+    let leadsCol = null;
+    try {
+      db = await getDb();
+      leadsCol = db.collection(COLLECTION_NAME);
+    } catch (dbErr) {
+      console.warn("Notice: MongoDB connection unavailable during extraction, using CSV fallback:", dbErr.message);
+    }
 
-    const existingDocs = await leadsCol.find({}, { projection: { email: 1 } }).toArray();
-    const existingEmails = new Set(
-      existingDocs.map((d) => (d.email || "").toLowerCase().trim()).filter(Boolean)
-    );
+    const existingEmails = new Set();
+    if (leadsCol) {
+      try {
+        const existingDocs = await leadsCol.find({}, { projection: { email: 1 } }).toArray();
+        for (const d of existingDocs) {
+          if (d.email) existingEmails.add(d.email.toLowerCase().trim());
+        }
+      } catch (colErr) {
+        console.warn("Notice reading existing docs:", colErr.message);
+      }
+    }
 
     if (fs.existsSync(CSV_PATH)) {
       try {
@@ -401,11 +415,17 @@ export default async function handler(req, res) {
 
                   newlyExtracted.push(leadRecord);
 
-                  await leadsCol.updateOne(
-                    { email: primaryEmail.toLowerCase() },
-                    { $set: leadRecord },
-                    { upsert: true }
-                  );
+                  if (leadsCol) {
+                    try {
+                      await leadsCol.updateOne(
+                        { email: primaryEmail.toLowerCase() },
+                        { $set: leadRecord },
+                        { upsert: true }
+                      );
+                    } catch (dbSaveErr) {
+                      console.warn("Notice saving lead to MongoDB:", dbSaveErr.message);
+                    }
+                  }
 
                   try {
                     if (fs.existsSync(CSV_PATH)) {
