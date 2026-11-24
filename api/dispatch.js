@@ -15,7 +15,10 @@ function getLeadsProgress() {
   let sent = 0;
   let pending = 0;
   let failed = 0;
+  let followUpDue = 0;
   let lastSentLead = null;
+  const now = Date.now();
+  const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
   if (fs.existsSync(CSV_PATH)) {
     try {
@@ -25,9 +28,16 @@ function getLeadsProgress() {
         total++;
         const line = lines[i];
         const low = line.toLowerCase();
-        if (low.includes(",sent,") || low.endsWith(",sent") || low.includes('"sent"')) {
+        if (low.includes(",sent,") || low.endsWith(",sent") || low.includes('"sent"') || low.includes("followup_sent")) {
           sent++;
           const parts = line.split(",");
+          const sentAtStr = (parts[7] || "").replace(/"/g, "").trim();
+          if (sentAtStr) {
+            const sentTime = new Date(sentAtStr).getTime();
+            if (!isNaN(sentTime) && (now - sentTime) >= SEVEN_DAYS_MS && !low.includes("followup_sent")) {
+              followUpDue++;
+            }
+          }
           lastSentLead = {
             business_name: (parts[0] || "").replace(/"/g, "").trim(),
             email: (parts[2] || "").replace(/"/g, "").trim(),
@@ -45,7 +55,7 @@ function getLeadsProgress() {
   }
 
   const percent = total > 0 ? Math.round((sent / total) * 100) : 0;
-  return { total, sent, pending, failed, percent, lastSentLead };
+  return { total, sent, pending, failed, followUpDue, percent, lastSentLead };
 }
 
 function getLogProgress(logTail) {
@@ -148,6 +158,11 @@ export default async function handler(req, res) {
       args.push("--dry-run");
     } else if (mode === "test") {
       args.push("--test", recipient || "info@alvoratechhq.com");
+    } else if (mode === "followup") {
+      args.push("--followup");
+    } else if (mode === "daily") {
+      args[0] = "daily_prospector.py";
+      args.push("75");
     } else {
       args.push("--send");
     }

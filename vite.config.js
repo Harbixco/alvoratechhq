@@ -3,11 +3,13 @@ import react from '@vitejs/plugin-react'
 import trackHandler from './api/track.js'
 import extractHandler from './api/extract.js'
 import dispatchHandler from './api/dispatch.js'
+import responsesHandler from './api/responses.js'
 
 const apiHandlers = {
   '/api/track': trackHandler,
   '/api/extract': extractHandler,
   '/api/dispatch': dispatchHandler,
+  '/api/responses': responsesHandler,
 }
 
 export default defineConfig(({ mode }) => {

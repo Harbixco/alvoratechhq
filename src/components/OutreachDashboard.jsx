@@ -24,7 +24,11 @@ import {
   Zap,
   Loader2,
   AlertCircle,
-  RotateCw
+  RotateCw,
+  Clock,
+  MessageSquare,
+  Phone,
+  Inbox
 } from "lucide-react";
 
 const INITIAL_LEADS = [
@@ -249,6 +253,7 @@ export default function OutreachDashboard() {
     total: 0,
     pending: 0,
     percent: 0,
+    followUpDue: 0,
     currentStep: "",
     currentSender: "",
     currentRecipient: "",
@@ -258,6 +263,17 @@ export default function OutreachDashboard() {
     isCompleted: false,
   });
   const logTerminalRef = useRef(null);
+
+  // Inbound Responses State
+  const [responses, setResponses] = useState([]);
+  const [responsesNotice, setResponsesNotice] = useState("");
+  const [showLogReplyModal, setShowLogReplyModal] = useState(false);
+  const [newReplyNote, setNewReplyNote] = useState({
+    email: "",
+    business_name: "",
+    message: "",
+    channel: "Email",
+  });
 
   const [newLead, setNewLead] = useState({
     business_name: "",
@@ -339,6 +355,41 @@ export default function OutreachDashboard() {
     }
   };
 
+  const fetchResponses = async () => {
+    try {
+      const res = await fetch("/api/responses");
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          setResponses(data.replies || []);
+          if (data.notice) setResponsesNotice(data.notice);
+        }
+      }
+    } catch (err) {
+      console.warn("Notice loading inbound responses:", err);
+    }
+  };
+
+  const handleLogResponse = async (e) => {
+    e?.preventDefault();
+    if (!newReplyNote.email) return;
+    try {
+      const res = await fetch("/api/responses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newReplyNote),
+      });
+      if (res.ok) {
+        setShowLogReplyModal(false);
+        setNewReplyNote({ email: "", business_name: "", message: "", channel: "Email" });
+        await fetchResponses();
+        await fetchLeads();
+      }
+    } catch (err) {
+      console.warn("Notice recording reply:", err);
+    }
+  };
+
   useEffect(() => {
     if (logTerminalRef.current) {
       logTerminalRef.current.scrollTop = logTerminalRef.current.scrollHeight;
@@ -349,8 +400,12 @@ export default function OutreachDashboard() {
     fetchLeads();
     fetchTracking();
     fetchDispatchStatus();
+    fetchResponses();
 
-    const trackInterval = setInterval(fetchTracking, 15000);
+    const trackInterval = setInterval(() => {
+      fetchTracking();
+      fetchResponses();
+    }, 15000);
     return () => clearInterval(trackInterval);
   }, []);
 
@@ -612,7 +667,7 @@ export default function OutreachDashboard() {
           <div className="bg-slate-900 border border-slate-800 rounded-lg p-4">
             <span className="text-[11px] font-semibold uppercase text-slate-400">Active Senders</span>
             <div className="text-xl font-bold text-white mt-1">3 Accounts</div>
-            <p className="text-[10px] text-slate-400 mt-0.5">Lucas, James, Oliver (75 cap)</p>
+            <p className="text-[10px] text-slate-400 mt-0.5">Lucas, James, Oliver &bull; Replies route to Lucas</p>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-lg p-4">
@@ -692,25 +747,41 @@ export default function OutreachDashboard() {
               </div>
             </div>
 
-            <button
-              onClick={handleExtractLeads}
-              disabled={isExtracting}
-              className={`w-full py-2 px-4 rounded-lg text-xs font-bold text-white transition flex items-center justify-center gap-2 ${
-                isExtracting ? "bg-blue-600/60 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500"
-              }`}
-            >
-              {isExtracting ? (
-                <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  <span>Extracting US Leads...</span>
-                </>
-              ) : (
-                <>
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Extract Fresh US Leads Now</span>
-                </>
-              )}
-            </button>
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={handleExtractLeads}
+                disabled={isExtracting}
+                className={`w-full py-2 px-4 rounded-lg text-xs font-bold text-white transition flex items-center justify-center gap-2 ${
+                  isExtracting ? "bg-blue-600/60 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500"
+                }`}
+              >
+                {isExtracting ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Extracting US Leads...</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Extract Fresh US Leads</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={() => handleStartDispatch("daily")}
+                disabled={isDispatching || dispatchRunning}
+                className={`w-full py-2 px-4 rounded-lg text-xs font-bold border transition flex items-center justify-center gap-2 ${
+                  dispatchRunning
+                    ? "bg-slate-800/40 border-slate-700 text-slate-500 cursor-not-allowed"
+                    : "bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 border-emerald-600/50"
+                }`}
+                title="Sources 75 high-intent US businesses with No Website or Outdated Sites across top buying niches"
+              >
+                <Clock className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Run 7:00 AM Daily Prospecting (75 Leads)</span>
+              </button>
+            </div>
 
             {isExtracting && (
               <div className="p-2.5 rounded-lg bg-blue-950/40 border border-blue-800 text-[11px] text-blue-200 flex items-center gap-2">
@@ -746,7 +817,37 @@ export default function OutreachDashboard() {
               </div>
             </div>
 
+            {dispatchProgress.followUpDue > 0 && (
+              <div className="p-3 rounded-lg bg-amber-950/40 border border-amber-600/50 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span className="text-xs text-amber-200 font-semibold">
+                    {dispatchProgress.followUpDue} US prospects due for 7-day follow-up.
+                  </span>
+                </div>
+                <button
+                  onClick={() => handleStartDispatch("followup")}
+                  disabled={isDispatching || dispatchRunning}
+                  className="px-3 py-1 rounded bg-amber-600 hover:bg-amber-500 text-white text-[11px] font-bold whitespace-nowrap transition"
+                >
+                  Send Follow-Ups
+                </button>
+              </div>
+            )}
+
             <div className="flex items-center gap-2">
+              {dispatchProgress.followUpDue > 0 && (
+                <button
+                  onClick={() => handleStartDispatch("followup")}
+                  disabled={isDispatching || dispatchRunning}
+                  className="py-2 px-3 rounded-lg text-xs font-bold text-amber-200 bg-amber-950/60 hover:bg-amber-900/80 border border-amber-600/60 transition"
+                  title="Dispatch 7-day follow-ups"
+                >
+                  <Clock className="w-3.5 h-3.5 inline mr-1 text-amber-400" />
+                  Follow-Ups ({dispatchProgress.followUpDue})
+                </button>
+              )}
+
               <button
                 onClick={() => handleStartDispatch("dry-run")}
                 disabled={isDispatching || dispatchRunning}
@@ -886,6 +987,159 @@ export default function OutreachDashboard() {
             )}
           </div>
         </div>
+
+        {/* Inbound Response Center */}
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+            <div>
+              <div className="flex items-center gap-2">
+                <Inbox className="w-4 h-4 text-blue-400" />
+                <h2 className="text-base font-bold text-white">Unified Inbound Response Center</h2>
+              </div>
+              <p className="text-xs text-slate-400 mt-0.5">
+                All replies automatically route to <span className="text-blue-300 font-mono">lucas@alvoratechhq.com</span>. No need to switch between mailboxes.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={fetchResponses}
+                className="py-1.5 px-3 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5"
+              >
+                <RefreshCw className="w-3 h-3" />
+                <span>Refresh Inbound</span>
+              </button>
+              <button
+                onClick={() => setShowLogReplyModal(true)}
+                className="py-1.5 px-3 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white transition flex items-center gap-1.5"
+              >
+                <Plus className="w-3 h-3" />
+                <span>Log Reply / Note</span>
+              </button>
+            </div>
+          </div>
+
+          {responses.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {responses.map((rep) => (
+                <div key={rep.id} className="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-white truncate">{rep.business_name}</span>
+                    <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      {rep.channel || "Email"}
+                    </span>
+                  </div>
+                  <p className="text-[11px] font-mono text-slate-400 truncate">{rep.email}</p>
+                  <p className="text-xs text-slate-300 line-clamp-3 bg-slate-900/60 p-2 rounded border border-slate-800/80 italic">
+                    "{rep.message}"
+                  </p>
+                  <div className="flex items-center justify-between pt-1 text-[11px]">
+                    <span className="text-slate-500">{new Date(rep.received_at).toLocaleDateString()}</span>
+                    <span className="text-emerald-400 font-semibold">{rep.sentiment || "Interested"}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="p-5 rounded-lg bg-slate-950/40 border border-slate-800/60 text-center space-y-1">
+              <Inbox className="w-6 h-6 text-slate-600 mx-auto" />
+              <p className="text-xs font-semibold text-slate-300">No unread prospect replies currently logged</p>
+              <p className="text-[11px] text-slate-500 max-w-md mx-auto">
+                {responsesNotice || "All prospect replies automatically land in lucas@alvoratechhq.com. When prospects reply, their messages will stream directly into this dashboard."}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* LOG INBOUND REPLY MODAL */}
+        {showLogReplyModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <h3 className="text-base font-bold text-white">Log US Prospect Inbound Response</h3>
+                <button
+                  onClick={() => setShowLogReplyModal(false)}
+                  className="text-slate-400 hover:text-white p-1"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <form onSubmit={handleLogResponse} className="space-y-3.5">
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Prospect Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="e.g. contact@contractor.com"
+                    value={newReplyNote.email}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, email: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Business Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Apex Painting TX"
+                    value={newReplyNote.business_name}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, business_name: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Channel
+                  </label>
+                  <select
+                    value={newReplyNote.channel}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, channel: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  >
+                    <option value="Email">Email Reply</option>
+                    <option value="Phone Call">Phone Call</option>
+                    <option value="SMS">SMS Message</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Message / Conversation Notes
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="Summary of response, questions, or agreed call date..."
+                    value={newReplyNote.message}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, message: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div className="flex items-center justify-end gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowLogReplyModal(false)}
+                    className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 text-xs font-semibold hover:bg-slate-700 transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition"
+                  >
+                    Save & Mark Replied
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
 
         {/* Live Prospect Engagement Feed (When opens exist) */}
         {trackingRecords.length > 0 && (

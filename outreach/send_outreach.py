@@ -155,7 +155,7 @@ def send_via_smtp(sender, to_email, subject, plain_text, html_content):
     msg["Subject"] = subject
     msg["From"] = f"{sender['name']} <{sender['email']}>"
     msg["To"] = to_email
-    msg["Reply-To"] = sender["email"]
+    msg["Reply-To"] = "Lucas | Alvora Tech <lucas@alvoratechhq.com>"
     msg["Date"] = formatdate(localtime=True)
     msg["Message-ID"] = make_msgid(domain="alvoratechhq.com")
 
@@ -297,9 +297,121 @@ def run_outreach(dry_run=False, test_recipient=None, direct_mode=False):
         print(f"  - {s['name']}: {sender_counts[s['id']]}/{s['daily_limit']} sent")
     print("=" * 70)
 
+def generate_followup_email(lead, sender, direct_mode=False):
+    biz_name = (lead.get("business_name") or "Your Business").strip()
+    contact = (lead.get("contact_name") or "Operations Lead").strip()
+    city = (lead.get("city") or "your area").strip()
+    niche = (lead.get("niche") or "services").strip()
+    demo_url = (lead.get("demo_url") or "https://alvoratechhq.com/painting").strip()
+    to_email = lead.get("email", "").strip()
+
+    subject = f"Re: Quick question regarding {biz_name}'s website"
+
+    plain = f"""Hi {contact},
+
+Following up on my message last week regarding {biz_name}'s web presence in {city}.
+
+I know you are busy managing active projects, so I wanted to quickly reshare the live interactive demonstration we prepared for your sector:
+Demo: {demo_url}
+
+When customers in {city} search for {niche} contractors on mobile, having an instant mobile call/booking link and verified trust badges allows you to secure the booking immediately instead of losing them to competitors.
+
+Would you be open to a brief 5-minute introductory call this week?
+
+Best regards,
+
+{sender['name']}
+{sender['role']} | Alvora Tech
+Direct: +1 (214) 817-2938
+Website: https://alvoratechhq.com
+"""
+
+    html = f"""<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <p>Hi {contact},</p>
+  <p>Following up on my message last week regarding <strong>{biz_name}</strong>'s mobile web presence in {city}.</p>
+  <p>I know you are busy managing active projects, so I wanted to quickly reshare the live interactive demonstration we prepared for your sector:</p>
+  <p style="margin: 22px 0;">
+    <a href="{demo_url}" style="display: inline-block; background-color: #0f172a; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">View Live Demonstration &rarr;</a>
+  </p>
+  <p>When high-value clients in {city} search for {niche} providers on mobile, having an instant booking workflow guarantees you convert the inquiry before competitors.</p>
+  <p>Would you be open to a brief 5-minute introductory call this week?</p>
+  <p>Best regards,<br><br><strong>{sender['name']}</strong><br>{sender['role']} | Alvora Tech<br>Direct: +1 (214) 817-2938</p>
+</body>
+</html>"""
+
+    return subject, plain, html
+
+
+def run_followup(direct_mode=False):
+    leads = load_leads()
+    now = datetime.now()
+    due_indices = []
+
+    for i, l in enumerate(leads):
+        status = l.get("status", "").lower()
+        sent_at = l.get("sent_at", "").strip()
+        if status in ("sent", "delivered") and sent_at:
+            try:
+                sent_dt = datetime.strptime(sent_at, "%Y-%m-%d %H:%M:%S")
+                if (now - sent_dt).days >= 7:
+                    due_indices.append(i)
+            except Exception:
+                pass
+
+    if not due_indices:
+        print("No US leads currently due for 7-day follow-up.")
+        return
+
+    print("=" * 70)
+    print("ALVORA TECH OUTREACH ENGINE - 7-DAY FOLLOW-UP DISPATCH (USA)")
+    print(f"Total Follow-Ups Due (>= 7 days since initial pitch): {len(due_indices)}")
+    print("=" * 70)
+
+    sender_map = {s["email"].lower(): s for s in config.SENDERS}
+    total_followups_sent = 0
+
+    for idx in due_indices:
+        lead = leads[idx]
+        recipient = lead["email"].strip()
+        original_sender_email = lead.get("sent_by", "").lower().strip()
+        sender = sender_map.get(original_sender_email) or config.SENDERS[0]
+
+        subject, plain, html = generate_followup_email(lead, sender, direct_mode=direct_mode)
+
+        print(f"[{total_followups_sent + 1}/{len(due_indices)}] Sending 7-day follow-up via {sender['first_name']} to {recipient} ({lead['business_name']})...")
+
+        try:
+            send_via_smtp(sender, recipient, subject, plain, html)
+            now_iso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            leads[idx]["status"] = "followup_sent"
+            leads[idx]["sent_at"] = now_iso
+            with open(config.LEADS_CSV_PATH, "w", encoding="utf-8", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=leads[0].keys())
+                writer.writeheader()
+                writer.writerows(leads)
+            total_followups_sent += 1
+            print(f"  ✓ Follow-up delivered.")
+
+            if total_followups_sent < len(due_indices):
+                pause = random.randint(60, 120)
+                print(f"  Sleeping {pause} seconds...")
+                time.sleep(pause)
+
+        except Exception as e:
+            print(f"  ✗ Error sending follow-up to {recipient}: {e}")
+
+    print("\n" + "=" * 70)
+    print(f"Follow-up batch completed. Total follow-ups sent: {total_followups_sent}")
+    print("=" * 70)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Alvora Tech USA Cold Outreach Pitching Engine")
     parser.add_argument("--send", action="store_true", help="Execute live email sending")
+    parser.add_argument("--followup", action="store_true", help="Execute 7-day follow-up emails")
     parser.add_argument("--dry-run", action="store_true", help="Simulate email generation without sending")
     parser.add_argument("--test", type=str, help="Send a single test email to the specified address")
     parser.add_argument("--direct", action="store_true", help="Use direct links without tracking redirect for warm-up deliverability")
@@ -309,7 +421,9 @@ if __name__ == "__main__":
         run_outreach(test_recipient=args.test, direct_mode=args.direct)
     elif args.send:
         run_outreach(dry_run=False, direct_mode=args.direct)
+    elif args.followup:
+        run_followup(direct_mode=args.direct)
     elif args.dry_run:
         run_outreach(dry_run=True, direct_mode=args.direct)
     else:
-        print("Please provide an argument: --dry-run, --send, or --test <email> (optionally add --direct)")
+        print("Please provide an argument: --dry-run, --send, --followup, or --test <email> (optionally add --direct)")
